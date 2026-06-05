@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Săre Roma Khetane - Portal Cultural & Educațional (DEMO)</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #b45309; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #78350f; }
+        
+        .hover-lift { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .85; transform: scale(0.98); }
+        }
+        .animate-subtle { animation: subtle-pulse 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-[#fdfcf9] text-gray-900 selection:bg-amber-200">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const translations = {
+          ro: {
+            titleRomani: "Săre Roma Khetane",
+            titleTranslation: "Toți Romii Împreună",
+            welcome: "🌟 Bun venit pe Săre Roma Khetane!",
+            quote: "„Fiecare om are dreptul să devină cineva, să fie liber și să viseze.”",
+            intro: "Această platformă s-a născut din convingerea că nația nu este cea care face diferența între oameni, ci curajul, munca și încrederea în sine.",
+            didYouKnow: "Știați că?",
+            newsTitle: "Știri de Actualitate",
+            ctaLearn: "Învață Limba Romani",
+            ctaJob: "Caută un Job",
+            ctaReport: "Raportează Discriminarea",
+            historyHub: "Memoria Neamului",
+            historySubtitle: "Pilonul împotriva dezinformării și conservarea adevărului istoric.",
+            migration: "Origini și Migrație",
+            slavery: "Cronologia Robiei (1385-1856)",
+            holocaust: "Porajmos (Holocaustul)",
+            library: "Biblioteca Digitală",
+            academy: "Limba Noastră",
+            academySubtitle: "Academia de Limbi și Cultură Romani.",
+            convGuide: "Ghid de Conversație",
+            didactic: "Materiale Didactice",
+            traditions: "Tradiții și Meșteșuguri",
+            successCenter: "Modele de Urmat",
+            successSubtitle: "Centrul de Succes și Inspirație.",
+            personalities: "Dicționar de Personalități",
+            stories: "Povești din Comunitate",
+            opportunities: "Viitorul Tău",
+            opportunitiesSubtitle: "Oportunități de Educație, Angajare și Resurse.",
+            admission: "Ghid de Admitere",
+            jobBoard: "Bursa locurilor de muncă",
+            ngos: "Baze de date cu ONG-uri",
+            legal: "Cunoaște-ți Drepturile",
+            legalSubtitle: "Secțiunea Juridică și Suport Împotriva Discriminării.",
+            antiDiscrimination: "Ghid Anti-Discriminare",
+            reportForm: "Formular de Raportare",
+            dictionary: [
+              { ro: "Bună ziua!", rom: "Lașo djes!", phonetic: "Lasho djes" },
+              { ro: "Mulțumesc!", rom: "Najis tuke!", phonetic: "Najees tookay" },
+              { ro: "Te iubesc!", rom: "Kamav tut!", phonetic: "Kamav toot" },
+              { ro: "Cum te cheamă?", rom: "Sar bućhos?", phonetic: "Sar buchosh" },
+              { ro: "Sunt bine.", rom: "Mišto sim.", phonetic: "Mishto seem" },
+              { ro: "Toți romii împreună", rom: "Săre Roma Khetane", phonetic: "Sare Roma Khetane" }
+            ],
+            readMore: "Deschide Detalii",
+            download: "Deschide Resursă",
+            watchVideo: "Vezi Video",
+            footerDesc: "O platformă pentru unitate, succes și drepturi. Împreună construim o lume în care fiecare vis contează.",
+            submitStory: "Trimite Povestea Ta",
+            submitStoryDesc: "Ești un model de succes sau cunoști pe cineva care a reușit? Împărtășește povestea ta cu noi și inspiră întreaga comunitate."
+          },
+          en: {
+            titleRomani: "Săre Roma Khetane",
+            titleTranslation: "All Roma Together",
+            welcome: "🌟 Welcome to Săre Roma Khetane!",
+            quote: "“Every human being has the right to become someone, to be free, and to dream.”",
+            intro: "This platform was born from the conviction that nation is not what makes the difference between people, but courage, work, and self-confidence.",
+            didYouKnow: "Did you know?",
+            newsTitle: "Latest News",
+            ctaLearn: "Learn Romani Language",
+            ctaJob: "Find a Job",
+            ctaReport: "Report Discrimination",
+            historyHub: "Nation's Memory",
+            historySubtitle: "The pillar against misinformation and preserving historical truth.",
+            migration: "Origins and Migration",
+            slavery: "Slavery Chronology (1385-1856)",
+            holocaust: "Porajmos (Holocaust)",
+            library: "Digital Library",
+            academy: "Our Language",
+            academySubtitle: "Romani Language and Culture Academy.",
+            convGuide: "Conversation Guide",
+            didactic: "Didactic Materials",
+            traditions: "Traditions and Crafts",
+            successCenter: "Role Models",
+            successSubtitle: "Success and Inspiration Center.",
+            personalities: "Personality Dictionary",
+            stories: "Community Stories",
+            opportunities: "Your Future",
+            opportunitiesSubtitle: "Education, Employment Opportunities, and Resources.",
+            admission: "Admission Guide",
+            jobBoard: "Job Board",
+            ngos: "NGO Database",
+            legal: "Know Your Rights",
+            legalSubtitle: "Legal Section & Support Against Discrimination.",
+            antiDiscrimination: "Anti-Discrimination Guide",
+            reportForm: "Reporting Form",
+            dictionary: [
+              { ro: "Hello!", rom: "Lașo djes!", phonetic: "Lasho djes" },
+              { ro: "Thank you!", rom: "Najis tuke!", phonetic: "Najees tookay" },
+              { ro: "I love you!", rom: "Kamav tut!", phonetic: "Kamav toot" },
+              { ro: "What is your name?", rom: "Sar bućhos?", phonetic: "Sar buchosh" },
+              { ro: "I am fine.", rom: "Mišto sim.", phonetic: "Mishto seem" },
+              { ro: "All Roma together", rom: "Săre Roma Khetane", phonetic: "Sare Roma Khetane" }
+            ],
+            readMore: "View Details",
+            download: "Open Resource",
+            watchVideo: "Watch Video",
+            footerDesc: "A platform for unity, success, and rights. Together we build a world where every dream matters.",
+            submitStory: "Submit Your Story",
+            submitStoryDesc: "Are you a role model or do you know someone who has succeeded? Share your story with us and inspire the entire community."
+          },
+          de: {
+            titleRomani: "Săre Roma Khetane",
+            titleTranslation: "Alle Roma Zusammen",
+            welcome: "🌟 Willkommen bei Săre Roma Khetane!",
+            quote: "„Jeder Mensch hat das Recht, jemand zu werden, frei zu sein und zu träumen.“",
+            intro: "Diese Plattform entstand aus der Überzeugung, dass nicht die Nation den Unterschied zwischen den Menschen macht, sondern Mut, Arbeit und Selbstvertrauen.",
+            didYouKnow: "Wussten Sie schon?",
+            newsTitle: "Aktuelle Nachrichten",
+            ctaLearn: "Romani Sprache lernen",
+            ctaJob: "Job suchen",
+            ctaReport: "Diskriminierung melden",
+            historyHub: "Gedächtnis der Nation",
+            historySubtitle: "Die Säule gegen Desinformation und zur Bewahrung der historischen Wahrheit.",
+            migration: "Ursprung und Migration",
+            slavery: "Chronologie der Sklaverei (1385-1856)",
+            holocaust: "Porajmos (Holocaust)",
+            library: "Digitale Bibliothek",
+            academy: "Unsere Sprache",
+            academySubtitle: "Akademie für Sprache und Kultur der Roma.",
+            convGuide: "Konversationsleitfaden",
+            didactic: "Didaktische Materialien",
+            traditions: "Traditionen und Handwerk",
+            successCenter: "Vorbilder",
+            successSubtitle: "Erfolgs- und Inspirationszentrum.",
+            personalities: "Persönlichkeitslexikon",
+            stories: "Geschichten aus der Gemeinschaft",
+            opportunities: "Deine Zukunft",
+            opportunitiesSubtitle: "Bildung, Arbeitsmöglichkeiten und Ressourcen.",
+            admission: "Zulassungsleitfaden",
+            jobBoard: "Jobbörse",
+            ngos: "NGO-Datenbank",
+            legal: "Kenne deine Rechte",
+            legalSubtitle: "Rechtliche Sektion & Unterstützung gegen Diskriminierung.",
+            antiDiscrimination: "Anti-Diskriminierungs-Leitfaden",
+            reportForm: "Meldeformular",
+            dictionary: [
+              { ro: "Guten Tag!", rom: "Lașo djes!", phonetic: "Lasho djes" },
+              { ro: "Danke!", rom: "Najis tuke!", phonetic: "Najees tookay" },
+              { ro: "Ich liebe dich!", rom: "Kamav tut!", phonetic: "Kamav toot" },
+              { ro: "Wie heißt du?", rom: "Sar bućhos?", phonetic: "Sar buchosh" },
+              { ro: "Mir geht es gut.", rom: "Mišto sim.", phonetic: "Mishto seem" },
+              { ro: "Alle Roma zusammen", rom: "Săre Roma Khetane", phonetic: "Sare Roma Khetane" }
+            ],
+            readMore: "Details anzeigen",
+            download: "Ressource öffnen",
+            watchVideo: "Video ansehen",
+            footerDesc: "Eine Plattform für Einheit, Erfolg und Rechte. Gemeinsam bauen wir eine Welt, in der jeder Traum zählt.",
+            submitStory: "Sende deine Geschichte",
+            submitStoryDesc: "Bist du ein Vorbild oder kennst du jemanden, der erfolgreich war? Teile deine Geschichte mit uns und inspiriere die gesamte Gemeinschaft."
+          },
+          rom: {
+            titleRomani: "Săre Roma Khetane",
+            titleTranslation: "Săre Roma Khetane",
+            welcome: "🌟 Baxtalo avilin pe Săre Roma Khetane!",
+            quote: "„Sako manuš si les o drom te ovel vari-kon, te ovel slobodo thaj te sunul.”",
+            intro: "Kadaja platforma bijandili katar o paćivimos kaj na i nacia kerel o diferența maškar o manuša.",
+            didYouKnow: "Džanen sanas?",
+            newsTitle: "Nevoimata",
+            ctaLearn: "Sikoav i čhib Romani",
+            ctaJob: "Rode jekh buti",
+            ctaReport: "Bičhal i bilaćhipen",
+            historyHub: "I Memoria le Narodoki",
+            historySubtitle: "I zor katar i bilaćhipen thaj o džanipen čačuno.",
+            migration: "Origini thaj Migracia",
+            slavery: "I Cronologia le Robiaki (1385-1856)",
+            holocaust: "Porajmos (Holocaust)",
+            library: "Digitalno Biblioteka",
+            academy: "Amari Čhib",
+            academySubtitle: "I Akademia le Čhibjaki thaj i Kultura Romani.",
+            convGuide: "Ghid de Conversație",
+            didactic: "Materiale Didaktiko",
+            traditions: "Tradiții thaj Meșteșuguri",
+            successCenter: "Modele de Urmat",
+            successSubtitle: "O Centro le Baxtako thaj Inspiracia.",
+            personalities: "Dicționar de Personalități",
+            stories: "Paramiče katar i Komuniteta",
+            opportunities: "Tiro Dživipen",
+            opportunitiesSubtitle: "Oportunitatea le Sikloveske, o buti thaj Resurse.",
+            admission: "Ghid de Admitere",
+            jobBoard: "Bursa le butiaki",
+            ngos: "Baze de date le ONG-onge",
+            legal: "Džan tire čačimata",
+            legalSubtitle: "I Secția Juridiko thaj o Sprijino contra i bilaćhipen.",
+            antiDiscrimination: "Ghid Anti-Discriminare",
+            reportForm: "Formular de Raportare",
+            dictionary: [
+              { ro: "Lașo djes!", rom: "Lașo djes!", phonetic: "Lasho djes" },
+              { ro: "Najis tuke!", rom: "Najis tuke!", phonetic: "Najees tookay" },
+              { ro: "Kamav tut!", rom: "Kamav tut!", phonetic: "Kamav toot" },
+              { ro: "Sar bućhos?", rom: "Sar bućhos?", phonetic: "Sar buchosh" },
+              { ro: "Mišto sim.", rom: "Mišto sim!", phonetic: "Mishto seem" },
+              { ro: "Săre Roma Khetane", rom: "Săre Roma Khetane", phonetic: "Sare Roma Khetane" }
+            ],
+            readMore: "Dikh maj but",
+            download: "Lidžar o PDF",
+            watchVideo: "Dikh o Video",
+            footerDesc: "Jekh platforma pa i unitatea, o baxt thaj o čačimata. Khetane keras jekh luma ande savi sako suno si les jekh bari mol.",
+            submitStory: "Bičhal tiri paramiči",
+            submitStoryDesc: "San jekh modelo le baxtako vaj džanes vari-kas kaj kerdjas baxt? De amenge tiri paramiči thaj de zor sako manuše."
+          }
+        };
+
+        const SectionHeader = ({ title, subtitle, icon, colorClass }) => (
+          <div className="space-y-4 mb-12">
+            <div className={`w-12 h-12 ${colorClass} rounded-2xl flex items-center justify-center shadow-lg text-white`}>
+              <i data-lucide={icon} className="w-6 h-6"></i>
+            </div>
+            <h2 className="text-4xl font-serif font-bold text-gray-900 leading-tight">{title}</h2>
+            <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">{subtitle}</p>
+          </div>
+        );
+
+        const Card = ({ title, desc, icon, colorClass, linkLabel, onClick }) => (
+          <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group hover-lift flex flex-col justify-between h-full">
+            <div>
+              <div className={`w-12 h-12 ${colorClass} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <i data-lucide={icon} className="w-6 h-6"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-amber-700 transition-colors">{title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">{desc}</p>
+            </div>
+            {linkLabel && (
+              <button onClick={onClick} className="flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900 transition-all text-left">
+                {linkLabel} <i data-lucide="arrow-right" className="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+              </button>
+            )}
+          </div>
+        );
+
+        const App = () => {
+          const [lang, setLang] = useState('ro');
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+          const [isPlaying, setIsPlaying] = useState(null);
+          const [activeModal, setActiveModal] = useState(null);
+          const [formData, setFormData] = useState({ name: '', email: '', details: '', type: 'Abuz verbal/Prejudiciu' });
+          const [formSubmitted, setFormSubmitted] = useState(false);
+          const [isScrolled, setIsScrolled] = useState(false);
+
+          const t = translations[lang];
+
+          useEffect(() => {
+            if (window.lucide) {
+              window.lucide.createIcons();
+            }
+          });
+
+          useEffect(() => {
+            const handleScroll = () => {
+              if (window.scrollY > 40) setIsScrolled(true);
+              else setIsScrolled(false);
+            };
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+          }, []);
+
+          const playAudio = (text) => {
+            if (isPlaying) return;
+            setIsPlaying(text);
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'it-IT'; // Standard Italian has similar phonetic mappings to Romanes vowels and consonants
+            utterance.rate = 0.85;
+            utterance.onend = () => setIsPlaying(null);
+            utterance.onerror = () => setIsPlaying(null);
+            window.speechSynthesis.speak(utterance);
+          };
+
+          const handleFormSubmit = (e) => {
+            e.preventDefault();
+            setFormSubmitted(true);
+            setTimeout(() => {
+              setFormSubmitted(false);
+              setFormData({ name: '', email: '', details: '', type: 'Abuz verbal/Prejudiciu' });
+              setActiveModal(null);
+            }, 4000);
+          };
+
+          const langs = [
+            { code: 'ro', label: 'Română' },
+            { code: 'rom', label: 'Romanes' },
+            { code: 'en', label: 'English' },
+            { code: 'de', label: 'Deutsch' }
+          ];
+
+          // Detailed Educational/Cultural and Historical Content for Demo Modals
+          const modalContent = {
+            migration: {
+              ro: {
+                title: "Origini și Migrație - Drumul Nației Romani",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-gray-700">Cercetările lingvistice și genetice au dovedit fără dubiu că originea romilor este în nord-vestul Indiei, în regiuni precum Punjab sau Rajasthan.</p>
+                    <p>În jurul secolului al XI-lea (anii 1000 - 1050 e.n.), grupuri mari au părăsit subcontinentul indian în urma conflictelor și invaziilor militare, devenind un popor nomad sau semi-nomad în continuă mișcare.</p>
+                    <div className="bg-amber-50 p-4 rounded-2xl border border-amber-100 my-4">
+                      <h4 className="font-bold text-amber-950 mb-2">Traseul istoric principal:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-sm text-amber-900 font-semibold">
+                        <li>Secolul XI: Plecarea din India și trecerea prin Persia (Iran).</li>
+                        <li>Secolul XII-XIII: Stabilirea în Imperiul Bizantin (Grecia și Anatolia).</li>
+                        <li>Secolul XIV: Intrarea în Balcani și în Țările Române (Moldova și Țara Românească).</li>
+                        <li>Secolul XV-XVI: Răspândirea în Europa de Vest și America (mai târziu).</li>
+                      </ul>
+                    </div>
+                    <p>Făcând dovada unei adaptabilități legendare, romii au integrat vocabular și tradiții din toate popoarele pe care le-au întâlnit în călătoria lor seculară, conservând în același timp nucleul lor lingvistic sanscrit.</p>
+                  </div>
+                )
+              },
+              en: {
+                title: "Origins and Migration - The Romani Path",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-gray-700">Linguistic and genetic research has proven without a doubt that the origin of the Roma is in Northwestern India, in regions such as Punjab or Rajasthan.</p>
+                    <p>Around the 11th century (1000 - 1050 AD), large groups left the Indian subcontinent in the wake of conflicts and military invasions, becoming a nomadic or semi-nomadic people constantly on the move.</p>
+                    <div className="bg-amber-50 p-4 rounded-2xl border border-amber-100 my-4">
+                      <h4 className="font-bold text-amber-950 mb-2">Main Historical Route:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-sm text-amber-900">
+                        <li>11th Century: Departure from India and passage through Persia (Iran).</li>
+                        <li>12th-13th Century: Settlement in the Byzantine Empire (Greece and Anatolia).</li>
+                        <li>14th Century: Entry into the Balkans and the Romanian Principalities (Moldavia and Wallachia).</li>
+                        <li>15th-16th Century: Spread throughout Western Europe and later America.</li>
+                      </ul>
+                    </div>
+                    <p>Demonstrating legendary adaptability, the Roma integrated vocabulary and traditions from all the peoples they met in their secular journey, while preserving their main Sanskrit linguistic core.</p>
+                  </div>
+                )
+              }
+            },
+            slavery: {
+              ro: {
+                title: "Cronologia Robiei (1385-1856) - Adevărul Ascuns",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-red-700">Timp de aproape 500 de ani, romii din Țările Române (Muntenia și Moldova) au trăit în stare de robie, fiind considerați simplă proprietate a boierilor, mănăstirilor sau a domnitorului.</p>
+                    <p>Prima atestare documentară a robiei datează din 1385, când domnitorul Dan I dăruiește mănăstirii Tismana 40 de sălașe de țigani (romi).</p>
+                    <div className="bg-red-50 p-5 rounded-2xl border border-red-100 my-4 space-y-3">
+                      <h4 className="font-bold text-red-950 uppercase text-xs tracking-wider">Momente cheie ale Robiei:</h4>
+                      <div className="border-l-2 border-red-500 pl-4 space-y-2 text-sm text-red-900">
+                        <p><strong>1385:</strong> Prima atestare a sclaviei/robiei în Țara Românească.</p>
+                        <p><strong>1831-1832:</strong> Regulamentele Organice încep să reglementeze și să îmbunătățească legal statutul delicat al robilor.</p>
+                        <p><strong>1843:</strong> Domnitorul Gheorghe Bibescu eliberează robii aparținând Statului.</p>
+                        <p><strong>20 Februarie 1856:</strong> Barbu Știrbei promulgă „Legiuirea pentru emancipația tuturor țiganilor”, actul de eliberare definitivă a tuturor robilor romi din Țara Românească.</p>
+                      </div>
+                    </div>
+                    <p>Această lungă și traumatică sclavie a marcat decisiv evoluția socială și economică a comunității rome de astăzi, generând disparități care se resimt chiar și în secolul XXI.</p>
+                  </div>
+                )
+              },
+              en: {
+                title: "Slavery Chronology (1385-1856)",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-red-700">For nearly 500 years, the Roma in the Romanian Principalities (Wallachia and Moldavia) lived in slavery, being considered simple property of the boyars, monasteries, or the ruler.</p>
+                    <p>The first documentary attestation of slavery dates from 1385, when Dan I gifted 40 families of Gypsies (Roma) to the Tismana Monastery.</p>
+                    <div className="bg-red-50 p-5 rounded-2xl border border-red-100 my-4 space-y-3">
+                      <h4 className="font-bold text-red-950 uppercase text-xs tracking-wider">Key milestones of Slavery:</h4>
+                      <div className="border-l-2 border-red-500 pl-4 space-y-2 text-sm text-red-900">
+                        <p><strong>1385:</strong> First mention of slavery in Wallachia.</p>
+                        <p><strong>1831-1832:</strong> Organic Regulations start to regulate the status of slaves.</p>
+                        <p><strong>1843:</strong> Ruler Gheorghe Bibescu frees slaves belonging to the State.</p>
+                        <p><strong>February 20, 1856:</strong> Barbu Știrbei passess the ultimate law for the emancipation of all Roma slaves in Wallachia.</p>
+                      </div>
+                    </div>
+                    <p>This massive historical trauma shaped the social-economic situation of Romani communities and led to long-term inequalities still visible today.</p>
+                  </div>
+                )
+              }
+            },
+            holocaust: {
+              ro: {
+                title: "Porajmos - Genocidul Ignorat al Romilor",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-gray-800">„Porajmos” (care se traduce prin Înfulecare sau Devastare) desemnează tentativa regimului nazist și a aliaților săi de a extermina sistematic populația de etnie romă în timpul celui de-al Doilea Război Mondial.</p>
+                    <p>În România, sub regimul condus de Ion Antonescu, peste 25.000 de romi au fost deportați forțat în Transnistria între anii 1942 și 1944. Peste 11.000 dintre aceștia au murit din cauza foamei, a frigului extrem și a tifosului exantematic.</p>
+                    <div className="bg-stone-100 p-4 rounded-2xl border border-stone-200 text-sm">
+                      <p className="italic">„Ne-au suit în vagoane de marfă ca pe animale. Mulți copii au pierit pe drum. Când am ajuns în Transnistria, ne-au aruncat direct în câmp deschis, sub cerul liber. Nu aveam ce mânca, mâncam iarbă și rădăcini...”</p>
+                      <p className="text-right font-bold mt-2 text-xs">— Mărturie a unui supraviețuitor rom, deportat la vârsta de 7 ani.</p>
+                    </div>
+                    <p>La nivel european, se estimează că numărul victimelor Holocaustului romilor se ridică la jumătate de milion de suflete. Este datoria noastră să nu le lăsăm uitării memoria.</p>
+                  </div>
+                )
+              },
+              en: {
+                title: "Porajmos - The Forgotten Roma Genocid",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-gray-800">“Porajmos” (meaning Devouring or Devastation) refers to the Nazi regime's attempt and its allies systematic effort to exterminate the Roma population during WWII.</p>
+                    <p>In Romania, under Ion Antonescu's regime, over 25,000 Roma were forcibly deported to Transnistria between 1942 and 1944. Over 11,000 of them died due to hunger, extreme cold, and epidemics.</p>
+                    <p>Across Europe, it is estimated that the death toll of the Roma Holocaust rises up to 500,000 lives. It is our duty to protect and pass their story on.</p>
+                  </div>
+                )
+              }
+            },
+            library: {
+              ro: {
+                title: "Biblioteca Digitală și Resurse Fundamentale",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-gray-700">Aici puteți găsi manuale, studii științifice și carți de istorie scrise de specialiști romi și internaționali care demontează miturile rasiste și oferă informații riguroase.</p>
+                    <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                      <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100 flex flex-col justify-between">
+                        <div>
+                          <span className="text-[10px] bg-amber-600 text-white font-bold px-2 py-0.5 rounded uppercase">Carte PDF</span>
+                          <h4 className="font-bold text-amber-950 mt-2 text-sm">Istoria și Tradițiile Minorității Rome</h4>
+                          <p className="text-xs text-gray-500 mt-1">Manual școlar aprobat de Ministerul Educației.</p>
+                        </div>
+                        <a href="https://example.com/pdf1" className="bg-amber-600 text-white text-xs font-bold text-center py-2 rounded-xl mt-4 block">Descarcă PDF</a>
+                      </div>
+                      <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100 flex flex-col justify-between">
+                        <div>
+                          <span className="text-[10px] bg-amber-600 text-white font-bold px-2 py-0.5 rounded uppercase">Studiu Academiei</span>
+                          <h4 className="font-bold text-amber-950 mt-2 text-sm">Romii din România: Pagini de Istorie</h4>
+                          <p className="text-xs text-gray-500 mt-1">Studiu științific complex despre evoluția post-robis.</p>
+                        </div>
+                        <a href="https://example.com/pdf2" className="bg-amber-600 text-white text-xs font-bold text-center py-2 rounded-xl mt-4 block">Descarcă PDF</a>
+                      </div>
+                    </div>
+                  </div>
+                )
+              },
+              en: {
+                title: "Digital Library & Resources",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-gray-700">Here you can find educational handbooks, scientific studies and historical books written by Roma specialists debunking racist myths.</p>
+                    <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                      <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100 flex flex-col justify-between">
+                        <div>
+                          <h4 className="font-bold text-amber-950 text-sm">History of the Romani Population</h4>
+                          <p className="text-xs text-gray-500 mt-1">Official state school curriculum manual.</p>
+                        </div>
+                        <button className="bg-amber-600 text-white text-xs font-bold py-2 rounded-xl mt-4">Download PDF</button>
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+            },
+            admission: {
+              ro: {
+                title: "Ghid de Admitere - Locuri Speciale pentru Romi",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-blue-700">Pentru a facilita accesul egal la educație din motive de echitate socială, universitățile și liceele din România oferă anual mii de locuri speciale, finanțate integral de la buget.</p>
+                    <h4 className="font-bold text-gray-900 mt-3">Cum poți beneficia de aceste locuri?</h4>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-600">
+                      <li><strong>Recomandarea scrisă:</strong> Ai nevoie de o recomandare oficială din partea unei asociații de romi recunoscute legal, care atestă apartenența ta la etnie.</li>
+                      <li><strong>Dosarul de înscriere:</strong> Recomandarea se atașează la dosarul de admitere alături de celelalte documente școlare standard.</li>
+                      <li><strong>Concurs de admitere privat:</strong> Candidații pe locurile speciale concurează doar între ei, ceea ce facilitează intrarea cu medii echitabile.</li>
+                    </ol>
+                    <div className="bg-blue-50 p-4 rounded-xl text-blue-900 text-xs border border-blue-100">
+                      <strong>💡 Notă utilă:</strong> Pentru obținerea recomandării oficiale în județul Caraș-Severin, ne puteți contacta direct prin formularul de contact!
+                    </div>
+                  </div>
+                )
+              },
+              en: {
+                title: "Admission Guide - Special University Seats",
+                content: (
+                  <div className="space-y-4">
+                    <p className="font-medium text-blue-700">To secure equal educational access and dynamic growth, high schools and universities offer thousands of dedicated state-funded seats for Roma youngsters.</p>
+                    <p>To benefit from these seats, you need to present an official ethnic recommendation form signed by a registered Roma organization proving affiliation.</p>
+                  </div>
+                )
+              }
+            },
+            report: {
+              ro: {
+                title: "Raportează un Incident / Abuz",
+                content: (
+                  <div className="space-y-4">
+                    <span className="inline-block bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1 rounded-full mb-2">Canal Securizat</span>
+                    <p className="text-gray-650 text-sm">Confidențialitatea ta este garantată. Echipa noastră juridică va analiza faptele prezentate și te va contacta pentru asistență gratuită în relația cu Consiliul Național pentru Combaterea Discriminării (CNCD).</p>
+                    
+                    {formSubmitted ? (
+                      <div className="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl text-center space-y-3">
+                        <i data-lucide="check-circle" className="w-12 h-12 text-emerald-600 mx-auto animate-bounce"></i>
+                        <h4 className="font-bold text-emerald-950">Raport trimis cu succes!</h4>
+                        <p className="text-xs text-emerald-700">Îți mulțumim pentru curaj. Cazul tău a fost preluat spre analiză juridică neutră.</p>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleFormSubmit} className="space-y-4 pt-2">
+                        <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Nume sau Pseudonim</label>
+                          <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-rose-500" placeholder="Numele tău" />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Email / Telefon de contact</label>
+                          <input type="text" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-rose-500" placeholder="email@address.com" />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Tip Abuz</label>
+                          <select value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white outline-none focus:ring-2 focus:ring-rose-500">
+                            <option>Abuz verbal/Prejudiciu scolar</option>
+                            <option>Refuz de angajare pe baze etnice</option>
+                            <option>Discriminare instituțională</option>
+                            <option>Pai asistență generală</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Descrierea Detaliată a faptei</label>
+                          <textarea required rows="4" value={formData.details} onChange={e => setFormData({...formData, details: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-rose-500" placeholder="Unde, când și ce s-a întâmplat..."></textarea>
+                        </div>
+                        <button type="submit" className="w-full bg-rose-600 text-white font-bold py-4 rounded-xl mt-2 hover:bg-rose-700 transition-colors shadow">
+                          Trimite Sesizarea
+                        </button>
+                      </form>
+                    )}
+                  </div>
+                )
+              },
+              en: {
+                title: "Report Discrimination Incident",
+                content: (
+                  <div className="space-y-4">
+                    <p className="text-sm">Speak up against hatred. Your identity is fully secure. Our legal department provides free legal assistance in fighting discrimination cases.</p>
+                    {formSubmitted ? (
+                      <div className="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl text-center my-4">
+                        <h4 className="font-bold text-emerald-950">Successfully Submitted</h4>
+                        <p className="text-xs text-emerald-700 mt-1">Thank you for reporting. Our legal expert will inspect your case soon.</p>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleFormSubmit} className="space-y-4">
+                        <input type="text" required placeholder="Name / Username" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl border" />
+                        <input type="email" required placeholder="Contact Email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl border" />
+                        <textarea required placeholder="Explain details..." value={formData.details} onChange={e => setFormData({...formData, details: e.target.value})} className="w-full px-4 py-3 rounded-xl border" rows="3"></textarea>
+                        <button type="submit" className="w-full bg-rose-600 text-white font-bold py-3 rounded-xl">Submit report</button>
+                      </form>
+                    )}
+                  </div>
+                )
+              }
+            }
+          };
+
+          return (
+            <div className="min-h-screen">
+              {/* TOP WATERMARK & DISMISSABLE DEMO ACCENT */}
+              <div className="bg-amber-700 text-amber-50 text-xs py-2.5 px-4 text-center font-bold tracking-wider flex items-center justify-center gap-2 relative z-50">
+                <span className="bg-amber-900 text-white text-[9px] px-2 py-0.5 rounded font-black uppercase">Demo</span>
+                <span>Aceasta este varianta interactivă demo a portalului. Toate secțiunile sunt active și navigabile. Nu uitați să încercați dicționarul vocal!</span>
+              </div>
+
+              {/* Navigation */}
+              <nav className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-amber-100 py-3' : 'bg-white/90 backdrop-blur-md border-b border-amber-50 py-5'}`}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-amber-600 rounded-xl flex items-center justify-center text-white shadow-lg animate-subtle">
+                        <i data-lucide="globe" className="w-7 h-7"></i>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-xl font-bold tracking-tight text-amber-950 leading-none">
+                          {t.titleRomani}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-amber-600 font-bold mt-1">
+                          {t.titleTranslation}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="hidden lg:flex items-center gap-8">
+                      <a href="#history" className="text-sm font-bold text-gray-700 hover:text-amber-800 transition-colors uppercase tracking-tight">{t.historyHub}</a>
+                      <a href="#academy" className="text-sm font-bold text-gray-700 hover:text-amber-800 transition-colors uppercase tracking-tight">{t.academy}</a>
+                      <a href="#success" className="text-sm font-bold text-gray-700 hover:text-amber-800 transition-colors uppercase tracking-tight">{t.successCenter}</a>
+                      <a href="#opportunities" className="text-sm font-bold text-gray-700 hover:text-amber-800 transition-colors uppercase tracking-tight">{t.opportunities}</a>
+                      <a href="#legal" className="text-sm font-bold text-gray-700 hover:text-amber-800 transition-colors uppercase tracking-tight">{t.legal}</a>
+                      
+                      <div className="flex gap-1 bg-amber-50 p-1 rounded-full border border-amber-100">
+                        {langs.map(l => (
+                          <button key={l.code} onClick={() => setLang(l.code)} className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${lang === l.code ? 'bg-amber-600 text-white shadow-md' : 'text-amber-900 hover:bg-amber-100/50'}`}>{l.label}</button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="lg:hidden flex items-center gap-4">
+                      <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-amber-900 bg-amber-50 rounded-lg">
+                        <i data-lucide={isMenuOpen ? "x" : "menu"} className="w-6 h-6"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Menu */}
+                {isMenuOpen && (
+                  <div className="lg:hidden bg-white border-t border-amber-50 px-4 py-8 space-y-6 animate-in slide-in-from-top duration-200">
+                    <a href="#history" onClick={() => setIsMenuOpen(false)} className="block text-xl font-bold text-amber-950">{t.historyHub}</a>
+                    <a href="#academy" onClick={() => setIsMenuOpen(false)} className="block text-xl font-bold text-amber-950">{t.academy}</a>
+                    <a href="#success" onClick={() => setIsMenuOpen(false)} className="block text-xl font-bold text-amber-950">{t.successCenter}</a>
+                    <a href="#opportunities" onClick={() => setIsMenuOpen(false)} className="block text-xl font-bold text-amber-950">{t.opportunities}</a>
+                    <a href="#legal" onClick={() => setIsMenuOpen(false)} className="block text-xl font-bold text-amber-950">{t.legal}</a>
+                    
+                    <div className="pt-4 border-t border-amber-50">
+                      <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-2">Alege limba / Change language</p>
+                      <div className="flex flex-wrap gap-2">
+                        {langs.map(l => (
+                          <button key={l.code} onClick={() => {setLang(l.code); setIsMenuOpen(false);}} className={`px-4 py-2 rounded-xl text-xs font-bold ${lang === l.code ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-900'}`}>{l.label}</button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </nav>
+
+              <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
+                {/* Hero */}
+                <section className="grid lg:grid-cols-2 gap-16 items-center">
+                  <div className="space-y-8">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-widest">
+                      <i data-lucide="award" className="w-4 h-4"></i>
+                      {lang === 'ro' ? 'Descoperă Adevărul' : 'Discover the Truth'}
+                    </div>
+                    <h1 className="text-5xl sm:text-7xl font-serif font-bold text-amber-950 leading-[1.1] tracking-tight">
+                      {t.welcome}
+                    </h1>
+                    <p className="text-xl font-serif italic text-amber-800/85 border-l-4 border-amber-600 pl-6 py-2">
+                      {t.quote}
+                    </p>
+                    <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+                      {t.intro}
+                    </p>
+                    <div className="flex flex-wrap gap-4 pt-4">
+                      <a href="#academy" className="bg-amber-600 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl hover:bg-amber-700 transition-all hover:-translate-y-1 flex items-center gap-2">
+                        {t.ctaLearn} <i data-lucide="arrow-right" className="w-5 h-5"></i>
+                      </a>
+                      <a href="#opportunities" className="bg-white text-amber-900 border-2 border-amber-100 px-8 py-4 rounded-2xl font-bold hover:bg-amber-50 transition-all shadow-sm">
+                        {t.ctaJob}
+                      </a>
+                      <button onClick={() => setActiveModal('report')} className="bg-rose-50 text-rose-700 border-2 border-rose-100 px-8 py-4 rounded-2xl font-bold hover:bg-rose-100 transition-all flex items-center gap-2">
+                        <i data-lucide="shield-check" className="w-5 h-5"></i>
+                        {t.ctaReport}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+                      <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1000&q=80" alt="Roma Portret" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="absolute -bottom-10 -left-6 md:left-10 bg-white p-6 rounded-[2.5rem] shadow-2xl border border-amber-50 max-w-sm">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center shadow-inner">
+                          <i data-lucide="shield-check" className="w-6 h-6"></i>
+                        </div>
+                        <div>
+                          <h4 className="font-extrabold text-amber-950 text-sm tracking-tight">Identitate & Demnitate</h4>
+                          <p className="text-[11px] text-amber-600 font-bold uppercase tracking-wider">Mândrie & Reziliență</p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Trecutul bogat este fundația pe care asociația noastră clădește un viitor al echității și succesului.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Did you know & news */}
+                <section className="grid md:grid-cols-2 gap-12">
+                  <div className="bg-amber-50/50 p-10 rounded-[3rem] border border-amber-100 space-y-6">
+                    <h3 className="text-2xl font-serif font-bold text-amber-950 flex items-center gap-3">
+                      <i data-lucide="lightbulb" className="text-amber-600 w-6 h-6"></i> {t.didYouKnow}
+                    </h3>
+                    <div className="space-y-4 text-gray-700">
+                      <p className="p-4 bg-white rounded-2xl border border-amber-100/50 shadow-sm leading-relaxed text-sm font-medium">
+                        ✨ Romii au părăsit valea râului Indus în secolul al XI-lea, purtând cu ei o cultură extrem de vibrantă și meserii tehnice și artistice unice.
+                      </p>
+                      <p className="p-4 bg-white rounded-2xl border border-amber-100/50 shadow-sm leading-relaxed text-sm font-medium">
+                        🗣️ Dialectele limbii Romani au păstrat legături strânse cu limba sanscrită indiană clasică, având structuri gramaticale înrudite cu hindi modernă.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm space-y-6">
+                    <h3 className="text-2xl font-serif font-bold text-amber-950 flex items-center gap-3">
+                      <i data-lucide="message-square" className="text-amber-600 w-6 h-6"></i> {t.newsTitle}
+                    </h3>
+                    <div className="space-y-6">
+                      {[
+                        { date: "08 Iun 2026", title: "Asociația Cod pentru Comunitate lansează programul de burse de digitalizare pentru tinerii romi." },
+                        { date: "30 Mai 2026", title: "Pregătiri de succes pentru tinerii din Reșița înscriși la admiterea specială pe facultate." }
+                      ].map((news, i) => (
+                        <div key={i} className="group cursor-pointer border-b border-gray-50 pb-4 last:border-b-0 last:pb-0">
+                          <p className="text-[10px] font-black text-amber-600 uppercase tracking-widest mb-1">{news.date}</p>
+                          <h4 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors text-sm leading-relaxed">{news.title}</h4>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                {/* History Hub */}
+                <section id="history" className="scroll-mt-32">
+                  <SectionHeader title={t.historyHub} subtitle={t.historySubtitle} icon="history" colorClass="bg-amber-950 text-white" />
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <Card title={t.migration} desc="Hartă interactivă și documente istorice care relatează drumul sacru din India către Europa." icon="map-pin" colorClass="bg-amber-100 text-amber-800" linkLabel={t.readMore} onClick={() => setActiveModal('migration')} />
+                    <Card title={t.slavery} desc="Prima atestare de la 1385, evoluții sângeroase și actul istoric de dezrobire totală din 1856." icon="book-open" colorClass="bg-amber-50 text-amber-900" linkLabel={t.readMore} onClick={() => setActiveModal('slavery')} />
+                    <Card title={t.holocaust} desc="Comemorarea genocidului în vagoane și Transnistria pentru zeci de mii de victime nevinovate." icon="heart" colorClass="bg-rose-100 text-rose-800" linkLabel={t.readMore} onClick={() => setActiveModal('holocaust')} />
+                    <Card title={t.library} desc="Biblioteca online: Documente, cărți legislative și lucrări științifice în format PDF." icon="download" colorClass="bg-blue-100 text-blue-800" linkLabel={t.download} onClick={() => setActiveModal('library')} />
+                  </div>
+                </section>
+
+                {/* Academy */}
+                <section id="academy" className="scroll-mt-32 bg-emerald-50 rounded-[4rem] p-8 sm:p-20 border border-emerald-100">
+                  <SectionHeader title={t.academy} subtitle={t.academySubtitle} icon="languages" colorClass="bg-emerald-600 text-white" />
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-6">
+                      <div className="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
+                        <i data-lucide="message-square" className="w-7 h-7"></i>
+                      </div>
+                      <h3 className="text-2xl font-bold text-emerald-950">{t.convGuide}</h3>
+                      <p className="text-xs text-slate-500">Apasă pe butonul de redare pentru a asculta pronunția interactivă.</p>
+                      
+                      <div className="space-y-3 max-h-64 overflow-y-auto pr-1 custom-scrollbar">
+                        {t.dictionary.map((item, i) => (
+                          <div key={i} className="p-3 bg-emerald-50/50 rounded-2xl border border-emerald-100/50 flex justify-between items-center group">
+                            <div>
+                              <p className="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">{item.ro}</p>
+                              <p className="font-extrabold text-emerald-950 text-base">{item.rom}</p>
+                              <span className="text-[10px] text-gray-400 block italic leading-none">{item.phonetic}</span>
+                            </div>
+                            <button onClick={() => playAudio(item.rom)} className={`p-2.5 rounded-full transition-all ${isPlaying === item.rom ? 'bg-emerald-600 text-white animate-pulse' : 'bg-white text-emerald-600 hover:bg-emerald-600 hover:text-white shadow-sm'}`}>
+                              <i data-lucide="play-circle" className="w-5 h-5"></i>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-6 flex flex-col justify-between">
+                      <div>
+                        <div className="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner mb-6">
+                          <i data-lucide="book-open" className="w-7 h-7"></i>
+                        </div>
+                        <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.didactic}</h3>
+                        <p className="text-sm text-gray-500 leading-relaxed mb-4">Ghiduri ilustrate pentru elevi și fișe de curs didactice, realizate de profesori specializați în limba romani.</p>
+                        <ul className="space-y-3 pt-2 font-medium">
+                          {["Manual de Limba Romani - Clasa I", "Fișe de gramatică practică", "Culegere de proverbe indiene și rome"].map((item, i) => (
+                            <li key={i} onClick={() => setActiveModal('library')} className="flex items-center justify-between text-xs text-emerald-800 hover:text-amber-700 cursor-pointer p-2 bg-emerald-50/40 rounded-xl leading-relaxed">
+                              <span>📂 {item}</span> <i data-lucide="download" className="w-4 h-4"></i>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="bg-emerald-950 p-8 rounded-[2.5rem] text-white space-y-6 shadow-2xl flex flex-col justify-between">
+                      <div>
+                        <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6">
+                          <i data-lucide="users" className="w-7 h-7"></i>
+                        </div>
+                        <h3 className="text-2xl font-bold">{t.traditions}</h3>
+                        <p className="text-emerald-200/70 text-sm leading-relaxed">Un glosar fascinant al marilor bresle și meșteșuguri: fierari, argintari, lăutari, spoitori și valoarea lor inestimabilă în metalurgia și arta tradițională.</p>
+                      </div>
+                      <div className="pt-4 border-t border-emerald-900">
+                        <button onClick={() => setActiveModal('migration')} className="flex items-center gap-2 font-bold text-emerald-400 hover:text-emerald-300 transition-all text-sm">
+                          {t.readMore} <i data-lucide="arrow-right" className="w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Success Center */}
+                <section id="success" className="scroll-mt-32">
+                  <SectionHeader title={t.successCenter} subtitle={t.successSubtitle} icon="award" colorClass="bg-amber-600 text-white" />
+                  <div className="grid lg:grid-cols-2 gap-12">
+                    <div className="space-y-8">
+                      <h3 className="text-2xl font-serif font-bold text-amber-950 flex items-center gap-3">
+                        <i data-lucide="book-open" className="text-amber-600"></i> {t.personalities}
+                      </h3>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {[
+                          { name: "Charlie Chaplin", role: "Legendă al Cinematografiei", desc: "Actor, scenarist și regizor cu rădăcini materne rome." },
+                          { name: "Grigoraș Dinicu", role: "Compozitor & Violonist", desc: "Geniu al vioarei, celebru pe plan mondial pentru 'Hora Staccato'." },
+                          { name: "Alina Șerban", role: "Regizoare & Actriță", desc: "Pionieră a teatrului feminist și producții rome de anvergură europeană." },
+                          { name: "Django Reinhardt", role: "Chitarist de Geniu", desc: "Creatorul stilului jazz manouche în anii 1930." }
+                        ].map((p, i) => (
+                          <div key={i} className="flex flex-col p-5 bg-white rounded-3xl border border-amber-100/50 shadow-sm hover:shadow transition-shadow">
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-10 h-10 bg-amber-100 rounded-full overflow-hidden shrink-0">
+                                <img src={`https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80`} alt={p.name} className="w-full h-full object-cover" />
+                              </div>
+                              <div>
+                                <p className="font-extrabold text-amber-950 text-sm leading-tight">{p.name}</p>
+                                <p className="text-[9px] text-amber-600 font-extrabold uppercase tracking-wider">{p.role}</p>
+                              </div>
+                            </div>
+                            <p className="text-xs text-gray-500 leading-relaxed italic">{p.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-8">
+                      <h3 className="text-2xl font-serif font-bold text-amber-950 flex items-center gap-3">
+                        <i data-lucide="play-circle" className="text-amber-600"></i> {t.stories}
+                      </h3>
+                      <div className="aspect-video rounded-[2.5rem] overflow-hidden relative group cursor-pointer shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Success video cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-amber-950/90 via-amber-950/40 to-transparent flex flex-col justify-end p-8">
+                          <p className="text-white font-extrabold text-xl font-serif italic mb-1">Video: Tineri care au învins stereotipurile</p>
+                          <p className="text-amber-300 text-sm font-semibold">Despre antreprenoriat, limbi clasice și implicare digitală în ONG.</p>
+                        </div>
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                          <i data-lucide="play-circle" className="w-20 h-20 text-white drop-shadow-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Opportunities */}
+                <section id="opportunities" className="scroll-mt-32">
+                  <SectionHeader title={t.opportunities} subtitle={t.opportunitiesSubtitle} icon="briefcase" colorClass="bg-blue-600 text-white" />
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <Card title={t.admission} desc="Metodologii complete de admitere și pașii legali pentru accesul pe locurile bugetate destinate minorității rome." icon="graduation-cap" colorClass="bg-blue-100 text-blue-850" linkLabel={t.readMore} onClick={() => setActiveModal('admission')} />
+                    <Card title={t.jobBoard} desc="Bursa locurilor de muncă active și corelarea cu campanii naționale diversity-friendly." icon="briefcase" colorClass="bg-blue-50 text-indigo-900" linkLabel={t.readMore} onClick={() => alert('Bursa de locuri de muncă este o secțiune activată periodic în colaborare cu AJOFM.')} />
+                    <Card title={t.ngos} desc="Harta organizațiilor rome din Banat și asociații partenere de la care puteți adresa solicitări sau asistență locală." icon="users" colorClass="bg-cyan-100 text-cyan-900" linkLabel={t.readMore} onClick={() => alert('Baza de date cu ONG-uri partenere este în curs de sincronizare în județul Caraș-Severin.')} />
+                  </div>
+                </section>
+
+                {/* Legal */}
+                <section id="legal" className="scroll-mt-32 bg-rose-50 rounded-[4rem] p-8 sm:p-20 border border-rose-100">
+                  <SectionHeader title={t.legal} subtitle={t.legalSubtitle} icon="shield-check" colorClass="bg-rose-600 text-white" />
+                  <div className="grid lg:grid-cols-2 gap-12">
+                    <div className="bg-white p-10 rounded-[3rem] border border-rose-100 shadow-sm space-y-6 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-2xl font-serif font-bold text-rose-950 mb-3">{t.antiDiscrimination}</h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          Ce reprezintă discriminarea bazată pe criterii etnice (antigipsism/anti-romi) și cum îți poți exercita legitim apărarea drepturilor cu asistență juridică gratuită.
+                        </p>
+                      </div>
+                      <button onClick={() => setActiveModal('slavery')} className="flex items-center gap-2 font-bold text-rose-600 hover:text-rose-800 transition-all font-serif italic text-lg text-left mt-6">
+                        {t.readMore} <i data-lucide="arrow-right" className="w-4 h-4"></i>
+                      </button>
+                    </div>
+
+                    <div className="bg-rose-950 p-10 rounded-[3rem] text-white space-y-6 shadow-2xl flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-2xl font-serif font-bold mb-3">{t.reportForm}</h3>
+                        <p className="text-rose-200/80 leading-relaxed">
+                          Un canal simplificat de sesizare directă pentru depunerea plângerilor administrative și asistență juridică neutră în Caraș-Severin.
+                        </p>
+                      </div>
+                      <button onClick={() => setActiveModal('report')} className="w-full py-4 bg-white text-rose-950 rounded-2xl font-black uppercase text-xs tracking-wider transition-colors hover:bg-rose-100 mt-6">
+                        Raportează un Incident (Online)
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Submit Story Banner */}
+                <section className="bg-amber-100 rounded-[4rem] p-8 sm:p-20 text-center space-y-8 border border-amber-200">
+                  <div className="max-w-2xl mx-auto space-y-6">
+                    <h2 className="text-4xl font-serif font-bold text-amber-950 italic">{t.submitStory}</h2>
+                    <p className="text-lg text-amber-900/80 leading-relaxed font-medium">{t.submitStoryDesc}</p>
+                    <div className="pt-4">
+                      <button onClick={() => alert('Secțiunea de trimitere povești vă va pune în contact cu echipa de comunicare de la codpentrucomunitate@gmail.com')} className="bg-amber-950 text-white px-12 py-5 rounded-2xl font-bold shadow-2xl hover:bg-black transition-all transform hover:scale-105">
+                        Scrie-ne pe Email
+                      </button>
+                    </div>
+                  </div>
+                </section>
+              </main>
+
+              {/* Footer */}
+              <footer className="bg-white border-t border-amber-100 py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="grid md:grid-cols-4 gap-12">
+                    <div className="col-span-2 space-y-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-amber-600 rounded-lg flex items-center justify-center text-white">
+                          <i data-lucide="globe" className="w-5 h-5"></i>
+                        </div>
+                        <span className="text-xl font-bold text-amber-950">{t.titleRomani}</span>
+                      </div>
+                      <p className="text-gray-500 max-w-sm text-sm leading-relaxed">{t.footerDesc}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-amber-950 text-xs uppercase tracking-widest mb-6 border-b border-amber-50 pb-2">Navigare</h4>
+                      <ul className="space-y-3 text-xs font-bold text-gray-500">
+                        <li><a href="#history" className="hover:text-amber-600 transition-colors uppercase">{t.historyHub}</a></li>
+                        <li><a href="#academy" className="hover:text-amber-600 transition-colors uppercase">{t.academy}</a></li>
+                        <li><a href="#success" className="hover:text-amber-600 transition-colors uppercase">{t.successCenter}</a></li>
+                        <li><a href="#opportunities" className="hover:text-amber-600 transition-colors uppercase">{t.opportunities}</a></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-amber-950 text-xs uppercase tracking-widest mb-6 border-b border-amber-50 pb-2">Contact</h4>
+                      <p className="text-xs text-slate-500 font-semibold mb-2">Asociația Cod pentru Comunitate</p>
+                      <p className="text-xs text-slate-400 font-bold">codpentrucomunitate@gmail.com</p>
+                    </div>
+                  </div>
+                  <div className="mt-16 pt-8 border-t border-amber-50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    <span>© {new Date().getFullYear()} {t.titleRomani}</span>
+                    <span>Dezvoltat sub emblema Cod pentru Comunitate</span>
+                  </div>
+                </div>
+              </footer>
+
+              {/* INTERACTIVE DEMO ACCENT MODALS (Active State) */}
+              {activeModal && (
+                <div className="fixed inset-0 bg-amber-950/40 backdrop-blur-sm z-[999] flex items-center justify-center p-4 animate-in fade-in duration-200" onClick={() => setActiveModal(null)}>
+                  <div className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-200" onClick={e => e.stopPropagation()}>
+                    <div className="p-8 border-b border-amber-50 flex justify-between items-center bg-amber-50/50">
+                      <h3 className="text-2xl font-serif font-bold text-amber-950 leading-tight">
+                        {modalContent[activeModal] ? modalContent[activeModal][lang === 'rom' || lang === 'de' ? 'ro' : lang].title : t[activeModal] || 'Detalii'}
+                      </h3>
+                      <button onClick={() => setActiveModal(null)} className="p-2 transition-colors duration-200 text-amber-900 bg-white hover:bg-amber-100 rounded-full shadow-sm">
+                        <i data-lucide="x" className="w-5 h-5"></i>
+                      </button>
+                    </div>
+                    <div className="p-8 max-h-[70vh] overflow-y-auto text-gray-600 leading-relaxed scroll-mt-2 custom-scrollbar">
+                      {modalContent[activeModal] ? modalContent[activeModal][lang === 'rom' || lang === 'de' ? 'ro' : lang].content : (
+                        <p className="italic">Detaliile complete ale secțiunii se încarcă în cadrul ghidului general Săre Roma Khetane.</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo.png">
+    <title>Cod pentru Comunitate | Digitalizare și Educație în România</title>
+    <meta name="description" content="Asociația Cod pentru Comunitate susține educația digitală și digitalizarea instituțiilor publice." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Dyslexic&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              dyslexic: ['OpenDyslexic', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                primary: '#5d3a1a', 
+                secondary: '#c04822',
+                accent: '#2d5a27',
+                gold: '#d9921e',
+                light: '#fdfbf7',
+                warm: '#f9f1e6',
+                uway: '#3469ad'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { scroll-behavior: smooth; background-color: #fdfbf7; transition: background 0.3s ease; }
+      .glass-navbar { background-color: #fdfbf7 !important; border-bottom: 2px solid rgba(93, 58, 26, 0.08); }
+      
+      /* HERO BACKGROUND WITH "COD" PATTERN */
+      .hero-bg {
+        position: relative;
+        background-color: transparent;
+      }
+      
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="900" fill="%23000000" opacity="0.04">COD</text></svg>');
+        background-repeat: repeat;
+        background-size: 80px;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* PAGE SPECIFIC COLORS (Transparent Overlays applied to the section itself) */
+      .hero-home, .hero-about { background-color: rgba(93, 58, 26, 0.05); }
+      .hero-projects { background-color: rgba(192, 72, 34, 0.05); }
+      .hero-volunteer { background-color: rgba(217, 146, 30, 0.05); }
+      .hero-contact { background-color: rgba(45, 90, 39, 0.05); }
+      .hero-legal { background-color: rgba(255, 235, 59, 0.08); }
+      
+      /* FIXED RAINBOW: Large sweep, non-repeating, very subtle */
+      .hero-donate { 
+        background: linear-gradient(135deg, 
+          rgba(255, 0, 0, 0.02) 0%, 
+          rgba(255, 165, 0, 0.02) 15%, 
+          rgba(255, 255, 0, 0.02) 30%, 
+          rgba(0, 128, 0, 0.02) 45%, 
+          rgba(0, 0, 255, 0.02) 60%, 
+          rgba(75, 0, 130, 0.02) 75%, 
+          rgba(238, 130, 238, 0.02) 100%
+        );
+      }
+
+      /* BRAND PROTECTION */
+      .a11y-exempt { 
+        filter: none !important; 
+        opacity: 1 !important; 
+        visibility: visible !important;
+      }
+      .high-contrast .a11y-exempt * {
+        color: inherit !important;
+        background-color: transparent !important;
+      }
+
+      /* ACCESSIBILITY CLASSES */
+      .high-contrast, .high-contrast body { background-color: #000 !important; color: #fff !important; }
+      .high-contrast *:not(.a11y-exempt) { 
+        background-color: #000 !important; 
+        color: #ffff00 !important; 
+        border-color: #ffff00 !important;
+        box-shadow: none !important;
+      }
+      .high-contrast a { color: #00ffff !important; text-decoration: underline !important; }
+      .dyslexic-font, .dyslexic-font * { font-family: 'OpenDyslexic', sans-serif !important; }
+      .underline-links a { text-decoration: underline !important; font-weight: bold !important; }
+      .extra-letter-spacing, .extra-letter-spacing * { letter-spacing: 0.12em !important; }
+      .extra-line-height, .extra-line-height * { line-height: 2 !important; }
+      .stop-animations, .stop-animations * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .hide-images img:not(.a11y-exempt img), .hide-images video, .hide-images [style*="background-image"] { visibility: hidden !important; opacity: 0 !important; }
+      .large-cursor { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>'), auto !important; }
+      .large-cursor * { cursor: inherit !important; }
+
+      .uway-panel { box-shadow: 0 10px 50px rgba(0,0,0,0.25); background: #f8fafc; }
+      .a11y-tile { background: #ffffff; border: 1px solid #e2e8f0; transition: all 0.2s ease; }
+      .a11y-tile-active { border-color: #3469ad !important; background: #f0f7ff !important; border-width: 2px; }
+      .progress-bar-segment { height: 4px; flex: 1; background: #e2e8f0; border-radius: 2px; }
+      .progress-bar-active { background: #3469ad; }
+      
+      /* MARKDOWN STYLES */
+      .markdown-body h3 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1a1a1a; font-family: 'Playfair Display', serif; font-style: italic; border-bottom: 2px solid #c04822; padding-bottom: 0.5rem; display: inline-block; }
+      .markdown-body p { margin-bottom: 1.5rem; font-size: 1.125rem; line-height: 1.8; }
+      .markdown-body strong { font-weight: 800; color: #000000; }
+      .markdown-body a { color: #3469ad; text-decoration: underline; font-weight: 700; transition: all 0.2s; }
+      .markdown-body a:hover { color: #c04822; background: #fff7ed; }
+      .markdown-body ul, .markdown-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+      .markdown-body li { margin-bottom: 0.75rem; list-style-type: none; position: relative; padding-left: 1.5rem; }
+      .markdown-body ul li::before { content: "•"; color: #c04822; font-weight: bold; position: absolute; left: 0; }
+      .markdown-body ol { counter-reset: item; }
+      .markdown-body ol li::before { content: counter(item) "."; counter-increment: item; color: #c04822; font-weight: bold; position: absolute; left: 0; }
+      
+      @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+      .animate-uway { animation: fadeInScale 0.2s ease-out; }
+      
+      @media (max-width: 640px) {
+        .a11y-grid { display: flex !important; flex-direction: column !important; gap: 0.75rem !important; }
+        .a11y-tile { flex-direction: row !important; text-align: left !important; height: auto !important; min-height: 60px !important; }
+        .uway-panel { width: 90vw !important; max-height: 80vh !important; bottom: 80px !important; }
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+  <body class="bg-brand-light text-brand-primary font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

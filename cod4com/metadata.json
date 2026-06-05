@@ -1,0 +1,7 @@
+{
+  "name": "Asociația Cod pentru Comunitate",
+  "description": "O organizație non-profit dedicată digitalizării, educației și sprijinirii comunității prin tehnologie, limba română și literatură clasică.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

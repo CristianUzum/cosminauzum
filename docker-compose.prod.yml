@@ -1,0 +1,64 @@
+services:
+  # The Reverse Proxy: Communicates via clean TCP streams now
+  reverse-proxy:
+    image: traefik:v3.0
+    container_name: prod-traefik-proxy
+    restart: always
+    # Correct Traefik v3 Go SDK environment override
+    environment:
+      - DOCKER_API_VERSION=1.40
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      # Ensure the endpoint is defined explicitly via CLI arguments
+      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=cosmi.logo@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-certificates:/letsencrypt
+    networks:
+      - prod-web-network
+
+  prod-website:
+    image: nginx:alpine
+    container_name: prod-cosminauzum
+    restart: unless-stopped
+    networks:
+      - prod-web-network
+    volumes:
+      - ./prod/html/cosminauzum:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cosminauzum.rule=Host(`cosminauzum.com`) || Host(`www.cosminauzum.com`)"
+      - "traefik.http.routers.cosminauzum.entrypoints=websecure"
+      - "traefik.http.routers.cosminauzum.tls.certresolver=myresolver"
+
+  prod-codpentrucomunitate:
+    build: 
+      context: ./cod4com
+      dockerfile: Dockerfile
+    container_name: prod-cod4com
+    restart: unless-stopped
+    networks:
+      - prod-web-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cod4com.rule=Host(`codpentrucomunitate.org`) || Host(`www.codpentrucomunitate.org`)"
+      - "traefik.http.routers.cod4com.entrypoints=websecure"
+      - "traefik.http.routers.cod4com.tls.certresolver=myresolver"
+
+networks:
+  prod-web-network:
+    driver: bridge
+  proxy-backend-mesh: # Isolated internal network just for Traefik to fetch Docker metadata
+    internal: true
+
+volumes:
+  traefik-certificates:

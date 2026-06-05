@@ -1,0 +1,29 @@
+FROM node:20-alpine AS builder
+# Update because of Bulnerabilities warnings 
+RUN apk update && apk upgrade --no-cache
+
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Stage 2
+FROM nginx:alpine
+# UPDATE because of vulnerabilities warnings 
+RUN apk update && apk upgrade --no-cache
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# <-- Uncomment if you created the nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf  
+
+# >>> ADD THIS LINE: Manually copy the images folder so Nginx can see it <<<
+COPY --from=builder /app/imagini /usr/share/nginx/html/imagini
+COPY --from=builder /app/logo.png  /usr/share/nginx/html/logo.png
+COPY --from=builder /app/formular_donatie.pdf /usr/share/nginx/html/formular_donatie.pdf
+COPY --from=builder /app/robots.txt /usr/share/nginx/html/robots.txt
+COPY --from=builder /app/video /usr/share/nginx/html/video
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
