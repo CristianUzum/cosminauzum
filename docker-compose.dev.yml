@@ -1,0 +1,63 @@
+services:
+  # The Development Reverse Proxy Edge Router
+  dev-reverse-proxy:
+    image: traefik:v3.0
+    container_name: dev-traefik-proxy
+    restart: always
+    environment:
+      - DOCKER_API_VERSION=1.40
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=cosmi.logo@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - dev-traefik-certificates:/letsencrypt
+    networks:
+      - dev-web-network
+
+  # Development Website Environment
+  dev-website:
+    image: nginx:alpine
+    container_name: dev-cosminauzum
+    restart: unless-stopped
+    networks:
+      - dev-web-network
+    volumes:
+      # Map to a separate 'dev' local folder so changes don't touch production HTML
+      - ./dev/html/cosminauzum:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dev-cosminauzum.rule=Host(`dev.cosminauzum.com`)"
+      - "traefik.http.routers.dev-cosminauzum.entrypoints=websecure"
+      - "traefik.http.routers.dev-cosminauzum.tls.certresolver=myresolver"
+
+  # Development Code for Community Environment
+  dev-codpentrucomunitate:
+    build: 
+      context: ./cod4com
+      dockerfile: Dockerfile
+    container_name: dev-cod4com
+    restart: unless-stopped
+    networks:
+      - dev-web-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dev-cod4com.rule=Host(`dev.codpentrucomunitate.org`)"
+      - "traefik.http.routers.dev-cod4com.entrypoints=websecure"
+      - "traefik.http.routers.dev-cod4com.tls.certresolver=myresolver"
+
+networks:
+  dev-web-network:
+    driver: bridge
+
+volumes:
+  dev-traefik-certificates:

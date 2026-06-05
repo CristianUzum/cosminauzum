@@ -1,0 +1,65 @@
+name: Continuous Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Validate Configurations
+        run: |
+          echo "Scanning orchestration files..."
+
+  deploy:
+    needs: lint-and-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # ==========================================
+      # ENVIRONMENT 1: DEVELOPMENT (Branch: dev)
+      # ==========================================
+      - name: Deploy to Development Environment
+        if: github.ref == 'refs/heads/dev'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd ~/INFRA/orchestration/docker/ssl
+            git fetch origin dev
+            git checkout dev
+            git pull origin dev
+            
+            # Spin up using the development configuration matrix
+            docker compose -f docker-compose.dev.yml up -d --build
+            docker image prune -f
+
+      # ==========================================
+      # ENVIRONMENT 2: PRODUCTION (Branch: main)
+      # ==========================================
+      - name: Deploy to Production Environment
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd ~/INFRA/orchestration/docker/ssl
+            git fetch origin main
+            git checkout main
+            git pull origin main
+            
+            # Spin up using the production configuration matrix
+            docker compose -f docker-compose.prod.yml up -d --build
+            docker image prune -f
