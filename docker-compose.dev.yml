@@ -26,8 +26,10 @@ services:
 
   # Development Website Environment
   dev-website:
-    image: nginx:alpine
-    container_name: dev-cosminauzum
+    dev-website:
+      build: 
+      context: ./cosminauzum
+      dockerfile: Dockerfile
     restart: unless-stopped
     networks:
       - dev-web-network
