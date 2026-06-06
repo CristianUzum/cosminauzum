@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitație zi de nastere</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Dancing Script", cursive;
+        background: linear-gradient(135deg, #c340ff, #ffe6f2);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .invitation-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 8px 30px rgba(231, 50, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      h1 {
+        color: hsl(284, 100%, 55%);
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+      }
+
+      .invitation-text {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: #4d4d4d;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .whatsapp-btn {
+        display: block;
+        width: 250px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: #25d366;
+        color: white;
+        text-align: center;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+        animation: pulse 2s infinite;
+      }
+
+      .whatsapp-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .flowers {
+        position: fixed;
+        pointer-events: none;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .flower {
+        position: absolute;
+        animation: fall linear infinite;
+        font-size: 1.8rem;
+      }
+
+      @keyframes fall {
+        from {
+          transform: translateY(-100vh) rotate(0deg);
+        }
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .footer {
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        color: #6f057a;
+        font-size: 1.1rem;
+      }
+
+      .footer a {
+        color: #8809e3;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer a:hover {
+        color: #ffffff;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .invitation-text {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="flowers" id="flowers"></div>
+
+    <div class="container">
+      <div class="invitation-card">
+        <h1>✿ Invitatie speciala ✿</h1>
+        <div class="invitation-text">
+          Dragă familie,<br /><br />
+          Cu bucurie în suflet, vă invit să sărbătorim împreună ziua mea de
+          naștere, pe 8 martie, la restaurantul Papa Bun, începând cu ora 18:00.<br /><br />
+          Îmi doresc să petrecem o seară specială, plină de zâmbete, amintiri
+          frumoase și momente de neuitat alături de voi, cei dragi mie.<br /><br />
+          Vă aștept cu drag!<br /><br />
+          Cu dragoste,<br />
+          Mama
+        </div>
+
+        <a
+          href="https://wa.me/40727858631"
+          class="whatsapp-btn"
+          target="_blank"
+        >
+          Confirmă participarea ❤️
+        </a>
+      </div>
+
+      <div class="footer">
+        ✦ Aștept cu nerăbdare să fiu alături de voi! ✦<br />
+        <br />
+        Realizat de
+        <a href="https://www.cosminauzum.com" target="_blank"
+          >www.cosminauzum.com</a
+        >
+      </div>
+    </div>
+
+    <script>
+      function createFlower() {
+        const flowers = ["🌼", "🌻", "🌼", "🌻", "🌼"];
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = Math.random() * 3 + 5 + "s";
+        document.getElementById("flowers").appendChild(flower);
+
+        setTimeout(() => flower.remove(), 10000);
+      }
+
+      setInterval(createFlower, 300);
+    </script>
+  </body>
+</html>

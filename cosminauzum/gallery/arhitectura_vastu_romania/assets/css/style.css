@@ -1,0 +1,224 @@
+
+  html { 
+  background: radial-gradient(circle at center, #FFF 25%, #000 80%) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: 500% 500%;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  body {
+  font-family: tahoma;
+  width: 100%;
+  height: 100vh;
+}
+.navbar{
+  width: 300px;
+  height: 300px;
+  line-height: 190px;
+  border-radius: 50%;
+  background: white;
+  margin: 190px auto;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  font-size: 2.75em;
+  font-weight: bold;
+  color: grey;
+  transition:0.24s 0.2s;
+}
+.center{
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 650px;
+}
+.midle{
+  width: 300px;
+  height: 300px;
+  object-position: center;
+  border-radius: 50%;
+  position: relative;
+  top:0;
+  left:0;
+
+}
+
+
+.navbar .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: none;
+  position: absolute;
+  top: -59%;
+  left: -59%;
+  transform: translate(-50%, -50%);
+  border: 80px solid transparent;
+  cursor: default;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 1.4s 0.07s;
+  z-index: -1;
+}
+.navbar:hover .menu {
+  transition: transform 0.4s 0.08s, z-index 0s 0.5s;
+  transform: scale(1);
+  z-index: 1;
+}
+.navbar .menu li{
+  position: relative;
+  top: -350%;
+  left: -350%;
+  transform-origin:250px 250px;
+  transition: all 0.5s 0.1s;
+}
+
+.navbar:hover .menu li {
+  transition:  0.7s;
+}
+
+.navbar .menu li a{
+  width: 150px;
+  height: 150px;
+  line-height: normal;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  font-size: 49%;
+  color: white;
+  transition: 2s;
+  border:#dfab20 thick double;
+}
+.navbar .menu li a img {
+  width: 120px;
+  height: 120px;
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.navbar .menu li a .img3 {
+  width: 100px;
+  height: 100px;
+  float: none;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  transform: translate(-30%, -35%);
+}
+.navbar .menu li a .img8 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.navbar .menu li a .img5 {
+  width: 140px;
+  height: 120px;
+  float: none;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  transform: translate(-30%, -30%);
+}
+.navbar:hover .menu li:nth-child(1){
+  transition-delay: 0.02s;
+  transform:  rotate(45deg);
+}
+.navbar:hover .menu li:nth-child(1) a{
+  transition-delay: 0.04s;
+  transform: rotate(315deg);
+}
+.navbar:hover .menu li:nth-child(2){
+  transition-delay: 0.04s;
+  transform: rotate(87deg);
+}
+.navbar:hover .menu li:nth-child(2) a{
+  transition-delay: 0.08s;
+  transform: rotate(630.5deg);
+}
+.navbar:hover .menu li:nth-child(3){
+  transition-delay: 0.06s;
+  transform: rotate(133deg);
+}
+.navbar:hover .menu li:nth-child(3) a{
+  transition-delay: 0.12s;
+  transform: rotate(583deg);
+}
+.navbar:hover .menu li:nth-child(4){
+  transition-delay: 0.08s;
+  transform: rotate(180deg);
+}
+.navbar:hover .menu li:nth-child(4) a{
+  transition-delay: 0.16s;
+  transform: rotate(540deg);
+}
+.navbar:hover .menu li:nth-child(5){
+  transition-delay: 0.01s;
+  transform: rotate(225deg);
+}
+.navbar:hover .menu li:nth-child(5) a{
+  transition-delay: 0.2s;
+  transform: rotate(495deg);
+}
+.navbar:hover .menu li:nth-child(6){
+  transition-delay: 0.12s;
+  transform: rotate(270deg);
+}
+.navbar:hover .menu li:nth-child(6) a{
+  transition-delay: 0.24s;
+  transform: rotate(450deg);
+}
+.navbar:hover .menu li:nth-child(7){
+  transition-delay: 0.16s;
+  transform: rotate(316.5deg);
+}
+.navbar:hover .menu li:nth-child(7) a{
+  transition-delay: 0.28s;
+  transform: rotate(404deg);
+}
+.navbar:hover .menu li:nth-child(8){
+  transition-delay: 0.18s;
+  transform: rotate(362.5deg);
+}
+.navbar:hover .menu li:nth-child(8) a{
+  transition-delay: 0.32s;
+  transform: rotate(358deg);
+}
+
+a,a:hover {
+  text-decoration: none;
+}
+/*.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: white;
+  border-radius: 50%;
+}
+
+a:hover .overlay {
+  opacity: 1;
+}
+*/
+.text {
+  color: grey;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

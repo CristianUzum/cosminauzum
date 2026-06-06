@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Passion de Viviane - Boulangerie Artisanale</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background: #fff8e5;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 10%;
+        color: #d4a373;
+        border: 3px double #d4a373;
+        margin-right: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .logo img:hover {
+        transform: rotate(10deg);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #d4a373;
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #d4a373;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("./images/hero.png");
+        height: 80vh;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 5%;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        animation: slideIn 1.5s ease-in-out;
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Sections Common Styles */
+      section {
+        padding: 5rem 5%;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        color: #d4a373;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 3px;
+        background: #d4a373;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      /* Menu Grid */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(350px, 1fr)
+        ); /* Dimensiune minimă */
+        gap: 2rem;
+        width: 100%;
+      }
+
+      .menu-item {
+        background: #fff8e5;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #eee;
+        min-height: auto; /* Permite extinderea în funcție de conținut */
+      }
+
+      .menu-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-item h3 {
+        color: #d4a373;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .menu-item p {
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .menu-item .price {
+        color: #333;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        background: #d4a373;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        display: inline-block;
+      }
+
+      /* Category Headings */
+      .menu-category {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin: 3rem 0 1rem;
+        font-size: 2rem;
+        color: #d4a373;
+        position: relative;
+      }
+
+      .menu-category::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 3px;
+        background: #d4a373;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Media queries pentru responsivitate */
+      @media (max-width: 768px) {
+        .menu-grid {
+          grid-template-columns: 1fr; /* O singură coloană pe ecrane mici */
+          gap: 1rem;
+        }
+
+        .menu-item {
+          padding: 1.5rem;
+        }
+
+        .menu-item h3 {
+          font-size: 1.3rem;
+        }
+
+        .menu-item p {
+          font-size: 0.8rem;
+        }
+
+        .menu-item .price {
+          font-size: 1rem;
+        }
+
+        .menu-category {
+          font-size: 1.8rem;
+        }
+      }
+      /* Gallery Animation */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(300px, 1fr)
+        ); /* Modificare aici */
+        gap: 1rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease, transform 1s ease;
+        width: 100%;
+      }
+
+      .gallery-grid.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .gallery-grid img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        aspect-ratio: 1 / 1; /* sau 4 / 3, 16 / 9, in functie de raportul imaginilor */
+      }
+
+      .gallery-grid img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      /* Team Section */
+      .team-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .team-member {
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .team-member:hover {
+        transform: scale(1.05);
+      }
+
+      .team-member img {
+        width: 100%;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 3px solid #d4a373;
+      }
+      /* Contact Section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .contact-image {
+        border-radius: 10px;
+        overflow: hidden;
+        height: 100%;
+      }
+
+      .contact-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-image img:hover {
+        transform: scale(1.05);
+      }
+
+      .contact-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .contact-item {
+        background: #fff8e5;
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #eee;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-item i {
+        font-size: 1.5rem;
+        color: #d4a373;
+        margin-bottom: 1rem;
+      }
+
+      .contact-item h3 {
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .contact-item p {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background: #fff8e5;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: #d4a373;
+        outline: none;
+        box-shadow: 0 0 5px rgba(212, 163, 115, 0.5);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      button {
+        background: #d4a373;
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+        width: 100%;
+      }
+
+      button:hover {
+        background: #b8865b;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-image {
+          height: 300px;
+        }
+
+        .form-group {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background: #333;
+        color: white;
+        padding: 3rem 5%;
+        text-align: center;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+        text-align: left;
+      }
+
+      .footer-section {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-section h3 {
+        color: #d4a373;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        background: #d4a373;
+        bottom: 0;
+        left: 0;
+      }
+
+      .footer-section p {
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-section ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .footer-section ul li a:hover {
+        color: #d4a373;
+      }
+
+      .social-links {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #d4a373;
+      }
+
+      .credits {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+
+      .credits a {
+        color: #d4a373;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .credits a:hover {
+        color: #b8865b;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .footer-content {
+          text-align: center;
+        }
+
+        .footer-section h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .footer-section ul {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100vh;
+          width: 60%;
+          background: #fff8e5;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: right 0.3s ease;
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .menu-icon {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+        .logo img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./images/logo.jpg" alt="Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#about">À Propos</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#menu">Menu</a>
+        <a href="#equipe">Équipe</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <h1>L'Art de la Boulangerie Faite avec Amour</h1>
+        <p>Depuis 1985, nous pétrissons la tradition avec passion</p>
+      </div>
+    </section>
+
+    <!-- À Propos -->
+    <section id="about">
+      <h2 class="section-title">Notre Histoire</h2>
+      <p>
+        Née de la passion de Viviane pour les traditions culinaires françaises,
+        notre boulangerie perpétue l'art authentique de la panification. Chaque
+        produit est le fruit d'un savoir-faire transmis de génération en
+        génération, mêlant respect des recettes ancestrales et amour du travail
+        bien fait.
+      </p>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie">
+      <h2 class="section-title">Notre Atelier en Images</h2>
+      <div class="gallery-grid">
+        <img src="./images/1.jpg" alt="Notre pain artisanal" />
+        <img src="./images/2.jpg" alt="Viennoiseries fraîches" />
+        <img src="./images/3.jpg" alt="Baguette Tradition" />
+        <img src="./images/4.jpg" alt="Croissant au Chocolat " />
+        <img src="./images/5.jpg" alt="Galette des Rois" />
+        <img src="./images/6.jpg" alt="Croissant au Beurre" />
+        <img src="./images/7.jpg" alt="Chausson aux Pommes " />
+        <img src="./images/8.jpg" alt="Tarte aux Fraises " />
+        <img src="./images/9.jpg" alt="Éclair au Chocolat " />
+        <img src="./images/10.jpg" alt=" Brioche à la Praline" />
+        <img src="./images/11.jpg" alt=" Pain de Campagne" />
+        <img src="./images/12.jpg" alt="Pain au Chocolat" />
+        <img src="./images/13.jpg" alt="Viennoiseries fraîches" />
+        <img src="./images/14.jpg" alt="Tarte Tatin" />
+        <img src="./images/15.jpg" alt="Baguette " />
+        <img src="./images/16.jpg" alt="Mille-Feuille" />
+        <img src="./images/17.jpg" alt="Croissant" />
+        <img src="./images/18.jpg" alt="Pâtisseries gourmandes" />
+      </div>
+    </section>
+    <!-- Meniu -->
+    <section id="menu">
+      <h2 class="section-title">Nos Spécialités</h2>
+      <div class="menu-grid">
+        <!-- Breads -->
+        <div class="menu-item">
+          <h3>Pain au Levain</h3>
+          <p>Levain naturel, fermentation lente, croûte croustillante</p>
+          <p class="price">4,50€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Baguette Tradition</h3>
+          <p>
+            Baguette artisanale, croustillante à l'extérieur, moelleuse à
+            l'intérieur
+          </p>
+          <p class="price">2,20€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Pain de Campagne</h3>
+          <p>Pain rustique au blé complet, saveur intense</p>
+          <p class="price">5,00€</p>
+        </div>
+
+        <!-- Viennoiseries -->
+        <div class="menu-item">
+          <h3>Croissant au Beurre</h3>
+          <p>Croissant pur beurre, feuilleté et doré</p>
+          <p class="price">1,50€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Pain au Chocolat</h3>
+          <p>Viennoiserie au chocolat, fondant et croustillant</p>
+          <p class="price">1,80€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Chausson aux Pommes</h3>
+          <p>Pâte feuilletée garnie de compote de pommes maison</p>
+          <p class="price">2,00€</p>
+        </div>
+
+        <!-- Pastries -->
+        <div class="menu-item">
+          <h3>Tarte Tatin</h3>
+          <p>Tarte renversée aux pommes caramélisées</p>
+          <p class="price">4,50€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Éclair au Chocolat</h3>
+          <p>Éclair garni de crème pâtissière et ganache au chocolat</p>
+          <p class="price">3,50€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Mille-Feuille</h3>
+          <p>Pâte feuilletée, crème pâtissière et glaçage royal</p>
+          <p class="price">4,80€</p>
+        </div>
+
+        <!-- Seasonal Specials -->
+        <div class="menu-item">
+          <h3>Galette des Rois</h3>
+          <p>Pâte feuilletée, frangipane, fève incluse (saison hiver)</p>
+          <p class="price">6,00€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Brioche à la Praline</h3>
+          <p>Brioche moelleuse garnie de pralines roses (saison printemps)</p>
+          <p class="price">5,50€</p>
+        </div>
+        <div class="menu-item">
+          <h3>Tarte aux Fraises</h3>
+          <p>Tarte garnie de fraises fraîches et crème pâtissière</p>
+          <p class="price">5,00€</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Équipe -->
+    <section id="equipe">
+      <h2 class="section-title">Notre Famille</h2>
+      <div class="team-container">
+        <div class="team-member">
+          <img src="./images/chef.jpg" alt="Viviane" />
+          <h3>Viviane</h3>
+          <p>Maître Boulangère</p>
+        </div>
+        <div class="team-member">
+          <img src="./images/chef2.jpg" alt="Viviane" />
+          <h3>Paul</h3>
+          <p>Maître Boulangère</p>
+        </div>
+        <div class="team-member">
+          <img src="./images/chef3.jpg" alt="Viviane" />
+          <h3>Adrien</h3>
+          <p>Maître Boulangère</p>
+        </div>
+        <div class="team-member">
+          <img src="./images/chef4.jpg" alt="Viviane" />
+          <h3>Colette</h3>
+          <p>Maître Boulangère</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contactez Notre Équipe</h2>
+      <div class="contact-container">
+        <!-- Contact Image -->
+        <div class="contact-image">
+          <img src="./images/bg.jpg" alt="Notre Boulangerie" />
+        </div>
+
+        <!-- Contact Info and Form -->
+        <div class="contact-content">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>Notre Adresse</h3>
+              <p>12 Rue du Pétrin, 75000 Paris</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <h3>Téléphone</h3>
+              <p>01 23 45 67 89</p>
+              <p>06 12 34 56 78</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <h3>Email</h3>
+              <p>contact@lapassiondeviviane.fr</p>
+              <p>commande@lapassiondeviviane.fr</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <h3>Horaires</h3>
+              <p>Lundi - Vendredi: 7h - 19h</p>
+              <p>Samedi: 7h - 14h</p>
+              <p>Dimanche: Fermé</p>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Votre nom" required />
+              <input type="email" placeholder="Votre email" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Votre téléphone" />
+              <select required>
+                <option value="">Sujet de votre message</option>
+                <option value="commande">Commande</option>
+                <option value="information">Information</option>
+                <option value="recrutement">Recrutement</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <textarea rows="5" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer le message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- About Section -->
+          <div class="footer-section">
+            <h3>À Propos de Nous</h3>
+            <p>
+              La Passion de Viviane est une boulangerie artisanale parisienne
+              qui perpétue les traditions françaises depuis 1985. Nous nous
+              engageons à utiliser des ingrédients de qualité et des méthodes
+              traditionnelles pour créer des produits authentiques.
+            </p>
+          </div>
+
+          <!-- Useful Links Section -->
+          <div class="footer-section">
+            <h3>Liens Utiles</h3>
+            <ul>
+              <li><a href="#accueil">Accueil</a></li>
+              <li><a href="#about">Notre Histoire</a></li>
+              <li><a href="#menu">Nos Produits</a></li>
+              <li><a href="#equipe">Notre Équipe</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal Information Section -->
+          <div class="footer-section">
+            <h3>Informations Légales</h3>
+            <ul>
+              <li><a href="#">Mentions Légales</a></li>
+              <li><a href="#">Politique de Confidentialité</a></li>
+              <li><a href="#">Conditions Générales de Vente</a></li>
+              <li><a href="#">Cookies</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="TripAdvisor"
+            ><i class="fab fa-tripadvisor"></i
+          ></a>
+        </div>
+
+        <!-- Credits -->
+        <div class="credits">
+          <p>
+            © 2025 La Passion de Viviane - Tous droits réservés | Réalisé par
+            <a href="https://www.cosminauzum.com" target="_blank"
+              >www.cosminauzum.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar Toggle
+      const menuIcon = document.querySelector(".menu-icon");
+      const navLinks = document.querySelector(".nav-links");
+      const navLinkItems = document.querySelectorAll(".nav-links a"); // Selectează toate link-urile
+
+      menuIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      navLinkItems.forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active"); // Închide navbar-ul
+        });
+      });
+
+      // Section Animation
+      const sections = document.querySelectorAll("section");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+      // Gallery Animation
+      const gallery = document.querySelector(".gallery-grid");
+      const galleryObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      galleryObserver.observe(gallery);
+    </script>
+  </body>
+</html>

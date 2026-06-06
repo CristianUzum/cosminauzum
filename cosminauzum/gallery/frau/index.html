@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Herzlichen Glückwunsch zum Geburtstag!</title>
+
+    <!-- Librării CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Fonturi Google -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="de">
+    <script>
+      (function checkAuthentication() {
+        const authToken = localStorage.getItem("parentAuthToken");
+        const authExpiry = localStorage.getItem("parentAuthExpiry");
+        const now = new Date().getTime();
+
+        // Dacă lipsește ceva SAU a expirat
+        if (!authToken || !authExpiry || now > parseInt(authExpiry)) {
+          localStorage.removeItem("parentAuthToken");
+          localStorage.removeItem("parentAuthExpiry");
+          window.location.replace("login.html"); // Folosim replace pentru a nu păstra index în istoric
+        }
+      })();
+    </script>
+
+    <!-- Header care se transformă în navbar -->
+    <header id="header">
+      <!-- Imaginea banner -->
+      <img src="./img/50.jpeg" class="banner-img" alt="Background banner" />
+
+      <!-- Logo mare -->
+      <a href="#home" class="logo-large animate__animated animate__bounceIn">
+        <img src="./img/ladybug.gif" alt="Logo mare" />
+      </a>
+
+      <!-- Conținut central -->
+      <div class="header-content">
+        <!-- German -->
+        <div class="content-de">
+          <h1 class="animate__animated animate__fadeInDown">
+            Herzlichen Glückwunsch zum Geburtstag!
+          </h1>
+          <p
+            class="subtitle animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            Liebe Lehrerin, die beste Begleitung auf unserer Lernreise
+          </p>
+
+          <div
+            class="class-info animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <div class="class-badge">
+              <i class="fas fa-bug"></i>
+              <span>Ehemalige Klasse: Marienkäfer (Klasse 0)</span>
+            </div>
+            <div class="class-badge">
+              <i class="fas fa-caterpillar"></i>
+              <span>Aktuelle Klasse: Raupen (Klasse 1)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Romanian -->
+        <div class="content-ro">
+          <h1 class="animate__animated animate__fadeInDown">
+            La Mulți Ani, Doamna învăţătoare!
+          </h1>
+          <p
+            class="subtitle animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            Dragă învățătoare, cea mai bună îndrumătoare în călătoria noastră de
+            învățare
+          </p>
+
+          <div
+            class="class-info animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <div class="class-badge">
+              <i class="fas fa-bug"></i>
+              <span>Fosta clasă: Bubureze (Clasa 0)</span>
+            </div>
+            <div class="class-badge">
+              <i class="fas fa-caterpillar"></i>
+              <span>Clasa actuală: Omizi (Clasa I)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="navbar-container">
+          <!-- Logo mic pentru navbar -->
+          <a href="#class-description" class="logo-small">
+            <img src="./img/caterpillar.gif" alt="Logo navbar" />
+          </a>
+
+          <!-- Meniu principal -->
+          <ul class="nav-menu">
+            <li>
+              <a href="#class-description" class="nav-link">
+                <i class="fas fa-users"></i>
+                <span class="content-de">Klasse</span>
+                <span class="content-ro">Clasa</span>
+              </a>
+            </li>
+            <li>
+              <a href="#gallery" class="nav-link">
+                <i class="fas fa-images"></i>
+                <span class="content-de">Galerie</span>
+                <span class="content-ro">Galerie</span>
+              </a>
+            </li>
+            <li>
+              <a href="#leaf-gallery" class="nav-link">
+                <i class="fas fa-envelope"></i>
+                <span class="content-de">Nachrichten</span>
+                <span class="content-ro">Mesaje</span>
+              </a>
+            </li>
+            <li>
+              <a href="#birthday" class="nav-link">
+                <i class="fas fa-birthday-cake"></i>
+                <span class="content-de">Grüße</span>
+                <span class="content-ro">Felicitări</span>
+              </a>
+            </li>
+          </ul>
+
+          <!-- Selector de limbă -->
+          <div class="language-selector-nav">
+            <div class="language-selector">
+              <button class="lang-btn active" id="lang-de" title="Deutsch">
+                <span class="flag-icon">🇩🇪</span>
+              </button>
+              <button class="lang-btn" id="lang-ro" title="Română">
+                <span class="flag-icon">🇷🇴</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Container principal -->
+    <main class="container">
+      <!-- Secțiunea "Clasa Noastră" -->
+      <section id="class-description" class="main-content">
+        <div class="content-de">
+          <h2 class="section-title animate__animated animate__fadeIn">
+            Unsere Klasse
+          </h2>
+        </div>
+        <div class="content-ro">
+          <h2 class="section-title animate__animated animate__fadeIn">
+            Clasa Noastră
+          </h2>
+        </div>
+
+        <div class="class-description animate__animated animate__fadeInUp">
+          <div class="description-content">
+            <div class="description-text">
+              <div class="content-de">
+                <h3>Von Marienkäfern zu Raupen</h3>
+                <p>
+                  Unsere Lernreise begann in der Klasse 0, wo wir als
+                  "Marienkäfer" die ersten Schritte im Bildungssystem gemacht
+                  haben. Wie die glückbringenden Marienkäfer haben wir begonnen,
+                  die Welt um uns herum zu erkunden.
+                </p>
+                <p>
+                  Jetzt, in Klasse 1, haben wir uns in "Raupen" verwandelt. Wir
+                  sind neugierig, erkunden jeden Tag neue Dinge und bereiten uns
+                  darauf vor, eines Tages zu schönen Schmetterlingen zu werden.
+                  Jede Raupe hat ihren eigenen Lernrhythmus, aber zusammen
+                  bilden wir eine wunderbare Gemeinschaft.
+                </p>
+                <p>
+                  In unserer Klasse lernen wir nicht nur Lesen, Schreiben und
+                  Rechnen, sondern auch Freundschaft, Respekt und die Freude am
+                  Entdecken. Unser Klassenzimmer ist ein Ort, an dem Fehler
+                  erlaubt sunt und jedes Kind in seinem eigenen Tempo wachsen
+                  kann.
+                </p>
+              </div>
+              <div class="content-ro">
+                <h3>De la Bubureze la Omizi</h3>
+                <p>
+                  Călătoria noastră de învățare a început în clasa 0, unde am
+                  fost "Bubureze" și am făcut primii pași în sistemul
+                  educațional. Ca buburuzele norocoase, am început să explorăm
+                  lumea din jurul nostru.
+                </p>
+                <p>
+                  Acum, în clasa I, ne-am transformat în "Omizi". Suntem
+                  curioși, explorăm lucruri noi în fiecare zi și ne pregătim să
+                  devenim într-o zi fluturi frumoși. Fiecare omidă are propriul
+                  ritm de învățare, dar împreună formăm o comunitate minunată.
+                </p>
+                <p>
+                  În clasa noastră învățăm nu doar să citim, să scriem și să
+                  calculăm, ci și prietenia, respectul și bucuria de a
+                  descoperi. Sala noastră de clasă este un loc unde greșelile
+                  sunt permise și unde fiecare copil poate crește în propriul
+                  ritm.
+                </p>
+              </div>
+            </div>
+            <div class="description-image ladybugs-img">
+              <img src="./img/61.jpeg" alt="Ladybugs" />
+            </div>
+          </div>
+        </div>
+
+        <div class="teacher-description animate__animated animate__fadeInUp">
+          <div class="description-content">
+            <div class="description-image caterpillars-img">
+              <img src="./img/41.jpeg" alt="Caterpillars" />
+            </div>
+            <div class="description-text">
+              <div class="content-de">
+                <h3>Unsere liebe Lehrerin</h3>
+                <p>
+                  Unsere Lehrerin ist mehr als nur eine Pädagogin - sie ist
+                  unsere Führerin, Mentorin und manchmal auch eine zweite
+                  Mutter. Mit unendlicher Geduld und Wärme führt sie uns durch
+                  die Welt des Wissens.
+                </p>
+                <p>
+                  Ihre Unterrichtsmethoden sind kreativ und ansprechend. Sie
+                  versteht es, jeden Schüler individuell zu fördern und dabei
+                  die Klassengemeinschaft zu stärken. Ob mit Liedern,
+                  Geschichten oder praktischen Aktivitäten - sie findet immer
+                  den richtigen Weg, um uns neue Konzepte beizubringen.
+                </p>
+                <p>
+                  Ihr Lachen ist ansteckend, ihre Ermutigung gibt uns Flügel.
+                  Sie schafft eine Atmosphäre, in der wir uns sicher fühlen,
+                  Fragen zu stellen und unsere Meinung zu äußern. Für sie sind
+                  wir nicht nur Schüler, sondern einzigartige Persönlichkeiten
+                  mit eigenen Träumen und Talenten.
+                </p>
+              </div>
+              <div class="content-ro">
+                <h3>Învățătoarea noastră dragă</h3>
+                <p>
+                  Învățătoarea noastră este mai mult decât o pedagogă - este
+                  călăuzitoarea noastră, mentorul și uneori o a doua mamă. Cu
+                  răbdare și căldură nesfârșite, ne călăuzește prin lumea
+                  cunoștințelor.
+                </p>
+                <p>
+                  Metodele ei de predare sunt creative și atractive. Înțelege să
+                  încurajeze fiecare elev în parte, întărind totodată
+                  comunitatea clasei. Fie cu cântece, povești sau activități
+                  practice - găsește întotdeauna calea potrivită pentru a ne
+                  învăța concepte noi.
+                </p>
+                <p>
+                  Râsul ei este contagios, încurajarea ei ne dă aripi. Creează o
+                  atmosferă în care ne simțim în siguranță să punem întrebări și
+                  să ne exprimăm părerea. Pentru ea, nu suntem doar elevi, ci
+                  personalități unice cu propriile vise și talente.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galerie Foto -->
+      <section id="gallery">
+        <div class="container">
+          <div class="content-de">
+            <h2 class="section-title">Unsere Foto-Galerie</h2>
+          </div>
+          <div class="content-ro">
+            <h2 class="section-title">Galeria Noastră Foto</h2>
+          </div>
+
+          <div class="gallery-container">
+            <div class="gallery-grid" id="galleryGrid"></div>
+
+            <div id="loadingIndicator" class="loading-indicator">
+              <div class="spinner"></div>
+            </div>
+
+            <div class="load-more-container">
+              <button id="loadMoreBtn" class="load-more-btn">
+                <i class="fas fa-plus"></i>
+                <span class="content-de">Mehr Bilder laden</span>
+                <span class="content-ro">Încarcă mai multe imagini</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galerie Video -->
+      <section id="video-gallery">
+        <div class="container">
+          <div class="content-de">
+            <h2 class="section-title">Unsere Videos</h2>
+          </div>
+          <div class="content-ro">
+            <h2 class="section-title">Videoclipurile Noastre</h2>
+          </div>
+
+          <div class="video-gallery-container">
+            <div class="video-grid">
+              <!-- Video items 1-13 -->
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/1.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 1</span>
+                    <span class="content-ro">Videoclip 1</span>
+                  </div>
+                </div>
+              </div>
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/2.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 2</span>
+                    <span class="content-ro">Videoclip 2</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/3.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 3</span>
+                    <span class="content-ro">Videoclip 3</span>
+                  </div>
+                </div>
+              </div>
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/4.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 4</span>
+                    <span class="content-ro">Videoclip 4</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/5.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 5</span>
+                    <span class="content-ro">Videoclip 5</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/6.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 6</span>
+                    <span class="content-ro">Videoclip 6</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/7.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 7</span>
+                    <span class="content-ro">Videoclip 7</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/8.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 8</span>
+                    <span class="content-ro">Videoclip 8</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/9.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 9</span>
+                    <span class="content-ro">Videoclip 9</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/10.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 10</span>
+                    <span class="content-ro">Videoclip 10</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/11.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 11</span>
+                    <span class="content-ro">Videoclip 11</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/12.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 12</span>
+                    <span class="content-ro">Videoclip 12</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-item">
+                <div class="video-wrapper">
+                  <video controls preload="metadata" playsinline>
+                    <source src="./img/13.mp4" type="video/mp4" />
+                    <div class="video-fallback">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video-ul nu poate fi încărcat</p>
+                    </div>
+                  </video>
+                </div>
+                <div class="video-info">
+                  <div class="video-title">
+                    <i class="fas fa-film"></i>
+                    <span class="content-de">Video 13</span>
+                    <span class="content-ro">Videoclip 13</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leaf-gallery">
+        <div class="content-de">
+          <h2
+            class="section-title leaf-gallery-title animate__animated animate__fadeIn"
+          >
+            Unsere kreativen Botschaften
+          </h2>
+        </div>
+        <div class="content-ro">
+          <h2
+            class="section-title leaf-gallery-title animate__animated animate__fadeIn"
+          >
+            Mesajele Noastre Creative
+          </h2>
+        </div>
+
+        <div class="leaf-gallery-container animate__animated animate__fadeInUp">
+          <div class="leaf-filter-controls">
+            <div class="content-de">
+              <button class="leaf-filter-btn active" data-filter="all">
+                <i class="fas fa-layer-group"></i> Alle
+              </button>
+              <button class="leaf-filter-btn" data-filter="text-only">
+                <i class="fas fa-font"></i> Nur Text
+              </button>
+              <button class="leaf-filter-btn" data-filter="image-only">
+                <i class="fas fa-image"></i> Nur Fotos
+              </button>
+              <button class="leaf-filter-btn" data-filter="video-only">
+                <i class="fas fa-video"></i> Nur Video
+              </button>
+            </div>
+            <div class="content-ro">
+              <button class="leaf-filter-btn active" data-filter="all">
+                <i class="fas fa-layer-group"></i> Toate
+              </button>
+              <button class="leaf-filter-btn" data-filter="text-only">
+                <i class="fas fa-font"></i> Doar Text
+              </button>
+              <button class="leaf-filter-btn" data-filter="image-only">
+                <i class="fas fa-image"></i> Doar Foto
+              </button>
+              <button class="leaf-filter-btn" data-filter="video-only">
+                <i class="fas fa-video"></i> Doar Video
+              </button>
+            </div>
+          </div>
+
+          <div class="leaf-gallery">
+            <!-- Card 1: Text only -->
+            <div class="leaf-card leaf-shape-1" data-type="text-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-font"></i> Text
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-text-only">
+                <div class="leaf-text-content">
+                  <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                  </div>
+                  <h3 class="content-de">Danke für deine Geduld</h3>
+                  <h3 class="content-ro">Mulțumim pentru răbdarea ta</h3>
+                  <p class="content-de">
+                    Liebe Lehrerin, danke dass du immer so geduldig mit uns
+                    bist. Du bist die Beste!
+                  </p>
+                  <p class="content-ro">
+                    Dragă învățătoare, mulțumim că ești mereu atât de
+                    răbdătoare. Ești cea mai bună!
+                  </p>
+                  <p class="leaf-signature content-de">- Deine Raupen</p>
+                  <p class="leaf-signature content-ro">- Omizile tale</p>
+                </div>
+              </div>
+            </div>
+            <div class="leaf-card leaf-shape-2" data-type="text-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-font"></i>
+                <span class="content-de">Text</span>
+                <span class="content-ro">Text</span>
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-text-only">
+                <div class="leaf-text-content">
+                  <div class="quote-icon"><i class="fas fa-smile"></i></div>
+                  <h3 class="content-de">Du machst Lernen zum Spaß</h3>
+                  <h3 class="content-ro">Faci din învățat distracție</h3>
+                  <p class="content-de">
+                    Mit dir ist jeder Schultag ein Abenteuer. Danke für die
+                    Freude!
+                  </p>
+                  <p class="content-ro">
+                    Cu tine, fiecare zi de școală este o aventură. Mulțumim
+                    pentru bucurie!
+                  </p>
+                  <p class="leaf-signature content-de">- Die Marienkäfer</p>
+                  <p class="leaf-signature content-ro">- Buburezele</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="leaf-card leaf-shape-3" data-type="image-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-image"></i> Foto
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-image-only">
+                <div class="leaf-image-wrapper">
+                  <img src="./img/ema.jpeg" class="leaf-img" alt="Ema" />
+
+                  <!-- Butonul de zoom -->
+                  <button
+                    class="view-img-btn"
+                    onclick="openImageModal('./img/ema.jpeg')"
+                  >
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+                <div class="leaf-video-title">Ema</div>
+              </div>
+            </div>
+
+            <!-- Card 3: Video only -->
+            <div class="leaf-card leaf-shape-5" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video1">
+                    <source src="./img/ana.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video1">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video1">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video1">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Ana</div>
+              </div>
+            </div>
+
+            <!-- Card 4: Video only -->
+            <div class="leaf-card leaf-shape-6" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video2">
+                    <source src="./img/maya.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video2">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video2">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video2">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Maya</div>
+              </div>
+            </div>
+
+            <!-- Card 5: Video only -->
+            <div class="leaf-card leaf-shape-7" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video3">
+                    <source src="./img/karina.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video3">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video3">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video3">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Karina</div>
+              </div>
+            </div>
+
+            <!-- Card 6: Video only -->
+            <div class="leaf-card leaf-shape-8" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video4">
+                    <source src="./img/lara.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video4">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video4">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video4">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Lara</div>
+              </div>
+            </div>
+
+            <!-- Card 7: video only -->
+            <div class="leaf-card leaf-shape-9" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video5">
+                    <source src="./img/sara.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video5">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video5">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video5">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Sara</div>
+              </div>
+            </div>
+
+            <!-- Card 8: video only -->
+            <div class="leaf-card leaf-shape-10" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video6">
+                    <source src="./img/adina.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video6">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video6">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video6">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Adina</div>
+              </div>
+            </div>
+
+            <div class="leaf-card leaf-shape-11" data-type="video-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-video"></i> Video
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-video-only">
+                <div class="leaf-video-wrapper">
+                  <video id="video7">
+                    <source src="./img/ionela.mp4" type="video/mp4" />
+                  </video>
+                  <div class="video-controls">
+                    <button class="play-btn" data-video="video7">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="pause-btn" data-video="video7">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="fullscreen-btn" data-video="video7">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="leaf-video-title">Ionela</div>
+              </div>
+            </div>
+
+            <div class="leaf-card leaf-shape-2" data-type="text-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-font"></i>
+                <span class="content-de">Text</span>
+                <span class="content-ro">Text</span>
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-text-only">
+                <div class="leaf-text-content">
+                  <div class="quote-icon"><i class="fas fa-heart"></i></div>
+
+                  <h3 class="content-de">Alles Gute zum Geburtstag!</h3>
+                  <h3 class="content-ro">La mulți ani!</h3>
+
+                  <p class="content-de">
+                    Heute feiern wir nicht nur Ihren Tag, sondern auch Ihre
+                    Arbeit, Hingabe und Geduld. Sie sind ein sanfter Wegweiser
+                    und eine Inspiration für jeden Schüler. Ich wünsche Ihnen
+                    Gesundheit, Glück und voller Freude Momente.
+                  </p>
+                  <p class="content-ro">
+                    Astăzi sărbătorim nu doar ziua dumneavoastră, ci și toată
+                    munca, dedicarea și răbdarea pe care le oferiți copiilor zi
+                    de zi. Sunteți întotdeauna un ghid blând și o sursă de
+                    inspirație, iar contribuția dumneavoastră este de neprețuit.
+                    Vă doresc sănătate, fericire și momente pline de bucurie.
+                  </p>
+
+                  <p class="leaf-signature content-de">- Plujar Daiana</p>
+                  <p class="leaf-signature content-ro">- Plujar Daiana</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="leaf-card leaf-shape-2" data-type="text-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-font"></i>
+                <span class="content-de">Text</span
+                ><span class="content-ro">Text</span>
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-text-only">
+                <div class="leaf-text-content">
+                  <div class="quote-icon"><i class="fas fa-heart"></i></div>
+                  <h3 class="content-de">Lernen macht Spaß</h3>
+                  <h3 class="content-ro">Învățatul e o plăcere</h3>
+                  <p class="content-de">
+                    Mit dir ist jeder Schultag ein Abenteuer.
+                  </p>
+                  <p class="content-ro">
+                    Cu tine, fiecare zi de școală e o aventură.
+                  </p>
+                  <p class="leaf-signature content-de">- Die Marienkäfer</p>
+                  <p class="leaf-signature content-ro">- Buburezele</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="leaf-card leaf-shape-1" data-type="text-only">
+              <div class="leaf-type-label">
+                <i class="fas fa-font"></i>
+                <span class="content-de">Text</span
+                ><span class="content-ro">Text</span>
+              </div>
+              <div class="leaf-border"></div>
+              <div class="leaf-content leaf-text-only">
+                <div class="leaf-text-content">
+                  <div class="quote-icon">
+                    <i class="fas fa-heart"></i>
+                  </div>
+                  <h3 class="content-de">Alles Gute zum Geburtstag!</h3>
+                  <h3 class="content-ro">La multi ani!</h3>
+                  <p class="content-de">
+                    Herzlichen Glückwunsch zum Geburtstag! Wir wünschen Ihnen
+                    viel Freude, Frieden und Harmonie. Von ganzem Herzen danken
+                    wir Ihnen für Ihre Unterstützung und die wundervolle Art,
+                    wie Sie unsere Kinder erziehen. Vielen Dank, dass Sie sie
+                    nicht nur auf die Schule, sondern auch auf den Alltag
+                    vorbereiten: Sie vermitteln ihnen Abenteuerlust, aber auch
+                    Feingefühl und Respekt vor der Natur. Vielen Dank für alles
+                    und wir wünschen Ihnen nur das Beste!
+                  </p>
+                  <p class="content-ro">
+                    Cu ocazia zilei de naștere, vă dorim să aveți parte de
+                    bucurii, liniște și înțelegere alături de cei dragi! Vă
+                    mulțumim din suflet că sunteți alături de copiii noștri și
+                    pentru modul cald în care îi îndrumați. Vă suntem
+                    recunoscători pentru că îi pregătiți nu doar pentru școală,
+                    ci și pentru viața de zi cu zi: învățându-i cum să
+                    îndrăznească să încerce lucruri noi, dar și cum să rămână
+                    sensibili și să respecte natura. Vă mulțumim pentru tot și
+                    vă dorim toate cele bune!
+                  </p>
+                  <p class="leaf-signature content-de">- Gelica Uzum</p>
+                  <p class="leaf-signature content-ro">- Gelica Uzum</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal pentru Video -->
+        <div class="video-modal" id="videoModal">
+          <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+              <i class="fas fa-times"></i>
+            </button>
+            <video class="modal-video" id="modalVideo" controls></video>
+          </div>
+        </div>
+
+        <!-- Modal pentru Imagine (nou adăugat) -->
+        <div id="imageModal" class="image-modal">
+          <span class="close-modal-btn" id="closeImageModal">&times;</span>
+          <img class="modal-content" id="modalImage" />
+          <div
+            id="modalImageTitle"
+            style="
+              color: white;
+              text-align: center;
+              padding: 10px;
+              font-size: 1.2rem;
+              margin-top: 10px;
+            "
+          ></div>
+        </div>
+      </section>
+      <!-- Poem Section -->
+      <section id="poem">
+        <div class="poem-section animate__animated animate__fadeIn">
+          <div class="poem-container">
+            <div class="content-de">
+              <h3 class="poem-title">Ein Gedicht für unsere Lehrerin</h3>
+              <div class="poem-content">
+                <p>
+                  Unsere liebe Lehrerin,<br />
+                  Du bist wie eine Blume schön,<br />
+                  Du lehrst uns und verwandelst uns,<br />
+                  In Menschen, die mit Zukunft geh'n.
+                </p>
+                <p>
+                  Deutsch zu lernen ist das Ziel,<br />
+                  Und in Mathe rechnen wir so viel,<br />
+                  Du gibst uns Mut an jedem Tag,<br />
+                  Dass man neue Welten wagen mag.
+                </p>
+                <p>
+                  Schwimmen gehen und Schlittschuh laufen,<br />
+                  Sport zu treiben ohne zu verschnaufen,<br />
+                  Neue Höhlen zu seh'n mit dir,<br />
+                  Und Weihnachtslieder singen wir.
+                </p>
+                <p>
+                  Auf diesem Wege danken wir,<br />
+                  Und schenken voller Liebe dir<br />
+                  Gute Gedanken, die dich begleiten,<br />
+                  Und viele Jahre voll Heiterkeiten!
+                </p>
+              </div>
+              <div class="poem-author">
+                - Mit Liebe von der Raupenklasse geschrieben
+              </div>
+              <div class="poem-note">(Originalgedicht für unsere Lehrerin)</div>
+            </div>
+            <div class="content-ro">
+              <h3 class="poem-title">O Poezie pentru Învățătoare</h3>
+              <div class="poem-content">
+                <p>
+                  Dragă noastră învățătoare,<br />
+                  Te asemeni cu o floare,<br />
+                  Tu ne înveți și ne transformi,<br />
+                  În oameni cu viitor.
+                </p>
+                <p>
+                  Germana să o învățăm,<br />
+                  Și la mate s-adunăm,<br />
+                  Mereu curajul ni-l îndrumi<br />
+                  Să încercăm și alte lumi.
+                </p>
+                <p>
+                  Să înotăm, să patinăm,<br />
+                  Sport de drag să practicăm,<br />
+                  Peșteri noi să vizităm,<br />
+                  Și colinde să cântăm.
+                </p>
+                <p>
+                  Pe această cale îți mulțumim<br />
+                  Și cu drag îți dăruim<br />
+                  Gânduri bune și iubire,<br />
+                  Ani mulți, plini de fericire!
+                </p>
+              </div>
+              <div class="poem-author">- Scrisă cu drag de clasa Omizilor</div>
+              <div class="poem-note">
+                (Poezie originală dedicată învățătoarei noastre)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Birthday wishes -->
+      <section id="birthday">
+        <div class="birthday-wishes animate__animated animate__fadeIn">
+          <div class="content-de">
+            <h2>Alles Gute zum Geburtstag!</h2>
+            <div class="birthday-message">
+              Liebe Lehrerin, an deinem besonderen Tag möchten wir dir von
+              ganzem Herzen danken für all die Geduld, Liebe und Weisheit, die
+              du uns jeden Tag schenkst. Möge dein Geburtstag voller Freude,
+              Lachen und wunderbarer Überraschungen sein!
+            </div>
+            <div class="birthday-message">
+              Wir wünschen dir Gesundheit, Glück und weiterhin so viel Energie
+              und Begeisterung für deinen wunderbaren Beruf. Du bist nicht nur
+              unsere Lehrerin, sondern ein Vorbild und eine Freundin.
+            </div>
+
+            <div class="special-buttons">
+              <button class="celebrate-btn" id="celebrate-btn-de">
+                <i class="fas fa-birthday-cake"></i>
+                <span class="btn-text">KLICKE FÜR PARTY! 🎉</span>
+              </button>
+              <button class="music-btn" id="music-btn-de">
+                <i class="fas fa-music"></i>
+                <span class="btn-text" id="music-text-de"
+                  >MUSIK STARTEN 🎵</span
+                >
+              </button>
+            </div>
+
+            <div class="signature">
+              <span>Herzlichst, deine Marienkäfer und Raupen</span>
+            </div>
+          </div>
+
+          <div class="content-ro">
+            <h2>La Mulți Ani!</h2>
+            <div class="birthday-message">
+              Dragă învățătoare, de ziua ta specială dorim să-ți mulțumim din
+              suflet pentru toată răbdarea, dragostea și înțelepciunea pe care
+              ni le oferi în fiecare zi. Fie că ziua ta de naștere să fie plină
+              de bucurie, râsete și surprize minunate!
+            </div>
+            <div class="birthday-message">
+              Îți dorim sănătate, fericire și în continuare atâta energie și
+              entuziasm pentru minunata ta meserie. Nu ești doar învățătoarea
+              noastră, ci un model de urmat și o prietenă.
+            </div>
+
+            <div class="special-buttons">
+              <button class="celebrate-btn" id="celebrate-btn">
+                <i class="fas fa-birthday-cake"></i>
+                <span class="btn-text">APASĂ PENTRU SĂRBĂTOARE! 🎉</span>
+              </button>
+              <button class="music-btn" id="music-btn">
+                <i class="fas fa-music"></i>
+                <span class="music-text" id="music-text"
+                  >PORNEȘTE MUZICA 🎵</span
+                >
+              </button>
+            </div>
+
+            <div class="signature">
+              <span>Cu dragoste, Buburezele și Omizile tale</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="content-de">
+        <p>
+          Mit ganz viel Liebe gemacht von der Klasse der Raupen (ehemals
+          Marienkäfer)
+        </p>
+        <p>© 2026 - Wir lieben unsere Lehrerin <span class="heart">♥</span></p>
+      </div>
+      <div class="content-ro">
+        <p>Realizat cu multă dragoste de clasa Omizilor (foste Bubureze)</p>
+        <p>
+          © 2026 - O iubim pe învățătoarea noastră <span class="heart">♥</span>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripturi -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

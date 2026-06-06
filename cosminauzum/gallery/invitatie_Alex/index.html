@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitație Surpriză</title>
+    <link rel="icon" type="image/gif/png" href="fish.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="invitation-card">
+        <h1 class="title">🎉 Invitație la Petrecere Surpriză 🎉</h1>
+        <p class="message">
+          Shhh... Este un secret! 🤫<br /><br />Vă invităm la o
+          <strong>petrecere surpriză</strong> pentru a sărbători
+          <strong>40 de ani ai lui ALEX</strong>!<br />Nu are habar că îi
+          pregătim o seară specială, așa că fiți pregătiți să-i vedeți fața
+          uimită! 🥳<br />
+          Cu drag,<br />
+          <strong>Melinda</strong>
+        </p>
+        <p class="gift-hint">
+          <em
+            >P.S.: Dacă vă gândiți la cadou, o mică contribuție financiară ar fi
+            exact ce și-ar dori!</em
+          >
+          😊💸
+        </p>
+        <div class="details">
+          <p>
+            <a
+              href="https://www.google.com/maps/dir//Str.+%C8%9Aarcului+29,+Dumbr%C4%83vi%C8%9Ba/"
+              target="_blank"
+            >
+              <i class="fa-solid fa-location-dot"></i> <b>Montecatino Cafe</b>,
+              Str. Țarcului 29, Dumbrăvița</a
+            >
+          </p>
+          <p><i class="fa-solid fa-calendar"></i> 14 Decembrie 2024</p>
+          <p><i class="fa-solid fa-clock"></i> 17:00</p>
+          <p>
+            <em
+              >Vă rugăm să ajungeți cu 5-10 minute mai devreme pentru
+              surpriză!</em
+            >
+          </p>
+        </div>
+
+        <!-- Formularele pentru confirmare -->
+        <label for="numar-persoane">Câte persoane vor participa?</label>
+        <input type="number" id="numar-persoane" min="1" value="1" />
+
+        <button class="rsvp-btn" onclick="sendWhatsAppMessage()">
+          Pentru confirmare apăsați aici
+        </button>
+        <p class="rsvp-confirm" id="rsvpConfirm"></p>
+      </div>
+    </div>
+    <footer class="footer">
+      Creat de
+      <a href="https://www.cosminauzum.com/" target="_blank"
+        >www.cosminauzum.com</a
+      >
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

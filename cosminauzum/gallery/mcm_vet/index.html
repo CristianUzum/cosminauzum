@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="ro" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCM Sanifarmvet Hațeg | Cabinet, Farmacie și Petshop</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Cabinet și Farmacie Veterinară MCM Sanifarmvet Hațeg. Consultații, tratamente, dar și o intrare separată pentru farmacie și petshop (hrană, accesorii)."
+    />
+    <meta
+      name="keywords"
+      content="veterinar Hațeg, cabinet veterinar, farmacie veterinară, petshop, dr. alexandru drasovean, vaccinare, sterilizare, MCM Sanifarmvet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configurare culori personalizate -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "mcm-dark": "#0f172a" /* Albastru inchis */,
+              "mcm-light": "#38bdf8" /* Albastru deschis */,
+              "mcm-white": "#ffffff",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- FontAwesome (Iconițe) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- AOS Library (Animații la scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      .hero-bg {
+        background-image:
+          linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+          url("./imagini//hero.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      /* Scrollbar personalizat pentru articole */
+      .modal-scroll::-webkit-scrollbar {
+        width: 8px;
+      }
+      .modal-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      .modal-scroll::-webkit-scrollbar-thumb {
+        background: #38bdf8;
+        border-radius: 10px;
+      }
+
+      /* Efect de hover pentru galeria foto */
+      .gallery-img {
+        transition: transform 0.5s ease;
+      }
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-mcm-dark overflow-x-hidden relative">
+    <!-- Bara Social Media Floating -->
+    <div
+      class="fixed top-1/3 right-0 z-40 flex flex-col gap-2 p-2 hidden md:flex"
+    >
+      <a
+        href="https://www.facebook.com/profile.php?id=100077136423132"
+        target="_blank"
+        class="bg-blue-600 text-white p-3 rounded-l-lg shadow-lg hover:bg-blue-700 transition"
+        aria-label="Facebook"
+        ><i class="fab fa-facebook-f px-1"></i
+      ></a>
+      <!-- LINK WHATSAPP -->
+      <a
+        href="https://wa.me/40725657417"
+        target="_blank"
+        class="bg-green-500 text-white p-3 rounded-l-lg shadow-lg hover:bg-green-600 transition"
+        aria-label="WhatsApp"
+        ><i class="fab fa-whatsapp text-xl"></i
+      ></a>
+    </div>
+
+    <!-- Meniu Navigare -->
+    <nav class="bg-mcm-dark text-white sticky top-0 z-30 shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-24">
+          <!-- LOGO IMAGINE -->
+          <div
+            class="flex items-center cursor-pointer h-full py-2"
+            onclick="window.scrollTo(0, 0)"
+          >
+            <img
+              src="./imagini/logo_mcm.png"
+              alt="Logo MCM Sanifarmvet"
+              class="h-16 w-auto object-contain"
+            />
+          </div>
+
+          <!-- Links Desktop -->
+          <div
+            class="hidden md:flex space-x-6 font-semibold text-sm uppercase tracking-wide items-center"
+          >
+            <a href="#acasa" class="hover:text-mcm-light transition">Acasă</a>
+            <a href="#servicii" class="hover:text-mcm-light transition"
+              >Cabinet</a
+            >
+            <a href="#farmacie-petshop" class="hover:text-mcm-light transition"
+              >Farmacie & Petshop</a
+            >
+            <a href="#galerie" class="hover:text-mcm-light transition"
+              >Galerie</a
+            >
+            <a href="#blog" class="hover:text-mcm-light transition">Articole</a>
+            <a
+              href="#contact"
+              class="hover:text-mcm-light transition bg-mcm-light text-mcm-dark px-4 py-2 rounded-lg"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header
+      id="acasa"
+      class="hero-bg h-[80vh] flex items-center justify-center text-center text-white"
+    >
+      <div class="max-w-4xl px-4" data-aos="zoom-in" data-aos-duration="1000">
+        <h1
+          class="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight"
+        >
+          Sănătatea Animalelor, <br /><span class="text-mcm-light"
+            >Prioritatea Noastră</span
+          >
+        </h1>
+        <p class="text-lg md:text-2xl mb-8 text-gray-300">
+          Cabinet Medical Veterinar & Farmacie în Hațeg
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#contact"
+            class="bg-mcm-light text-mcm-dark font-bold py-3 px-8 rounded-full hover:bg-white transition shadow-lg"
+            >Contact & Locație</a
+          >
+          <a
+            href="#preventie"
+            class="bg-transparent border-2 border-mcm-light text-mcm-light font-bold py-3 px-8 rounded-full hover:bg-mcm-light hover:text-mcm-dark transition shadow-lg"
+            >Importanța Prevenției</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- EDUCAȚIE & PREVENȚIE (Secțiune Dr. Alexandru Drasovean) -->
+    <section id="preventie" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Profil Medic & Citat -->
+        <div
+          class="flex flex-col md:flex-row items-center justify-center gap-8 mb-16"
+          data-aos="fade-up"
+        >
+          <div class="relative w-40 h-40 flex-shrink-0">
+            <img
+              src="./imagini/dr_drasovean2.jpeg"
+              alt="Dr. Alexandru Drasovean"
+              class="w-full h-full rounded-full object-cover shadow-xl border-4 border-mcm-light"
+            />
+            <div
+              class="absolute bottom-0 right-0 bg-mcm-dark text-white p-2 rounded-full shadow-lg"
+            >
+              <i class="fas fa-user-md"></i>
+            </div>
+          </div>
+          <div class="text-center md:text-left max-w-2xl">
+            <h2
+              class="text-3xl md:text-4xl font-bold text-mcm-dark mb-3 leading-snug"
+            >
+              „Consultul veterinar nu este un lux, ci o investiție în sănătate
+              și prevenție.”
+            </h2>
+            <p class="text-xl text-mcm-light font-bold">
+              — Dr. Alexandru Drasovean
+            </p>
+            <p class="text-gray-500 mt-2">Medic Veterinar / MCM Sanifarmvet</p>
+          </div>
+        </div>
+
+        <!-- Carduri Prevenție -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-slate-50 p-8 rounded-2xl shadow-lg border-t-4 border-mcm-light"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <i class="fas fa-stethoscope text-4xl text-mcm-light mb-4"></i>
+            <h3 class="text-xl font-bold mb-3 text-mcm-dark">
+              Ce înseamnă consultația?
+            </h3>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li>
+                <i class="fas fa-check text-mcm-light mr-2"></i> Explicăm
+                semnele de alarmă invizibile la prima vedere.
+              </li>
+              <li>
+                <i class="fas fa-check text-mcm-light mr-2"></i> Corectăm mituri
+                medicale populare <i>(ex: „dacă mănâncă, e sănătos”)</i>.
+              </li>
+              <li>
+                <i class="fas fa-check text-mcm-light mr-2"></i> Creăm un plan
+                individualizat de sănătate în funcție de rasă și vârstă.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-mcm-dark text-white p-8 rounded-2xl shadow-xl transform md:-translate-y-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <i class="fas fa-shield-halved text-4xl text-mcm-light mb-4"></i>
+            <h3 class="text-xl font-bold mb-3">
+              Prevenția – Cheia longevității
+            </h3>
+            <ul class="space-y-3 text-gray-300 text-sm">
+              <li>
+                <i class="fas fa-chevron-right text-mcm-light mr-2"></i>
+                <b>Vaccinare corectă</b> și personalizată
+              </li>
+              <li>
+                <i class="fas fa-chevron-right text-mcm-light mr-2"></i>
+                <b>Deparazitări</b> regulate (interne și externe)
+              </li>
+              <li>
+                <i class="fas fa-chevron-right text-mcm-light mr-2"></i>
+                <b>Screening anual</b> la animalele senioare
+              </li>
+              <li>
+                <i class="fas fa-chevron-right text-mcm-light mr-2"></i>
+                <b>Consiliere nutrițională</b> contra obezității
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-slate-50 p-8 rounded-2xl shadow-lg border-t-4 border-mcm-light"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <i class="fas fa-heart-pulse text-4xl text-mcm-light mb-4"></i>
+            <h3 class="text-xl font-bold mb-3 text-mcm-dark">
+              De ce consult periodic?
+            </h3>
+            <ul class="space-y-2 text-gray-700 text-sm font-medium">
+              <li>✔️ Depistează bolile în fază incipientă</li>
+              <li>✔️ Reduce drastic costurile tratamentelor târzii</li>
+              <li>✔️ Crește exponențial șansele de vindecare</li>
+              <li>✔️ Previne durerea și suferința tăcută a animalului</li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="text-center mt-12 text-lg font-bold text-red-600 bg-red-50 p-6 rounded-lg shadow-sm"
+          data-aos="zoom-in"
+        >
+          <i class="fas fa-triangle-exclamation mr-2"></i> Majoritatea bolilor
+          grave încep tăcut. Un control anual face diferența dintre prevenție și
+          o urgență medicală critică!
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICII MEDICALE -->
+    <section id="servicii" class="py-20 bg-slate-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-3xl font-bold text-center text-mcm-dark mb-12"
+          data-aos="fade-up"
+        >
+          Servicii Cabinet Veterinar
+        </h2>
+        <div class="grid md:grid-cols-4 gap-6 text-center">
+          <div
+            class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition"
+            data-aos="flip-left"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-syringe text-2xl text-mcm-light"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-mcm-dark">
+              Vaccinare & Imunizare
+            </h4>
+            <p class="text-sm text-gray-600">
+              Scheme de vaccinare și imunizare personalizate pentru protecție
+              maximă.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <div
+              class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-scissors text-2xl text-mcm-light"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-mcm-dark">
+              Sterilizare & Chirurgie
+            </h4>
+            <p class="text-sm text-gray-600">
+              Intervenții realizate în condiții stricte de siguranță, anestezie
+              și monitorizare.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition"
+            data-aos="flip-left"
+            data-aos-delay="300"
+          >
+            <div
+              class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-microscope text-2xl text-mcm-light"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-mcm-dark">
+              Analize Laborator
+            </h4>
+            <p class="text-sm text-gray-600">
+              Biochimie, hemoleucogramă și teste rapide pentru un diagnostic
+              exact.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition"
+            data-aos="flip-left"
+            data-aos-delay="400"
+          >
+            <div
+              class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-briefcase-medical text-2xl text-mcm-light"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2 text-mcm-dark">
+              Consultații Specializate
+            </h4>
+            <p class="text-sm text-gray-600">
+              Tratarea bolilor interne, dermatologie și managementul
+              afecțiunilor cronice.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FARMACIE & PETSHOP -->
+    <section
+      id="farmacie-petshop"
+      class="py-20 bg-mcm-dark text-white border-t-8 border-mcm-light"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="md:w-1/2" data-aos="fade-right">
+            <div
+              class="inline-block bg-mcm-light text-mcm-dark font-bold px-3 py-1 rounded-full text-sm mb-4"
+            >
+              2 Spații Dedicate
+            </div>
+            <h2 class="text-3xl font-bold text-white mb-6">
+              Farmacie Veterinară & Petshop
+            </h2>
+
+            <p
+              class="text-gray-300 mb-6 text-lg bg-slate-800 p-4 rounded-lg border-l-4 border-mcm-light"
+            >
+              Deși suntem sub același acoperiș, am creat două spații cu intrări
+              separate pentru siguranța pacienților. Pe o ușă pășești în
+              <strong>Cabinetul Veterinar</strong>, iar pe cealaltă intri direct
+              în <strong>Farmacia Veterinară și Petshop</strong>.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+              <div>
+                <h4
+                  class="text-mcm-light font-bold text-xl mb-3 flex items-center"
+                >
+                  <i class="fas fa-pills mr-2"></i> Farmacie
+                </h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                  <li>• Medicamente cu prescripție</li>
+                  <li>• Soluții antiparazitare forte</li>
+                  <li>• Vitamine, calciu, suplimente</li>
+                  <li>• Tratamente animale de fermă și păsări</li>
+                </ul>
+              </div>
+              <div>
+                <h4
+                  class="text-mcm-light font-bold text-xl mb-3 flex items-center"
+                >
+                  <i class="fas fa-bone mr-2"></i> Petshop
+                </h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                  <li>• Hrană premium câini/pisici</li>
+                  <li>• Cuști de transport și culcușuri</li>
+                  <li>• Zgărzi, hamuri, lese</li>
+                  <li>• Recompense, șampoane, jucării</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/2" data-aos="fade-left">
+            <img
+              src="./imagini/farmacie.jpeg"
+              alt="Interior Petshop Farmacie"
+              class="rounded-xl shadow-2xl border-4 border-slate-700 w-full object-cover h-[400px]"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE FOTO & VIDEO (Grile Mici) -->
+    <section id="galerie" class="py-20 bg-slate-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-mcm-dark mb-4">
+            Galeria Foto & Video
+          </h2>
+          <p class="text-gray-600">
+            O privire în interiorul cabinetului și farmaciei/petshop-ului MCM
+            Sanifarmvet.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div
+            class="gallery-item overflow-hidden rounded-lg shadow-md h-56 cursor-pointer"
+            data-aos="zoom-in"
+          >
+            <img
+              src="./imagini/andimix.jpeg"
+              alt="Petshop Hrana"
+              class="gallery-img w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Clip 1 galerie (Corectat SRC-ul) -->
+          <div
+            class="relative overflow-hidden rounded-lg shadow-md h-56 group bg-black"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <video
+              controls
+              preload="metadata"
+              class="w-full h-full object-cover opacity-90 hover:opacity-100 transition"
+            >
+              <source src="./video/interior_farmacie.mp4" type="video/mp4" />
+              Browserul tău nu suportă redarea video.
+            </video>
+            <div
+              class="absolute top-3 right-3 bg-mcm-dark text-white p-2 rounded-full opacity-80 pointer-events-none"
+            >
+              <i class="fas fa-video text-sm"></i>
+            </div>
+          </div>
+
+          <div
+            class="gallery-item overflow-hidden rounded-lg shadow-md h-56 cursor-pointer"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="./imagini/produse.jpeg"
+              alt="Accesorii Petshop"
+              class="gallery-img w-full h-full object-cover"
+            />
+          </div>
+
+          <div
+            class="gallery-item overflow-hidden rounded-lg shadow-md h-56 cursor-pointer"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <img
+              src="./imagini/cabinet.jpg"
+              alt="Cabinet Veterinar"
+              class="gallery-img w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Clip 2 galerie (Corectat SRC-ul) -->
+          <div
+            class="relative overflow-hidden rounded-lg shadow-md h-56 group bg-black"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <video
+              controls
+              preload="metadata"
+              class="w-full h-full object-cover opacity-90 hover:opacity-100 transition"
+            >
+              <source src="./video/paste.mp4" type="video/mp4" />
+              Browserul tău nu suportă redarea video.
+            </video>
+            <div
+              class="absolute top-3 right-3 bg-mcm-dark text-white p-2 rounded-full opacity-80 pointer-events-none"
+            >
+              <i class="fas fa-video text-sm"></i>
+            </div>
+          </div>
+
+          <div
+            class="gallery-item overflow-hidden rounded-lg shadow-md h-56 cursor-pointer"
+            data-aos="zoom-in"
+            data-aos-delay="500"
+          >
+            <img
+              src="./imagini/andimix_adult.jpeg"
+              alt="Animale Ferma"
+              class="gallery-img w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG & ARTICOLE -->
+    <section id="blog" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-mcm-dark mb-4">
+            Articole & Sfaturi Medicale
+          </h2>
+          <p class="text-gray-600">
+            Explorează sfaturile specialiștilor noștri și distribuie informația
+            pentru a salva vieți.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Articol 1 -->
+          <div
+            class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-gray-200 flex flex-col"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500&q=80"
+              alt="Vaccinare Caine"
+              class="h-48 w-full object-cover"
+            />
+            <div class="p-6 flex-grow flex flex-col">
+              <h3 class="text-xl font-bold text-mcm-dark mb-3">
+                Totul despre Vaccinare și Imunitate
+              </h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow">
+                Află de ce vaccinarea este cel mai important scut împotriva
+                bolilor infecțioase fatale și cum funcționează schema de
+                imunizare la pui.
+              </p>
+              <button
+                onclick="openArticle('articol1')"
+                class="bg-mcm-dark text-white font-semibold py-2 px-4 rounded hover:bg-mcm-light transition w-full"
+              >
+                Citește articolul <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Articol 2 -->
+          <div
+            class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-gray-200 flex flex-col"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&w=500&q=80"
+              alt="Sterilizare Pisica"
+              class="h-48 w-full object-cover"
+            />
+            <div class="p-6 flex-grow flex flex-col">
+              <h3 class="text-xl font-bold text-mcm-dark mb-3">
+                De ce este obligatorie sterilizarea?
+              </h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow">
+                Sterilizarea nu doar previne abandonul, ci elimină riscul de
+                piometru și reduce la zero apariția tumorilor mamare la femele.
+              </p>
+              <button
+                onclick="openArticle('articol2')"
+                class="bg-mcm-dark text-white font-semibold py-2 px-4 rounded hover:bg-mcm-light transition w-full"
+              >
+                Citește articolul <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Articol 3 -->
+          <div
+            class="bg-slate-50 rounded-xl overflow-hidden shadow-md border border-gray-200 flex flex-col"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <img
+              src="https://cdn.pixabay.com/photo/2018/01/28/12/37/cat-3113513_1280.jpg"
+              alt="Consult Veterinar"
+              class="h-48 w-full object-cover"
+            />
+            <div class="p-6 flex-grow flex flex-col">
+              <h3 class="text-xl font-bold text-mcm-dark mb-3">
+                Mitul suprem: „Mănâncă, deci e bine”
+              </h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow">
+                Animalele sunt programate genetic să își ascundă durerea. Învață
+                să recunoști semnele subtile de boală înainte de a fi prea
+                târziu.
+              </p>
+              <button
+                onclick="openArticle('articol3')"
+                class="bg-mcm-dark text-white font-semibold py-2 px-4 rounded hover:bg-mcm-light transition w-full"
+              >
+                Citește articolul <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & HARTA -->
+    <section id="contact" class="pt-20 pb-10 bg-slate-200">
+      <div class="max-w-7xl mx-auto px-4">
+        <div
+          class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row mb-12"
+        >
+          <!-- Informații Contact -->
+          <div class="md:w-1/2 p-10 bg-mcm-dark text-white">
+            <h2 class="text-3xl font-bold text-mcm-light mb-6">
+              Contact & Locație
+            </h2>
+            <p class="mb-6 text-gray-300">
+              Vă așteptăm cu drag. Urmăriți indicatoarele noastre pentru
+              intrarea de cabinet și cea de farmacie/petshop.
+            </p>
+
+            <div class="space-y-6 text-lg">
+              <div class="flex items-start">
+                <i
+                  class="fas fa-map-marker-alt w-10 text-mcm-light text-2xl mt-1"
+                ></i>
+                <div>
+                  <h4 class="font-bold text-white">Adresă:</h4>
+                  <p class="text-sm text-gray-300">
+                    Strada Tudor Vladimirescu nr. 30B<br />
+                    <span class="italic text-gray-400"
+                      >(lângă birourile Geraico și Spitalul Hateg)</span
+                    ><br />
+                    Oraș Hațeg, Jud. Hunedoara
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-phone w-10 text-mcm-light text-2xl mt-1"></i>
+                <div>
+                  <h4 class="font-bold text-white">
+                    Telefon (Urgențe & Programări):
+                  </h4>
+                  <a
+                    href="tel:+40725657417"
+                    class="text-lg font-bold text-mcm-light hover:text-white transition"
+                    >0725 657 417</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-clock w-10 text-mcm-light text-2xl mt-1"></i>
+                <div>
+                  <h4 class="font-bold text-white">Orar de funcționare:</h4>
+                  <p class="text-sm text-gray-300">
+                    Luni - Vineri: <strong>09:00 - 17:00</strong><br />
+                    Sâmbătă - Duminică: <span class="text-red-400">Închis</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Harta Google Maps -->
+          <div class="md:w-1/2 min-h-[400px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.2023594896796!2d22.9463941!3d45.6075487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDM2JzI3LjIiTiAyMsKwNTYnNDcuMCJF!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro&q=Strada+Tudor+Vladimirescu+30B,+Hațeg"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECȚIUNE PREZENTARE VIDEO (Tur Virtual Locație - Corectat) -->
+    <section id="video" class="pb-20 bg-slate-200">
+      <div class="max-w-5xl mx-auto px-4 text-center" data-aos="zoom-in">
+        <h2 class="text-2xl md:text-3xl font-bold text-mcm-dark mb-6">
+          Tur Virtual al Locației
+        </h2>
+
+        <div
+          class="relative w-full overflow-hidden rounded-2xl shadow-2xl"
+          style="padding-top: 56.25%"
+        >
+          <!-- Înlocuit IFRAME-ul care forța autoplay cu un VIDEO tag nativ -->
+          <video
+            controls
+            preload="metadata"
+            class="absolute top-0 left-0 w-full h-full border-0 object-cover"
+          >
+            <source src="./video/locatie.mp4" type="video/mp4" />
+            Browserul tău nu suportă redarea video.
+          </video>
+        </div>
+        <p class="text-sm text-gray-500 mt-4">
+          Vino să descoperi cele două spații cu intrări separate: Cabinetul
+          Veterinar și Farmacia cu Petshop de pe strada Tudor Vladimirescu nr.
+          30B.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER COMPLET -->
+    <footer
+      class="bg-mcm-dark text-gray-400 pt-12 pb-6 border-t border-gray-700 relative"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left"
+      >
+        <!-- Col 1: Brand -->
+        <div class="flex flex-col items-center md:items-start">
+          <img
+            src="./imagini/logo_mcm.png"
+            alt="Logo Footer"
+            class="h-12 mb-4 filter opacity-80 hover:opacity-100 transition"
+          />
+          <p class="text-sm text-gray-400 mb-4">
+            Sănătatea animalului tău, prioritatea noastră. Cabinet, farmacie
+            veterinară și petshop în Hațeg, Hunedoara.
+          </p>
+          <div class="flex gap-4 mt-2 justify-center md:justify-start">
+            <a
+              href="https://www.facebook.com/profile.php?id=100077136423132"
+              target="_blank"
+              class="text-gray-400 hover:text-blue-500 text-2xl transition"
+              ><i class="fab fa-facebook-square"></i
+            ></a>
+            <a
+              href="https://wa.me/40725657417"
+              target="_blank"
+              class="text-gray-400 hover:text-green-500 text-2xl transition"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Linkuri Utile -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Linkuri Utile</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="#acasa" class="hover:text-mcm-light transition"
+                ><i class="fas fa-angle-right mr-1"></i> Acasă</a
+              >
+            </li>
+            <li>
+              <a href="#servicii" class="hover:text-mcm-light transition"
+                ><i class="fas fa-angle-right mr-1"></i> Servicii Cabinet</a
+              >
+            </li>
+            <li>
+              <a
+                href="#farmacie-petshop"
+                class="hover:text-mcm-light transition"
+                ><i class="fas fa-angle-right mr-1"></i> Farmacie & Petshop</a
+              >
+            </li>
+            <li>
+              <a href="#blog" class="hover:text-mcm-light transition"
+                ><i class="fas fa-angle-right mr-1"></i> Educație și Articole</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-mcm-light transition"
+                ><i class="fas fa-angle-right mr-1"></i> Contact și Harta</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact Rapid -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Informații Rapide</h4>
+          <p class="text-sm mb-2">
+            <i class="fas fa-map-marker-alt text-mcm-light w-5"></i> Str. Tudor
+            Vladimirescu 30B
+          </p>
+          <p class="text-sm mb-2">
+            <i class="fas fa-phone text-mcm-light w-5"></i> 0725 657 417
+          </p>
+          <p class="text-sm">
+            <i class="fas fa-envelope text-mcm-light w-5"></i>
+            contact@sanifarmvet.ro
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="max-w-7xl mx-auto px-4 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm"
+      >
+        <p>&copy; 2026 MCM Sanifarmvet Hațeg. Toate drepturile rezervate.</p>
+        <p class="mt-4 md:mt-0 text-gray-500">
+          Acest site este un demo realizat de
+          <a
+            href="https://cosminauzum.com"
+            target="_blank"
+            class="text-mcm-light hover:underline font-bold"
+            >cosminauzum.com</a
+          >
+        </p>
+      </div>
+
+      <!-- BUTON BACK TO TOP -->
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="absolute -top-6 right-8 bg-mcm-light text-mcm-dark w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:scale-110 transition duration-300"
+        aria-label="Înapoi Sus"
+      >
+        <i class="fas fa-arrow-up text-xl"></i>
+      </button>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- MODALE PENTRU ARTICOLE EXTINSE & SHARE BUTTONS -->
+    <!-- ============================================== -->
+
+    <!-- Modal Articol 1 -->
+    <div
+      id="articol1"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center p-4 transition-opacity"
+    >
+      <div
+        class="bg-white w-full max-w-4xl max-h-[90vh] rounded-xl flex flex-col overflow-hidden relative shadow-2xl"
+      >
+        <div
+          class="bg-mcm-dark text-white p-4 flex justify-between items-center shrink-0"
+        >
+          <h3 class="font-bold text-lg text-mcm-light">
+            Educație Medicală Veterinară
+          </h3>
+          <button
+            onclick="closeArticle('articol1')"
+            class="text-white hover:text-red-500 text-3xl leading-none transition"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto modal-scroll text-gray-700 space-y-5">
+          <h2 class="text-3xl font-bold text-mcm-dark">
+            Totul despre Vaccinare și Imunitate
+          </h2>
+          <img
+            src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=1000&q=80"
+            alt="Vaccinare Caine"
+            class="w-full h-72 object-cover rounded-lg"
+          />
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Cum funcționează vaccinul?
+          </h4>
+          <p>
+            Vaccinarea reprezintă
+            <strong>prima și cea mai importantă linie de apărare</strong>
+            împotriva bolilor infecțioase severe. Funcționează prin "învățarea"
+            sistemului imunitar al animalului să recunoască un virus (cum ar fi
+            Parvovirusul) fără a provoca boala reală. Când animalul va întâlni
+            virusul pe stradă, anticorpii vor fi pregătiți să îl neutralizeze
+            instant.
+          </p>
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Schema de vaccinare la pui
+          </h4>
+          <p>
+            Puii se nasc cu anticorpi maternali (din laptele mamei), dar aceștia
+            dispar după vârsta de 6-8 săptămâni. Acesta este momentul critic în
+            care puiul rămâne fără protecție.
+            <strong>Protocolul standard</strong> implică vaccinuri la 6, 8 și 12
+            săptămâni. Fără finalizarea schemei (inclusiv vaccinul antirabic
+            obligatoriu prin lege), puiul nu are voie să intre în contact cu
+            solul public sau cu alte animale.
+          </p>
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Boli prevenite prin vaccinare:
+          </h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Parvoviroza:</strong> Un virus extrem de contagios și des
+              letal la cățeluși, ce atacă tractul gastro-intestinal (vomă,
+              diaree cu sânge).
+            </li>
+            <li>
+              <strong>Jigodia (Boala Carré):</strong> Afectează sistemul
+              respirator și nervos; deseori incurabilă odată ajunsă la creier.
+            </li>
+            <li>
+              <strong>Panleucopenia felină:</strong> Echivalentul parvovirozei
+              la pisici, extrem de agresivă.
+            </li>
+            <li>
+              <strong>Rabia (Turbarea):</strong> Zoonoză mortală (se transmite
+              la om). Vaccinarea este obligatorie anual prin lege.
+            </li>
+          </ul>
+
+          <p
+            class="bg-blue-50 p-4 rounded-lg border-l-4 border-mcm-light italic text-lg mt-6 text-mcm-dark font-semibold"
+          >
+            "Prevenția (vaccinul) costă de zeci de ori mai puțin, atât financiar
+            cât și emoțional, comparativ cu tratarea îndelungată a unei boli
+            infecțioase grave."
+          </p>
+
+          <!-- SHARE BUTTONS -->
+          <div
+            class="mt-8 pt-4 border-t border-gray-200 flex items-center gap-4"
+          >
+            <span class="font-bold text-mcm-dark">Distribuie și educă:</span>
+            <button
+              onclick="shareOnFacebook()"
+              class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+            <button
+              onclick="shareOnLinkedIn()"
+              class="bg-blue-800 text-white px-4 py-2 rounded shadow hover:bg-blue-900 transition flex items-center gap-2"
+            >
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Articol 2 -->
+    <div
+      id="articol2"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center p-4 transition-opacity"
+    >
+      <div
+        class="bg-white w-full max-w-4xl max-h-[90vh] rounded-xl flex flex-col overflow-hidden relative shadow-2xl"
+      >
+        <div
+          class="bg-mcm-dark text-white p-4 flex justify-between items-center shrink-0"
+        >
+          <h3 class="font-bold text-lg text-mcm-light">
+            Educație Medicală Veterinară
+          </h3>
+          <button
+            onclick="closeArticle('articol2')"
+            class="text-white hover:text-red-500 text-3xl leading-none transition"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto modal-scroll text-gray-700 space-y-5">
+          <h2 class="text-3xl font-bold text-mcm-dark">
+            De ce este obligatorie sterilizarea? Mituri vs Realitate
+          </h2>
+          <img
+            src="https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&w=1000&q=80"
+            alt="Sterilizare"
+            class="w-full h-72 object-cover rounded-lg"
+          />
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Mitul: „Trebuie să aibă măcar un rând de pui”
+          </h4>
+          <p>
+            Acesta este
+            <strong>cel mai fals mit din medicina veterinară</strong>. Sarcina
+            și nașterea consumă enorm de mult din resursele femelei, iar ideea
+            că „nașterea o va calma” nu are absolut niciun fundament științific.
+            Din contra, sterilizarea timpurie le salvează efectiv viața.
+          </p>
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Riscurile majore la femelele nesterilizate:
+          </h4>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong>Piometrul (Infecția uterină):</strong> O urgență medicală
+              chirurgicală, extrem de frecventă la femelele adulte. Uterul se
+              umple cu puroi (până la câteva kilograme). Netratat prin operație
+              imediată, animalul moare de septicemie.
+            </li>
+            <li>
+              <strong>Tumorile mamare (Cancerul):</strong> Dacă sterilizăm o
+              femelă înainte de primul ei ciclu de călduri, riscul de cancer
+              mamar este de aproape 0%. Odată ce o lăsăm să aibă mai multe
+              cicluri, riscul crește vertiginos, iar la bătrânețe șansele
+              apariției tumorilor sunt de peste 60%.
+            </li>
+          </ul>
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Avantajele castrării la masculi
+          </h4>
+          <p>
+            La masculi, operația elimină direct riscul de cancer testicular și
+            scade masiv riscul de hiperplazie a prostatei. La nivel
+            comportamental, previne tendința de evadare. Peste 80% din animalele
+            lovite de mașini sunt masculi necastrați plecați în căutarea
+            femelelor în călduri.
+          </p>
+          <p>
+            <em
+              >Sfatul Medicului: Da, metabolismul încetinește după sterilizare,
+              de aceea este nevoie să ajustăm porția de hrană pentru a preveni
+              obezitatea. Sterilizarea nu îngrașă direct, ci hrana în exces!</em
+            >
+          </p>
+
+          <!-- SHARE BUTTONS -->
+          <div
+            class="mt-8 pt-4 border-t border-gray-200 flex items-center gap-4"
+          >
+            <span class="font-bold text-mcm-dark">Distribuie și educă:</span>
+            <button
+              onclick="shareOnFacebook()"
+              class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+            <button
+              onclick="shareOnLinkedIn()"
+              class="bg-blue-800 text-white px-4 py-2 rounded shadow hover:bg-blue-900 transition flex items-center gap-2"
+            >
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Articol 3 -->
+    <div
+      id="articol3"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center p-4 transition-opacity"
+    >
+      <div
+        class="bg-white w-full max-w-4xl max-h-[90vh] rounded-xl flex flex-col overflow-hidden relative shadow-2xl"
+      >
+        <div
+          class="bg-mcm-dark text-white p-4 flex justify-between items-center shrink-0"
+        >
+          <h3 class="font-bold text-lg text-mcm-light">
+            Educație Medicală Veterinară
+          </h3>
+          <button
+            onclick="closeArticle('articol3')"
+            class="text-white hover:text-red-500 text-3xl leading-none transition"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto modal-scroll text-gray-700 space-y-5">
+          <h2 class="text-3xl font-bold text-mcm-dark">
+            Mitul suprem: „Mănâncă, deci e bine”
+          </h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2018/01/28/12/37/cat-3113513_1280.jpg"
+            alt="Consult"
+            class="w-full h-72 object-cover rounded-lg"
+          />
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            De ce animalele își ascund durerea?
+          </h4>
+          <p>
+            Cea mai mare greșeală este să evaluăm starea de sănătate a unui
+            câine sau a unei pisici raportându-ne exclusiv la pofta de mâncare.
+            Ca mecanism de supraviețuire moștenit din sălbăticie (unde animalele
+            slabe devin pradă), câinii și în special pisicile sunt experți în
+            a-și ascunde vulnerabilitatea și durerea (stoicism).
+          </p>
+          <p>
+            Până în momentul în care animalul tău renunță complet la mâncare,
+            afecțiunea a ajuns cel mai probabil deja într-un stadiu critic
+            (insuficiență renală avansată, blocaj intestinal sever, infecție
+            generalizată).
+          </p>
+
+          <h4 class="text-xl font-bold text-mcm-dark mt-4">
+            Semne subtile pe care le ignori:
+          </h4>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong>Schimbarea locului de dormit:</strong> Se ascund în
+              dulapuri, sub pat, refuză contactul.
+            </li>
+            <li>
+              <strong>Consumul excesiv de apă (Polidipsie):</strong> Dacă
+              animalul golește brusc bolul de apă de mai multe ori pe zi, poate
+              indica diabet, probleme renale sau infecții grave.
+            </li>
+            <li>
+              <strong>Agresivitatea subită:</strong> Un animal blând care brusc
+              mârâie când este atins într-un anumit loc semnalează clar o zonă
+              dureroasă.
+            </li>
+            <li>
+              <strong>Halitoza (Mirosul foarte urât din gură):</strong> Mulți
+              cred că e normal "pentru că e câine/pisică". Fals. Tartrul extrem
+              ascunde infecții gingivale care trimit bacterii direct către
+              mușchiul inimii (endocardită) sau la rinichi.
+            </li>
+          </ul>
+
+          <p class="font-bold mt-4 text-red-600">
+            Concluzia: Nu așteptați agravarea simptomelor! Alegeți screening-ul
+            anual (analize de sânge de rutină) – singura modalitate care ne
+            permite să "vedem" problemele ascunse înainte de a deveni urgențe.
+          </p>
+
+          <!-- SHARE BUTTONS -->
+          <div
+            class="mt-8 pt-4 border-t border-gray-200 flex items-center gap-4"
+          >
+            <span class="font-bold text-mcm-dark">Distribuie și educă:</span>
+            <button
+              onclick="shareOnFacebook()"
+              class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+            <button
+              onclick="shareOnLinkedIn()"
+              class="bg-blue-800 text-white px-4 py-2 rounded shadow hover:bg-blue-900 transition flex items-center gap-2"
+            >
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTURI GENERALE -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Init Animații
+      AOS.init({ once: true, offset: 100, duration: 800 });
+
+      // Modale Articole
+      function openArticle(modalId) {
+        document.getElementById(modalId).classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeArticle(modalId) {
+        document.getElementById(modalId).classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      // Inchidere modal click fundal negru
+      window.onclick = function (event) {
+        if (event.target.classList.contains("bg-black")) {
+          event.target.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+        }
+      };
+
+      // Funcții pentru Social Share (Folosesc URL-ul site-ului pe care te afli)
+      function shareOnFacebook() {
+        var url = encodeURIComponent(window.location.href);
+        window.open(
+          "https://www.facebook.com/sharer/sharer.php?u=" + url,
+          "facebook-share-dialog",
+          "width=800,height=600",
+        );
+        return false;
+      }
+
+      function shareOnLinkedIn() {
+        var url = encodeURIComponent(window.location.href);
+        window.open(
+          "https://www.linkedin.com/sharing/share-offsite/?url=" + url,
+          "linkedin-share-dialog",
+          "width=800,height=600",
+        );
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,356 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container img{
+    height: 60px;
+    width: 60px;
+    border-radius:50%;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: sans-serif;
+    background: #efeafb;
+}
+
+.container{
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fbeaf6;
+    border-radius: 6px;
+    box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
+                10px 10px 15px rgba(70,70,70,0.12);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.container div{
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
+    10px 10px 15px rgba(70,70,70,0.12);
+    cursor: pointer;
+}
+
+.container div:hover{
+    transform: scale(1.08);
+}
+.lang {
+    top: 9%;
+    left: 37.1%;
+    display: flex;
+    position: absolute;
+}
+.logo {
+    top: 2.8%;
+    left: 38%;
+    display: flex;
+    position: absolute;
+}
+.home {
+    top: 3%;
+    left: 41%;
+    display: flex;
+    position: absolute;
+}
+.lang2 {
+    top: 9%;
+    left: 41%;
+    display: flex;
+    position: absolute;
+}
+
+.home img{
+   /*width:45px;*/
+    height: 45px;
+    border-radius: 50%  50%  50% 0 ;
+    background-color: #B4FEE7;
+    border: 1px solid purple;
+    padding: 8px;
+}
+.lang2 img{
+   /*width:45px;*/
+    height: 45px;
+    border-radius: 0  50% 50% 50%;
+     border: 1px solid purple;
+    background-color: #B4FEE7;
+    padding: 8px;
+}
+.lang img{
+   /*width:45px;*/
+    height: 45px;
+    border-radius: 50% 0 50% 50%;
+     border: 1px solid purple;
+    background-color: #B4FEE7;
+    padding: 8px;
+}
+.logo img{
+   width:45px;
+    height: 45px;
+    border-radius: 50%  50% 0 50%;
+     border: 1px solid purple;
+    background-color: #B4FEE7;
+    padding: 8px;
+}
+h1{
+    position: absolute;
+    top: 7%;
+    left: 55%;
+    transform: translateX(-50%);
+    color: #755d6d;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.animaleName{
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6b616a;
+    background: #eaf6fb;
+    box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
+    10px 10px 15px rgba(70,70,70,0.12);
+}
+@media screen and (max-width:1500px) {
+ 
+
+ lang {
+    top: 9%;
+    left: 37.1%;
+}
+.logo {
+    top: 4%;
+    left: 38%;
+}
+.home {
+    top: 4%;
+    left: 41%;
+}
+.lang2 {
+    top: 9%;
+    left: 41%;
+}
+
+.home img{
+    height: 45px;
+    padding: 8px;
+}
+.lang2 img{
+    height: 45px;
+    padding: 8px;
+}
+.lang img{
+    height: 45px;
+    padding: 8px;
+}
+.logo img{
+    width:45px;
+    height: 45px;
+    padding: 8px;
+}
+h1{
+    top: 7%;
+    left: 55%;
+}
+
+}
+@media screen and (max-width:900px) {
+ 
+
+ .logo {
+    top: 2.9%;
+    left: 27%;
+}
+.home {
+    top: 3%;
+    left: 31%;
+  
+}
+.lang {
+    top: 8%;
+    left: 26.1%;
+   
+}
+.lang2 {
+    top: 8%;
+    left: 31%;
+    
+}
+
+
+
+.home img{
+    height: 35px;
+    
+    padding: 8px;
+}
+.lang2 img{
+    height: 35px;
+  
+    padding: 8px;
+}
+.lang img{
+    height: 35px;
+   
+    padding: 8px;
+}
+.logo img{
+   width:35px;
+height: 35px;
+   
+}
+h1{
+    top: 5%;
+    left: 55%;
+    font-size: 30px;
+}
+
+
+ .container{
+    height: 300px;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    
+}
+
+.container div{
+    height: 80px;
+    width: 80px;
+    
+}
+
+}
+@media screen and (max-width:700px) {
+ 
+
+ .logo {
+    top: 10%;
+    left: 25%;
+}
+.home {
+    top: 10%;
+    left: 32%;
+  
+}
+.lang {
+    top: 10%;
+    left: 25%;
+   
+}
+.lang2 {
+    top: 5.15%;
+    left: 32%;
+    
+}
+
+
+
+.home img{
+    height: 35px;
+    
+    padding: 8px;
+}
+.lang2 img{
+    height: 35px;
+  
+    padding: 8px;
+}
+.lang img{
+    height: 35px;
+   
+    padding: 8px;
+}
+.logo img{
+   width:35px;
+height: 35px;
+   
+}
+h1{
+    top: 5%;
+    left: 65%;
+    font-size: 20px;
+}
+ .container {
+    top: 55%;
+ }
+ .animaleName{
+    top: 88%;
+}
+}
+@media screen and (max-width:480px) {
+ 
+
+ .logo {
+    top: 1.8%;
+    left: 20%;
+}
+.home {
+    top: 2%;
+    left: 31%;
+  
+}
+.lang {
+    top: 8.05%;
+    left: 17.1%;
+   
+}
+.lang2 {
+    top: 8.15%;
+    left: 31.1%;
+    
+}
+
+.home img{
+    height: 35px;
+    
+    padding: 8px;
+}
+.lang2 img{
+    height: 35px;
+  
+    padding: 8px;
+}
+.lang img{
+    height: 35px;
+   
+    padding: 8px;
+}
+.logo img{
+   width:35px;
+height: 35px;
+   
+}
+h1{
+    top: 5%;
+    left: 65%;
+    font-size: 20px;
+}
+ .container {
+    top: 55%;
+ }
+ .animaleName{
+    top: 88%;
+}
+}

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitație la Petrecere</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #34c74c67, #12b9e788);
+        flex-direction: column;
+        font-family: "Arial", sans-serif;
+      }
+
+      .background {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .gift-box {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #ff6f61;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        animation: float 5s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-50px) translateX(50px) rotate(90deg);
+        }
+        50% {
+          transform: translateY(0) translateX(100px) rotate(180deg);
+        }
+        75% {
+          transform: translateY(50px) translateX(50px) rotate(270deg);
+        }
+        100% {
+          transform: translateY(0) translateX(0) rotate(360deg);
+        }
+      }
+
+      .gift-box:nth-child(1) {
+        top: 10%;
+        left: 5%;
+        animation-duration: 6s;
+        background-color: #ff6f61;
+      }
+
+      .gift-box:nth-child(2) {
+        top: 20%;
+        left: 30%;
+        animation-duration: 8s;
+        background-color: #6b5b95;
+      }
+
+      .gift-box:nth-child(3) {
+        top: 50%;
+        left: 10%;
+        animation-duration: 7s;
+        background-color: #88b04b;
+      }
+
+      .gift-box:nth-child(4) {
+        top: 70%;
+        left: 40%;
+        animation-duration: 9s;
+        background-color: #ffa500;
+      }
+
+      .gift-box:nth-child(5) {
+        top: 30%;
+        left: 70%;
+        animation-duration: 5s;
+        background-color: #92a8d1;
+      }
+
+      .gift-box:nth-child(6) {
+        top: 60%;
+        left: 80%;
+        animation-duration: 10s;
+        background-color: #f7cac9;
+      }
+
+      .gift-box:nth-child(7) {
+        top: 80%;
+        left: 20%;
+        animation-duration: 7s;
+        background-color: #955251;
+      }
+
+      .gift-box:nth-child(8) {
+        top: 40%;
+        left: 50%;
+        animation-duration: 6s;
+        background-color: #b565a7;
+      }
+      .ribbon {
+        width: 401px;
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        margin-left: -200.5px;
+        text-align: center;
+        font-size: 20px !important;
+        background: #2da3d6;
+        background: linear-gradient(to bottom, #2da3d6, #266dab);
+        box-shadow: rgba(0, 0, 0, 0.3) 0 1px 1px;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+      .ribbon p {
+        font-size: 37px !important;
+        color: #ffffff;
+        text-shadow: #53d2d6 0 1px 0;
+        margin: 0px;
+        padding: 7px 10px;
+      }
+
+      .ribbon:before,
+      .ribbon:after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -1em;
+        border: 1.5em solid #1750c2;
+        z-index: -1;
+      }
+
+      .ribbon:before {
+        left: -2em;
+        border-right-width: 1.5em;
+        border-left-color: transparent;
+        box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
+      }
+
+      .ribbon:after {
+        right: -2em;
+        border-left-width: 1.5em;
+        border-right-color: transparent;
+        box-shadow: rgba(0, 0, 0, 0.4) -1px 1px 1px;
+      }
+
+      .ribbon .ribbon-content:before,
+      .ribbon .ribbon-content:after {
+        border-color: #2da3d6 transparent transparent transparent;
+        position: absolute;
+        display: block;
+        border-style: solid;
+        bottom: -1em;
+        content: "";
+      }
+
+      .ribbon .ribbon-content:before {
+        left: 0;
+        border-width: 1em 0 0 1em;
+      }
+
+      .ribbon .ribbon-content:after {
+        right: 0;
+        border-width: 1em 1em 0 0;
+      }
+
+      @media (max-width: 768px) {
+        .ribbon {
+          width: 90%;
+          margin-left: -45%;
+          font-size: 16px !important;
+        }
+
+        .ribbon p {
+          font-size: 24px !important;
+        }
+
+        .ribbon:before,
+        .ribbon:after {
+          border-width: 1em;
+        }
+
+        .ribbon:before {
+          left: -1.5em;
+        }
+
+        .ribbon:after {
+          right: -1.5em;
+        }
+      }
+      .envelope {
+        margin-top: 100px;
+        position: absolute;
+        width: 600px;
+        height: 400px;
+        background: #034f84;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+      }
+      .flap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background: #023858;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transition: transform 0.5s;
+      }
+      .invitation {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 550px;
+        height: 0px;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow-y: auto;
+        transition: bottom 1s, height 1s;
+        text-align: center;
+        transition: bottom 1s;
+      }
+      .envelope.open .flap {
+        transform: rotateX(180deg);
+      }
+      .envelope.open .invitation {
+        bottom: 50px;
+        height: 300px;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+      .invitation h2 {
+        font-size: 2.5em;
+        color: #034f84;
+        margin-bottom: 20px;
+      }
+      .invitation p {
+        font-size: 1.2em;
+        color: #34495e;
+        line-height: 1.6;
+      }
+      .invitation a {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        color: #034f84;
+      }
+      .invitation a.whatsapp-link {
+        background-color: #25d366;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 30px;
+      }
+      .invitation a.whatsapp-link:hover {
+        background-color: #128c7e;
+      }
+      .signature {
+        margin-top: 20px;
+        font-style: italic;
+        color: #034f84;
+        font-size: 1.1em;
+      }
+      footer {
+        position: absolute;
+        bottom: 0;
+        font-size: 22px;
+        color: #062527;
+        z-index: 2;
+      }
+      footer a {
+        text-decoration: none;
+        color: #f4c713;
+        text-shadow: 0.5px 0.5px 0.5px #000;
+      }
+      footer a:hover {
+        color: #25d366;
+      }
+      @media (max-width: 768px) {
+        .envelope {
+          width: 90%;
+          height: 400px;
+          margin-top: 40px;
+        }
+        .flap {
+          height: 200px;
+        }
+        .invitation {
+          bottom: -100px;
+          width: 90%;
+          padding: 10px;
+        }
+        .invitation h2 {
+          font-size: 2em;
+        }
+        .invitation p {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background">
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+      <div class="gift-box"></div>
+    </div>
+    <div class="ribbon">
+      <div class="ribbon-content">
+        <p><b>Invitație specială</b></p>
+      </div>
+    </div>
+
+    <div class="envelope" onclick="openEnvelope()">
+      <div class="flap"></div>
+      <div class="invitation">
+        <h2>Mare petrecere!</h2>
+        <p id="typing-text"></p>
+        <a
+          href="https://www.google.com/maps?q=Mikey'S+Paradise+Resita"
+          class="location-link"
+          target="_blank"
+          >Vezi locația pe hartă</a
+        >
+        <a
+          href="https://wa.me/40733402340"
+          class="whatsapp-link"
+          target="_blank"
+          >Contactează-ne pe WhatsApp</a
+        >
+        <p class="signature">Cu drag,<br />Cosmina şi Cristian</p>
+      </div>
+    </div>
+    <footer>
+      Made By
+      <a href="https://www.cosminauzum.com" target="_blank"
+        >www.cosminauzum.com</a
+      >
+    </footer>
+
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script>
+      let textAnimated = false;
+
+      function openEnvelope() {
+        const envelope = document.querySelector(".envelope");
+        envelope.classList.toggle("open");
+        
+        if (envelope.classList.contains("open") && !textAnimated) {
+          animateText();
+        }
+      }
+
+      function animateText() {
+        textAnimated = true;
+        const typingText = document.getElementById("typing-text");
+        const invitation = document.querySelector(".invitation");
+
+        new TypeIt("#typing-text", {
+          strings: `
+                   Vă invităm cu drag la o petrecere de neuitat pentru a sărbători împlinirea a 36 de ani de viață a celui mai minunat soț și tată, Cristian!<br>
+                    Haideți să-l sărbătorim împreună!<br><br>
+                   
+                    Vă așteptăm cu brațele deschise, voie bună și multă energie la <strong>Mickey's Paradise, Reșița</strong> în data de <strong>6 aprilie 2025</strong>, începând cu ora <strong>14:00</strong>.
+                `,
+          speed: 50,
+          waitUntilVisible: true,
+          html: true,
+          afterStep: () => {
+            invitation.scrollTo({
+              top: typingText.scrollHeight,
+              behavior: "smooth"
+            });
+          },
+          afterComplete: () => {
+            if (window.innerWidth <= 768) {
+              invitation.scrollTo({
+                top: invitation.scrollHeight,
+                behavior: "smooth"
+              });
+            }
+          }
+        }).go();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,406 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.cursor {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cursor-bee {
+    top: -15px;
+    left: -13px;
+    z-index: 1000;
+}
+
+/* loader */
+/* Stiluri pentru loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    /* Fundal alb pentru întreaga pagină */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.hexagon-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+
+.hexagon {
+    position: absolute;
+    width: 40px;
+    height: 23px;
+    background-color: #ffc800eb;
+}
+
+.hexagon:before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 11.5px solid #ffc800eb;
+}
+
+.hexagon:after {
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 11.5px solid #ffc800eb;
+}
+
+.hexagon.hex_1 {
+    top: 0px;
+    left: 0px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.214s;
+}
+
+.hexagon.hex_2 {
+    top: 0px;
+    left: 42px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.428s;
+}
+
+.hexagon.hex_3 {
+    top: 36px;
+    left: 63px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.642s;
+}
+
+.hexagon.hex_4 {
+    top: 72px;
+    left: 42px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.856s;
+}
+
+.hexagon.hex_5 {
+    top: 72px;
+    left: 0px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 1.07s;
+}
+
+.hexagon.hex_6 {
+    top: 36px;
+    left: -21px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 1.284s;
+}
+
+.hexagon.hex_7 {
+    top: 36px;
+    left: 21px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 1.498s;
+}
+
+@keyframes Animasearch {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    15%,
+    50% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    65% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* .hexagon-container {
+      width: 50vw;
+      height: 50vw;
+    }
+  
+    .hexagon {
+      width: 12vw;
+      height: 7vw;
+    } */
+    iframe {
+        width: 300px;
+        height: 400px;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .footer h2 {
+        font-size: 1.5em;
+    }
+}
+
+h1,
+h2 {
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-size: 2em;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgb(255, 215, 0);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.logo-img {
+    width: 40px;
+    /* Ajustează dimensiunea imaginii */
+    height: 40px;
+    /* Ajustează dimensiunea imaginii */
+    margin-right: 10px;
+    /* Spațiu între imagine și text */
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin: 0 10px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    display: block;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 215, 0);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    text-align: center;
+
+}
+
+.navbar-link:hover {
+    background-color: rgb(255, 215, 0);
+    color: rgb(0, 0, 0);
+}
+
+/* Mobile Menu */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+    margin: 4px 0;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgb(255, 215, 0);
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .navbar-item {
+        margin: 10px 0;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+}
+
+/* Sections */
+.home-section,
+.despre-section,
+.galerie-section,
+.review-section,
+.contact-section {
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 15px solid rgb(255, 215, 0);
+    box-shadow: 10px 15px 15px rgb(255, 215, 0);
+}
+
+/* Home Section */
+.home-section {
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 215, 0);
+    font-weight: bold;
+    font-size: larger;
+
+}
+
+.home-section h1 {
+    background-color: #ffd9003c;
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    width: auto;
+    padding: 10px;
+}
+
+.home-section p {
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    background-color: #ffd9003c;
+    width: auto;
+    padding: 10px;
+}
+
+/* Despre Section */
+.despre-section {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 215, 0);
+}
+
+/* Galerie Section */
+.galerie-section {
+    background-color: rgb(255, 215, 0);
+    color: rgb(0, 0, 0);
+}
+
+/* Review Section */
+.review-section {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 215, 0);
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: rgb(255, 215, 0);
+    color: rgb(0, 0, 0);
+}
+
+.contact-section p a {
+    color: rgb(0, 0, 0);
+}
+
+/* Galerie */
+.galerie-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.galerie-img {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    object-fit: cover;
+}
+
+/* Contact */
+.map-container {
+    margin-top: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 215, 0);
+    text-align: center;
+    padding: 20px;
+}
+
+.footer p {
+    padding: 20px;
+}
+
+.footer p:hover {
+    background-color: rgb(255, 215, 0);
+    padding: 20px;
+    color: rgb(0, 0, 0);
+}
+
+.footer a {
+    color: rgb(255, 215, 0);
+    /* Culoarea inițială a linkului */
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration-line: underline;
+    /* Subliniere */
+    text-decoration-style: wavy;
+    /* Stil ondulat */
+    color: rgb(0, 0, 0);
+    /* Culoarea textului */
+}
+
+.footer p:hover a {
+    color: rgb(0, 0, 0);
+    /* Culoarea linkului când paragraful este în hover */
+}

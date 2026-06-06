@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kuromi & Melody Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="logo.png" alt="Kuromi & Melody Logo" class="logo" />
+        <h1>Kuromi & Melody Gallery</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Acasă</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#about">Despre</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="theme-toggle">Schimbă tema</button></li>
+          <li><button id="color-picker">Schimbă culori</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <h2>Bun venit în lumea Kuromi și Melody!</h2>
+          <p>
+            Descoperă cele mai drăguțe poze cu cele două personaje adorabile din
+            Sanrio.
+          </p>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery-section">
+        <h2>Galerie Foto</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="kuromi.jpg" alt="Kuromi 1" />
+            <div class="overlay">Kuromi</div>
+          </div>
+          <div class="gallery-item">
+            <img src="melody.jpg" alt="Melody 1" />
+            <div class="overlay">Melody</div>
+          </div>
+          <div class="gallery-item">
+            <img src="kuromi2.jpg" alt="Kuromi 2" />
+            <div class="overlay">Kuromi</div>
+          </div>
+          <div class="gallery-item">
+            <img src="melody2.jpg" alt="Melody 2" />
+            <div class="overlay">Melody</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <h2>Despre Noi</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Acest site este dedicat fanilor Kuromi și My Melody, două dintre
+              cele mai iubite personaje Sanrio.
+            </p>
+            <p>
+              Kuromi este un iepure negru cu un aer răutăcios dar adorabil, iar
+              My Melody este un iepure alb dulce și prietenos.
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="kuromi.jpg" alt="Kuromi" />
+            <img src="melody.jpg" alt="Melody" />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <h2>Contact</h2>
+        <form class="contact-form">
+          <input type="text" placeholder="Nume" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Mesajul tău" required></textarea>
+          <button type="submit">Trimite</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>
+        &copy; 2025 Kuromi & Melody Gallery. Toate drepturile rezervate.<br />
+        Realizat de
+        <a href="https://www.cosminauzum.com/" target="_blank" class="link"
+          >Cosmina Uzum</a
+        >
+      </p>
+    </footer>
+
+    <div id="color-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Personalizează culorile site-ului</h3>
+        <div class="color-options">
+          <div class="color-option">
+            <label for="primary-color">Culoare primară:</label>
+            <input type="color" id="primary-color" value="#ff66b2" />
+          </div>
+          <div class="color-option">
+            <label for="secondary-color">Culoare secundară:</label>
+            <input type="color" id="secondary-color" value="#9c27b0" />
+          </div>
+          <div class="color-option">
+            <label for="background-color">Fundal:</label>
+            <input type="color" id="background-color" value="#ffffff" />
+          </div>
+          <div class="color-option">
+            <label for="text-color">Text:</label>
+            <input type="color" id="text-color" value="#333333" />
+          </div>
+          <button id="apply-colors">Aplică culori</button>
+          <button id="reset-colors">Resetează la implicit</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

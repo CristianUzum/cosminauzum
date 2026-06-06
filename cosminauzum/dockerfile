@@ -1,0 +1,15 @@
+FROM node:24-alpine
+# Set the working directory inside the container to Nginx's default public folder
+WORKDIR /usr/share/nginx/html
+
+# Remove any default static files that come pre-installed with Nginx
+RUN rm -rf ./*
+
+# Copy all files and folders from your current directory into the container
+COPY . .
+
+# Expose port 80 to the outside world
+EXPOSE 80
+
+# Start Nginx and keep it running in the foreground
+CMD ["nginx", "-g", "daemon off;"]

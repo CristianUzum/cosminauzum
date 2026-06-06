@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo.jpg" type="image/png" />
+    <title>Listă de Cumpărături</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:type" content="website" />
+    <meta name="author" content="Cosmina Uzum" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo-container">
+          <img src="logo.jpg" alt="Logo" class="logo" />
+        </div>
+        <h1>Listă de Cumpărături</h1>
+      </header>
+      <div class="language-buttons-container">
+        <div class="language-buttons">
+          <button data-lang="ro">RO</button>
+          <button data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="fr">FR</button>
+        </div>
+      </div>
+      <button id="select-all-products">Selectează toate produsele</button>
+      <button id="deselect-all-products">Deselectează toate produsele</button>
+      <div class="categories">
+        <!-- Categorii predefinite -->
+        <div class="category" id="fructe-legume">
+          <h2>Fructe și Legume</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="conserve">
+          <h2>Conserve</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="patiserie-brutarie">
+          <h2>Patiserie și Brutărie</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="bauturi">
+          <h2>Băuturi</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="lactate-carne">
+          <h2>Lactate și Carne</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="hartie-igiena">
+          <h2>Hârtie și Igienă</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="congelate">
+          <h2>Congelate</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="animale">
+          <h2>Animale</h2>
+          <ul></ul>
+        </div>
+        <div class="category" id="casa-bucatarie">
+          <h2>Pentru Casă și Bucătărie</h2>
+          <ul></ul>
+        </div>
+      </div>
+      <div class="add-product">
+        <input
+          type="text"
+          placeholder="Adaugă un produs"
+          class="product-input"
+        />
+        <input
+          type="number"
+          placeholder="Cantitate"
+          class="quantity-input"
+          min="1"
+        />
+        <select class="unit-input">
+          <option value="buc">buc</option>
+          <option value="g">g</option>
+          <option value="kg">kg</option>
+          <option value="ml">ml</option>
+          <option value="L">L</option>
+          <option value="pachet">pachet</option>
+        </select>
+        <select class="category-input">
+          <option value="fructe-legume">Fructe și Legume</option>
+          <option value="conserve">Conserve</option>
+          <option value="patiserie-brutarie">Patiserie și Brutărie</option>
+          <option value="bauturi">Băuturi</option>
+          <option value="lactate-carne">Lactate și Carne</option>
+          <option value="hartie-igiena">Hârtie și Igienă</option>
+          <option value="congelate">Congelate</option>
+          <option value="animale">Animale</option>
+          <option value="casa-bucatarie">Pentru Casă și Bucătărie</option>
+        </select>
+        <button class="add-btn">Adaugă</button>
+      </div>
+      <button id="save">Salvează</button>
+      <button id="share">Partajează pe WhatsApp</button>
+    </div>
+    <footer>
+      <div class="footer-rights">
+        <p><span id="currentYear"></span></p>
+        <a
+          href="https://www.cosminauzum.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >www.cosminauzum.com</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      // Actualizează anul curent automat
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

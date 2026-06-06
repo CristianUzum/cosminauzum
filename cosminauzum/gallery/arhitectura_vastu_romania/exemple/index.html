@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exemple</title>
+    <link rel="icon" type="image/gif/png" href="../assets/svg/copac.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    
+  	<div class="nav"id="navBar">
+                <ul id="item">
+                <a href="../msv/index.html"><img src="../assets/svg/logo2.png"><a>
+               
+              <li><a href="../dece/index.html">DE CE?</a></li>
+	            <li><a href="../cercetare/index.html">cercetare</a></li>
+	            <li><a href="../video/index.html">video</a></li>
+              <li><a href="index.html">exemple</a></li>
+              <li><a href="../traditii/index.html">traditii</a></li>
+              <li><a href="../eco/index.html">eco</a></li>
+              <li><a href="../conexe/index.html">conexe</a></li>
+              <li><a href="../contact/index.html">contact</a></li>
+                <div class="container-1">
+              <span class="icon"><i class="fa fa-search"></i></span>
+              <input type="search" id="search" placeholder="Search..." />
+              </div>
+
+            </div>
+    <div class="sidebar">
+      <a class="home" href="../index.html"><i class="fas fa-home"></i></a>
+      <label for="check">
+            <img src="../assets/svg/exemple.png" id="sidebar_btn"></i>
+      </label>
+         <h4><span>Introduction</span></h4>
+      <a href="photo/index.html"  onclick="showGallery()"><span>Photos</span></a>
+      <a href="gallery/index.html"  onclick="showGallery()"><span>Gallery</span></a>
+      <a href="#"><span>Tables</span></a>
+      <a href="#"><span>Forms</span></a>
+      <a href="#"><span>About</span></a>
+      <a href="#"><span>Settings</span></a>
+    </div>
+    <div class="content">
+    
+
+        <a href="javascript:adLink();" onMouseOver="status=url[ex_ct]; return true;" onMouseOut="status=''">
+  <img name="Imagine" src="../assets/img/scari.jpg" border="0">
+</a>
+
+    </div>
+
+    <script type="text/javascript">
+      function showGallery(file){
+         myPhoto.src = file;
+       }
+//function load(file) {
+
+    // document.getElementById("myPhoto").innerHTML='<object type="text/html" data="flex.html" ></object>';
+//}
+
+    src = [ "../assets/img/casa.jpg", "../assets/img/sunrise.jpg", "../assets/img/sunrise2.jpg", "../assets/img/rainbow.jpg"]
+
+    url = ["https://www.maharishivastu.org/gallery",
+      "https://www.maharishivastu.org/gallery#photos-1",
+      "https://www.maharishivastu.org/gallery#photos-2",
+      "https://www.maharishivastu.org/gallery#photos-3"]
+
+      durata = 5;
+
+      var ex_ads=[]; var ex_ct=0;
+function schimbaAd() {
+  var ex_nc=(ex_ct+1)%src.length;
+  if (ex_ads[ex_nc] && (ex_ads[ex_nc].complete || ex_ads[ex_nc].complete==null)) {
+    document["Imagine"].src = ex_ads[ex_ct=ex_nc].src;
+  }
+  ex_ads[ex_nc=(ex_ct+1)%src.length] = new Image;
+  ex_ads[ex_nc].src = src[ex_nc];
+  setTimeout("schimbaAd()",durata*1000);
+}
+function adLink() {
+  location.href = url[ex_ct];
+}
+
+onload = function() {
+  if (document.images)
+    schimbaAd();
+}
+    
+    </script>
+</body>
+</html>
+      

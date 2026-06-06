@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --purple: #6a4b8d;
+    /* Muted Purple */
+    --purple2: #5b3f77;
+    /* Darker Purple */
+    --purple3: #2d1f43;
+    /* Deep, muted Purple */
+    --lightpurple: #e9e4f0;
+    /* Light Lavender */
+    --lightpurple2: #aa86b5;
+    /* Soft Purple */
+    --purple_transparent: #7436bbc2;
+
+    --pink: #a23a72;
+    /* Refined, muted pink */
+    --pink_transparent: #b520a4ad;
+
+    --orange: #d35400;
+    /* Muted Burnt Orange */
+    --lightorange: #f39c12;
+    /* Soft Amber Orange */
+    --lightorange_transparent: #f39d12b0;
+
+    --turquoise: #4db6ac;
+    /* Softened Turquoise */
+
+    --white: #f9f9f9;
+    /* Softer white */
+
+    --black: rgba(0, 0, 0, 0.85);
+    /* Slightly stronger black */
+    --grey: #6e6e6e;
+    /* Neutral Mid-grey */
+    --lightgrey: #b2b2b2;
+    /* Muted Light Grey */
+}
+
+/* Envelope button */
+
+
+#envelope {
+    padding: 10px;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#envelope:hover {
+    color: var(--lightorange);
+
+}
+
+/* Chat window styles */
+/* Stiluri pentru fereastra de chat */
+#chat-box {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 320px;
+    max-height: 500px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--lightpurple);
+    z-index: 999;
+}
+
+/* Ascunde chat-ul când este necesar */
+.hidden {
+    display: none;
+}
+
+/* Stiluri pentru capul chat-ului */
+#chat-header {
+    background: linear-gradient(42deg, var(--purple) 0.01%, var(--pink) 100%);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    border-bottom: 1px solid var(--lightpurple);
+}
+
+#chat-header h4 {
+    margin: 0;
+}
+
+/* Stiluri pentru conținutul chat-ului */
+#chat-content {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 400px;
+    background-color: #f9f9f9;
+}
+
+/* Mesajele din chat */
+#chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+/* Stil pentru fiecare mesaj */
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.user-message {
+    background-color: var(--pink);
+    color: white;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: var(--lightpurple);
+    color: #333;
+    align-self: flex-start;
+}
+
+/* Stiluri pentru butoanele de opțiuni */
+#chat-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-option {
+    background: linear-gradient(42deg, var(--purple) 0.01%, var(--pink) 100%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+}
+
+.button-option:hover {
+    background: linear-gradient(180deg, var(--orange) 0%, var(--lightorange) 100%);
+}
+
+#chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid var(--lightpurple);
+    background-color: #ffffff;
+    outline: solid var(--lightorange);
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--lightpurple);
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+}
+
+#send-btn {
+    background: linear-gradient(42deg, var(--purple) 0.01%, var(--pink) 100%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#send-btn:hover {
+    background: linear-gradient(180deg, var(--orange) 0%, var(--lightorange) 100%);
+}
+
+#close-btn {
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: bolder;
+    color: var(--lightpurple);
+}

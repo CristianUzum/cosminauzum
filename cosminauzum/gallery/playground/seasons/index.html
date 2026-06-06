@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seasons</title>
+	<link rel="icon" type="image/gif/png" href="../src/svg/purple.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="nav"id="navBar">
+        <h2>Play<span>Ground</span></h2>
+                 <ul id="item">
+                    <li><a onclick="change1()"><button>Spring</button></a></li>
+			    	<li><a onclick="change2()"><button>Summer</button></a></li>
+			    	<li><a onclick="change3()"><button>Autumn</button></a></li>
+			    	<li><a onclick="change4()"><button>Winter</button></a></li>
+                    	<div class="icon">
+		                     <a class="nav-link" href="../index.html">
+		    						<img src="../src/svg/purple.png" width="30" height="30" class="d-inline-block align-top" alt="">
+		    				</a>
+                    	</div>
+                </ul>
+    </div>
+    	<div id="changing_image"></div>
+<script>
+	function change1 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/1.png" width="300px" height="300px;">'
+	}
+	function change2 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/2.png" width="300px" height="300px;">'
+	}
+	function change3 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/3.png" width="300px" height="300px;">'
+
+	}
+	function change4 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/4.png" width="300px" height="300px;">'
+	}
+</script>
+</body>
+
+</html>

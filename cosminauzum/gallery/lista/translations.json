@@ -1,0 +1,134 @@
+{
+    "ro": {
+        "title": "Lista de cumpărături",
+        "addProductPlaceholder": "Adaugă un produs",
+        "quantityPlaceholder": "Cantitate",
+        "addButton": "Adaugă",
+        "saveButton": "Salvează",
+        "shareButton": "Partajează",
+        "deleteButton": "Șterge",
+        "deselectAllProductsButton": "Deselectează toate produsele",
+        "selectAllProductsButton": "Selectează toate produsele",
+        "saveConfirmation": "Lista a fost salvată!",
+        "shareText": "Lista mea de cumpărături:\n",
+        "noItemsSelected": "Nu ai selectat niciun produs pentru partajare!",
+        "categories": {
+            "fructe-legume": "Fructe și Legume",
+            "conserve": "Conserve",
+            "patiserie-brutarie": "Patiserie și Brutărie",
+            "bauturi": "Băuturi",
+            "lactate-carne": "Lactate și Carne",
+            "hartie-igiena": "Hârtie și Igienă",
+            "congelate": "Congelate",
+            "animale": "Animale",
+            "casa-bucatarie": "Pentru Casă și Bucătărie"
+        },
+        "units": {
+            "buc": "buc",
+            "g": "g",
+            "kg": "kg",
+            "ml": "ml",
+            "L": "L",
+            "pachet": "pachet"
+        }
+    },
+    "en": {
+        "title": "Shopping List",
+        "addProductPlaceholder": "Add a product",
+        "quantityPlaceholder": "Quantity",
+        "addButton": "Add",
+        "saveButton": "Save",
+        "shareButton": "Share",
+        "deleteButton": "Delete",
+        "deselectAllProductsButton": "Deselect all products",
+        "selectAllProductsButton": "Select all products",
+        "saveConfirmation": "List has been saved!",
+        "shareText": "My shopping list:\n",
+        "noItemsSelected": "You haven't selected any items to share!",
+        "categories": {
+            "fructe-legume": "Fruits and Vegetables",
+            "conserve": "Canned Goods",
+            "patiserie-brutarie": "Bakery",
+            "bauturi": "Beverages",
+            "lactate-carne": "Dairy and Meat",
+            "hartie-igiena": "Paper and Hygiene",
+            "congelate": "Frozen",
+            "animale": "Pets",
+            "casa-bucatarie": "Home and Kitchen"
+        },
+        "units": {
+            "buc": "pcs",
+            "g": "g",
+            "kg": "kg",
+            "ml": "ml",
+            "L": "L",
+            "pachet": "pack"
+        }
+    },
+    "de": {
+        "title": "Einkaufsliste",
+        "addProductPlaceholder": "Produkt hinzufügen",
+        "quantityPlaceholder": "Menge",
+        "addButton": "Hinzufügen",
+        "saveButton": "Speichern",
+        "shareButton": "Teilen",
+        "deleteButton": "Löschen",
+        "deselectAllProductsButton": "Alle abwählen",
+        "selectAllProductsButton": "Alle Produkte auswählen",
+        "saveConfirmation": "Liste wurde gespeichert!",
+        "shareText": "Meine Einkaufsliste:\n",
+        "noItemsSelected": "Sie haben keine Artikel zum Teilen ausgewählt!",
+        "categories": {
+            "fructe-legume": "Obst und Gemüse",
+            "conserve": "Konserven",
+            "patiserie-brutarie": "Bäckerei",
+            "bauturi": "Getränke",
+            "lactate-carne": "Milchprodukte und Fleisch",
+            "hartie-igiena": "Papier und Hygiene",
+            "congelate": "Tiefkühlkost",
+            "animale": "Haustiere",
+            "casa-bucatarie": "Haushalt und Küche"
+        },
+        "units": {
+            "buc": "Stück",
+            "g": "g",
+            "kg": "kg",
+            "ml": "ml",
+            "L": "L",
+            "pachet": "Packung"
+        }
+    },
+    "fr": {
+        "title": "Liste de courses",
+        "addProductPlaceholder": "Ajouter un produit",
+        "quantityPlaceholder": "Quantité",
+        "addButton": "Ajouter",
+        "saveButton": "Enregistrer",
+        "shareButton": "Partager",
+        "deleteButton": "Supprimer",
+        "deselectAllProductsButton": "Tout désélectionner",
+        "selectAllProductsButton": "Sélectionner tous les produits",
+        "saveConfirmation": "La liste a été enregistrée!",
+        "shareText": "Ma liste de courses:\n",
+        "noItemsSelected": "Vous n'avez sélectionné aucun article à partager!",
+        "categories": {
+            "fructe-legume": "Fruits et Légumes",
+            "conserve": "Conserves",
+            "patiserie-brutarie": "Boulangerie",
+            "bauturi": "Boissons",
+            "lactate-carne": "Produits Laitiers et Viande",
+            "hartie-igiena": "Papier et Hygiène",
+            "congelate": "Surgelés",
+            "animale": "Animaux",
+            "casa-bucatarie": "Maison et Cuisine"
+        },
+        "units": {
+            "buc": "pièce",
+            "g": "g",
+            "kg": "kg",
+            "ml": "ml",
+            "L": "L",
+            "pachet": "paquet"
+        }
+    }
+}

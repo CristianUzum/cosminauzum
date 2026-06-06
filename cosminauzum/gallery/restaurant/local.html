@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soho House Resița | Restaurant, Bar & Comedy Club</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary: #1a1a1a;
+        --secondary: #c9a769;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --accent: #e63946;
+      }
+
+      body {
+        font-family: "Raleway", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--primary);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .navbar {
+        background-color: rgba(26, 26, 26, 0.9);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        padding: 15px 0;
+      }
+
+      .navbar.scrolled {
+        background-color: var(--primary);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+      }
+
+      .navbar-brand {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navbar-brand h3 {
+        margin: 0;
+        line-height: 1;
+      }
+
+      .navbar-brand small {
+        font-size: 0.7rem;
+      }
+
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding-top: 70px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero p {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        position: relative;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary);
+      }
+
+      .menu-category {
+        margin-bottom: 50px;
+      }
+
+      .menu-item {
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-item h5 {
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .menu-item h5 span:last-child {
+        color: var(--secondary);
+      }
+
+      .menu-item p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+/* Menu Item Cards */
+.menu-item-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-left: 3px solid var(--secondary);
+}
+
+.menu-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-card h5 {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--primary);
+}
+
+.menu-item-card .price {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.menu-item-card .description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Menu Category Headers */
+.menu-category h4 {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-category h4:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--secondary);
+}
+
+/* Menu Filter Buttons */
+.menu-filter button {
+  background: none;
+  border: none;
+  color: var(--dark);
+  margin: 0 10px;
+  padding: 8px 20px;
+  position: relative;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.menu-filter button:hover,
+.menu-filter button.active {
+  background-color: rgba(201, 167, 105, 0.1);
+  color: var(--secondary);
+}
+
+.menu-filter button:after {
+  display: none;
+}
+      .event-card {
+        border: none;
+        border-radius: 0;
+        overflow: hidden;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .event-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .event-date {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: var(--secondary);
+        color: white;
+        padding: 10px 15px;
+        font-weight: bold;
+      }
+
+      .gallery-item {
+        margin-bottom: 30px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .gallery-item img {
+        transition: all 0.5s ease;
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .contact-info {
+        margin-bottom: 30px;
+      }
+
+      .contact-info i {
+        color: var(--secondary);
+        margin-right: 10px;
+      }
+
+      footer {
+        background-color: var(--primary);
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      footer a {
+        color: var(--secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      footer a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
+      footer .col-md-6.text-center.text-md-right p {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+
+      footer .col-md-6.text-center.text-md-right p:hover {
+        opacity: 1;
+      }
+
+      .social-icons a {
+        color: white;
+        margin-right: 15px;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: var(--secondary);
+      }
+
+      .qr-container {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      #qrcode {
+        padding: 10px;
+        background: white;
+        display: inline-block;
+        margin: 0 auto;
+      }
+
+      #qrcode img {
+        margin: 0 auto;
+      }
+
+      .floating-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+        background-color: var(--secondary);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .floating-btn:hover {
+        transform: scale(1.1);
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        z-index: 99;
+        background-color: var(--primary);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        font-size: 1.2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background-color: var(--secondary);
+      }
+
+      /* Menu filter */
+      .menu-filter {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .menu-filter button {
+        background: none;
+        border: none;
+        color: var(--dark);
+        margin: 0 10px;
+        padding: 5px 15px;
+        position: relative;
+        font-weight: 600;
+      }
+
+      .menu-filter button:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: var(--secondary);
+        transition: all 0.3s ease;
+      }
+
+      .menu-filter button:hover:after,
+      .menu-filter button.active:after {
+        width: 100%;
+      }
+
+      .menu-filter button.active {
+        color: var(--secondary);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+        
+        .section {
+          padding: 60px 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        
+        .hero .btn {
+          display: block;
+          width: 80%;
+          margin: 10px auto;
+        }
+        
+        .menu-filter button {
+          margin: 5px;
+          display: inline-block;
+        }
+        
+        .navbar-brand h3 {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+        
+        .section {
+          padding: 40px 0;
+        }
+        
+        .section-title {
+          margin-bottom: 30px;
+        }
+        
+        footer .col-md-6 {
+          text-align: center !important;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <h3 class="m-0">SOHO HOUSE</h3>
+          <small>RESIȚA</small>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Acasă</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Despre Noi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu">Meniu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#events">Evenimente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Galerie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">
+              Soho House Resița
+            </h1>
+            <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+              Restaurant • Bar • Comedy Club
+            </p>
+            <a
+              href="#reservation"
+              class="btn btn-outline-light btn-lg mr-3 animate__animated animate__fadeInUp animate__delay-2s"
+              data-toggle="modal"
+              >Rezervă acum</a
+            >
+            <a
+              href="#menu"
+              class="btn btn-secondary btn-lg animate__animated animate__fadeInUp animate__delay-2s"
+              >Vezi meniul</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section bg-light" id="about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+            <h2 class="section-title">Despre Soho House</h2>
+            <p class="lead">
+              Un loc unde gastronomia întâlnește divertismentul
+            </p>
+            <p>
+              Soho House Resița este mai mult decât un simplu restaurant - este
+              o experiență. Combinația perfectă între mâncăruri delicioase,
+              băuturi rafinate și atmosferă vibrantă ne face un loc unic în
+              inima orașului.
+            </p>
+            <p>
+              Cu o tradiție în preparate italiene precum pizza și paste, dar și
+              cu specialități locale, suntem mândri să fim un punct de întâlnire
+              pentru iubitorii de bună mâncare și distracție.
+            </p>
+            <p>
+              În fiecare săptămână găzduim evenimente de comedy stand-up,
+              transformând cinstea într-o experiență memorabilă.
+            </p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="row">
+              <div class="col-6">
+                <img
+                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                  alt="Restaurant interior"
+                  class="img-fluid mb-3"
+                />
+              </div>
+              <div class="col-6">
+                <img
+                  src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                  alt="Bar area"
+                  class="img-fluid mb-3"
+                />
+              </div>
+              <div class="col-6">
+                <img
+                  src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  alt="Coffee"
+                  class="img-fluid"
+                />
+              </div>
+              <!-- <div class="col-6">
+                <img
+                  src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                  alt="Comedy show"
+                  class="img-fluid"
+                />
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+   <!-- Menu Section -->
+<section class="section" id="menu">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Meniu</h2>
+    <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+      Descoperă aromele noastre
+    </p>
+
+    <!-- Menu Filter -->
+    <div class="menu-filter" data-aos="fade-up" data-aos-delay="200">
+      <button class="active" data-filter="*">Tot meniul</button>
+      <button data-filter=".breakfast">Mic dejun</button>
+      <button data-filter=".soups">Supe</button>
+      <button data-filter=".pizza">Pizza</button>
+      <button data-filter=".pasta">Paste</button>
+      <button data-filter=".sandwich">Sandwichuri</button>
+      <button data-filter=".desserts">Deserturi</button>
+      <button data-filter=".drinks">Băuturi</button>
+    </div>
+
+    <!-- QR Code for Menu -->
+    <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="300">
+      <p>Scanează codul QR pentru meniul digital</p>
+      <div class="qr-container" id="qrcode"></div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="row" id="menu-container">
+      <!-- Breakfast -->
+      <div class="col-lg-6 menu-item breakfast" data-aos="fade-up">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-coffee me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Mic Dejun</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Omletă cu șuncă și brânză</h5>
+              <span class="price">25 RON</span>
+            </div>
+            <p class="description">Ouă proaspete, șuncă de casă, brânză telemea, ardei gras</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Avocado toast</h5>
+              <span class="price">22 RON</span>
+            </div>
+            <p class="description">Pâine integrală prăjită, avocado, ou ochi, semințe de chia</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Clătite cu dulceață și nuci</h5>
+              <span class="price">18 RON</span>
+            </div>
+            <p class="description">Clătite proaspete, dulceață de casă, nuci, smântână</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Soups -->
+      <div class="col-lg-6 menu-item soups" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-utensils me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Supe</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Ciorbă de burtă</h5>
+              <span class="price">28 RON</span>
+            </div>
+            <p class="description">Traditională, cu smântână, ardei iute și pâine</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Supă cremă de ciuperci</h5>
+              <span class="price">22 RON</span>
+            </div>
+            <p class="description">Ciuperci proaspete, smântână, crutoane</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Supă de legume cu pui</h5>
+              <span class="price">20 RON</span>
+            </div>
+            <p class="description">Legume de sezon, pui, tăiței</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pizza -->
+      <div class="col-lg-6 menu-item pizza" data-aos="fade-up" data-aos-delay="200">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-pizza-slice me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Pizza</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Margherita</h5>
+              <span class="price">32 RON</span>
+            </div>
+            <p class="description">Sos de roșii, mozzarella, busuioc proaspăt</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Quattro Formaggi</h5>
+              <span class="price">38 RON</span>
+            </div>
+            <p class="description">Mozzarella, gorgonzola, parmezan, brânză de capră</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Diavola</h5>
+              <span class="price">36 RON</span>
+            </div>
+            <p class="description">Sos de roșii, mozzarella, salam picant, ardei iute</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Prosciutto e Funghi</h5>
+              <span class="price">40 RON</span>
+            </div>
+            <p class="description">Sos de roșii, mozzarella, șuncă crudă, ciuperci</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pasta -->
+      <div class="col-lg-6 menu-item pasta" data-aos="fade-up" data-aos-delay="300">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-pasta me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Paste</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Carbonara</h5>
+              <span class="price">35 RON</span>
+            </div>
+            <p class="description">Spaghete, ou, guanciale, parmezan, piper negru</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Bolognese</h5>
+              <span class="price">38 RON</span>
+            </div>
+            <p class="description">Tagliatelle, sos de carne, vin roșu, parmezan</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Penne alla Vodka</h5>
+              <span class="price">36 RON</span>
+            </div>
+            <p class="description">Penne, sos de roșii cu smântână și vodka, parmezan</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Frutti di Mare</h5>
+              <span class="price">45 RON</span>
+            </div>
+            <p class="description">Spaghete, fructe de mare, usturoi, vin alb, pătrunjel</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sandwiches -->
+      <div class="col-lg-6 menu-item sandwich" data-aos="fade-up">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-burger me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Sandwichuri</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Club Sandwich</h5>
+              <span class="price">28 RON</span>
+            </div>
+            <p class="description">Pâine prăjită, pui, șuncă, ou, salată, sos</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Sandwich cu pastramă</h5>
+              <span class="price">32 RON</span>
+            </div>
+            <p class="description">Pastramă de vită, mustard, murături, pâne de secară</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Vegetarian</h5>
+              <span class="price">25 RON</span>
+            </div>
+            <p class="description">Hummus, legume proaspete, avocado, pâine integrală</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <div class="col-lg-6 menu-item desserts" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-ice-cream me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Deserturi</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Papanasi</h5>
+              <span class="price">22 RON</span>
+            </div>
+            <p class="description">Clasici românești cu dulceață și smântână</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Lava Cake</h5>
+              <span class="price">26 RON</span>
+            </div>
+            <p class="description">Cu înghețată de vanilie și fructe proaspete</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Tiramisu</h5>
+              <span class="price">24 RON</span>
+            </div>
+            <p class="description">Clasic italian cu mascarpone și cafea</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Cheesecake cu fructe de pădure</h5>
+              <span class="price">25 RON</span>
+            </div>
+            <p class="description">Crema de brânză pe blat de biscuiți</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drinks -->
+      <div class="col-lg-6 menu-item drinks" data-aos="fade-up" data-aos-delay="200">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-glass-water me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Băuturi Răcoritoare</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Ape minerale</h5>
+              <span class="price">8 RON</span>
+            </div>
+            <p class="description">Borsec, Dorna, Perla</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Sucuri naturale</h5>
+              <span class="price">12 RON</span>
+            </div>
+            <p class="description">Portocale, mere, mix legume</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Limonade</h5>
+              <span class="price">15 RON</span>
+            </div>
+            <p class="description">Classic, mentă, fructe de pădure</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item drinks" data-aos="fade-up" data-aos-delay="300">
+        <div class="menu-category">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-wine-glass-alt me-3" style="font-size: 1.5rem; color: var(--secondary);"></i>
+            <h4 class="m-0">Băuturi Alcoolice</h4>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Vin pahar</h5>
+              <span class="price">15-25 RON</span>
+            </div>
+            <p class="description">Alb, roșu, roze - selecție românească și internațională</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Bere la halbă</h5>
+              <span class="price">12-18 RON</span>
+            </div>
+            <p class="description">Ursus, Bergenbier, Heineken, artizanale</p>
+          </div>
+          <div class="menu-item-card">
+            <div class="d-flex justify-content-between">
+              <h5>Cocktail-uri</h5>
+              <span class="price">28-35 RON</span>
+            </div>
+            <p class="description">Aperol Spritz, Mojito, Negroni, Margarita</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Events Section -->
+    <section class="section bg-light" id="events">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Evenimente</h2>
+        <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+          Stand-up comedy și alte evenimente speciale
+        </p>
+
+        <div class="row">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card event-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                class="card-img-top"
+                alt="Comedy Night"
+              />
+              <div class="event-date">15 IUN</div>
+              <div class="card-body">
+                <h5 class="card-title">Comedy Night cu Alex Miron</h5>
+                <p class="card-text">
+                  Unul dintre cei mai apreciați comici români revine la Soho
+                  House cu un nou show.
+                </p>
+                <p><i class="far fa-clock"></i> 20:00 - 22:00</p>
+                <a
+                  href="#reservation"
+                  class="btn btn-outline-dark"
+                  data-toggle="modal"
+                  >Rezervă loc</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card event-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                class="card-img-top"
+                alt="Live Music"
+              />
+              <div class="event-date">22 IUN</div>
+              <div class="card-body">
+                <h5 class="card-title">Open Mic Night</h5>
+                <p class="card-text">
+                  Ți-ai dorit vreodată să te afli în fața publicului? Aici e
+                  șansa ta!
+                </p>
+                <p><i class="far fa-clock"></i> 19:00 - 23:00</p>
+                <a
+                  href="#reservation"
+                  class="btn btn-outline-dark"
+                  data-toggle="modal"
+                  >Rezervă loc</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="card event-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                class="card-img-top"
+                alt="Wine Tasting"
+              />
+              <div class="event-date">29 IUN</div>
+              <div class="card-body">
+                <h5 class="card-title">Degustare de Vinuri</h5>
+                <p class="card-text">
+                  Descoperă aromele celor mai bune vinuri din regiune alături de
+                  somelierul nostru.
+                </p>
+                <p><i class="far fa-clock"></i> 18:00 - 20:00</p>
+                <a
+                  href="#reservation"
+                  class="btn btn-outline-dark"
+                  data-toggle="modal"
+                  >Rezervă loc</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Galerie</h2>
+        <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+          Momente din Soho House
+        </p>
+
+        <div class="row">
+          <div class="col-md-4 col-sm-6" data-aos="fade-up">
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                alt="Restaurant interior"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Bar area"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+                alt="Food presentation"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6" data-aos="fade-up">
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                alt="Comedy show"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Coffee"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1381&q=80"
+                alt="Pizza"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="section bg-light" id="contact">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Contact</h2>
+        <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+          Vino să ne vizitezi
+        </p>
+
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+            <div class="contact-info">
+              <h4 class="mb-4">Informații de contact</h4>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Strada Mihai Viteazu nr.
+                15, Resița, Romania
+              </p>
+              <p><i class="fas fa-phone"></i> +40 755 123 456</p>
+              <p><i class="fas fa-envelope"></i> contact@sohohouse-resita.ro</p>
+            </div>
+
+            <div class="contact-info">
+              <h4 class="mb-4">Program</h4>
+              <p><i class="far fa-clock"></i> Luni - Vineri: 08:00 - 00:00</p>
+              <p>
+                <i class="far fa-clock"></i> Sâmbătă - Duminică: 10:00 - 02:00
+              </p>
+            </div>
+
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.7890741539636!2d21.889108315569535!3d45.81345397910628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474e5a5a8a7e9c3d%3A0x2a3a3a3a3a3a3a3a!2sResi%C8%9Ba!5e0!3m2!1sen!2sro!4v1620000000000!5m2!1sen!2sro"
+                width="100%"
+                height="400"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h3 class="text-white mb-4">SOHO HOUSE</h3>
+            <p>Un loc unde bunătățile culinare se întâlnesc cu distracția de calitate.</p>
+          </div>
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h4 class="text-white mb-4">Link-uri rapide</h4>
+            <ul class="list-unstyled">
+              <li><a href="#home" class="text-white">Acasă</a></li>
+              <li><a href="#menu" class="text-white">Meniu</a></li>
+              <li><a href="#events" class="text-white">Evenimente</a></li>
+              <li><a href="#contact" class="text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h4 class="text-white mb-4">Newsletter</h4>
+            <p>Abonează-te pentru a afla despre evenimente și promoții.</p>
+            <form>
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Emailul tău">
+                <button class="btn btn-secondary" type="button">Abonează</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <hr class="bg-light my-4">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <p class="mb-0">&copy; 2023 Soho House Resița. Toate drepturile rezervate.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="mb-0">Design &amp; Dezvoltare de <a href="https://www.cosminauzum.com" class="text-white" target="_blank">www.cosminauzum.com</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Reservation Modal -->
+    <div class="modal fade" id="reservation" tabindex="-1" aria-labelledby="reservationLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reservationLabel">Rezervă o masă</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Nume</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Telefon</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Data</label>
+                <input type="date" class="form-control" id="date" required>
+              </div>
+              <div class="mb-3">
+                <label for="time" class="form-label">Ora</label>
+                <input type="time" class="form-control" id="time" required>
+              </div>
+              <div class="mb-3">
+                <label for="guests" class="form-label">Număr persoane</label>
+                <select class="form-select" id="guests" >Număr persoane</label>
+                </div>
+                <div class="mb-3">
+                  <label for="notes" class="form-label">Note speciale</label>
+                  <textarea class="form-control" id="notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary w-100">Rezervă acum</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Floating Action Button -->
+      <div class="floating-btn" data-bs-toggle="modal" data-bs-target="#reservation">
+        <i class="far fa-calendar-alt"></i>
+      </div>
+      
+      <!-- Back to Top Button -->
+      <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+      
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+      
+      <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true
+        });
+        
+        // Navbar scroll effect
+        $(window).scroll(function() {
+          if ($(this).scrollTop() > 100) {
+            $('.navbar').addClass('scrolled');
+          } else {
+            $('.navbar').removeClass('scrolled');
+          }
+          
+          // Back to top button
+          if ($(this).scrollTop() > 300) {
+            $('.back-to-top').addClass('show');
+          } else {
+            $('.back-to-top').removeClass('show');
+          }
+        });
+        
+        // Smooth scrolling for navigation
+        $('a[href*="#"]').on('click', function(e) {
+          e.preventDefault();
+          
+          $('html, body').animate(
+            {
+              scrollTop: $($(this).attr('href')).offset().top - 70,
+            },
+            500,
+            'linear'
+          );
+        });
+        
+        // Back to top button
+        $('.back-to-top').on('click', function(e) {
+          e.preventDefault();
+          $('html, body').animate({scrollTop: 0}, '300');
+        });
+        
+        // Initialize QR Code
+        new QRCode(document.getElementById("qrcode"), {
+          text: "https://www.cosminauzum.com/gallery/restaurant/local.html#menu",
+          width: 128,
+          height: 128,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        
+        // Initialize menu filter with Isotope
+        $(document).ready(function() {
+          var $menuContainer = $('#menu-container').isotope({
+            itemSelector: '.menu-item',
+            layoutMode: 'fitRows'
+          });
+          
+          $('.menu-filter button').on('click', function() {
+            $('.menu-filter button').removeClass('active');
+            $(this).addClass('active');
+            
+            var filterValue = $(this).attr('data-filter');
+            $menuContainer.isotope({ filter: filterValue });
+          });
+        });
+        
+        // Close mobile menu when clicking on a link
+        $('.navbar-nav>li>a').on('click', function(){
+          $('.navbar-collapse').collapse('hide');
+        });
+      </script>
+      </body>
+</html>                  

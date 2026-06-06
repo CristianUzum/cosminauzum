@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Felicitare Consolă</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #1e1e1e;
+        font-family: "Courier New", monospace;
+        color: #00ff00;
+      }
+
+      .console {
+        width: 90%;
+        max-width: 600px;
+        background: #000;
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        padding: 20px;
+        position: relative;
+      }
+
+      .console-header {
+        background: #222;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+      }
+
+      .console-header .buttons {
+        display: flex;
+        gap: 5px;
+      }
+
+      .console-header .button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .close {
+        background: #ff5f57;
+      }
+      .minimize {
+        background: #ffbd2e;
+      }
+      .maximize {
+        background: #28c840;
+      }
+
+      .console-body {
+        padding: 15px;
+        white-space: pre-line;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 16px;
+        background: #00ff00;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .share-btn {
+        padding: 10px 15px;
+        background: #00ff00;
+        border: none;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: transform 0.2s;
+      }
+
+      .share-btn:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="console">
+      <div class="console-header">
+        <div class="buttons">
+          <div class="button close"></div>
+          <div class="button minimize"></div>
+          <div class="button maximize"></div>
+        </div>
+        <span>terminal@birthday: ~</span>
+      </div>
+      <div class="console-body" id="consoleBody">
+        La Mulți Ani, Cristi!<br />
+        🎂 Fie ca fiecare nivel al anului care vine să fie plin de aventuri și
+        realizări!<br />
+        Cu drag, Cosmina
+        <span class="cursor"></span>
+      </div>
+      <div class="buttons">
+        <button class="share-btn" onclick="shareViaWhatsApp()">
+          Share via WhatsApp
+        </button>
+        <button class="share-btn" onclick="shareViaEmail()">
+          Share via Email
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function shareViaWhatsApp() {
+        const text = encodeURIComponent(
+          "Uită-te la această felicitare specială: "
+        );
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://wa.me/?text=${text}${url}`);
+      }
+
+      function shareViaEmail() {
+        const subject = encodeURIComponent("Felicitare specială de ziua ta!");
+        const body = encodeURIComponent(
+          "Uită-te la această felicitare specială:\n\n" + window.location.href
+        );
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Cobi Concept Group</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      /* 🎨 VARIABILE DE CULOARE ȘI STILURI CUSTOM (PĂSTRATE PENTRU BODY ȘI ELEMENTELE DE CONTACT) */
+      :root {
+        --color-dark-bg: #1a202c;
+        --color-card-bg: #2d3748; /* Fundal Carduri/Elemente */
+        --color-accent: #1e3a5f; /* Albastru Inchis Accent */
+        --color-hover: #70b7d8; /* Albastru Deschis/Vibrant pentru hover */
+        --color-text-light: #ffffff;
+        --color-text-dim: #9ca3af;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: var(--color-dark-bg);
+        color: var(--color-text-light);
+      }
+
+      /* Stiluri Custom pentru Carduri și Butoane */
+      .contact-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: var(--color-card-bg);
+        color: var(--color-text-light);
+      }
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+      .btn-primary {
+        background-color: var(--color-accent);
+        color: white;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      }
+      .btn-primary:hover {
+        background-color: var(--color-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(99, 179, 237, 0.4);
+      }
+      .form-input {
+        background-color: #4a5568;
+        color: var(--color-text-light);
+        border: 1px solid #4a5568;
+      }
+      .form-input:focus {
+        border-color: var(--color-hover);
+        box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.5);
+      }
+      label {
+        color: var(--color-text-light);
+      }
+      .contact-card a {
+        color: #fff;
+      }
+      .contact-card i {
+        color: #fff;
+      }
+      .social-link.whatsapp {
+        background-color: #25d366;
+        transition: opacity 0.3s, transform 0.3s;
+      }
+      .social-link.whatsapp:hover {
+        background-color: #1da851;
+        transform: scale(1.03);
+      }
+      .social-link.facebook {
+        background-color: #1877f2;
+        transition: opacity 0.3s, transform 0.3s;
+      }
+      .social-link.facebook:hover {
+        background-color: #145dbb;
+        transform: scale(1.03);
+      }
+
+      /* ☰ STILURI NAVBAR (PĂSTRATE) ☰ */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(39, 50, 60, 0.98);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+      .logo-nav {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+      }
+      .logo-nav h1 {
+        font-size: 1.6rem;
+        margin: 0;
+        font-weight: 700;
+        color: white;
+      }
+      .logo-nav img {
+        height: 40px;
+        margin-right: 15px;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-links li {
+        margin-left: 2rem;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--color-hover);
+      }
+      .nav-links .active-link {
+        background: var(--color-accent);
+        font-weight: 600;
+      }
+      .nav-links .active-link:hover {
+        color: white;
+      }
+      .hamburger {
+        display: none;
+      }
+
+      /* Stilurile vechi de footer (footer, footer-grid etc.) AU FOST ELIMINATE */
+
+      /* Media Queries pentru Hamburger Menu */
+      @media (max-width: 992px) {
+        body {
+          padding-top: 70px;
+        }
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          width: 70%;
+          max-width: 250px;
+          height: calc(100vh - 70px);
+          background: rgba(39, 50, 60, 0.98);
+          flex-direction: column;
+          align-items: flex-start;
+          padding-top: 2rem;
+          transition: right 0.3s ease;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .nav-links li {
+          margin: 0;
+          width: 100%;
+          padding: 0 1rem;
+        }
+        .nav-links a {
+          font-size: 1.2rem;
+          padding: 1rem 0;
+          display: block;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+          padding: 5px;
+        }
+        .hamburger span {
+          width: 25px;
+          height: 3px;
+          background: white;
+          margin: 4px 0;
+          transition: 0.3s;
+          border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 9px);
+        }
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -9px);
+        }
+      }
+    </style>
+  </head>
+  <body class="pt-20">
+    <nav class="navbar">
+      <a href="index.html" class="logo-nav">
+        <img src="./img/cobi_concept_logo.png" alt="Cobi Concept Group Logo" />
+        <h1>Cobi Concept Group</h1>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="./despre/index.html">Despre Noi</a></li>
+        <li><a href="contact.html" class="active-link">Contact</a></li>
+      </ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+      <header class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold text-white mb-4">
+          Contactează Cobi Concept Group
+        </h1>
+        <p class="text-xl text-gray-400">
+          Suntem aici pentru a transforma ideile tale în realitate.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 p-8 rounded-xl shadow-2xl contact-card">
+          <h2 class="text-3xl font-bold text-white mb-6">Trimite un Mesaj</h2>
+          <form action="#" method="POST" class="space-y-6">
+            <div>
+              <label for="nume" class="block text-sm font-medium"
+                >Numele Tău Complet</label
+              >
+              <input
+                type="text"
+                name="nume"
+                id="nume"
+                required
+                class="mt-1 block w-full rounded-md shadow-sm p-3 form-input"
+                placeholder="Ex: Ion Popescu"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium"
+                >Adresa de Email</label
+              >
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                class="mt-1 block w-full rounded-md shadow-sm p-3 form-input"
+                placeholder="exemplu@compania.ro"
+              />
+            </div>
+            <div>
+              <label for="mesaj" class="block text-sm font-medium"
+                >Mesajul Tău</label
+              >
+              <textarea
+                name="mesaj"
+                id="mesaj"
+                rows="4"
+                required
+                class="mt-1 block w-full rounded-md shadow-sm p-3 form-input"
+                placeholder="Descrie pe scurt proiectul sau întrebarea ta..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full py-3 px-4 rounded-md text-lg font-medium btn-primary shadow-md hover:shadow-lg"
+            >
+              Trimite Cererea
+            </button>
+          </form>
+        </div>
+
+        <div class="space-y-8">
+          <div class="p-6 rounded-xl shadow-lg contact-card">
+            <h3 class="text-2xl font-semibold text-white mb-4">Informații</h3>
+            <div class="space-y-3 text-gray-300">
+              <p class="flex items-center">
+                <i class="fa-solid fa-location-dot text-xl mr-3"></i>
+                Reşita
+              </p>
+              <p class="flex items-center">
+                <i class="fa-solid fa-envelope text-xl mr-3"></i>
+                Email:
+                <a href="mailto:cobiconcept@yahoo.com" class="ml-1"
+                  >cobiconcept@yahoo.com</a
+                >
+              </p>
+              <p class="flex items-center">
+                <i class="fa-solid fa-phone text-xl mr-3"></i>
+                Telefon:
+                <a href="tel:+40745845392" class="ml-1">+40 745 845 392</a>
+              </p>
+              <p class="flex items-center">
+                <i class="fa-solid fa-phone text-xl mr-3"></i>
+                Telefon:
+                <a href="tel:+40775356069" class="ml-1">+40 775 356 069</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl shadow-lg contact-card">
+            <h3 class="text-2xl font-semibold text-white mb-4">Social Media</h3>
+            <p class="text-gray-400 mb-4">Ne poți contacta și aici:</p>
+            <div class="flex flex-col space-y-3">
+              <a
+                href="https://wa.me/40745845392"
+                target="_blank"
+                class="flex items-center justify-center p-3 rounded-lg text-lg font-semibold text-white social-link whatsapp"
+              >
+                <i class="fa-brands fa-whatsapp text-2xl mr-2"></i> Contact pe
+                WhatsApp
+              </a>
+              <a
+                href="https://www.facebook.com/CobiConceptGroup"
+                target="_blank"
+                class="flex items-center justify-center p-3 rounded-lg text-lg font-semibold text-white social-link facebook"
+              >
+                <i class="fa-brands fa-facebook-f text-2xl mr-2"></i> Vizitează
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="mt-16 p-8 rounded-xl shadow-2xl text-center contact-card">
+        <h2 class="text-4xl font-bold text-white mb-4">Spune-ne Părerea Ta!</h2>
+        <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+          Feedback-ul tău ne ajută să creștem și să oferim servicii mai bune.
+        </p>
+        <a
+          href="https://www.facebook.com/profile.php?id=61569935777801&sk=reviews"
+          target="_blank"
+          class="inline-flex items-center justify-center px-10 py-4 rounded-full text-xl font-bold btn-primary shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-[1.05]"
+        >
+          <i class="fa-solid fa-star text-2xl mr-3"></i> Lasă o Recenzie pe
+          Facebook
+        </a>
+      </section>
+
+      <section class="mt-16">
+        <h2 class="text-3xl font-bold text-white mb-6 text-center">
+          Unde ne Găsești
+        </h2>
+        <div class="bg-gray-700 h-96 rounded-xl shadow-xl overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37383.315147553716!2d21.865066714046606!3d45.309620256607104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47502a14d6a718d9%3A0xb62b9e8261fdbec8!2zUmXImWnIm2E!5e1!3m2!1sro!2sro!4v1764169832413!5m2!1sro!2sro"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <p class="text-center mt-3 text-gray-500">
+          Ne puteți vizita la adresa noastră din Reşita .
+        </p>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white p-8 md:p-12 mt-16">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
+      >
+        <div class="col-span-2 sm:col-span-1">
+          <h3 class="text-2xl font-extrabold mb-4 text-blue-400">
+            COBI Concept
+          </h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="index.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Acasă</a
+              >
+            </li>
+            <li>
+              <a
+                href="./despre/index.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Despre Noi</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4
+            class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2 text-white"
+          >
+            Companii Group
+          </h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="cobi-travel.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Cobi Travel</a
+              >
+            </li>
+            <li>
+              <a
+                href="cobi-events.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Cobi Events</a
+              >
+            </li>
+            <li>
+              <a
+                href="cobi-cleanup.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Cobi Clean Up</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4
+            class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2 text-white"
+          >
+            Legal & Info
+          </h4>
+          <ul class="space-y-2 text-sm">
+            <!-- <li>
+              <a
+                href="termeni.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Termeni și Condiții</a
+              >
+            </li>
+            <li>
+              <a
+                href="politica-confidentialitate.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Confidențialitate</a
+              >
+            </li>
+            <li>
+              <a
+                href="cookies.html"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >Politica Cookies</a
+              >
+            </li> -->
+            <li>
+              <a
+                href="https://anpc.ro/"
+                class="text-gray-400 hover:text-white transition duration-200"
+                >ANPC</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4
+            class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2 text-white"
+          >
+            Contact & Sediu
+          </h4>
+          <p class="text-sm text-gray-400 mb-2">Reşita</p>
+          <p class="text-sm text-gray-400 mb-2">
+            Email:
+            <a
+              href="mailto:	cobiconcept@yahoo.com"
+              class="hover:text-white transition duration-200"
+            >
+              cobiconcept@yahoo.com</a
+            >
+          </p>
+          <p class="text-sm text-gray-400">
+            Telefon:
+            <a
+              href="tel:+40745845392"
+              class="hover:text-white transition duration-200"
+              >+40 745 845 392</a
+            >
+          </p>
+
+          <p class="text-sm text-gray-400">
+            Telefon:
+            <a
+              href="tel:+40745845392"
+              class="hover:text-white transition duration-200"
+              >+40 775 356 069</a
+            >
+          </p>
+          <div class="flex space-x-4 mt-4 text-2xl">
+            <a
+              href="https://www.facebook.com/profile.php?id=61569935777801"
+              class="text-gray-400 hover:text-blue-400 transition duration-200"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <!-- <a
+              href="#"
+              class="text-gray-400 hover:text-blue-400 transition duration-200"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-blue-400 transition duration-200"
+              ><i class="fa-brands fa-instagram"></i
+            ></a> -->
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-12 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm"
+      >
+        &copy; 2026 Cobi Concept Group. Toate drepturile rezervate.
+        <br />
+        Creat cu <i class="fa-solid fa-heart text-red-500"></i> de
+        <a
+          href="https://www.cosminauzum.com/"
+          target="_blank"
+          class="text-teal-400 hover:text-teal-200 transition duration-200"
+          >www.cosminauzum.com</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        function toggleMenu() {
+          navLinks.classList.toggle("active");
+          hamburger.classList.toggle("active");
+
+          if (
+            navLinks.classList.contains("active") &&
+            window.innerWidth <= 992
+          ) {
+            document.body.style.overflow = "hidden";
+          } else {
+            document.body.style.overflow = "";
+          }
+        }
+
+        hamburger.addEventListener("click", toggleMenu);
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (
+              window.innerWidth <= 992 &&
+              navLinks.classList.contains("active")
+            ) {
+              toggleMenu();
+            }
+          });
+        });
+
+        window.addEventListener("resize", () => {
+          if (
+            window.innerWidth > 992 &&
+            navLinks.classList.contains("active")
+          ) {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

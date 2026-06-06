@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>VanNelli -  Dulce şi Gustos</title>
+  <meta name="title" content="VanNelli - Cofetărie cu delicii pentru toate gusturile">
+  <meta name="description" content="Cofetaria din Reşita, ce vă aşteaptă cu prajituri asortate, torturi şi patiserie pentru toate gusturile.">
+
+  <!-- 
+    - icon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/jpg">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-slider-1.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-slider-2.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-slider-3.jpg">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #PRELOADER
+  -->
+
+  <div class="preload" data-preaload>
+    <div class="circle"></div>
+    <p class="text">VanNelli</p>
+  </div>
+
+
+
+
+
+  <!-- 
+    - #TOP BAR
+  -->
+
+  <div class="topbar">
+    <div class="container">
+
+      <address class="topbar-item">
+        <div class="icon">
+          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+        </div>
+
+        <span class="span">
+          VanNelli Str.Libertăţii, nr.1, Reşiţa, Caraş-Severin
+        </span>
+      </address>
+
+      <div class="separator"></div>
+
+      <div class="topbar-item item-2">
+        <div class="icon">
+          <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+        </div>
+
+        <span class="span">L-V : 8.00 to 20.00 <br> S-D : 9.00 -19.00</span>
+      </div>
+
+      <a href="tel:+40736752202" class="topbar-item link">
+        <div class="icon">
+          <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+        </div>
+
+        <span class="span">+4 0736 752 202</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a href="https://www.instagram.com/nelli.sweets/" class="topbar-item link">
+        <div class="icon">
+          <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+        </div>
+
+        <span class="span">nelli.sweets</span>
+      </a>
+
+    </div>
+  </div>
+
+
+
+
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.jpg" width="160" height="50" alt="VanNelli">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.jpg" width="160" height="50" alt="VanNelli">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link hover-underline active">
+              <div class="separator"></div>
+
+              <span class="span">Home</span>
+            </a>
+          </li>
+
+          
+
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Despre noi</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="#menu" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Meniu</span>
+            </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#reviews" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Recenzii</span>
+            </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Contact</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="text-center">
+          <p class="headline-1 navbar-title">Ne găseşti aici</p>
+
+          <address class="body-4">
+            VanNelli Str.Libertăţii, nr.1,<br>
+             Reşiţa, Caraş-Severin
+          </address>
+
+          <p class="body-4 navbar-text">Deschis <br> L-V : 8.00 to 20.00 <br> S-D : 9.00 -19.00/p>
+
+          <a href="https://www.instagram.com/nelli.sweets/" class="body-4 sidebar-link">nelli.sweets</a>
+
+          <div class="separator"></div>
+
+          <p class="contact-label">Contactaţi-ne</p>
+
+          <a href="tel:+40736752202" class="body-1 contact-number hover-underline">
+            +4 0736 752 202
+          </a>
+        </div>
+
+      </nav>
+
+      <a href="tel:+40736752202" class="btn btn-secondary">
+        <span class="text text-1">Contactaţi-ne</span>
+
+        <span class="text text-2" aria-hidden="true">Contactaţi-ne</span>
+      </a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+      </button>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero text-center" aria-label="home" id="home">
+
+        <ul class="hero-slider" data-hero-slider>
+
+          <li class="slider-item active" data-hero-slider-item>
+
+            <div class="slider-bg">
+              <img src="./assets/images/hero-slider-1.jpg" width="1880" height="950" alt="" class="img-cover">
+            </div>
+
+            <p class="label-2 section-subtitle slider-reveal">Gustos şi de neuitat</p>
+
+            <h1 class="display-1 hero-title slider-reveal">
+              Din dragoste<br>
+              pentru dulce
+            </h1>
+
+            <p class="body-2 hero-text slider-reveal">
+              Vino cu cei dragi şi simte aroma iubirii
+            </p>
+
+            <a href="#" class="btn btn-primary slider-reveal">
+              <span class="text text-1">Specialităţile noastre</span>
+
+              <span class="text text-2" aria-hidden="true">Specialităţile noastre</span>
+            </a>
+
+          </li>
+
+          <li class="slider-item" data-hero-slider-item>
+
+            <div class="slider-bg">
+              <img src="./assets/images/hero-slider-2.jpg" width="1880" height="950" alt="" class="img-cover">
+            </div>
+
+            <p class="label-2 section-subtitle slider-reveal">Experienţe uimitoare</p>
+
+            <h1 class="display-1 hero-title slider-reveal">
+              Arome inspirate <br>
+              de clipele naturii
+            </h1>
+
+            <p class="body-2 hero-text slider-reveal">
+              Vino cu cei dragi şi simte aroma iubirii
+            </p>
+
+            <a href="#" class="btn btn-primary slider-reveal">
+              <span class="text text-1">Specialităţile noastre</span>
+
+              <span class="text text-2" aria-hidden="true">Specialităţile noastre</span>
+            </a>
+
+          </li>
+
+          <li class="slider-item" data-hero-slider-item>
+
+            <div class="slider-bg">
+              <img src="./assets/images/hero-slider-3.jpg" width="1880" height="950" alt="" class="img-cover">
+            </div>
+
+            <p class="label-2 section-subtitle slider-reveal">Dulcele de neuitat</p>
+
+            <h1 class="display-1 hero-title slider-reveal">
+              Locul unde fiecare aromă <br>
+              devine o poveste
+            </h1>
+
+            <p class="body-2 hero-text slider-reveal">
+              Vino cu cei dragi şi simte aroma iubirii
+            </p>
+
+            <a href="#" class="btn btn-primary slider-reveal">
+              <span class="text text-1">Specialităţile noastre</span>
+
+              <span class="text text-2" aria-hidden="true">Specialităţile noastre</span>
+            </a>
+
+          </li>
+
+        </ul>
+
+        <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
+          <ion-icon name="chevron-back"></ion-icon>
+        </button>
+
+        <button class="slider-btn next" aria-label="slide to next" data-next-btn>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </button>
+
+        <a href="tel:+40736752202" class="hero-btn has-after">
+          <img src="./assets/images/hero-icon.png" width="48" height="48" alt="booking icon">
+
+          <span class="label-2 text-center span">Comandă</span>
+        </a>
+
+      </section>
+
+
+
+
+
+      <!-- 
+        - #SERVICE
+      -->
+
+      <section class="section service bg-black-10 text-center" aria-label="service">
+        <div class="container">
+
+          <p class="section-subtitle label-2">Specialităţi pentru gustul fiecăruia</p>
+
+          <h2 class="headline-1 section-title">Diversitatea este la ea acasă</h2>
+
+          <p class="section-text">
+            Descoperă delicii unice, de la prăjituri fine și pizza ruladă la torturi de nuntă, de aniversare și pentru zile de naștere. 
+          </p>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="service-card">
+
+                <a href="https://www.facebook.com/photo/?fbid=122115195050152265&set=pb.61554567970770.-2207520000" class="has-before hover:shine">
+                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                    <img src="./assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Patiserie"
+                      class="img-cover">
+                  </figure>
+                </a>
+
+                <div class="card-content">
+
+                  <h3 class="title-4 card-title">
+                    <a href="https://www.facebook.com/photo/?fbid=122115195050152265&set=pb.61554567970770.-2207520000">Patiserie</a>
+                  </h3>
+
+                  <a href="https://www.facebook.com/photo/?fbid=122115195050152265&set=pb.61554567970770.-2207520000" class="btn-text hover-underline label-2">Meniu</a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <a href="https://www.facebook.com/photo/?fbid=122115195050152265&set=pb.61554567970770.-2207520000" class="has-before hover:shine">
+                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                    <img src="./assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Fursecuri"
+                      class="img-cover">
+                  </figure>
+                </a>
+
+                <div class="card-content">
+
+                  <h3 class="title-4 card-title">
+                    <a href="https://www.facebook.com/photo/?fbid=122115195050152265&set=pb.61554567970770.-2207520000">Fursecuri</a>
+                  </h3>
+
+                  <a href="https://www.facebook.com/photo/?fbid=122115195050152265&set=pb.61554567970770.-2207520000" class="btn-text hover-underline label-2">Meniu</a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <a href="https://www.facebook.com/photo/?fbid=122115194978152265&set=pb.61554567970770.-2207520000" class="has-before hover:shine">
+                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                    <img src="./assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Torturi"
+                      class="img-cover">
+                  </figure>
+                </a>
+
+                <div class="card-content">
+
+                  <h3 class="title-4 card-title">
+                    <a href="https://www.facebook.com/photo/?fbid=122115194978152265&set=pb.61554567970770.-2207520000">Torturi</a>
+                  </h3>
+
+                  <a href="https://www.facebook.com/photo/?fbid=122115194978152265&set=pb.61554567970770.-2207520000" class="btn-text hover-underline label-2">Meniu</a>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <img src="./assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape"
+            class="shape shape-1 move-anim">
+          <img src="./assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape"
+            class="shape shape-2 move-anim">
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about text-center" aria-labelledby="about-label" id="about">
+        <div class="container">
+
+          <div class="about-content">
+
+            <p class="label-2 section-subtitle" id="about-label">Despre noi</p>
+
+            <h2 class="headline-1 section-title">Specialista noastră</h2>
+
+            <p class="section-text">
+              Gustul prăjiturilor de casă ne duce înapoi în timp şi ne aminteşte de mâinile harnice ale bunicii sau mamei în preajma sărbătorilor. Însiropate sau dense, crocante sau moi, dar întotdeauna bogate în arome, aceste prăjituri profund tradiţionale au farmecul lor de neegalat, indiferent de ţară sau naţionalitate.
+            </p>
+
+            <div class="contact-label">Contactaţi-ne</div>
+
+            <a href="tel:+40736752202" class="body-1 contact-number hover-underline">+40 736 752 202</a>
+
+            <a href="https://www.radioresita.ro/oameni-si-locuri/povestea-ucrainencei-nelia-burcan-de-la-chilia-la-resita-cu-gustul-prajiturilor-de-casa-la-purtator" class="btn btn-primary">
+              <span class="text text-1">Mai multe aici..</span>
+
+              <span class="text text-2" aria-hidden="true">Mai multe aici..</span>
+            </a>
+
+          </div>
+
+          <figure class="about-banner">
+
+            <img src="./assets/images/about-banner.jpg" width="570" height="570" loading="lazy" alt="about banner"
+              class="w-100" data-parallax-item data-parallax-speed="1">
+
+            <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
+              <img src="./assets/images/about-abs-image.jpg" width="285" height="285" loading="lazy" alt=""
+                class="w-100">
+            </div>
+
+            <!-- <div class="abs-img abs-img-2 has-before">
+              <img src="./assets/images/badge-2.png" width="133" height="134" loading="lazy" alt="">
+            </div> -->
+
+          </figure>
+
+          <img src="./assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #SPECIAL DISH
+      -->
+
+      <section class="special-dish text-center" aria-labelledby="dish-label">
+
+        <div class="special-dish-banner">
+          <img src="./assets/images/special-dish-banner.jpg" width="940" height="900" loading="lazy" alt="special dish"
+            class="img-cover">
+        </div>
+
+        <div class="special-dish-content bg-black-10">
+          <div class="container">
+
+            <img src="./assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
+
+            <p class="section-subtitle label-2">Specialitatea lunii</p>
+
+            <h2 class="headline-1 section-title">Ferrero Roche</h2>
+
+            <p class="section-text">
+             Inspirată de celebra bomboană din întreaga lume, Ferrero Rocher, cu puține trucuri și îmbunătățiri speciale de la VanNelli, această prăjitură este cremoasă, crocantă, dulce, dar nu exagerat, cu multă ciocolată și un strop în plus de ciocolată 🤤🍫
+      Iubitorilor de dulce - această prăjitură le este dedicată vouă și este un must try cu adevărat.
+            </p>
+
+            <div class="wrapper">
+              <!-- <del class="del body-3"></del> -->
+
+              <span class="span body-1">9.5ron/100gr</span>
+            </div>
+
+            <a href="https://www.facebook.com/photo/?fbid=122115194978152265&set=pb.61554567970770.-2207520000" class="btn btn-primary">
+              <span class="text text-1">Meniu</span>
+
+              <span class="text text-2" aria-hidden="true">Meniu</span>
+            </a>
+
+          </div>
+        </div>
+
+        <img src="./assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
+
+        <img src="./assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
+
+      </section>
+
+
+
+
+
+      <!-- 
+        - #MENU
+      -->
+
+      <section class="section menu" aria-label="menu-label" id="menu">
+        <div class="container">
+
+          <p class="section-subtitle text-center label-2">Răsfăț dulce pentru fiecare zi</p>
+
+          <h2 class="headline-1 section-title text-center">Meniul cu delicatese</h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="menu-card hover:card">
+
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/menu-1.jpg" width="100" height="100" loading="lazy" alt="Greek Salad"
+                    class="img-cover img-cover-menu">
+                </figure>
+
+                <div>
+
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <a href="https://www.facebook.com/photo?fbid=122115194978152265&set=pcb.122115195110152265" class="card-title">Tropicana Cake</a>
+                    </h3>
+
+                    <span class="badge label-1">Nou</span>
+
+                    <span class="span title-2">9,5ron/100kg</span>
+                  </div>
+
+                  <p class="card-text label-1">
+                    Exotic cu arome tropicale şi prospeţime.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="menu-card hover:card">
+
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/menu-2.jpg" width="100" height="100p" loading="lazy" alt="Lapte de pasare"
+                    class="img-cover img-cover-menu">
+                </figure>
+
+                <div>
+
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <a href="https://www.facebook.com/photo?fbid=122115194948152265&set=pcb.122115195110152265" class="card-title"> Tort Lapte de pasare</a>
+                    </h3>
+
+                    <span class="span title-2">10ron/100gr</span>
+                  </div>
+
+                  <p class="card-text label-1">
+                    Un desert aerat şi delicat, cu o textură sufle şi arome divine.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="menu-card hover:card">
+
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/event-1.jpg" width="100" height="100" loading="lazy" alt=""
+                    class="img-cover img-cover-menu">
+                </figure>
+
+                <div>
+
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <a href="https://www.facebook.com/photo?fbid=122115195050152265&set=pcb.122115195110152265" class="card-title">Cornuleţe cu gem</a>
+                    </h3>
+
+                    <span class="span title-2">6,5ron/100gr</span>
+                  </div>
+
+                  <p class="card-text label-1">
+                    Delicateţe fragedă, arome variate.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="menu-card hover:card">
+
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/menu-4.jpg" width="100" height="100" loading="lazy" alt="Ruladă cu bezea"
+                    class="img-cover img-cover-menu">
+                </figure>
+
+                <div>
+
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <a href="https://www.facebook.com/photo?fbid=122115194948152265&set=pcb.122115195110152265" class="card-title">Ruladă cu bezea</a>
+                    </h3>
+
+                    <span class="badge label-1">New</span>
+
+                    <span class="span title-2">9ron/100gr</span>
+                  </div>
+
+                  <p class="card-text label-1">
+                   Deliciu uşor şi aerat, îmbrăcat în dulceaţa fructelor.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="menu-card hover:card">
+
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/menu-5.jpg" width="100" height="100" loading="lazy" alt="Swarzwald Cake"
+                    class="img-cover img-cover-menu">
+                </figure>
+
+                <div>
+
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <a href="https://www.facebook.com/photo?fbid=122115194978152265&set=pcb.122115195110152265" class="card-title">Swarzwald Cake</a>
+                    </h3>
+
+                    <span class="span title-2">12ron/100gr</span>
+                  </div>
+
+                  <p class="card-text label-1">
+                    O delicatesă cu straturi de ciocolată neagră, cireşe şi frişcă.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="menu-card hover:card">
+
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/menu-6.jpg" width="100" height="100" loading="lazy" alt="Snickers cu ciocolată"
+                    class="img-cover img-cover-menu">
+                </figure>
+
+                <div>
+
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <a href="https://www.facebook.com/photo?fbid=122115194978152265&set=pcb.122115195110152265" class="card-title">Snickers cu ciocolată</a>
+                    </h3>
+
+                    <span class="span title-2">9ron/100gr</span>
+                  </div>
+
+                  <p class="card-text label-1">
+                    Caramel şi nuci, combinând arome intense pentru o experienţă de neuitat
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+
+          <a href="https://www.facebook.com/photo?fbid=122115194948152265&set=pb.61554567970770.-2207520000" class="btn btn-primary">
+            <span class="text text-1">Meniu</span>
+
+            <span class="text text-2" aria-hidden="true">Meniu</span>
+          </a>
+
+          <img src="./assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt="shape"
+            class="shape shape-2 move-anim">
+          <img src="./assets/images/shape-6.png" width="343" height="345" loading="lazy" alt="shape"
+            class="shape shape-3 move-anim">
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #Reviews
+      -->
+
+      <section class="special-dish text-center has-bg-image" aria-label="testimonials" id="reviews">
+        <div class="special-dish-banner testi-video">
+        <video id="background-video" autoplay loop muted>
+        <source src="./assets/images/429567641_3886548748296189_3080392353356456380_n.mp4" type="video/mp4">
+    </video>
+  </div>
+    
+    <div class="special-dish-content bg-black-10">
+        <div class="container">
+          <p class="section-subtitle label-2">Recenzii</p>
+
+          <div class="quote">”</div>
+
+          <p class=" testi-text">
+            Mă bucur că am cunoscut o persoană așa minunată ca doamna Nellia. Această cofetărie, nu e una ca oricare alta, această este ca o familie. Are un vibe care te face sa te simti acasă. Iar prăjiturile sunt “ ca la mama acasa”, bune, bune, foarte bune.
+            Recomand cu tot dragul! 
+          </p>
+          <br>
+          <div class="quote">”</div>
+          <div class="wrapper">
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+          </div>
+
+          <div class="profile">
+            <img src="./assets/images/testi-avatar.jpg" width="160" height="80" loading="lazy" alt="Anne David"
+              class="img">
+
+            <p class="label-2 profile-name">Anne David</p>
+          </div>
+
+        </div>
+      </div>
+      </section>
+
+
+
+
+
+      
+
+      <!-- 
+        - #FEATURES
+      -->
+
+      <section class="section features text-center" aria-label="features">
+        <div class="container">
+
+          <p class="section-subtitle label-2">Ingredientul secret</p>
+
+          <h2 class="headline-1 section-title">Dragostea pentru dulce</h2>
+
+          <ul class="grid-list">
+
+            <li class="feature-item">
+              <div class="feature-card">
+
+                <div class="card-icon">
+                  <img src="./assets/images/features-icon-1.png" width="100" height="80" loading="lazy" alt="icon">
+                </div>
+
+                <h3 class="title-2 card-title">Ingrediente proaspete</h3>
+
+                <p class="label-1 card-text">Fiecare produs este creat cu dragoste din cele mai proaspete ingrediente.</p>
+
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <div class="feature-card">
+
+                <div class="card-icon">
+                  <img src="./assets/images/features-icon-2.png" width="100" height="80" loading="lazy" alt="icon">
+                </div>
+
+                <h3 class="title-2 card-title">Sala de mese</h3>
+
+                <p class="label-1 card-text">În localul nostru puteţi savura delicioasele prajituri realizate cu mare atenţie</p>
+
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <div class="feature-card">
+
+                <div class="card-icon">
+                  <img src="./assets/images/features-icon-3.png" width="100" height="80" loading="lazy" alt="icon">
+                </div>
+
+                <h3 class="title-2 card-title">Cofetari iscusiţi</h3>
+
+                <p class="label-1 card-text">Delicioasele produse din cofetaria noastră sunt realizate de o echipă de cofetari iscusiti.</p>
+
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <div class="feature-card">
+
+                <div class="card-icon">
+                  <img src="./assets/images/features-icon-4.png" width="100" height="80" loading="lazy" alt="icon">
+                </div>
+
+                <h3 class="title-2 card-title">Evenimente & Petreceri</h3>
+
+                <p class="label-1 card-text">Localul nostru poate găzdui petreceri şi diferite alte tipuri de evenimente .</p>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <img src="./assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="shape"
+            class="shape shape-1">
+
+          <img src="./assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="shape"
+            class="shape shape-2">
+
+        </div>
+      </section>
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer section has-bg-image text-center" id="contact"
+    style="background-image: url('./assets/images/footer-bg.jpg')">
+    <div class="container">
+
+      <div class="footer-top grid-list">
+
+        <div class="footer-brand has-before has-after">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.jpg" width="160" height="50" loading="lazy" alt="VanNelli home">
+          </a>
+
+          <address class="body-4">
+           Str.Libertăţii, nr.1, Reşiţa, Caraş-Severin
+          </address>
+
+          <a href="https://www.instagram.com/nelli.sweets/" class="body-4 contact-link">nelli.sweets</a>
+
+          <a href="tel:+40736752202" class="body-4 contact-link">Contactaţi-ne : +40 736 752 202</a>
+
+          <p class="body-4">
+            Deschis <br> L-V : 8.00 to 20.00 <br> S-D : 9.00 -19.00
+          </p>
+
+          <div class="wrapper">
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+          </div>
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <a href="#home" class="label-2 footer-link hover-underline">Home</a>
+          </li>
+
+          <li>
+            <a href="#menu" class="label-2 footer-link hover-underline">Meniu</a>
+          </li>
+
+          <li>
+            <a href="#about" class="label-2 footer-link hover-underline">Despre noi</a>
+          </li>
+
+          <li>
+            <a href="#reviews" class="label-2 footer-link hover-underline">Recenzii</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="label-2 footer-link hover-underline">Contact</a>
+          </li>
+          
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <a href="https://www.facebook.com/VanNelliDolce" class="label-2 footer-link hover-underline">Facebook</a>
+          </li>
+
+          <li>
+            <a href="https://www.instagram.com/nelli.sweets/" class="label-2 footer-link hover-underline">Instagram</a>
+          </li>
+
+          <li>
+            <a href="https://www.google.com/maps/place/Strada+Libert%C4%83%C5%A3ii+1,+Re%C8%99i%C8%9Ba+320003/@45.2892588,21.8909821,17z/data=!3m1!4b1!4m6!3m5!1s0x47502a154ee959a1:0xb8f3029c41e48c01!8m2!3d45.2892588!4d21.8909821!16s%2Fg%2F11g2yy4b3w?entry=ttu" class="label-2 footer-link hover-underline">Locaţia noastră</a>
+          </li>
+          <li>
+            <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" class="label-2 footer-link"><img src="./assets/images/icon-anpc.png" /></a>
+          </li>
+          <li>
+           <a href="https://anpc.ro/ce-este-sal/" class="label-2 footer-link"> <img src="./assets/images/icon-europa-eu-anpc.png" /></a>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+        
+        <p class="copyright">
+          &copy; 2024 VanNelli | Realizat de <a href="https://www.cosminauzum.com/"
+            target="_blank" class="link">Cosmina Uzum</a>
+        </p>
+        <a href="https://lovepik.com/images/png-stick-figure.html">Stick Figure Png vectors by Lovepik.com</a>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

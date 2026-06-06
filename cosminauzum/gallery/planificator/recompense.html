@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planificator</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      h3 {
+        text-align: center;
+        font-weight: bolder;
+      }
+      .navbar {
+        background-color: #6b5b95;
+        padding: 1rem;
+        color: white;
+        text-align: center;
+      }
+
+      .nav-links {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-links li {
+        margin: 0 10px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      header {
+        text-align: center;
+        padding: 1rem;
+        background-color: #f4f4f4;
+      }
+
+      main {
+        padding: 1rem;
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+        max-width: 600px;
+        margin: auto;
+      }
+
+      #reward-list {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 1rem;
+      }
+
+      #reward-list li {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        background-color: #ecebf0;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #reward-list li:nth-child(even) {
+        background-color: #e0d8f3;
+      }
+
+      .delete-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 0.3rem 0.5rem;
+      }
+      #total-container {
+        background-color: plum;
+        color: purple;
+        font-size: 20px;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: #6b5b95;
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      footer p a {
+        color: aqua;
+        text-shadow: 1px 1px 1px purple;
+      }
+      footer p a:hover {
+        color: white;
+        text-shadow: 1px 1px 1px purple;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Recompense Activități</h1>
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.cosminauzum.com/gallery/planificator/index.html"
+            >Activități</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.cosminauzum.com/gallery/planificator/recompense.html"
+            >Recompense</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <header>
+      <h2>Adaugă și Monitorizează Recompensele Copiilor</h2>
+    </header>
+
+    <main>
+      <section id="recompense-section">
+        <h3>Recompense pentru Activități</h3>
+        <form id="reward-form">
+          <label for="child-select">Alege copilul:</label>
+          <select id="child-select">
+            <option value="Ana">Ana</option>
+            <option value="Zoe">Zoe</option>
+          </select>
+
+          <label for="activity-input">Activitate pentru Recompensă:</label>
+          <input
+            type="text"
+            id="activity-input"
+            placeholder="Ex: Citit 30 min"
+            required
+          />
+
+          <label for="reward-type">Tip Recompensă:</label>
+          <select id="reward-type">
+            <option value="monetar">Monetară (Ex: bani)</option>
+            <option value="non-monetar">Non-monetară (Ex: Ciocolată)</option>
+          </select>
+
+          <label for="reward-input">Recompensă:</label>
+          <input
+            type="text"
+            id="reward-input"
+            placeholder="Ex: 5 lei sau Ciocolată"
+            required
+          />
+
+          <label for="date-input">Data:</label>
+          <input type="date" id="date-input" required />
+
+          <button type="submit">Adaugă Recompensă</button>
+        </form>
+
+        <ul id="reward-list"></ul>
+
+        <div id="total-container">
+          <h5>
+            Total Recompense Monetare: <span id="total-amount">0</span> lei
+          </h5>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © 2025 Creat de
+        <a href="https://www.cosminauzum.com">www.cosminauzum.com</a>
+      </p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Setează data implicită la data curentă
+        const dateInput = document.getElementById("date-input");
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.value = today;
+
+        // Setează tipul de recompensă implicit la "monetar"
+        const rewardTypeSelect = document.getElementById("reward-type");
+        rewardTypeSelect.value = "monetar";
+
+        const rewardForm = document.getElementById("reward-form");
+        const rewardList = document.getElementById("reward-list");
+        const totalAmountDisplay = document.getElementById("total-amount");
+
+        let totalAmount = parseFloat(localStorage.getItem("totalAmount")) || 0;
+        totalAmountDisplay.textContent = totalAmount.toFixed(2);
+
+        const savedRewards = JSON.parse(localStorage.getItem("rewards")) || [];
+        savedRewards.forEach((reward) => addRewardToList(reward));
+
+        rewardForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const child = document.getElementById("child-select").value;
+          const activity = document.getElementById("activity-input").value;
+          const rewardType = document.getElementById("reward-type").value;
+          const reward = document.getElementById("reward-input").value;
+          const date = document.getElementById("date-input").value;
+
+          const rewardData = { child, activity, rewardType, reward, date };
+          addRewardToList(rewardData);
+          saveReward(rewardData);
+
+          if (rewardType === "monetar") {
+            totalAmount += parseFloat(reward) || 0;
+            updateTotal();
+          }
+
+          rewardForm.reset();
+          // Resetează data la cea curentă după adăugare
+          dateInput.value = today;
+          // Resetează tipul de recompensă la "monetar"
+          rewardTypeSelect.value = "monetar";
+        });
+
+        function addRewardToList(rewardData) {
+          const { child, activity, rewardType, reward, date } = rewardData;
+
+          const rewardText = `${child} - Activitate: ${activity} (${date}) - Recompensă: ${
+            rewardType === "monetar" ? `${reward} lei` : reward
+          }`;
+          const rewardItem = document.createElement("li");
+          rewardItem.textContent = rewardText;
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Șterge";
+          deleteButton.className = "delete-btn";
+
+          deleteButton.addEventListener("click", () => {
+            rewardList.removeChild(rewardItem);
+            removeReward(rewardData);
+            if (rewardType === "monetar") {
+              totalAmount -= parseFloat(reward) || 0;
+              updateTotal();
+            }
+          });
+
+          rewardItem.appendChild(deleteButton);
+          rewardList.appendChild(rewardItem);
+        }
+
+        function saveReward(rewardData) {
+          const rewards = JSON.parse(localStorage.getItem("rewards")) || [];
+          rewards.push(rewardData);
+          localStorage.setItem("rewards", JSON.stringify(rewards));
+        }
+
+        function removeReward(rewardData) {
+          let rewards = JSON.parse(localStorage.getItem("rewards")) || [];
+          rewards = rewards.filter(
+            (r) =>
+              !(
+                r.child === rewardData.child &&
+                r.activity === rewardData.activity &&
+                r.date === rewardData.date
+              )
+          );
+          localStorage.setItem("rewards", JSON.stringify(rewards));
+        }
+
+        function updateTotal() {
+          totalAmountDisplay.textContent = totalAmount.toFixed(2);
+          localStorage.setItem("totalAmount", totalAmount);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hanul Fain - Pensiune rustică lângă Reșița</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <style>
+      :root {
+        --culoare-primara: #8b4513; /* maro închis */
+        --culoare-secundara: #556b2f; /* verde oliv */
+        --text-deschis: #f5deb3; /* bej deschis */
+        --fundal: #fff8dc; /* blanched almond */
+        --accent: #a0522d; /* sienna */
+        --accent-light: #d2a679; /* accent light */
+      }
+      /* Add this at the top of your CSS */
+      html {
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        font-family: "Georgia", serif;
+        background-color: var(--fundal);
+        color: #333;
+        margin: 0;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Animatie fundal hero */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Stiluri pentru navigatie */
+      nav {
+        background-color: rgba(139, 69, 19, 0.95);
+        position: fixed;
+        width: 100vw; /* Use viewport width instead of 100% */
+        left: 0;
+        right: 0;
+        padding: 0.5rem 1rem; /* Reduced padding on sides */
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        background-color: rgba(139, 69, 19, 1);
+        padding: 0.3rem 2rem;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        height: 70px;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled .logo {
+        height: 50px;
+      }
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 0.8rem;
+        position: relative;
+      }
+
+      nav a {
+        color: var(--text-deschis);
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        position: relative;
+        padding: 0.5rem 0;
+        font-weight: 500;
+      }
+
+      nav a:hover {
+        color: white;
+      }
+
+      nav a::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent-light);
+        transition: width 0.3s;
+      }
+
+      nav a:hover::before {
+        width: 100%;
+      }
+
+      /* Active link style */
+      nav a.active {
+        color: white;
+      }
+
+      nav a.active::before {
+        width: 100%;
+        background-color: var(--text-deschis);
+      }
+
+      /* Mobile menu button */
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--text-deschis);
+      }
+
+      /* Sectiune hero */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("./imagini/2.jpg") no-repeat center center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 1.5s ease-out 0.3s forwards;
+        opacity: 0;
+      }
+
+      /* Stiluri rustice pentru butoane */
+      .btn-rustic {
+        background-color: var(--culoare-primara);
+        color: var(--text-deschis);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease-out 0.6s forwards;
+        opacity: 0;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .btn-rustic::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--accent);
+        transition: width 0.3s;
+        z-index: -1;
+      }
+
+      .btn-rustic:hover {
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-rustic:hover::before {
+        width: 100%;
+      }
+
+      /* Sectiuni generale */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--culoare-primara);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      section h2::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+
+      /* Sectiune Despre */
+      #despre {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-top: -50px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .despre-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .despre-text {
+        flex: 1;
+      }
+
+      .despre-img {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border: 5px solid var(--accent-light);
+      }
+
+      /* .despre-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s;
+      } */
+      .despre-img img,
+      .camera-img img,
+      .galerie-item img,
+      .obiectiv-img img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Changed from cover to contain for some elements */
+      }
+
+      .despre-img:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Sectiune Cazare */
+      #cazare {
+        background-color: var(--fundal);
+      }
+
+      .camere-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .camera-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        border-top: 4px solid var(--accent-light);
+      }
+
+      .camera-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .camera-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      /* .camera-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      } */
+
+      .camera-card:hover .camera-img img {
+        transform: scale(1.1);
+      }
+
+      .camera-info {
+        padding: 1.5rem;
+      }
+
+      .camera-info h3 {
+        color: var(--culoare-primara);
+        margin-top: 0;
+        font-size: 1.5rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .camera-info h3::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50%;
+        height: 2px;
+        background-color: var(--accent);
+      }
+
+      .facilitati {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .facilitati span {
+        background-color: var(--fundal);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        border: 1px solid var(--accent-light);
+      }
+
+      /* Sectiune Evenimente */
+      #evenimente {
+        background-color: white;
+      }
+
+      .evenimente-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .eveniment-card {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        background-color: var(--fundal);
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        border-left: 4px solid var(--accent);
+      }
+
+      .eveniment-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .eveniment-icon {
+        font-size: 3rem;
+        color: var(--accent);
+        min-width: 80px;
+        text-align: center;
+      }
+
+      /* Sectiune Galerie */
+      #galerie {
+        background-color: var(--fundal);
+      }
+
+      .galerie-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .galerie-item {
+        height: 200px;
+        overflow: hidden;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* .galerie-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      } */
+
+      .galerie-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .galerie-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .galerie-item:hover .galerie-overlay {
+        opacity: 1;
+      }
+
+      .galerie-overlay i {
+        color: white;
+        font-size: 2rem;
+        background-color: var(--accent);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      /* Sectiune Obiective Turistice */
+      #obiective {
+        background-color: white;
+      }
+
+      .obiective-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .obiectiv-card {
+        background: var(--fundal);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+
+      .obiectiv-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .obiectiv-img {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .obiectiv-img::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      }
+
+      /* .obiectiv-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      } */
+
+      .obiectiv-card:hover .obiectiv-img img {
+        transform: scale(1.1);
+      }
+
+      .obiectiv-info {
+        padding: 1.5rem;
+      }
+
+      .obiectiv-info h3 {
+        color: var(--culoare-primara);
+        margin-top: 0;
+        position: relative;
+        display: inline-block;
+      }
+
+      .obiectiv-info h3::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50%;
+        height: 2px;
+        background-color: var(--accent);
+      }
+
+      .distanta {
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      /* Sectiune Harta */
+      #harta {
+        background-color: var(--fundal);
+        padding: 5rem 0;
+      }
+      .harta-container {
+        width: 100%;
+        padding: 0 1rem;
+      }
+
+      #map {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* Sectiune Recenzii */
+      #recenzii {
+        background-color: white;
+      }
+
+      .recenzii-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .recenzie-card {
+        background: var(--fundal);
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        border-top: 3px solid var(--accent-light);
+      }
+
+      .recenzie-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .recenzie-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .recenzie-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--culoare-primara);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        border: 2px solid var(--accent-light);
+      }
+
+      .recenzie-nume {
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+      }
+
+      .recenzie-rating {
+        color: var(--accent);
+      }
+
+      .recenzie-data {
+        font-size: 0.8rem;
+        color: #666;
+      }
+
+      .adauga-recenzie {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--fundal);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 2px dashed var(--accent);
+      }
+
+      .rating-input {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+      }
+
+      .rating-input i {
+        color: #ddd;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.2s;
+        margin: 0 0.2rem;
+      }
+      .rating-input i.active {
+        color: var(--accent);
+      }
+
+      /* Sectiune Contact */
+      #contact {
+        background-color: white;
+      }
+
+      .contact-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-form {
+        width: 100%;
+        padding: 0 1rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: var(--fundal);
+        border-radius: 8px;
+        transition: all 0.3s;
+        border-left: 3px solid var(--accent);
+      }
+
+      .contact-item:hover {
+        transform: translateX(5px);
+      }
+
+      .contact-icon {
+        font-size: 1.5rem;
+        color: var(--accent);
+        margin-right: 1rem;
+        width: 40px;
+        text-align: center;
+      }
+
+      input,
+      textarea,
+      select {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      form {
+        width: 100%;
+        padding: 0 0.5rem;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2);
+      }
+
+      textarea {
+        min-height: 150px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--culoare-primara);
+        color: var(--text-deschis);
+        padding: 3rem 2rem;
+      }
+      /* 
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      } */
+      .footer-container {
+        width: 100%;
+        padding: 0 1rem;
+      }
+      .footer-col h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-light);
+        bottom: 0;
+        left: 0;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+        transition: transform 0.3s;
+      }
+
+      .footer-links li:hover {
+        transform: translateX(5px);
+      }
+
+      .footer-links a {
+        color: var(--text-deschis);
+        text-decoration: none;
+        transition: color 0.3s;
+        display: block;
+        padding: 0.3rem 0;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        color: var(--text-deschis);
+        font-size: 1.5rem;
+        transition: all 0.3s;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(160, 82, 45, 0.3);
+      }
+
+      .social-links a:hover {
+        color: white;
+        background-color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(245, 222, 179, 0.3);
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        z-index: 999;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background-color: var(--culoare-primara);
+        transform: translateY(-3px);
+      }
+
+      /* Animations for sections */
+      .fade-in {
+        opacity: 0;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.appear {
+        opacity: 1;
+      }
+
+      .from-left,
+      .from-right {
+        transform: translateX(0);
+        width: 100%;
+      }
+
+      .from-left.appear,
+      .from-right.appear {
+        transform: translateX(0);
+      }
+      section {
+        width: 100%;
+        max-width: 100%;
+        padding: 5rem 1rem;
+      }
+      /* Responsive styles */
+      @media (max-width: 992px) {
+        .despre-content {
+          flex-direction: column;
+        }
+
+        .despre-img {
+          order: -1;
+        }
+
+        .contact-container {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: row;
+          padding: 0.5rem;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        nav ul {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background-color: rgba(139, 69, 19, 0.98);
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding-top: 2rem;
+          transition: left 0.3s ease;
+          z-index: 999;
+        }
+
+        nav ul.active {
+          left: 0;
+        }
+
+        nav li {
+          margin: 1rem 0;
+        }
+
+        nav a {
+          font-size: 1.3rem;
+          padding: 0.5rem 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+          padding: 0 1rem;
+        }
+
+        section {
+          padding: 4rem 0.5rem;
+        }
+
+        section h2 {
+          font-size: 2rem;
+        }
+
+        .eveniment-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .eveniment-icon {
+          margin-bottom: 1rem;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-col h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        @media (max-width: 576px) {
+          .hero h1 {
+            font-size: 2rem;
+            padding: 0 1rem;
+          }
+
+          .hero p {
+            padding: 0 1rem;
+          }
+
+          .btn-rustic {
+            padding: 0.8rem 1.5rem;
+          }
+
+          .despre-content,
+          .eveniment-card,
+          .contact-container {
+            padding: 0 0.5rem;
+          }
+        }
+
+        .camere-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .obiective-container {
+          grid-template-columns: 1fr;
+        }
+
+        .recenzii-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <div class="logo-container">
+          <img src="./imagini/logo.jpg" alt="Hanul Fain Logo" class="logo" />
+        </div>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <ul id="nav-menu">
+          <li><a href="#despre" class="nav-link">Despre</a></li>
+          <li><a href="#cazare" class="nav-link">Cazare</a></li>
+          <li><a href="#evenimente" class="nav-link">Evenimente</a></li>
+          <li><a href="#obiective" class="nav-link">Obiective</a></li>
+          <li><a href="#galerie" class="nav-link">Galerie</a></li>
+          <li><a href="#recenzii" class="nav-link">Recenzii</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero">
+      <h1>Hanul Fain</h1>
+      <p>Oază de pace lângă Reșița, unde natura întâlnește tradiția</p>
+      <button class="btn-rustic">Descoperă magia locului</button>
+    </section>
+
+    <section id="despre" class="fade-in">
+      <h2>Despre Hanul Nostru</h2>
+      <div class="despre-content">
+        <div class="despre-text from-left">
+          <p>
+            Hanul Fain este un refugiu rustic situat la poalele munților
+            Banatului, la doar câțiva kilometri de orașul Reșița. Construit în
+            stil tradițional, cu lemn masiv și piatră naturală, hanul oferă o
+            experiență autentică în mijlocul naturii.
+          </p>
+          <p>
+            Am transformat o clădire istorică într-un spațiu modern, păstrând
+            totuși farmecul arhitecturii tradiționale. Aici veți găsi liniștea
+            și aerul curat al zonei rurale, combinat cu confortul și serviciile
+            pe care le așteptați de la un han de calitate.
+          </p>
+          <p>
+            Cu o capacitate de cazare de XX locuri și o sală de evenimente
+            pentru 45 de persoane, suntem pregătiți să vă întâmpinăm cu
+            ospitalitate și profesionalism.
+          </p>
+        </div>
+        <div class="despre-img from-right">
+          <img src="./imagini/4.jpg" alt="Hanul Fain exterior" />
+        </div>
+      </div>
+    </section>
+
+    <section id="cazare" class="fade-in">
+      <h2>Oferte de Cazare</h2>
+      <div class="camere-grid">
+        <div class="camera-card">
+          <div class="camera-img">
+            <img src="./imagini/camera3.jpg" alt="Camera Dubla" />
+          </div>
+          <div class="camera-info">
+            <h3>Camera Dublă</h3>
+            <p>
+              Camera noastră dublă oferă confort și intimitate, cu vedere la
+              natură. Perfectă pentru cupluri sau călători de afaceri.
+            </p>
+            <div class="facilitati">
+              <span><i class="fas fa-bed"></i> Pat matrimonial</span>
+              <span><i class="fas fa-shower"></i> Baie privată</span>
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-tv"></i> TV</span>
+            </div>
+            <button class="btn-rustic">Rezervă acum</button>
+          </div>
+        </div>
+
+        <div class="camera-card">
+          <div class="camera-img">
+            <img src="imagini/camera.jpg" alt="Apartament Familie" />
+          </div>
+          <div class="camera-info">
+            <h3>Apartament Familie</h3>
+            <p>
+              Spațios și confortabil, apartamentul nostru familial poate găzdui
+              până la 4 persoane, cu bucătărie mică și living.
+            </p>
+            <div class="facilitati">
+              <span><i class="fas fa-bed"></i> 2 paturi</span>
+              <span><i class="fas fa-utensils"></i> Bucătărie</span>
+              <span><i class="fas fa-shower"></i> Baie privată</span>
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+            </div>
+            <button class="btn-rustic">Rezervă acum</button>
+          </div>
+        </div>
+
+        <div class="camera-card">
+          <div class="camera-img">
+            <img src="imagini/camera4.jpg" alt="Camera Superior" />
+          </div>
+          <div class="camera-info">
+            <h3>Camera Superior</h3>
+            <p>
+              Pentru cei care doresc un plus de lux, camera noastră superior
+              oferă spațiu generos, cadou de bun venit și terasă privată.
+            </p>
+            <div class="facilitati">
+              <span><i class="fas fa-bed"></i> Pat king size</span>
+              <span><i class="fas fa-hot-tub"></i> Jacuzzi</span>
+              <span><i class="fas fa-umbrella-beach"></i> Terasă</span>
+              <span><i class="fas fa-wine-glass-alt"></i> Minibar</span>
+            </div>
+            <button class="btn-rustic">Rezervă acum</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evenimente" class="fade-in">
+      <h2>Evenimente</h2>
+      <div class="evenimente-container">
+        <div class="eveniment-card from-left">
+          <div class="eveniment-icon">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <div class="eveniment-info">
+            <h3>Nunți și Botezuri</h3>
+            <p>
+              Sala noastră de evenimente poate găzdui festivități de până la 45
+              de persoane. Oferim meniu personalizat, decor rustic și spațiu
+              pentru dans.
+            </p>
+            <p>
+              Pachetele noastre includ: sala decorată, meniu cu 3 feluri de
+              mâncare, băuturi nelimitate și cazare pentru invitați.
+            </p>
+          </div>
+        </div>
+
+        <div class="eveniment-card from-right">
+          <div class="eveniment-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="eveniment-info">
+            <h3>Conferințe și Evenimente Corporate</h3>
+            <p>
+              Organizăm evenimente de afaceri într-un cadru relaxant, departe de
+              agitația orașului. Sala este echipată cu proiector, ecran și WiFi
+              de mare viteză.
+            </p>
+            <p>
+              Oferim pachete complete care includ: sala de conferințe, pauze de
+              cafea, prânz și activități de team building în natură.
+            </p>
+          </div>
+        </div>
+
+        <div class="eveniment-card from-left">
+          <div class="eveniment-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="eveniment-info">
+            <h3>Mese de Gală și Reuniuni</h3>
+            <p>
+              Pentru reuniuni de familie sau întâlniri cu prietenii, vă putem
+              organiza mese festive în sală sau pe terasa noastră în aer liber.
+            </p>
+            <p>
+              Specialitățile noastre includ preparate tradiționale din zonă, cu
+              ingrediente locale și de sezon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="obiective" class="fade-in">
+      <h2>Obiective Turistice</h2>
+
+      <div class="obiective-container">
+        <div class="obiectiv-card">
+          <div class="obiectiv-img">
+            <img
+              src="imagini/muzeu-resita.jpg"
+              alt="Muzeul Locomotivelor din Reșița"
+            />
+          </div>
+          <div class="obiectiv-info">
+            <h3>Muzeul Locomotivelor</h3>
+            <p>
+              Colecție unică de locomotive fabricate în atelierele Reșiței,
+              marcând istoria industrială a orașului.
+            </p>
+            <p class="distanta">În Reșița</p>
+          </div>
+        </div>
+
+        <div class="obiectiv-card">
+          <div class="obiectiv-img">
+            <img src="imagini/lacu-secu.jpg" alt="Lacul Secu" />
+          </div>
+          <div class="obiectiv-info">
+            <h3>Lacul Secu</h3>
+            <p>
+              Oază de pace cu ape limpezi, perfect pentru pescuit, plimbări și
+              picnicuri în natură.
+            </p>
+            <p class="distanta">La 12 km de Hanul Fain</p>
+          </div>
+        </div>
+        <div class="obiectiv-card">
+          <div class="obiectiv-img">
+            <img src="imagini/muntele-semenic.jpg" alt="Munții Semenic" />
+          </div>
+          <div class="obiectiv-info">
+            <h3>Munții Semenic</h3>
+            <p>
+              Paradis al drumețiilor vara și al schiatului iarna, cu pârtii
+              pentru toate nivelurile.
+            </p>
+            <p class="distanta">La 30 km de Hanul Fain</p>
+          </div>
+        </div>
+
+        <div class="obiectiv-card">
+          <div class="obiectiv-img">
+            <img src="imagini/pestera-comarnic.jpg" alt="Peștera Comarnic" />
+          </div>
+          <div class="obiectiv-info">
+            <h3>Peștera Comarnic</h3>
+            <p>
+              Una dintre cele mai impresionante peșteri din Banat, cu săli
+              spectaculoase și formațiuni carstice.
+            </p>
+            <p class="distanta">La 40 km de Hanul Fain</p>
+          </div>
+        </div>
+
+        <div class="obiectiv-card">
+          <div class="obiectiv-img">
+            <img src="imagini/barajul-valiug.jpg" alt="Barajul Văliug" />
+          </div>
+          <div class="obiectiv-info">
+            <h3>Barajul Văliug</h3>
+            <p>
+              Construcție impresionantă pe râul Bârzava, oferind peisaje de
+              excepție și posibilități de recreere.
+            </p>
+            <p class="distanta">La 25 km de Hanul Fain</p>
+          </div>
+        </div>
+
+        <div class="obiectiv-card">
+          <div class="obiectiv-img">
+            <img src="imagini/trei-ape.jpg" alt="Trei Ape" />
+          </div>
+          <div class="obiectiv-info">
+            <h3>Trei Ape</h3>
+            <p>
+              Zonă pitorească unde trei râuri se întâlnesc, oferind peisaje
+              unice și oportunități de recreere.
+            </p>
+            <p class="distanta">La 18 km de Hanul Fain</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galerie" class="fade-in">
+      <h2>Galerie Foto</h2>
+      <div class="galerie-grid">
+        <div class="galerie-item">
+          <img src="./imagini/3.jpg" alt="Hanul Fain exterior" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/sala_de_mese.jpg" alt="Sala de evenimente" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/sala_de_mese2.jpg" alt="Restaurant" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/4.jpg" alt="Camera dubla" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/baie.jpg" alt="Baie privata" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/terasa.jpg" alt="Terasă" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/camera.jpg" alt="Terasă" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        <div class="galerie-item">
+          <img src="./imagini/camera2.jpg" alt="Terasă" />
+          <div class="galerie-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harta" class="fade-in">
+      <div class="harta-container">
+        <h2>Locația Noastră</h2>
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <section id="recenzii" class="fade-in">
+      <h2>Recenzii</h2>
+      <div class="recenzii-container">
+        <div class="recenzie-card">
+          <div class="recenzie-header">
+            <div class="recenzie-avatar">M</div>
+            <div>
+              <div class="recenzie-nume">Maria Popescu</div>
+              <div class="recenzie-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="recenzie-data">15 iulie 2023</div>
+            </div>
+          </div>
+          <p>
+            Am petrecut un weekend minunat la Hanul Fain. Camerele sunt
+            spațioase și curate, iar personalul este foarte amabil. Mâncarea
+            este delicioasă, cu ingrediente proaspete din zonă. Recomand cu
+            încredere!
+          </p>
+        </div>
+
+        <div class="recenzie-card">
+          <div class="recenzie-header">
+            <div class="recenzie-avatar">I</div>
+            <div>
+              <div class="recenzie-nume">Ion Ionescu</div>
+              <div class="recenzie-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <div class="recenzie-data">2 iunie 2023</div>
+            </div>
+          </div>
+          <p>
+            Loc perfect pentru o escapadă în natură. Am fost impresionat de
+            decorul rustic și de atmosfera relaxantă. Terasa cu vedere la pădure
+            este superbă. Singura observație ar fi că WiFi-ul nu este foarte
+            puternic în toate camerele.
+          </p>
+        </div>
+
+        <div class="recenzie-card">
+          <div class="recenzie-header">
+            <div class="recenzie-avatar">A</div>
+            <div>
+              <div class="recenzie-nume">Ana Dumitrescu</div>
+              <div class="recenzie-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="recenzie-data">20 mai 2023</div>
+            </div>
+          </div>
+          <p>
+            Am organizat botezul fiicei noastre aici și totul a fost perfect.
+            Sala este frumos decorată, iar echipa de la restaurant a fost foarte
+            atentă la detalii. Invitații noștri au fost încântați de cazare și
+            de meniu. Mulțumim pentru tot!
+          </p>
+        </div>
+      </div>
+
+      <div class="adauga-recenzie">
+        <h3>Adaugă-ți recenzia</h3>
+        <form id="form-recenzie">
+          <input type="text" placeholder="Numele tău" required />
+          <input
+            type="email"
+            placeholder="Email (nu va fi publicat)"
+            required
+          />
+          <div class="rating-input">
+            <i class="fas fa-star" data-rating="1"></i>
+            <i class="fas fa-star" data-rating="2"></i>
+            <i class="fas fa-star" data-rating="3"></i>
+            <i class="fas fa-star" data-rating="4"></i>
+            <i class="fas fa-star" data-rating="5"></i>
+            <input type="hidden" id="rating-value" name="rating" value="0" />
+          </div>
+          <textarea
+            placeholder="Experiența ta la Hanul Fain"
+            required
+          ></textarea>
+          <button type="submit" class="btn-rustic">Trimite recenzie</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+      <h2>Contact</h2>
+      <div class="contact-container">
+        <div class="contact-info from-left">
+          <h3>Date de contact</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <p>
+                <strong>Adresă:</strong> DN58, km 12, lângă Reșița, Județul
+                Caraș-Severin
+              </p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <p><strong>Telefon:</strong> +40 255 123 456</p>
+              <p><strong>Mobil:</strong> +40 723 456 789</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <p><strong>Email:</strong> contact@hanulfain.ro</p>
+              <p><strong>Rezervări:</strong> rezervari@hanulfain.ro</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <p><strong>Program:</strong> Luni-Duminică: 08:00 - 22:00</p>
+              <p>Restaurant: 12:00 - 21:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form from-right">
+          <h3>Trimite-ne un mesaj</h3>
+          <form>
+            <input type="text" placeholder="Numele tău" required />
+            <input type="email" placeholder="Email" required />
+            <input type="tel" placeholder="Telefon" />
+            <textarea placeholder="Mesajul tău" required></textarea>
+            <button type="submit" class="btn-rustic">Trimite mesaj</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="fade-in">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Hanul Fain</h3>
+          <p>
+            Oază de pace lângă Reșița, unde natura întâlnește tradiția. Oferim
+            cazare de calitate, restaurant cu specific tradițional și spațiu
+            pentru evenimente.
+          </p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tripadvisor"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Link-uri utile</h3>
+          <ul class="footer-links">
+            <li><a href="#despre">Despre noi</a></li>
+            <li><a href="#cazare">Camere și tarife</a></li>
+            <li><a href="#evenimente">Pachete evenimente</a></li>
+            <li><a href="#obiective">Obiective turistice</a></li>
+            <li><a href="#galerie">Galerie foto</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Informații</h3>
+          <ul class="footer-links">
+            <li><a href="#">Politica de confidențialitate</a></li>
+            <li><a href="#">Termeni și condiții</a></li>
+            <li><a href="#">ANPC</a></li>
+            <li><a href="#">Drepturile consumatorului</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Parteneri</h3>
+          <ul class="footer-links">
+            <li><a href="#">Primăria Reșița</a></li>
+            <li><a href="#">Turism Caraș-Severin</a></li>
+            <li><a href="#">Proiecte europene</a></li>
+            <li>
+              Design by
+              <a href="https://www.cosminauzum.com" target="_blank"
+                >www.cosminauzum.com</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>
+          &copy; 2025 Hanul Fain. Toate drepturile rezervate. <br />Creat de
+          <a
+            href="https://www.cosminauzum.com"
+            target="_blank"
+            style="color: var(--text-deschis)"
+            >www.cosminauzum.com</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector("#nav-menu");
+
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        menuToggle.innerHTML = navMenu.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      const logo = document.querySelector(".logo");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Back to top button
+      const backToTopButton = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add("visible");
+        } else {
+          backToTopButton.classList.remove("visible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Active link highlighting
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+
+          if (window.scrollY >= sectionTop - 100) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Animări la scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeIns = document.querySelectorAll(".fade-in");
+        const fromLefts = document.querySelectorAll(".from-left");
+        const fromRights = document.querySelectorAll(".from-right");
+
+        const appearOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -100px 0px",
+        };
+
+        const appearOnScroll = new IntersectionObserver(function (
+          entries,
+          observer
+        ) {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("appear");
+            observer.unobserve(entry.target);
+          });
+        },
+        appearOptions);
+        fadeIns.forEach((fader) => {
+          appearOnScroll.observe(fader);
+        });
+
+        fromLefts.forEach((item) => {
+          appearOnScroll.observe(item);
+        });
+
+        fromRights.forEach((item) => {
+          appearOnScroll.observe(item);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll("nav a").forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          });
+        });
+
+        // Hero button scroll to about section
+        document
+          .querySelector(".btn-rustic")
+          .addEventListener("click", function () {
+            document.querySelector("#despre").scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+
+        // Rating system
+        const stars = document.querySelectorAll(".rating-input i");
+        const ratingValue = document.getElementById("rating-value");
+
+        stars.forEach((star) => {
+          star.addEventListener("click", function () {
+            const rating = this.getAttribute("data-rating");
+            ratingValue.value = rating;
+
+            stars.forEach((s, index) => {
+              if (index < rating) {
+                s.classList.add("active");
+              } else {
+                s.classList.remove("active");
+              }
+            });
+          });
+
+          star.addEventListener("mouseover", function () {
+            const rating = this.getAttribute("data-rating");
+            stars.forEach((s, index) => {
+              if (index < rating) {
+                s.classList.add("active");
+              } else {
+                s.classList.remove("active");
+              }
+            });
+          });
+
+          star.addEventListener("mouseout", function () {
+            const currentRating = ratingValue.value;
+            stars.forEach((s, index) => {
+              if (index < currentRating) {
+                s.classList.add("active");
+              } else {
+                s.classList.remove("active");
+              }
+            });
+          });
+        });
+
+        // Formular recenzii
+        document
+          .getElementById("form-recenzie")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Mulțumim pentru recenzie! Va fi publicată după moderare.");
+            this.reset();
+            stars.forEach((star) => star.classList.remove("active"));
+            ratingValue.value = "0";
+          });
+
+        // Harta
+        const map = L.map("map").setView([45.2913, 21.8867], 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        L.marker([45.2913, 21.8867])
+          .addTo(map)
+          .bindPopup("<b>Hanul Fain</b><br>DN58, km 12, lângă Reșița")
+          .openPopup();
+      });
+    </script>
+  </body>
+</html>

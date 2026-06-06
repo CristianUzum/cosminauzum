@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anunț funerar</title>
+    <style>
+      body {
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./candlelight-1077638_640.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.3;
+        z-index: -1;
+      }
+
+      .container {
+        max-width: 700px;
+        width: 100%;
+        padding: 30px;
+        border: 10px solid #000;
+        background-color: rgba(248, 248, 248, 0.95);
+        font-family: "Times New Roman", serif;
+        position: relative;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+      }
+
+      /* Panglica de doliu actualizată */
+      .mourning-ribbon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 80px 80px 0 0;
+        border-color: black transparent transparent transparent;
+        z-index: 1;
+      }
+
+      .mourning-ribbon:after {
+        content: "RIP";
+        color: white;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        transform: rotate(-45deg);
+      }
+
+      .candle-container {
+        position: absolute;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 180px;
+        z-index: 1;
+      }
+
+      .candle {
+        width: 40px;
+        height: 120px;
+        background: linear-gradient(to right, #f8f8f8, #e8e8e8);
+        margin: 0 auto;
+        position: relative;
+        border: 1px solid #d0d0d0;
+        border-radius: 3px;
+        box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .flame {
+        width: 20px;
+        height: 50px;
+        background: #ffcc00;
+        border-radius: 50% 50% 20% 20%;
+        box-shadow: 0 0 15px 8px rgba(255, 204, 0, 0.6),
+          0 0 25px 15px rgba(255, 153, 0, 0.4),
+          0 0 35px 20px rgba(255, 102, 0, 0.2);
+        position: absolute;
+        top: -60px;
+        left: 20px;
+        animation: flicker 1.5s ease-in-out infinite alternate;
+        transform-origin: center bottom;
+      }
+
+      @keyframes flicker {
+        0%,
+        100% {
+          transform: scale(1) rotate(-1deg);
+          opacity: 0.95;
+        }
+        20% {
+          transform: scale(1.1) rotate(2deg);
+          opacity: 1;
+        }
+        40% {
+          transform: scale(0.95) rotate(-1deg);
+          opacity: 0.98;
+        }
+        60% {
+          transform: scale(1.05) rotate(1deg);
+          opacity: 1;
+        }
+        80% {
+          transform: scale(0.98) rotate(-0.5deg);
+          opacity: 0.97;
+        }
+      }
+
+      .light-effect {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 220, 150, 0.4) 0%,
+          rgba(255, 220, 150, 0) 70%
+        );
+        border-radius: 50%;
+        top: -70px;
+        left: -30px;
+        z-index: -1;
+        animation: light-flicker 1.5s ease-in-out infinite alternate;
+      }
+
+      @keyframes light-flicker {
+        0%,
+        100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.9;
+          transform: scale(1.1);
+        }
+      }
+
+      .message {
+        text-align: justify;
+        line-height: 1.7;
+        color: #333;
+        padding-right: 100px;
+        position: relative;
+        z-index: 2;
+        font-size: 18px;
+      }
+
+      h1 {
+        color: #222;
+        border-bottom: 1px solid #555;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 28px;
+        margin-right: 80px;
+        margin-top: 0;
+      }
+
+      .details {
+        font-weight: bold;
+        margin: 20px 0;
+        text-align: center;
+        font-size: 22px;
+      }
+
+      .signature {
+        margin-top: 30px;
+        font-style: italic;
+        text-align: right;
+        font-size: 20px;
+        margin-right: 80px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+          border-width: 8px;
+        }
+
+        .candle-container {
+          position: relative;
+          right: auto;
+          top: auto;
+          transform: none;
+          margin: 20px auto;
+          height: 150px;
+        }
+
+        .message,
+        h1,
+        .signature {
+          padding-right: 0;
+          margin-right: 0;
+        }
+
+        .message {
+          font-size: 16px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .details {
+          font-size: 18px;
+        }
+
+        .signature {
+          font-size: 17px;
+        }
+
+        .mourning-ribbon {
+          border-width: 60px 60px 0 0;
+        }
+
+        .mourning-ribbon:after {
+          font-size: 14px;
+          top: 8px;
+          left: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+          border-width: 6px;
+        }
+
+        .mourning-ribbon {
+          border-width: 50px 50px 0 0;
+        }
+
+        .mourning-ribbon:after {
+          font-size: 12px;
+          top: 6px;
+          left: 6px;
+        }
+
+        .message {
+          font-size: 15px;
+          line-height: 1.6;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background"></div>
+
+    <div class="container">
+      <div class="mourning-ribbon"></div>
+
+      <div class="candle-container">
+        <div class="flame"></div>
+        <div class="light-effect"></div>
+        <div class="candle"></div>
+      </div>
+
+      <h1>Anunț Funerar</h1>
+
+      <div class="message">
+        <p>Dragii noștri,</p>
+
+        <p>
+          Cu inimile îndurereate, vă scriem pentru a vă împărtăși vestea
+          tristă a plecării dintre noi a celui care ne-a fost soț, tată și bunic
+          iubit,
+        </p>
+
+        <p class="details">Susan Petru Dumitru</p>
+
+        <p>
+          Golul lăsat în urmă este imens și cuvintele sunt prea sărace pentru a
+          exprima tristețea noastră.
+        </p>
+
+        <p>
+          Trupul său neînsuflețit se află depus la Capela din Uroi (fosta
+          școală), iar ceremonia de înmormântare va avea loc<br />
+          <span class="details">luni, 21 aprilie 2025, la ora 14:00</span><br />
+          în localitatea Uroi.
+        </p>
+
+        <p>
+          Dacă ați avut ocazia să-l cunoașteți și să-i apreciați sufletul bun,
+          vă invităm să ne fiți alături pe ultimul său drum, pentru a-i aduce un
+          ultim omagiu și pentru a ne oferi sprijinul dumneavoastră în aceste
+          momente dificile.
+        </p>
+
+        <p class="signature">Familia îndurerată</p>
+      </div>
+    </div>
+  </body>
+</html>

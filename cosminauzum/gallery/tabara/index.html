@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabăra de Vară de Germană - Caransebeș</title>
+    <style>
+      /* CSS Reset și Stiluri de Bază */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Comic Sans MS", "Marker Felt", "Arial Rounded MT Bold",
+          sans-serif;
+      }
+
+      :root {
+        --primary: #ffd700;
+        --secondary: #ff6b6b;
+        --accent: #4ecdc4;
+        --dark: #292f36;
+        --light: #f7fff7;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="10" height="10" fill="%23FFD700" opacity="0.2"/></svg>');
+        background-size: 20px 20px;
+        z-index: -1;
+        opacity: 0.3;
+      }
+
+      /* Animatie creioane */
+      .pencil {
+        position: absolute;
+        width: 40px;
+        height: 200px;
+        background: linear-gradient(
+          to bottom,
+          #ffd700 0%,
+          #ffd700 70%,
+          #ff6b6b 70%,
+          #ff6b6b 85%,
+          #292f36 85%,
+          #292f36 100%
+        );
+        transform: rotate(45deg);
+        z-index: -1;
+        opacity: 0.7;
+        animation: float 6s infinite ease-in-out;
+      }
+
+      .pencil:nth-child(2) {
+        background: linear-gradient(
+          to bottom,
+          #4ecdc4 0%,
+          #4ecdc4 70%,
+          #ff6b6b 70%,
+          #ff6b6b 85%,
+          #292f36 85%,
+          #292f36 100%
+        );
+        top: 20%;
+        left: 60%;
+        animation-delay: 1s;
+      }
+
+      .pencil:nth-child(3) {
+        background: linear-gradient(
+          to bottom,
+          #ff6b6b 0%,
+          #ff6b6b 70%,
+          #4ecdc4 70%,
+          #4ecdc4 85%,
+          #292f36 85%,
+          #292f36 100%
+        );
+        top: 60%;
+        left: 10%;
+        animation-delay: 2s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(45deg) translateY(0);
+        }
+        50% {
+          transform: rotate(45deg) translateY(-20px);
+        }
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: var(--accent);
+        opacity: 0.7;
+        animation: confetti-fall 5s linear infinite;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        animation: colorChange 8s infinite;
+      }
+
+      @keyframes colorChange {
+        0% {
+          color: white;
+        }
+        25% {
+          color: var(--primary);
+        }
+        50% {
+          color: var(--accent);
+        }
+        75% {
+          color: var(--secondary);
+        }
+        100% {
+          color: white;
+        }
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .deutsch {
+        display: inline-block;
+        background-color: var(--dark);
+        color: white;
+        padding: 0.3rem 0.6rem;
+        border-radius: 20px;
+        font-weight: bold;
+        margin: 0.5rem 0;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .intro {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .intro p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+      }
+
+      .highlight-box {
+        background-color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border: 3px dashed var(--primary);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight-box::after {
+        content: "☆";
+        position: absolute;
+        color: var(--primary);
+        font-size: 2rem;
+        top: 10px;
+        right: 10px;
+        opacity: 0.3;
+      }
+
+      .section-title {
+        color: var(--secondary);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 2rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        border-radius: 2px;
+      }
+
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .feature {
+        flex: 1 1 300px;
+        background-color: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-top: 5px solid var(--accent);
+      }
+
+      .feature:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .feature h3 {
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .feature p {
+        color: #666;
+        line-height: 1.5;
+      }
+
+      /* Program */
+      .schedule {
+        width: 100%;
+        max-width: 800px;
+        margin: 2rem auto;
+        border-collapse: collapse;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .schedule th,
+      .schedule td {
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid #eee;
+      }
+
+      .schedule th {
+        background-color: var(--secondary);
+        color: white;
+      }
+
+      .schedule tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .schedule tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      /* Formular */
+      .registration-form {
+        background-color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 3rem auto;
+        max-width: 600px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .registration-form::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 2px dashed var(--primary);
+        border-radius: 20px;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: var(--dark);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--accent);
+        outline: none;
+      }
+
+      .submit-btn {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: block;
+        margin: 2rem auto 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 1.5rem 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        font-size: 1.2rem;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .social-link:hover {
+        background-color: var(--primary);
+        transform: scale(1.1);
+      }
+
+      /* Elemente animate */
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .rotate {
+        animation: rotate 10s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+
+        .feature {
+          flex: 1 1 100%;
+        }
+
+        .schedule {
+          font-size: 0.9rem;
+        }
+
+        .schedule th,
+        .schedule td {
+          padding: 0.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .highlight-box {
+          padding: 1.5rem;
+        }
+
+        .registration-form {
+          padding: 1.5rem;
+        }
+      }
+      footer p a {
+        color: var(--secondary);
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pencil"></div>
+    <div class="pencil"></div>
+    <div class="pencil"></div>
+
+    <header>
+      <div class="confetti" style="left: 10%; animation-delay: 0s"></div>
+      <div class="confetti" style="left: 20%; animation-delay: 1s"></div>
+      <div class="confetti" style="left: 30%; animation-delay: 0.5s"></div>
+      <div class="confetti" style="left: 40%; animation-delay: 1.5s"></div>
+      <div class="confetti" style="left: 50%; animation-delay: 0.2s"></div>
+      <div class="confetti" style="left: 60%; animation-delay: 1.2s"></div>
+      <div class="confetti" style="left: 70%; animation-delay: 0.8s"></div>
+      <div class="confetti" style="left: 80%; animation-delay: 0.3s"></div>
+      <div class="confetti" style="left: 90%; animation-delay: 1.7s"></div>
+
+      <h1>Tabăra de Vară de Germană</h1>
+      <p class="subtitle">O aventură educativă plină de distracție!</p>
+      <div class="deutsch">Deutsch macht Spaß! (Germana este distractivă!)</div>
+    </header>
+
+    <div class="container">
+      <section class="intro">
+        <h2 class="section-title">Despre Tabără</h2>
+        <div class="highlight-box floating">
+          <p>
+            Bine ați venit la cea mai distractivă tabără de vară de germană din
+            Caransebeș! Sub îndrumarea doamnei învățătoare
+            <strong>Monika Pelin</strong> și a profesoarei de germană
+            <strong>Helga Bireescu</strong>, copiii vor avea ocazia să învețe
+            limba germană într-un mod creativ și interactiv.
+          </p>
+        </div>
+
+        <p>
+          În fiecare zi, de la <strong>9:00 la 13:00</strong>, timp de o
+          săptămână, copiii vor explora lumea limbii germane prin jocuri,
+          activități creative și chiar gătit!
+        </p>
+      </section>
+
+      <section>
+        <h2 class="section-title">Ce vom face?</h2>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📚</div>
+            <h3>Învățare interactivă</h3>
+            <p>
+              Vom învăța germană prin jocuri, povești și cântece.
+              <span
+                class="deutsch"
+                style="font-size: 0.8rem; padding: 0.2rem 0.4rem"
+                >Spielend lernen!</span
+              >
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">👩‍🍳</div>
+            <h3>Atelier de gătit</h3>
+            <p>
+              Vom pregăti delicioase rețete germane în timp ce exersăm
+              vocabularul.
+              <span
+                class="deutsch"
+                style="font-size: 0.8rem; padding: 0.2rem 0.4rem"
+                >Kochen auf Deutsch!</span
+              >
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🎨</div>
+            <h3>Meserii creative</h3>
+            <p>
+              Vom explora diverse meserii și vom crea obiecte unice.
+              <span
+                class="deutsch"
+                style="font-size: 0.8rem; padding: 0.2rem 0.4rem"
+                >Basteln und lernen!</span
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Programul Zilnic</h2>
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th>Ora</th>
+              <th>Activitate</th>
+              <th>Descriere</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9:00 - 10:00</td>
+              <td>Învățare interactivă</td>
+              <td>Jocuri și activități pentru învățarea vocabularului</td>
+            </tr>
+            <tr>
+              <td>10:00 - 11:00</td>
+              <td>Atelier creativ</td>
+              <td>Meserii și proiecte practice</td>
+            </tr>
+            <tr>
+              <td>11:00 - 11:30</td>
+              <td>Pauză</td>
+              <td>Gustare sănătoasă și socializare</td>
+            </tr>
+            <tr>
+              <td>11:30 - 12:30</td>
+              <td>Atelier de gătit</td>
+              <td>Pregătirea unor rețete simple în germană</td>
+            </tr>
+            <tr>
+              <td>12:30 - 13:00</td>
+              <td>Povestire și încheiere</td>
+              <td>Recapitulare a învățatului prin povești</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="section-title">Înscrie-te acum!</h2>
+        <div class="registration-form">
+          <form id="campForm">
+            <div class="form-group">
+              <label for="name">Numele copilului:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="age">Vârsta:</label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                min="6"
+                max="12"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="parent">Numele părintelui/tutorelui:</label>
+              <input type="text" id="parent" name="parent" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="experience">Cunoștințe de germană:</label>
+              <select id="experience" name="experience">
+                <option value="none">Nicio cunoștință</option>
+                <option value="basic">Câteva cuvinte</option>
+                <option value="intermediate">Conversații simple</option>
+                <option value="advanced">Nivel avansat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="notes">Alergii sau observații speciale:</label>
+              <textarea id="notes" name="notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              Înscrie-te!
+              <span
+                class="deutsch"
+                style="
+                  font-size: 0.8rem;
+                  padding: 0.2rem 0.4rem;
+                  margin-left: 0.5rem;
+                "
+                >Anmelden!</span
+              >
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <h3>Tabăra de Vară de Germană - Caransebeș</h3>
+      <p>
+        O săptămână plină de distracție și învățare pentru copii de 6-12 ani
+      </p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>📞</span>
+          <span>+40 123 456 789</span>
+        </div>
+        <div class="contact-item">
+          <span>✉️</span>
+          <span>tabara.germana@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span>🏫</span>
+          <span>Școala Primară Nr. 1, Caransebeș</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#" class="social-link">📱</a>
+        <a href="#" class="social-link">📷</a>
+        <a href="#" class="social-link">🔵</a>
+      </div>
+
+      <p>© 2025 Tabăra de Germană Caransebeș. Toate drepturile rezervate.</p>
+      <p>
+        Creat de
+        <a href="https://www.cosminauzum.com" target="_blank"
+          >www.cosminauzum.com</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      // Animare confetti
+      function createConfetti() {
+        const colors = ["#FFD700", "#FF6B6B", "#4ECDC4", "#FFFFFF"];
+        const confettiContainer = document.querySelector("header");
+
+        for (let i = 0; i < 50; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * 100 + "%";
+          confetti.style.width = Math.random() * 10 + 5 + "px";
+          confetti.style.height = Math.random() * 10 + 5 + "px";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+          confetti.style.animationDelay = Math.random() * 5 + "s";
+          confettiContainer.appendChild(confetti);
+        }
+      }
+
+      // Validare formular
+      document
+        .getElementById("campForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const age = document.getElementById("age").value;
+
+          if (age < 6 || age > 12) {
+            alert("Vă rugăm să introduceți o vârstă între 6 și 12 ani.");
+            return;
+          }
+
+          // Aici s-ar trimite datele la server
+          alert(
+            `Mulțumim pentru înscriere, ${name}! Veți fi contactați în curând cu detalii. Danke!`
+          );
+          this.reset();
+        });
+
+      // Animare la încărcare
+      document.addEventListener("DOMContentLoaded", function () {
+        createConfetti();
+
+        // Adăugăm elemente decorative animate
+        const container = document.querySelector(".container");
+
+        // Stele animate
+        for (let i = 0; i < 10; i++) {
+          const star = document.createElement("div");
+          star.innerHTML = "⭐";
+          star.style.position = "absolute";
+          star.style.left = Math.random() * 100 + "%";
+          star.style.top = Math.random() * 100 + "%";
+          star.style.fontSize = Math.random() * 10 + 10 + "px";
+          star.style.opacity = "0.7";
+          star.style.animation = `floating ${
+            Math.random() * 3 + 2
+          }s ease-in-out infinite`;
+          star.style.animationDelay = Math.random() * 5 + "s";
+          star.style.zIndex = "-1";
+          container.appendChild(star);
+        }
+
+        // Mesaj de bun venit
+        setTimeout(() => {
+          const welcomeMsg = document.createElement("div");
+          welcomeMsg.innerHTML = "Willkommen! (Bine ați venit!)";
+          welcomeMsg.style.position = "fixed";
+          welcomeMsg.style.bottom = "20px";
+          welcomeMsg.style.right = "20px";
+          welcomeMsg.style.backgroundColor = "var(--secondary)";
+          welcomeMsg.style.color = "white";
+          welcomeMsg.style.padding = "10px 15px";
+          welcomeMsg.style.borderRadius = "20px";
+          welcomeMsg.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+          welcomeMsg.style.animation = "pulse 2s infinite";
+          welcomeMsg.style.zIndex = "1000";
+          document.body.appendChild(welcomeMsg);
+
+          setTimeout(() => {
+            welcomeMsg.style.transition = "opacity 1s";
+            welcomeMsg.style.opacity = "0";
+            setTimeout(() => welcomeMsg.remove(), 1000);
+          }, 3000);
+        }, 2000);
+      });
+
+      // Efect la hover pe elemente
+      const features = document.querySelectorAll(".feature");
+      features.forEach((feature) => {
+        feature.addEventListener("mouseenter", function () {
+          const icon = this.querySelector(".feature-icon");
+          icon.style.transform = "scale(1.2)";
+          icon.style.transition = "transform 0.3s";
+        });
+
+        feature.addEventListener("mouseleave", function () {
+          const icon = this.querySelector(".feature-icon");
+          icon.style.transform = "scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>

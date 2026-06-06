@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fit Shape</title>
+<link rel="icon" type="image/gif/png" href="../../images/game.gif">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <section class="nav">
+        <input type="checkbox" id="nav-check">
+        <a class="nav-header" href="../../index.html">
+          <img class="nav-title" src="../../fun.png">
+        </a>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links">
+          <a href="../../cartoons/index.html" target="_blank"><img src="../../images/cartoon.gif"><span>cartoons</span></a>
+          <a href="../../movie/index.html" target="_blank"><img src="../../images/movie.gif"><span>movies</span></a>
+          <a href="../../music/index.html" target="_blank"><img src="../../images/music.gif"><span>music</span></a>
+          <a href="../index.html" target="_blank"><img src="../../images/game.gif"><span>games</span></a>
+          <a href="../../learn/index.html" target="_blank"><img src="../../images/book.gif"><span>learn</span></a>
+        </div>
+</section>
+
+<section class="shape">
+  <div class="statistics">
+    <div class="score">
+      Score：<span class="score-number">0</span>
+    </div>
+    <div class="time-left">
+      Time：<span class="time-left-number">0</span>
+    </div>
+  </div>
+  <div class="game">
+    <div class="target-blocks">
+      <div class="block target" data-id="1"></div>
+      <div class="block target" data-id="2"></div>
+      <div class="block target" data-id="3"></div>
+      <div class="block target" data-id="4"></div>
+      <div class="block target" data-id="5"></div>
+      <div class="block target" data-id="6"></div>
+      <div class="block target" data-id="7"></div>
+      <div class="block target" data-id="8"></div>
+      <div class="block target" data-id="9"></div>
+      <div class="block target" data-id="10"></div>
+    </div>
+    <div class="draggable-blocks">
+      <div class="block draggable" data-id="1"></div>
+      <div class="block draggable" data-id="2"></div>
+      <div class="block draggable" data-id="3"></div>
+      <div class="block draggable" data-id="4"></div>
+      <div class="block draggable" data-id="5"></div>
+      <div class="block draggable" data-id="6"></div>
+      <div class="block draggable" data-id="7"></div>
+      <div class="block draggable" data-id="8"></div>
+      <div class="block draggable" data-id="9"></div>
+      <div class="block draggable" data-id="10"></div>
+    </div>
+  </div>
+  <button class="btn btn-primary" id="start">Start</button>
+  <div class="dialog text-center" id="final-score-dialog" hidden>
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <div class="dialog-title">You Scored <span class="final-score">0</span></div>
+      </div>
+      <div class="dialog-body">
+        <p><span class="you-win" hidden>Congratulations! You win!🎉</span></p>
+        <p><span class="you-lose" hidden>You lose! Have another try?😂</span></p>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-primary" onclick="closeFinalScore()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section>
+  <footer>
+    <p> Fun Kids Videos &copy; <script>document.write(new Date().getFullYear());</script></p>
+  </footer>
+</section>
+<script src='https://cdn.bootcdn.net/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js'></script>
+<script type='text/javascript' src='script.js'></script>
+</body>
+
+</html> 

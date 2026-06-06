@@ -1,0 +1,31 @@
+User-agent: *
+
+# Permiteți indexarea website-ului
+Allow: /
+
+# Excludeți directoarele inutile din indexare
+Disallow: *.jpg
+Disallow: *.css
+Disallow: *.js
+Disallow: *.png
+Disallow: *.SVG
+Disallow: *.JPG
+Disallow: *.PNG
+Disallow: /img/
+Disallow: /js/
+Disallow: /styles.css/
+Disallow: https://dr-muresan.ro/despre-cabinet-oftalmologie-dr-muresan/
+
+
+# Includeți fișierul sitemap
+Sitemap: https://dr-muresan.com/sitemap.xml
+
+# Crawl-delay (opțional)
+#Crawl-delay: 10
+
+# Comentarii
+# Exludeți pagina de contact din indexare
+# #Disallow: /contact/
+
+# Exludeți pagina despre din indexare
+# #Disallow: /despre/

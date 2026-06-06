@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lavanda Caraşova | Paradisul Purpuriu</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #9678b6;
+        --secondary-color: #5d4b71;
+        --accent-color: #d8bfd8;
+        --text-color: #333;
+        --light-bg: #f8f5fa;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        overflow-x: hidden;
+         
+      }
+
+      .navbar {
+        background: linear-gradient(135deg, #967bb6 0%, #b388d6 50%, #e4c2f3 100%);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        transition: all 0.4s ease;
+      }
+
+      .navbar-brand img {
+        height: 80px;
+        transition: all 0.4s ease;
+        border: double 2px var(--primary-color);
+        border-radius: 50%;
+      }
+
+      .nav-link {
+        color: var(--light-bg) !important;
+        font-weight: 600;
+        font-size: medium;
+        margin: 0 10px;
+        transition: all 0.3s;
+        position: relative;
+        text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: width 0.3s;
+      }
+
+      .nav-link:hover:after {
+        width: 100%;
+      }
+
+      .nav-link.active {
+        color: var(--light-bg) !important;
+      }
+
+      .nav-link.active:after {
+        width: 100%;
+      }
+
+      /* Carusel Hero Section */
+      .hero-carousel {
+        height: 100vh;
+      }
+
+      .carousel-item {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .carousel-item:nth-child(1) {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url("./imagini/6.jpg");
+      }
+
+      .carousel-item:nth-child(2) {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url("./imagini/fundal.jpg");
+      }
+
+      .carousel-item:nth-child(3) {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url("./imagini/2.jpg");
+      }
+
+      .carousel-item:nth-child(4) {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url("./imagini/produse_bg.jpg");
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .section-title {
+        position: relative;
+        margin-bottom: 50px;
+        text-align: center;
+        color: var(--secondary-color);
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--primary-color);
+      }
+
+      .section-padding {
+        padding: 100px 0;
+      }
+
+      .bg-light-purple {
+        background-color: var(--light-bg);
+      }
+
+      .card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img-top {
+        height: 300px;
+        object-fit: contain;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .review-card {
+        height: 220px;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .review-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .review-text:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -15px;
+        font-size: 60px;
+        color: var(--accent-color);
+        font-family: Georgia, serif;
+      }
+
+      .review-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .review-author img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+        object-fit: cover;
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .feature-item {
+        text-align: center;
+        padding: 30px 20px;
+        transition: all 0.3s;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .gallery-item {
+        margin-bottom: 30px;
+        overflow: hidden;
+        border-radius: 15px;
+        position: relative;
+      }
+
+      .gallery-item img {
+        transition: transform 0.5s;
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(150, 120, 182, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-overlay i {
+        color: white;
+        font-size: 3rem;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 20px;
+        flex-shrink: 0;
+      }
+
+      .contact-text {
+        font-size: 1.1rem;
+      }
+
+      .contact-text a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .contact-text a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+
+      .map-container {
+        height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      footer {
+        background: var(--secondary-color);
+        color: white;
+        padding: 70px 0 20px;
+      }
+
+      .footer-title {
+        position: relative;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .footer-title:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--accent-color);
+      }
+
+      .footer-links a {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: all 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 50px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .lang-switcher {
+        margin-left: 20px;
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        border-radius: 5px;
+        padding: 5px 15px;
+        transition: all 0.3s;
+      }
+
+      .lang-btn.active {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .lang-btn:not(.active):hover {
+        background: rgba(150, 120, 182, 0.1);
+      }
+
+      .accommodation-image {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 20px;
+      }
+
+      .program-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .program-table th,
+      .program-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      .program-table th {
+        background-color: var(--light-bg);
+        color: var(--secondary-color);
+      }
+
+      .program-table tr:hover {
+        background-color: rgba(150, 120, 182, 0.05);
+      }
+
+      .auto-call-btn {
+        background-color: var(--primary-color);
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 25px;
+        border-radius: 30px;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        margin-top: 20px;
+      }
+
+      .auto-call-btn i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .auto-call-btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        color: white;
+      }
+
+      .owl-nav {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .owl-prev,
+      .owl-next {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color) !important;
+        color: white !important;
+        border-radius: 50% !important;
+        margin: 0 10px;
+        font-size: 1.5rem !important;
+        line-height: 40px !important;
+        transition: all 0.3s;
+      }
+
+      .owl-prev:hover,
+      .owl-next:hover {
+        background: var(--secondary-color) !important;
+      }
+
+      .owl-dots {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .owl-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd !important;
+        margin: 0 5px;
+        display: inline-block;
+      }
+
+      .owl-dot.active {
+        background: var(--primary-color) !important;
+      }
+.review-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .review-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        
+        .review-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+      /* Produse Carousel */
+      .products-carousel .card {
+        margin: 0 15px;
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      /* Equal height columns */
+      .equal-height-row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .equal-height-row > [class*="col-"] {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .equal-height-row > [class*="col-"] > * {
+        flex: 1;
+      }
+
+      /* Custom close button for lightbox */
+      .lb-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.7);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .lb-close:hover {
+        background: var(--primary-color);
+        transform: rotate(90deg);
+      }
+
+      @media (max-width: 991px) {
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+
+        .section-padding {
+          padding: 70px 0;
+        }
+
+        .navbar-brand img {
+          height: 50px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .contact-icon {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+
+        .lang-switcher {
+          margin-top: 15px;
+          margin-left: 0;
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="./logo.png" alt="Lavanda Caraşova" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#acasa">Acasă</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#despre">Despre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#galerie">Galerie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cazare">Cazare</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#produse">Produse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#domeniu">Domeniul Lavandei</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <section id="acasa">
+      <div
+        id="heroCarousel"
+        class="carousel slide hero-carousel"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="hero-content">
+              <div data-aos="fade-up" data-aos-duration="1000">
+                <h1>Lavanda Caraşova</h1>
+                <p class="lead fs-3 mb-4">
+                  Descoperă farmecul câmpurilor de lavandă în inima Banatului
+                </p>
+                <a href="#domeniu" class="btn btn-primary btn-lg"
+                  >Detalii</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="hero-content">
+              <div data-aos="fade-up" data-aos-duration="1000">
+                <h1>Paradisul Purpuriu</h1>
+                <p class="lead fs-3 mb-4">
+                  O experiență senzorială de neuitat în mijlocul naturii
+                </p>
+                <a href="#contact" class="btn btn-primary btn-lg"
+                  >Contacteaza-ne</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="hero-content">
+              <div data-aos="fade-up" data-aos-duration="1000">
+                <h1>Cazare de Vis</h1>
+                <p class="lead fs-3 mb-4">
+                  Relaxare în mijlocul câmpurilor de lavandă
+                </p>
+                <a href="#cazare" class="btn btn-primary btn-lg"
+                  >Descoperă Lavanda Caraşova</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="hero-content">
+              <div data-aos="fade-up" data-aos-duration="1000">
+                <h1>Produse Naturale</h1>
+                <p class="lead fs-3 mb-4">
+                  Beneficiază de proprietățile terapeutice ale lavandei
+                </p>
+                <a href="#produse" class="btn btn-primary btn-lg"
+                  >Vezi Produsele</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding" id="despre">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Despre Noi</h2>
+        <div class="row align-items-center equal-height-row">
+          <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+            <img
+              src="./imagini/6.jpg"
+              alt="Lavanda Carasova"
+              class="img-fluid rounded shadow h-100"
+              style="object-fit: cover; min-height: 400px"
+            />
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <h3 class="mb-3">Povestea Lavandei Caraşova</h3>
+            <p>
+              Lavanda Caraşova a luat naștere din dragostea pentru frumusețea
+              naturii și dorința de a aduce un colț de Provence în inima
+              Banatului. De peste 10 ani, ne dedicăm cultivării lavandei de cea
+              mai înaltă calitate, într-un mediu natural și nepoluat.
+            </p>
+            <p>
+              Plantate pe versanții însorite ai Munților Aninei, plantele
+              noastre de lavandă beneficiază de condiții optime de creștere,
+              oferind flori bogate în uleiuri esențiale și arome deosebite.
+            </p>
+            <p>
+              Ne mândrim cu faptul că toate produsele noastre sunt 100%
+              naturale, fabricate manual, cu dragoste și respect pentru mediu.
+            </p>
+            <div class="mt-4">
+              <a href="#domeniu" class="btn btn-primary">Vizitează Domeniul</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-padding bg-light-purple">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h4>Produse Naturale</h4>
+              <p>
+                Toate produsele noastre sunt 100% naturale, fără aditivi sau
+                componente chimice.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-spa"></i>
+              </div>
+              <h4>Calitate Premium</h4>
+              <p>
+                Lavanda de cea mai înaltă calitate, cultivată în condiții optime
+                și recoltată manual.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h4>Fabricat cu Dragoste</h4>
+              <p>
+                Fiecare produs este creat cu pasiune și atenție la detalii în
+                atelierul nostru mic.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section-padding" id="galerie">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Galerie Foto</h2>
+        <div class="row">
+          <div class="col-md-4 col-sm-6" data-aos="fade-up">
+            <div class="gallery-item">
+              <a
+                href="./imagini/galerie1.jpg"
+                data-lightbox="gallery"
+                data-title="Câmp de lavandă"
+              >
+                <img src="./imagini/galerie1.jpg" alt="Câmp de lavandă" />
+                <div class="gallery-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="gallery-item">
+              <a
+                href="./imagini/6.jpg"
+                data-lightbox="gallery"
+                data-title="Recoltarea lavandei"
+              >
+                <img src="imagini/6.jpg" alt="Recoltarea lavandei" />
+                <div class="gallery-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="gallery-item">
+              <a
+                href="./imagini/relaxare.jpg"
+                data-lightbox="gallery"
+                data-title="Produse din lavandă"
+              >
+                <img src="./imagini/relaxare.jpg" alt="Produse din lavandă" />
+                <div class="gallery-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="gallery-item">
+              <a
+                href="./imagini/2.jpg"
+                data-lightbox="gallery"
+                data-title="Atelier de prelucrare"
+              >
+                <img src="./imagini/2.jpg" alt="Atelier de prelucrare" />
+                <div class="gallery-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="gallery-item">
+              <a
+                href="./imagini/5.jpg"
+                data-lightbox="gallery"
+                data-title="Vizitatori în câmp"
+              >
+                <img src="./imagini/5.jpg" alt="Vizitatori în câmp" />
+                <div class="gallery-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div
+            class="col-md-4 col-sm-6"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div class="gallery-item">
+              <a
+                href="./imagini/galerie1.jpg"
+                data-lightbox="gallery"
+                data-title="Ambalarea produselor"
+              >
+                <img src="./imagini/galerie1.jpg" alt="Ambalarea produselor" />
+                <div class="gallery-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section class="section-padding bg-light-purple" id="cazare">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Cazare</h2>
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+            <h3 class="mb-3">Lavanda Caraşova </h3>
+            <p>
+              Bine ați venit la Lavanda Caraşova, un refugiu de pace situat în inima
+              domeniului nostru de lavandă. Această casă tradițională, renovată
+              cu gust, vă oferă tot confortul necesar pentru o vacanță de
+              neuitat în mijlocul naturii.</p>
+              <p>Lavanda Caraşova se află în Caraşova, la 44 km de Cascada Bigăr, și oferă WiFi gratuit, o grădină și parcare privată gratuită. Oaspeții au la dispoziție un balcon și un grătar.
+
+â
+Oaspeții pot savura un mic dejun italian, american sau vegetarian.
+
+Personalul de la recepție, vorbitor de engleză britanică, croată și română, vă poate ajuta să vă organizați sejurul.
+              În apropiere se află diverse atracții turistice, inclusiv Cheile Nerei și Lacul Ochiul Beiului.
+            </p>
+
+            <h4 class="mt-4">Facilități</h4>
+            <ul>
+              <li>2 dormitoare spațioase (capacitate 4 persoane)</li>
+              <li>1 baie cu duș</li>
+              <li>Bucătărie complet utilată</li>
+              <li>Prosoape și lenjerie de pat incluse</li>
+             <li>Televizor cu ecran plat</li>
+            <li>Terasă privată cu vedere la câmpurile de lavandă</li>
+              <li>Gril și spațiu pentru grătar</li>
+              <li>Parcare privată</li>
+              <li>Wi-Fi gratuit</li>
+            </ul>
+
+            <h4 class="mt-4">Tarife</h4>
+            <p>
+              Prețul pentru o noapte începe de la
+              <strong>350 RON</strong> (variație în funcție de sezon).
+            </p>
+
+            <a href="tel:+40742597943" class="auto-call-btn">
+              <i class="fas fa-phone-alt"></i> Sună acum pentru rezervări
+            </a>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <img
+                  src="./imagini/bg.jpg"
+                  alt="Exteriorul casei"
+                  class="accommodation-image"
+                />
+              </div>
+              <div class="col-md-6 mb-4">
+                <img
+                  src="./imagini/dormitor.jpg"
+                  alt="Sufragerie"
+                  class="accommodation-image"
+                />
+              </div>
+              <div class="col-md-6 mb-4">
+                <img
+                  src="./imagini/dormitor2.jpg"
+                  alt="Dormitor"
+                  class="accommodation-image"
+                />
+              </div>
+              <div class="col-md-6 mb-4">
+                <img
+                  src="./imagini/bucatarie.jpg"
+                  alt="Bucătărie"
+                  class="accommodation-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section - Carousel -->
+    <section class="section-padding" id="produse">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Produsele Noastre</h2>
+        <div class="owl-carousel owl-theme products-carousel">
+          <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="./imagini/ulei_de_lavanda2.png"
+              class="card-img-top"
+              alt="Ulei de lavandă"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Ulei Esențial de Lavandă</h5>
+              <p class="card-text">
+                Ulei pur 100% natural, extras prin distilare cu abur. Excelent
+                pentru relaxare, aromaterapie și îngrijirea pielii.
+              </p>
+              <p class="h5 text-warning">20 RON / 10ml</p>
+            </div>
+          </div>
+          <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="./imagini/sapun.png"
+              class="card-img-top"
+              alt="Săpun de lavandă"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Săpun Artizanal de Lavandă</h5>
+              <p class="card-text">
+                Săpun natural, fabricat manual, cu ulei esențial de lavandă și
+                extracte botanice. Pentru o piele îngrijită și relaxată.
+              </p>
+              <p class="h5 text-warning">25 RON / buc</p>
+            </div>
+          </div>
+         
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <img
+                src="./imagini/buchet.png"
+                class="card-img-top"
+                alt="Buchet de lavandă"
+                />
+                <div class="card-body">
+                <h5 class="card-title">Flori de Lavandă</h5>
+                <p class="card-text">
+                    Buchet din flori de lavandă uscate, perfect pentru relaxare și
+                    somn odihnitor. Aromă delicată și beneficii terapeutice.
+                </p>
+                <p class="h5 text-warning">10 RON</p>
+                </div>
+             </div>
+              <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <img
+                src="./imagini/sirop_2.png"
+                class="card-img-top"
+                alt="Sirop de lavandă"
+                />
+                <div class="card-body">
+                <h5 class="card-title">Sirop de Lavandă</h5>
+                <p class="card-text">
+                    Sirop din flori de lavandă, perfect pentru relaxare și
+                    somn odihnitor. Aromă delicată și beneficii terapeutice.
+                </p>
+                <p class="h5 text-warning">25 RON</p>
+                </div>
+             </div>
+                      <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <img
+                src="./imagini/sirop.png"
+                class="card-img-top"
+                alt="Sirop de lavandă"
+                />
+                <div class="card-body">
+                <h5 class="card-title">Suc de Lavandă</h5>
+                <p class="card-text">
+                    Suc din flori de lavandă, perfect pt o zi racoroasa,aromă delicată și beneficii terapeutice.
+                </p>
+                <p class="h5 text-warning">5 RON/pahar</p>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Lavender Domain Section -->
+    <section class="section-padding bg-light-purple" id="domeniu">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Domeniul Lavandei</h2>
+        <div class="row align-items-center equal-height-row">
+          <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+            <p>
+              Vă invităm să vizitați domeniul nostru de lavandă, un colț de
+              paradis în inima Banatului. Înconjurați de munți și păduri,
+              câmpurile noastre violete vă oferă un peisaj de vis și o atmosferă
+              de relaxare de neuitat.
+            </p>
+
+            <h4 class="mt-4">Ce vă așteaptă:</h4>
+            <ul>
+              <li>Plimbări prin câmpurile înflorite de lavandă</li>
+              <li>Tururi ghidate cu prezentarea procesului de cultivare</li>
+              <!-- <li>Ateliere practice de recoltare și prelucrare</li> -->
+              <li>Posibilitatea de a culege propriile buchete de lavandă</li>
+              <!-- <li>Zonă de picnic cu vedere la câmpuri</li> -->
+              <li>Magazin cu produse locale</li>
+            </ul>
+
+            <h4 class="mt-4">Program vizitare:</h4>
+            <table class="program-table">
+              <thead>
+                <tr>
+                  <th>Ziua</th>
+                  <th>Orele</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Luni - Vineri</td>
+                  <td>10:00 - 18:00</td>
+                </tr>
+                <tr>
+                  <td>Sâmbătă - Duminică</td>
+                  <td>09:00 - 20:00</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="mt-4">
+              <strong>Perioada recomandată pentru vizită:</strong> iunie -
+              august
+            </p>
+
+            <div class="mt-4">
+              <a href="#contact" class="btn btn-primary">Contactează-ne</a>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-left">
+            <img
+              src="./imagini/lavanda2.jpg"
+              alt="Lavanda Carasova"
+              class="img-fluid rounded shadow h-100"
+              style="object-fit: cover;  min-height: 400px;  max-height: 650px;"        />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Părerile Vizitatorilor</h2>
+        <div class="owl-carousel owl-theme">
+          <div class="review-card" data-aos="fade-up">
+            <p class="review-text">
+              Un loc minunat pentru a te relaxa în inima naturii! Chiar dacă vremea nu a fost perfectă, ne-am bucurat cu adevărat de liniște, aer curat și relaxare. Totul a fost foarte curat, iar gazda a fost incredibil de primitoare și drăguță. Îl recomand cu căldură oricui caută un loc liniștit și confortabil :).
+            </p>
+            <div class="review-author">
+              <div>
+                <h5 class="mb-0">Bianca</h5>
+                <p class="text-muted">România</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+            <p class="review-text">
+              Locația nu percepe taxa. Are la dispoziție la vânzare produse cu lavanda. Exista o terasa unde se pot servi băuturi răcoritoare, limonada cu lavanda. In câmpul de lavanda miroase extraordinar. Recomandam cu căldură.
+            </p>
+            <div class="review-author">
+              <div>
+                <h5 class="mb-0">Sonia</h5>
+                <p class="text-muted">România</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+            <p class="review-text">
+              „loc ideal pentru relaxare. liniște, cântând păsările dimineața, priveliște frumoasă, nu departe de orașul Reșița”
+            </p>
+            <div class="review-author">
+              <div>
+                <h5 class="mb-0">Delia</h5>
+                <p class="text-muted">Luxemburg
+            </div></p>
+              </div>
+          </div>
+          <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+            <p class="review-text">
+              Locatia este superba si casuta la fel 💯
+Te simti ca in Toscana, e prima data cand venim in zona aceasta a Carasului si am ramas placut impresionat.
+Gazdele sunt primitoare si dispuse sa ajute cu orice ai nevoie.
+Daca vreti sa scapati de caldurile din oras si vreti sa va conectati cu natura este locul perfect.
+Recomand 💯%
+            </p>
+            <div class="review-author">
+              <div>
+                <h5 class="mb-0">Cristi</h5>
+                <p class="text-muted">Romania</p>
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="text-center mt-4">
+                <a href="https://g.co/kgs/m4GJVM7" target="_blank" class="review-btn  center">
+                    <i class="fab fa-google"></i> Scrie o recenzie
+                </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding bg-light-purple" id="contact">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Contact</h2>
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+            <div class="contact-info">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Adresă</h5>
+                <p>Sat Caraşova, Comuna Coronini, Județul Caraș-Severin</p>
+              </div>
+            </div>
+            <div class="contact-info">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Telefon</h5>
+                <p><a href="tel:+40712345678">+40742 597 943</a></p>
+              </div>
+            </div>
+            <div class="contact-info">
+              <div class="contact-icon">
+                <i class="fab fa-facebook-f"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Facebook</h5>
+                <p>
+                  <a href="https://www.facebook.com/profile.php?id=100005677279372" target="_blank"
+                    >Lavanda Caraşova</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="contact-info">
+              <div class="contact-icon">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div class="contact-text">
+                <h5>WhatsApp</h5>
+                <p><a href="https://wa.me/40742597943">+40742 597 943</a></p>
+              </div>
+            </div>
+            <div class="contact-info">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Email</h5>
+                <p>
+                  <a href="mailto:contact@lavandacarasova.ro"
+                    >contact@lavandacarasova.ro</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2572.633008039214!2d21.855113499999998!3d45.217432099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47502de1193bac01%3A0x730b37e8955fe147!2sLavanda%20Cara%C8%99ova!5e1!3m2!1sro!2sro!4v1751475011072!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row d-flex">
+          <!-- Adăugat d-flex pentru flexbox -->
+          <div class="col-lg-4 col-md-4 mb-4 mb-lg-0 flex-grow-1">
+            <!-- Adăugat flex-grow-1 -->
+            <div class="logo">Lavanda<span>Caraşova</span></div>
+            <p>
+              Oază de pace și frumusețe în inima Banatului, unde cultura
+              lavandei se îmbină cu tradiția și ospitalitatea locală.
+            </p>
+            <div class="mt-4">
+              <a href="https://www.facebook.com/profile.php?id=100005677279372&locale=ro_RO" class="btn btn-outline-light"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="btn btn-outline-light mx-2"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="btn btn-outline-light"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 mb-4 mb-md-0 flex-grow-1">
+            <!-- Schimbat dimensiunea și adăugat flex-grow-1 -->
+            <h5 class="footer-title">Link-uri Rapide</h5>
+            <div class="footer-links">
+              <a href="#acasa">Acasă</a>
+              <a href="#despre">Despre Noi</a>
+              <a href="#galerie">Galerie</a>
+              <a href="#cazare">Cazare</a>
+              <a href="#produse">Produse</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 mb-4 mb-md-0 flex-grow-1">
+            <!-- Schimbat dimensiunea și adăugat flex-grow-1 -->
+            <h5 class="footer-title">Link-uri Utile</h5>
+            <div class="footer-links">
+              <a href="#domeniu">Domeniul Lavandei</a>
+              <a href="#contact">Contact</a>
+              <a href="#">Termeni și condiții</a>
+              <a href="#">Politica de confidențialitate</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Lavanda Caraşova. Toate drepturile rezervate.</p>
+          <p>
+            Website creat de
+            <a
+              href="https://www.cosminauzum.com"
+              target="_blank"
+              class="text-white"
+              >www.cosminauzum.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+
+      // Initialize Owl Carousel for reviews
+      $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+          loop: true,
+          margin: 20,
+          nav: true,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          responsive: {
+            0: {
+              items: 1,
+            },
+            768: {
+              items: 2,
+            },
+          },
+        });
+
+        // Products Carousel
+        $(".products-carousel").owlCarousel({
+          loop: true,
+          margin: 30,
+          nav: true,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 4000,
+          responsive: {
+            0: {
+              items: 1,
+            },
+            576: {
+              items: 2,
+            },
+            992: {
+              items: 3,
+            },
+          },
+        });
+
+       // Smooth scrolling for anchor links
+$('a[href^="#"]').on("click", function (e) {
+  e.preventDefault();
+  var target = this.hash;
+  var $target = $(target);
+  
+  // Închidem navbar-ul mobil (dacă este vizibil)
+  $(".navbar-collapse").removeClass("show"); // Elimină clasa 'show'
+  $(".navbar-toggler").attr("aria-expanded", "false"); // Actualizează aria-expanded
+  
+  // Efectuăm scroll
+  $("html, body").animate(
+    {
+      scrollTop: $target.offset().top - 70,
+    },
+    800,
+    "swing"
+  );
+});
+
+// Navbar scroll effect
+$(window).scroll(function () {
+  if ($(this).scrollTop() > 100) {
+    $(".navbar").addClass("navbar-scroll");
+    $(".navbar-brand img").css("height", "50px");
+  } else {
+    $(".navbar").removeClass("navbar-scroll");
+    $(".navbar-brand img").css("height", "60px");
+  }
+});
+
+        // Initialize Lightbox with custom close button
+        lightbox.option({
+          resizeDuration: 200,
+          wrapAround: true,
+          showImageNumberLabel: false,
+        });
+
+        // Add custom close button to lightbox
+        $(document).on("click", "[data-lightbox]", function () {
+          setTimeout(function () {
+            $(".lb-container").prepend(
+              '<div class="lb-close"><i class="fas fa-times"></i></div>'
+            );
+            $(".lb-close").on("click", function () {
+              $("#lightbox").hide();
+              $("body").removeClass("lb-disable-scrolling");
+            });
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>

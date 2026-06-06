@@ -1,0 +1,352 @@
+.photo-blue {
+  background: url("https://media.evz.ro/wp-content/uploads/2021/11/blue-sky-1536x865.png") no-repeat center center;
+  background-size: cover;
+  z-index: 45;
+}
+
+.photo-yellow {
+  background: url("./images/lan_de_grau.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: 45;
+}
+
+.photo-red {
+  background: url("./images/port_popular.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: 45;
+}
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: grey;
+  min-width: 350px;
+}
+@media only screen and (min-width: 1199px) {
+  html, body {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+  height: 100%;
+}
+
+.container.home {
+  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.home .col-lg-4, .home .col-lg-12 {
+  margin: 0;
+  padding: 0;
+  height: calc(100% + 900px);
+  overflow: hidden;
+}
+
+.home .col-lg-4 {
+  height: 100%;
+}
+
+.photo {
+  z-index: 0;
+  top: 0px;
+  background-size: cover;
+  height: calc(100% + 50px) !important;
+  width: calc(100% + 50px);
+  overflow: hidden;
+  z-index: 3;
+  position: absolute;
+}
+
+.photo {
+  animation: frameani 2s ease-in-out infinite alternate;
+  overflow: hidden;
+  transition: all 1s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  top: 0;
+}
+
+.perspective-container {
+  perspective: 20em;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+@media only screen and (min-width: 1199px) {
+  .perspective-container {
+    overflow: hidden;
+  }
+}
+
+.picture-title {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  z-index: 30;
+  text-align: center;
+  font-size: 27px;
+  letter-spacing: 0.4em;
+  font-weight: 100;
+  cursor: pointer;
+  text-shadow: 2px 2px 2px #00003b;
+}
+
+.panel-description {
+  display: none;
+  position: absolute;
+  z-index: 4;
+  width: 300px;
+  top: 10px;
+  padding-top: 30px;
+  margin: 10px;
+}
+.panel-description p {
+  color: #ddd;
+}
+.panel-description .description-content {
+  padding: 17px 30px 30px 40px;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  text-shadow: none !important;
+}
+.panel-description a.info {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  font-weight: 200;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 450px) {
+  .panel-description {
+    width: 70%;
+    height: 80%;
+    font-size: 80%;
+  }
+}
+
+.hide-photo-filter {
+  display: none;
+  position: relative;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width: 1199px) {
+  .show-photo-filter, .water-panel:hover .hide-photo-filter, .grain-panel:hover .hide-photo-filter, .blood-panel:hover .hide-photo-filter {
+    display: block;
+  }
+}
+
+/* Home Page Animation for panels */
+/* Generates animations for cascading tiles */
+.picture-water {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  color: #f6f6f6;
+}
+
+/* Generates different colors for panel descriptions */
+.water-panel {
+  cursor: pointer;
+}
+.water-panel .panel-description {
+  background-color: rgba(0, 43, 124, 0.7);
+  text-align: left;
+}
+@media only screen and (max-width: 450px) {
+  .water-panel .panel-description p {
+    font-weight: 300;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .water-panel .panel-description {
+    display: block;
+  }
+}
+.water-panel:hover .panel-description {
+  display: block;
+}
+
+/* Generates animations for cascading tiles */
+.picture-grain {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+  color: #f6f6f6;
+}
+
+/* Generates different colors for panel descriptions */
+.grain-panel {
+  cursor: pointer;
+}
+.grain-panel .panel-description {
+  background-color: rgba(252, 209, 22, 0.7);
+  text-align: left;
+}
+@media only screen and (max-width: 450px) {
+  .grain-panel .panel-description p {
+    font-weight: 300;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .grain-panel .panel-description {
+    display: block;
+  }
+}
+.grain-panel:hover .panel-description {
+  display: block;
+}
+
+/* Generates animations for cascading tiles */
+.picture-blood {
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+  color: #f6f6f6;
+}
+
+/* Generates different colors for panel descriptions */
+.blood-panel {
+  cursor: pointer;
+}
+.blood-panel .panel-description {
+  background-color: rgba(206, 17, 38, 0.7);
+  text-align: left;
+}
+@media only screen and (max-width: 450px) {
+  .blood-panel .panel-description p {
+    font-weight: 300;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .blood-panel .panel-description {
+    display: block;
+  }
+}
+.blood-panel:hover .panel-description {
+  display: block;
+}
+
+/* Generates animations for cascading tiles */
+
+
+.mobile-buttons {
+  position: absolute;
+  top: 40%;
+  right: 15px;
+  z-index: 33333;
+}
+@media only screen and (min-width: 1199px) {
+  .mobile-buttons {
+    display: none;
+  }
+}
+.mobile-buttons a {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 10px;
+  box-shadow: 1px 1px 1px rgba(1, 1, 1, 0.2);
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+}
+
+.mobile-buttons a span {
+  display: block;
+  width: 15px;
+  background-color: white;
+  height: 1px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.next span:nth-of-type(1), .previous span:nth-of-type(1) {
+  -ms-transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  transform: rotate(40deg);
+  top: 16px;
+}
+.next span:nth-of-type(2), .previous span:nth-of-type(2) {
+  -ms-transform: rotate(40deg);
+  -webkit-transform: rotate(-40deg);
+  transform: rotate(-40deg);
+  top: 25px;
+}
+
+.previous {
+  -ms-transform: scale(-1);
+  -webkit-transform: scale(-1);
+  transform: scale(-1);
+}
+
+.info.hvr-underline-from-left:before {
+  background-color: #f6f6f6;
+  height: 2.5px;
+}
+.bday {
+    position: absolute;
+    z-index: 999;
+    left: 45%;
+    bottom: 20%;
+    font-size: 2em;
+    padding: 10px;
+    color: white;
+    background-image: url(./images/logo.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-shadow: 2px 2px 2px #00003b;
+  
+}
+.country {
+  position: absolute;
+  z-index: 999;
+  left: 35%;
+  bottom: 8%;
+  font-size: 4em;
+  padding:10px;
+  color: white;
+  background-image: url(./images/logo.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: 2px 2px 2px #00003b;
+  
+}
+.made {
+  color: #fff;
+  font-size: medium;
+  text-shadow: 2px 2px 2px #00003b;
+  position: absolute;
+  z-index: 999;
+  left: 55%;
+  bottom: 2%;
+}
+.made a{
+  text-decoration: none;
+  color: rgb(180, 128, 73)
+}

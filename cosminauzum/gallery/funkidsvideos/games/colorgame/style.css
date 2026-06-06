@@ -1,0 +1,246 @@
+
+:root {
+    --primaryColor: rgb(236, 63, 30);
+    --white: #fff;
+    --black: rgba(0, 0, 0, 0.7);
+    --blue2: #4e9fee;
+    --yellow: #ffda5d;
+    --blue: #e7f3ff;
+  }
+*{  box-sizing: border-box;
+    position: relative;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Montserrat", "Avenir";
+  }
+  body::-webkit-scrollbar
+{
+   width: 15px;
+   background-color: rgba(78, 158, 238, 0.238);
+}
+body::-webkit-scrollbar-thumb
+{
+   height: auto;
+   background: rgba(255, 217, 93, 0.851);
+   border: 5px solid transparent;
+   border-radius: 5px;
+}
+.nav {
+    height: 90px;
+    width: 100%;
+    background-color: var(--blue2);
+    position: relative;
+  }
+  
+  .nav .nav-header {
+    display: inline;
+  }
+  
+  .nav .nav-header .nav-title {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    color: var(--white);
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav .nav-btn {
+    display: none;
+  }
+  
+  .nav .nav-links {
+    display: inline;
+    float: right;
+    font-size: 28px;
+  }
+  
+  .nav .nav-links a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  .nav .nav-links a span{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px var(--blue2);
+    color: #efefef;
+  }
+  
+  .nav  .nav-links  a  img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .nav  .nav-links a span:hover {
+    color: var(--yellow);
+  }
+  
+  .nav #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav .nav-header{
+      height:auto;
+    }
+    .nav .nav-links a span{
+      display: inline-flexbox;
+      padding: 8px;
+    }
+    .nav .nav-btn {
+      display: inline-block;
+      position: absolute;
+      align-items: center;
+      right: 0px;
+      top: 0px;
+      z-index: 999;
+     
+     
+    }
+    .nav .nav-btn label {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      padding: 25px;
+      margin: 5px 5px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+    }
+    .nav .nav-btn label:hover,.nav  #nav-check:checked ~ .nav-btn label {
+      background-color:  var(--primaryColor);  }
+    .nav .nav-btn label span {
+      display: block;
+      width: 30px;
+      height: 12px;
+      border-top: 2px solid #eee;
+    }
+    .nav .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color:  var(--blue2);
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 90px;
+      left: 0px;
+      z-index: 999;
+    }
+    .nav .nav-links a {
+      display: flex;
+      width: 100%;
+    }
+    .nav #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+
+.game{
+	width: 650px;
+	margin-left: 30%;
+}
+.square {
+	width: 30%;
+	background: purple; 
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+	border-radius: 15%;
+	transition: background 0.6s;
+	-webkit-transition:background 0.6s;
+	-moz-transition:background 0.6s;
+}
+#container {
+	margin: 20px auto;
+	max-width: 600px;
+}
+
+h1 {
+	text-align: center;
+	line-height: 1.1;
+	font-weight: normal;
+	color: white;
+	background: steelblue;
+	margin: 0;
+	text-transform: uppercase; 
+	padding: 20px 0;
+}
+
+#colorDisplay {
+	font-size: 200%;
+}
+
+#message {
+	display: inline-block;
+	width: 20%;
+}
+
+#stripe{
+	background: white;
+	height: 30px;
+	text-align: center;
+	color: black;
+	
+}
+
+.selected {
+	color: white;
+	background: steelblue;
+}
+
+button {
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	height: 100%;
+	font-weight: 700;
+	color: steelblue;
+	letter-spacing: 1px;
+	font-size: inherit;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	outline: none;
+}
+
+
+button:hover {
+	color: white;
+	background: steelblue;
+}
+
+@media (max-width:600px) {
+
+	.game{
+		width: 350px;
+		margin-left: 10%;
+	}
+	#colorDisplay {
+		font-size: 100%;
+	}
+	
+
+ }
+
+ footer {
+  background-color: var(--blue2);
+  padding: 0.25rem;
+  color: var(--white);
+  text-align: center;
+   text-shadow: 1px 1px 1px #808080;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+}

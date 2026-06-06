@@ -1,0 +1,281 @@
+ 
+ :root {
+    --container-bg-color: #333;
+    --left-bg-color: rgba(0, 255, 255, 0.7);
+    --left-button-hover-color: rgba(0, 163, 163, 0.3);
+    --right-bg-color: rgba(96, 63, 139, 0.7);
+    --right-button-hover-color: rgba(160, 32, 240, 0.3);
+    --hover-width: 85%;
+    --other-width: 15%;
+    --speed: 1500ms;
+  }
+  * {
+    box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+ 
+  body {
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 1.7;
+    perspective-origin: 0% 50%;
+    perspective: 800px;
+      
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: #fff;
+  }
+  nav, main {
+    transition: transform 150ms ease-out;
+  }
+  nav {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 16em;
+    background: url(../images/background.jpg); 
+    transform: translateX(-16em);
+  }
+  nav.menu-active {
+    transform: translateX(0);
+  }
+  nav.menu-hover {
+    transform: translateX(-15em);
+  }
+  nav h1 {
+    z-index: 100;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -65px;
+    height: 65px;
+    width: 65px;
+    line-height: 60px;
+    font-size: 0.8em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    background-image: url("../menu-hover.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  nav h1:hover {
+    background-image: url("../menu.png");
+  }
+  nav ul {
+    margin-top: 50px;
+    margin: 0;
+    padding: 0;
+  }
+  nav li {
+    display: inline-block;
+    padding: 0 1em;
+    width: 100%;
+    height: 60px;
+    color: #cdd19d;
+    line-height: 60px;
+    background-color: #514060;
+    transition: all 0.5s ease-in;
+    text-decoration-style: wavy;
+  }
+  nav li:nth-of-type(2n) {
+    background-color: #774892;
+  }
+  nav li:hover {
+    background: #08baba;
+    color: white;
+       
+  }
+  main {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #7bf7f2;
+    transform-origin: 0% 50%;
+    background-size: cover;
+  }
+  main:after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to right, transparent,rgba(96, 63, 139, 0.5));
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 150ms ease-out, visibility 0s 150ms;
+  }
+  main.menu-active {
+    border-radius: 0.001px;
+    transform: translateX(16em) rotateY(15deg);
+  }
+  main.menu-active:after {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 150ms ease-out, visibility 0s;
+  }
+  main.menu-hover {
+    border-radius: 0.001px;
+    transform: translateX(1em) rotateY(1deg);
+  }
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+    padding: 6px;
+  }
+
+  
+  .calendar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  padding: 1em 4em;
+  overflow: auto;
+  background-color: #e4c9f1;
+  max-width: 1080px;
+  display: block;
+  min-height: 100vh;
+  padding: 100px 0;
+}
+  .container1 {
+    list-style: none;
+  }
+  .img-container {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .calendar-img {
+    transition: all 1s ease-in-out;
+  }
+  .img-container:hover .calendar-img {
+    transform: scale(1.2);
+  }
+  .btn-black {
+    color: var(--mainWhite) !important;
+    border-color: var(--mainPink) !important;
+  }
+  .btn-black:hover {
+    color: var(--mainWhite) !important;
+    background: var(--mainPink) !important;
+  }
+  
+  
+  
+  .sidebar__logo
+   {
+    bottom: 50px;
+   left: 80px;
+    position: absolute;
+    z-index: 10;
+  }
+  .sidebar__logo .logo {
+    color: rgba(255, 255, 255, 0.75);
+    transform: translate(-50%, 100%);
+  }
+  .sidebar__logo .logo img,
+  .navbar__logo .logo img {
+    width: 40px;
+    height: 40px;
+  }
+  .sidebar__logo::before, .sidebar__logo::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    width:3rem;
+    padding: 1rem 1rem;
+    border: 5px solid var(--left-button-hover-color);
+    border-radius:50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    -webkit-animation: 10s infinite alternate ease-in-out spin;
+            animation: 10s infinite alternate ease-in-out spin;
+  }
+  .desktop-menu:hover .sidebar__logo::before{
+    border-color: var(--right-bg-color) var(--right-bg-color) var(--right-bg-color) var(--right-bg-color); 
+  }
+  .desktop-menu:hover .sidebar__logo::after {
+  border-color: var(--left-bg-color) var(--left-bg-color) var(--right-bg-color) var(--right-bg-color);
+  }
+  .sidebar__logo::before{
+    border-color: var(--left-bg-color) var(--left-bg-color) var(--left-button-hover-color) var(--left-button-hover-color);
+    z-index: -1;
+    border-radius:50%;
+  }
+  .sidebar__logo::after{
+    border-color: var(--right-button-hover-color) var(--right-button-hover-color) var(--left-bg-color) var(--left-bg-color); 
+    border-radius:50%;
+    z-index: 1;
+    box-shadow: 4px 2px 1px #2f2f32;
+  }
+  @media screen and (max-width: 768px) {
+    .sidebar__logo{
+      margin: 0 0 0 1rem;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .sidebar__logo {
+      margin: 0 0 0 2rem;
+    }
+  }
+  
+  @-webkit-keyframes dash {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes dash {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @-webkit-keyframes spin {
+    from {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    from {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+  }
+  
+  

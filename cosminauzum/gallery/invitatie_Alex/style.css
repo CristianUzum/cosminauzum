@@ -1,0 +1,199 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3BB9B0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 100vw;
+    /* Prevent body from exceeding viewport width */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    text-shadow: 0.5px 0.5px 0.5px #000;
+}
+
+a:hover {
+    color: #FFD700;
+}
+
+/* Container styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 600px;
+    /* Center and limit width on larger screens */
+    padding: 20px;
+    overflow-y: auto;
+    /* Vertical scroll if content overflows */
+}
+
+/* Invitation card styling */
+.invitation-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    line-height: 1.5;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+    font-size: 1rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    color: #FF5722;
+    margin-bottom: 15px;
+    animation: bounce 2s infinite;
+}
+
+/* Button styling */
+.rsvp-btn {
+    background-color: #3bb9b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.rsvp-btn:hover {
+    background-color: #28a29c;
+}
+
+/* Fish animation */
+.fish {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('./fish.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 1;
+    animation: swim 15s linear infinite;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFF;
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer a {
+    color: #FFD700;
+    text-decoration: none;
+    text-shadow: 0.5px 0.5px 0.5px #fff;
+    animation: fadeIn 3.5s ease-in-out;
+}
+
+.footer a:hover {
+    color: #FF5722;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .invitation-card {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .rsvp-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-card {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .rsvp-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+/* Landscape-specific adjustments */
+@media (orientation: landscape) and (max-height: 400px) {
+    .container {
+        align-items: flex-start;
+
+    }
+
+    .invitation-card {
+        max-width: 80%;
+        /* Adjust width in landscape */
+    }
+}
+
+/* Animations */
+@keyframes swim {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}

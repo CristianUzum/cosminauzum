@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jocuri de Halloween pentru Clasa 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Fonturi pentru jocul Mix-Or-Match */
+        @font-face {
+            font-family: "Creepy";
+            src: url("https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Fonts/Creepy.woff") format("woff"), 
+                 url("https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Fonts/Creepy.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Lunacy";
+            src: url("https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Fonts/Lunacy.woff") format("woff"), 
+                 url("https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Fonts/Lunacy.woff2") format("woff2");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: url("https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Cursors/Ghost.cur"), auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        /* Bara laterală */
+        .sidebar {
+            width: 280px;
+            background-color: #2d2d44;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-100%);
+            width: 0;
+            padding: 0;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 101;
+            font-size: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .sidebar h2 {
+            color: #ff6b35;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .game-list {
+            list-style-type: none;
+        }
+
+        .game-item {
+            padding: 15px 18px;
+            margin-bottom: 12px;
+            background-color: #3a3a5a;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+            font-size: 1.1rem;
+        }
+
+        .game-item:hover {
+            background-color: #4a4a6a;
+            transform: translateX(8px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .game-item.active {
+            background-color: #ff6b35;
+            border-left: 5px solid #ffcc00;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+        }
+
+        /* Conținut principal */
+        .main-content {
+            flex: 1;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .game-container {
+            background: linear-gradient(145deg, #2d2d44, #3a3a5a);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid #ff6b35;
+        }
+
+        .game-title {
+            color: #ff6b35;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .game-description {
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 1.2rem;
+            color: #ffcc00;
+            max-width: 800px;
+        }
+
+        .game-area {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* Stiluri pentru jocuri specifice */
+        .witch-game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .witch-image {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border: 3px solid #ffcc00;
+        }
+
+        .witch-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-width: 600px;
+        }
+
+        .witch-option {
+            padding: 15px 20px;
+            background: linear-gradient(145deg, #3a3a5a, #4a4a6a);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 2px solid transparent;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .witch-option:hover {
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            border-color: #ffcc00;
+        }
+
+        .matching-game {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .matching-pairs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+        }
+
+        .matching-card {
+            height: 140px;
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 2rem;
+            text-align: center;
+            padding: 15px;
+            user-select: none;
+            border: 3px solid transparent;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            touch-action: manipulation;
+        }
+
+        .matching-card:hover {
+            transform: scale(1.08);
+            background: linear-gradient(145deg, #5a5a7a, #6a6a8a);
+            border-color: #ffcc00;
+        }
+
+        .matching-card.dragging {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+
+        .matching-card.matched {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            cursor: default;
+            border-color: #4CAF50;
+        }
+
+        .puzzle-game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 400px;
+            height: 400px;
+        }
+
+        .puzzle-piece {
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 2.5rem;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .puzzle-piece:hover {
+            background: linear-gradient(145deg, #5a5a7a, #6a6a8a);
+            transform: scale(1.05);
+            border-color: #ffcc00;
+        }
+
+        .puzzle-piece.correct {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            border-color: #4CAF50;
+        }
+
+        .story-container {
+            background: linear-gradient(145deg, #3a3a5a, #4a4a6a);
+            padding: 30px;
+            border-radius: 15px;
+            line-height: 1.8;
+            max-width: 700px;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border: 2px solid #ffcc00;
+        }
+
+        .story-title {
+            color: #ffcc00;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Stiluri pentru jocul Mix-Or-Match */
+        .mix-match-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mix-match-title {
+            color: #FF6D00;
+            font-family: 'Creepy', serif;
+            font-weight: normal;
+            text-align: center;
+            font-size: 4em;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .game-info-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .game-info {
+            font-family: 'Lunacy', serif;
+            color: #FFBB89;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            grid-gap: 15px;
+            justify-content: center;
+            perspective: 600px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            position: relative;
+            height: 180px;
+            width: 140px;
+        }
+
+        .card:hover {
+            cursor: url("https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Cursors/GhostHover.cur"), auto;
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            border-width: 3px;
+            border-style: solid;
+            transition: transform 600ms ease-in-out;
+        }
+
+        .card.visible .card-back {
+            transform: rotateY(-180deg);
+        }
+
+        .card.visible .card-front {
+            transform: rotateY(0)
+        }
+
+        .card.matched .card-value {
+            animation: dance 1s linear infinite 500ms;
+        }
+
+        .overlay-text {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+            color: #FF6D00;
+            font-family: 'Creepy', serif;
+            background-color: rgba(0, 0, 0, 0.85);
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .overlay-text-small {
+            font-size: 0.4em;
+            margin-top: 20px;
+            color: #FFBB89;
+        }
+
+        .overlay-text.visible {
+            display: flex;
+            animation: overlay-grow 600ms forwards;
+        }
+
+        @keyframes overlay-grow {
+            from {
+                font-size: 0;
+                opacity: 0;
+            }
+            to {
+                font-size: 8em;
+                opacity: 1;
+            }
+        }
+
+        @keyframes dance {
+            0%, 100%  {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(-15deg);
+            }
+            75% {
+                transform: rotate(15deg);
+            }
+        }
+
+        .card-back {
+            background-color: #000;
+            border-color: #FF6D00;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        .card-front {
+            background-color: #FFBB89;
+            border-color: #333;
+            transform: rotateY(180deg);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .card-value {
+            transition: transform 200ms ease-in-out;
+            transform: scale(.9);
+            max-width: 100px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+        }
+
+        .card-front:hover .card-value {
+            transform: scale(1);
+        }
+
+        .cob-web {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            transition: all 200ms ease-in-out;
+        }
+
+        .card-face:hover .cob-web {
+            width: 50px;
+            height: 50px;
+        }
+
+        .cob-web-top-left {
+            transform: rotate(270deg);
+            top: 5px;
+            left: 5px;
+        }
+
+        .cob-web-top-right {
+            top: 5px;
+            right: 5px;
+        }
+
+        .cob-web-bottom-left {
+            transform: rotate(180deg);
+            bottom: 5px;
+            left: 5px;
+        }
+
+        .cob-web-bottom-right {
+            transform: rotate(90deg);
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .spider {
+            align-self: flex-start;
+            transform: translateY(-15px);
+            transition: transform 200ms ease-in-out;
+            width: 50px;
+            height: 50px;
+        }
+
+        .card-back:hover .spider {
+            transform: translateY(0)
+        }
+
+        /* Stiluri pentru jocul Ghicitoarea Germană */
+        .guess-game-container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .state {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .score {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .riddle-container {
+            background: linear-gradient(145deg, #ffeaa7, #fdcb6e);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 3px dashed #e17055;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .riddle {
+            font-size: 1.5rem;
+            color: #2d3436;
+            font-weight: bold;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .hint {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #636e72;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .hangman-container {
+            margin: 20px 0;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hangman {
+            max-width: 150px;
+            max-height: 180px;
+        }
+
+        .word-display {
+            font-size: 3rem;
+            letter-spacing: 15px;
+            margin: 25px 0;
+            color: #74b9ff;
+            font-weight: bold;
+            min-height: 70px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .german-word {
+            font-size: 2rem;
+            color: #ff6b35;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .letters {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .letter {
+            background: linear-gradient(145deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .letter:hover {
+            background: linear-gradient(145deg, #0984e3, #74b9ff);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .letter:disabled {
+            background: linear-gradient(145deg, #636e72, #2d3436);
+            color: #b2bec3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .controls {
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(145deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #00a085, #00b894);
+            transform: translateY(-3px);
+        }
+
+        .btn-hint {
+            background: linear-gradient(145deg, #fdcb6e, #f39c12);
+        }
+
+        .btn-hint:hover {
+            background: linear-gradient(145deg, #f39c12, #fdcb6e);
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            animation: popIn 0.5s ease-out;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .win {
+            background: linear-gradient(145deg, #55efc4, #00b894);
+            color: #2d3436;
+            border: 3px solid #00b894;
+        }
+
+        .lose {
+            background: linear-gradient(145deg, #fab1a0, #d63031);
+            color: #2d3436;
+            border: 3px solid #d63031;
+        }
+
+        .celebration {
+            font-size: 3.5rem;
+            margin: 15px 0;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-20px); }
+        }
+
+        .progress {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .heart {
+            font-size: 2.5rem;
+            color: #ff7675;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .translation {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(145deg, #636e72, #2d3436);
+            border-radius: 12px;
+            font-size: 1.3rem;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Stiluri pentru jocurile noi */
+        .vocabulary-game, .articles-game, .memory-game, .puzzle-game-new, .math-game {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .game-item-card {
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            min-height: 150px;
+        }
+
+        .game-item-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, #5a5a7a, #6a6a8a);
+            border-color: #ffcc00;
+        }
+
+        .game-item-card .icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .game-item-card .label {
+            font-size: 1.3rem;
+            color: #ffcc00;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .wordcloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .wordchip {
+            background: linear-gradient(145deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .wordchip:hover {
+            transform: scale(1.05);
+            background: linear-gradient(145deg, #0984e3, #74b9ff);
+        }
+
+        /* Stiluri pentru jocul de matematică */
+        .math-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            border: 3px solid #ffa500;
+            box-shadow: 0 0 30px rgba(255, 165, 0, 0.5);
+        }
+
+        .math-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .math-title {
+            font-size: 2.5em;
+            color: #ff6b00;
+            text-shadow: 3px 3px 0 #000, 0 0 10px #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .math-subtitle {
+            font-size: 1.3em;
+            color: #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .math-character {
+            text-align: center;
+            font-size: 4em;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .math-stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(139, 0, 139, 0.5);
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #ffa500;
+            margin-bottom: 20px;
+        }
+
+        .math-stat-item {
+            text-align: center;
+        }
+
+        .math-stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .math-question-box {
+            background: rgba(75, 0, 130, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px dashed #00ff00;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .math-question {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .math-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .math-option {
+            background: linear-gradient(45deg, #ff6b00, #ff0000);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 1.3em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .math-option:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #ff0000, #ff6b00);
+            box-shadow: 0 0 15px #ff0000;
+        }
+
+        .math-option.correct {
+            background: linear-gradient(45deg, #00ff00, #008000);
+            animation: pulse 0.5s;
+        }
+
+        .math-option.incorrect {
+            background: linear-gradient(45deg, #ff0000, #8b0000);
+            animation: shake 0.5s;
+        }
+
+        .math-german-help {
+            background: rgba(0, 100, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #00ff00;
+        }
+
+        .math-german-text {
+            font-size: 1.1em;
+            color: #90ee90;
+            text-align: center;
+        }
+
+        .math-candies {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .math-candy {
+            font-size: 2em;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .math-candy.collected {
+            opacity: 1;
+            animation: bounce 0.5s;
+        }
+
+        .math-feedback {
+            font-size: 1.3em;
+            text-align: center;
+            margin: 15px 0;
+            min-height: 60px;
+        }
+
+        .math-spooky-text {
+            color: #ff6b00;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .math-next-btn, .math-restart-btn {
+            background: linear-gradient(45deg, #ff4500, #ff0000);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .math-next-btn:hover, .math-restart-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Stiluri pentru jocul Memory */
+        .memory-card {
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 2.5rem;
+            border: 3px solid transparent;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .memory-card:hover {
+            background: linear-gradient(145deg, #5a5a7a, #6a6a8a);
+            transform: scale(1.05);
+            border-color: #ffcc00;
+        }
+
+        .memory-card.flipped {
+            background: linear-gradient(145deg, #ff6b35, #ff8c42);
+            border-color: #ff6b35;
+        }
+
+        .memory-card.matched {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            border-color: #4CAF50;
+        }
+
+        /* Butoane generale */
+        button {
+            background: linear-gradient(145deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            background: linear-gradient(145deg, #ff8c42, #ff6b35);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d2d44;
+            color: #ffcc00;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 2px solid #ff6b35;
+        }
+
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Stiluri pentru jocul Articolelor */
+        .article-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .article-option {
+            padding: 8px 15px;
+            background: linear-gradient(145deg, #3a3a5a, #4a4a6a);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-weight: bold;
+        }
+
+        .article-option:hover {
+            background: linear-gradient(145deg, #4a4a6a, #5a5a7a);
+            transform: translateY(-2px);
+            border-color: #ffcc00;
+        }
+
+        .article-option.correct {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+        }
+
+        .article-option.incorrect {
+            background: linear-gradient(145deg, #f44336, #d32f2f);
+        }
+
+        /* Responsive design - IMPROVED */
+        @media (max-width: 1024px) {
+            .cards-container {
+                grid-template-columns: repeat(3, auto);
+            }
+            
+            .card {
+                height: 160px;
+                width: 120px;
+            }
+            
+            .letters {
+                grid-template-columns: repeat(7, 1fr);
+            }
+            
+            .matching-pairs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .puzzle-container {
+                width: 350px;
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                height: 100%;
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.visible {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+            
+            .game-container {
+                padding: 20px;
+                min-height: 500px;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(2, auto);
+            }
+            
+            .card {
+                height: 140px;
+                width: 100px;
+            }
+            
+            .mix-match-title {
+                font-size: 3em;
+            }
+            
+            .game-info {
+                font-size: 2em;
+            }
+            
+            .puzzle-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .letters {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .letter {
+                padding: 15px 5px;
+                font-size: 1.3rem;
+            }
+            
+            .word-display {
+                font-size: 2.5rem;
+                letter-spacing: 10px;
+            }
+            
+            .riddle {
+                font-size: 1.3rem;
+            }
+            
+            .math-title {
+                font-size: 2em;
+            }
+            
+            .math-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .matching-pairs {
+                grid-template-columns: 1fr;
+            }
+            
+            .items-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .witch-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .witch-option {
+                min-width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cards-container {
+                grid-template-columns: repeat(2, auto);
+            }
+            
+            .game-info-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .card {
+                height: 120px;
+                width: 85px;
+            }
+            
+            .mix-match-title {
+                font-size: 2.5em;
+            }
+            
+            .overlay-text.visible {
+                font-size: 4em;
+            }
+            
+            .letters {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .math-title {
+                font-size: 1.8em;
+            }
+            
+            .math-question {
+                font-size: 1.5em;
+            }
+            
+            .puzzle-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-title {
+                font-size: 1.8rem;
+            }
+            
+            .game-description {
+                font-size: 1rem;
+            }
+        }
+
+        /* Stiluri pentru tablete mari (table smart) */
+        @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+            .sidebar {
+                width: 250px;
+            }
+            
+            .game-container {
+                max-width: 90%;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(4, auto);
+            }
+            
+            .card {
+                height: 150px;
+                width: 110px;
+            }
+            
+            .matching-pairs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .items-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+    
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <h2>Jocuri de Halloween</h2>
+            <ul class="game-list">
+                <li class="game-item active" data-game="witch">Vrăjitoarea și ceainicul</li>
+                <li class="game-item" data-game="matching">Potrivirea imaginii cu cuvântul</li>
+                <li class="game-item" data-game="puzzle">Puzzle cu cifre</li>
+                <li class="game-item" data-game="mixmatch">Potrivirea Perechilor</li>
+                <li class="game-item" data-game="guess">Ghicitoarea Germană</li>
+                <li class="game-item" data-game="vocabulary">Vocabular German</li>
+                <li class="game-item" data-game="articles">Jocul Articolelor</li>
+                <li class="game-item" data-game="memory-new">Memory German</li>
+                <li class="game-item" data-game="math">Matematica de Halloween</li>
+                <li class="game-item" data-game="story">Povestea de Halloween</li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="game-container">
+                <h2 class="game-title" id="gameTitle">Vrăjitoarea și ceainicul</h2>
+                <p class="game-description" id="gameDescription">
+                    Ajută vrăjitoarea să găsească ceainicul potrivit pentru vraja ei magică!
+                </p>
+                
+                <div class="game-area" id="gameArea">
+                    <!-- Jocul va fi afișat aici -->
+                    <div class="witch-game">
+                        <div class="witch-image">🧙‍♀️</div>
+                        <p>Vrăjitoarea are nevoie de ceainicul cu <strong>Kürbis</strong> (dovleac). Alege-l pe cel corect!</p>
+                        <div class="witch-options">
+                            <div class="witch-option" data-correct="false">Hexenkessel</div>
+                            <div class="witch-option" data-correct="true">Kessel mit Kürbis</div>
+                            <div class="witch-option" data-correct="false">Zaubertrank</div>
+                            <div class="witch-option" data-correct="false">Magischer Becher</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Jocuri de <strong>Halloween</strong> pentru copii deștepți!</p>
+    </footer>
+
+    <script>
+        // Elemente DOM
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const gameItems = document.querySelectorAll('.game-item');
+        const gameTitle = document.getElementById('gameTitle');
+        const gameDescription = document.getElementById('gameDescription');
+        const gameArea = document.getElementById('gameArea');
+
+        // Variabile pentru jocuri
+        let draggedItem = null;
+        let puzzleOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let correctPuzzleOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        
+        // Variabile pentru Mix-Or-Match
+        let mixMatchGame = null;
+        
+        // Variabile pentru Ghicitoarea Germană
+        let currentRiddle = null;
+        let selectedWord = '';
+        let selectedTranslation = '';
+        let guessedLetters = [];
+        let wrongGuesses = 0;
+        const maxWrongGuesses = 6;
+
+        // Comutare bară laterală
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('visible');
+        });
+
+        // Închide bara laterală când se face clic pe un joc (doar pe dispozitive mobile)
+        function closeSidebarOnMobile() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('visible');
+            }
+        }
+
+        // Schimbare joc la click pe elementul din bară
+        gameItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Elimină clasa activă de la toate elementele
+                gameItems.forEach(i => i.classList.remove('active'));
+                // Adaugă clasa activă la elementul curent
+                item.classList.add('active');
+                
+                // Încarcă jocul corespunzător
+                loadGame(item.getAttribute('data-game'));
+                
+                // Închide bara laterală pe dispozitive mobile
+                closeSidebarOnMobile();
+            });
+        });
+
+        // Funcție pentru încărcarea jocurilor
+        function loadGame(gameType) {
+            switch(gameType) {
+                case 'witch':
+                    gameTitle.textContent = 'Vrăjitoarea și ceainicul';
+                    gameDescription.textContent = 'Ajută vrăjitoarea să găsească ceainicul potrivit pentru vraja ei magică!';
+                    gameArea.innerHTML = `
+                        <div class="witch-game">
+                            <div class="witch-image">🧙‍♀️</div>
+                            <p>Vrăjitoarea are nevoie de ceainicul cu <strong>Kürbis</strong> (dovleac). Alege-l pe cel corect!</p>
+                            <div class="witch-options">
+                                <div class="witch-option" data-correct="false">Hexenkessel</div>
+                                <div class="witch-option" data-correct="true">Kessel mit Kürbis</div>
+                                <div class="witch-option" data-correct="false">Zaubertrank</div>
+                                <div class="witch-option" data-correct="false">Magischer Becher</div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'matching':
+                    gameTitle.textContent = 'Potrivirea imaginii cu cuvântul';
+                    gameDescription.textContent = 'Trage imaginile pe cuvintele potrivite!';
+                    gameArea.innerHTML = `
+                        <div class="matching-game">
+                            <p>Trage imaginile (🎃, 🧙‍♀️, 🦇, 👻) pe cuvintele potrivite!</p>
+                            <div class="matching-pairs">
+                                <div class="matching-card image-card" draggable="true" data-word="Kürbis">🎃</div>
+                                <div class="matching-card image-card" draggable="true" data-word="Hexe">🧙‍♀️</div>
+                                <div class="matching-card image-card" draggable="true" data-word="Fledermaus">🦇</div>
+                                <div class="matching-card image-card" draggable="true" data-word="Geist">👻</div>
+                                <div class="matching-card word-card" data-word="Kürbis">Kürbis</div>
+                                <div class="matching-card word-card" data-word="Hexe">Hexe</div>
+                                <div class="matching-card word-card" data-word="Fledermaus">Fledermaus</div>
+                                <div class="matching-card word-card" data-word="Geist">Geist</div>
+                            </div>
+                            <div id="matchingMessage"></div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'puzzle':
+                    gameTitle.textContent = 'Puzzle cu cifre';
+                    gameDescription.textContent = 'Aranjează piesele în ordinea corectă !';
+                    // Amestecăm piesele
+                    shuffleArray(puzzleOrder);
+                    gameArea.innerHTML = `
+                        <div class="puzzle-game">
+                            <p>Aranjează piesele în ordinea corectă! (1-2-3 pe primul rând, 4-5-6 pe al doilea, 7-8-9 pe al treilea)</p>
+                            <div class="puzzle-container" id="puzzleContainer">
+                                ${puzzleOrder.map(order => 
+                                    `<div class="puzzle-piece" data-order="${order}">${order}</div>`
+                                ).join('')}
+                            </div>
+                            <button id="checkPuzzle">Verifică</button>
+                            <div id="puzzleMessage"></div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'mixmatch':
+                    gameTitle.textContent = 'Potrivirea Perechilor';
+                    gameDescription.textContent = 'Gaseste toate perechile de cartonașe înainte să se termine timpul!';
+                    gameArea.innerHTML = `
+                        <div class="mix-match-container">
+                            <h3 class="mix-match-title">Potrivirea Perechilor</h3>
+                            <div class="overlay-text visible" id="start-text">
+                                Apasa pentru a incepe
+                            </div>
+                            <div class="overlay-text" id="game-over-text">
+                                JOC TERMINAT
+                                <span class="overlay-text-small">Apasa pentru a reincepe</span>
+                            </div>
+                            <div class="overlay-text" id="victory-text">
+                                VICTORIE
+                                <span class="overlay-text-small">Apasa pentru a reincepe</span>
+                            </div>
+                            <div class="game-info-container">
+                                <div class="game-info">
+                                    Timp <span id="time-remaining">100</span>
+                                </div>
+                                <div class="game-info">
+                                    Intoarceri <span id="flips">0</span>
+                                </div>
+                            </div>
+                            <div class="cards-container" id="cards-container">
+                                <!-- Cartile vor fi generate dinamic -->
+                            </div>
+                        </div>
+                    `;
+                    initializeMixMatch();
+                    break;
+                    
+                case 'guess':
+                    gameTitle.textContent = 'Ghicitoarea Germană';
+                    gameDescription.textContent = 'Ghicește cuvântul în germană bazându-te pe ghicitoare!';
+                    gameArea.innerHTML = `
+                        <div class="guess-game-container">
+                            <div class="state">
+                                <h2>Mai ai <span class="score">6</span> încercări <span class="heart">❤</span></h2>
+                            </div>
+                            
+                            <div class="progress">
+                                <div class="heart">❤</div>
+                                <div class="heart">❤</div>
+                                <div class="heart">❤</div>
+                                <div class="heart">❤</div>
+                                <div class="heart">❤</div>
+                                <div class="heart">❤</div>
+                            </div>
+                            
+                            <div class="riddle-container">
+                                <div class="riddle" id="riddle-text">
+                                    Încarcă o ghicitoare...
+                                </div>
+                                <div class="hint" id="hint-text"></div>
+                            </div>
+                            
+                            <div class="hangman-container">
+                                <div class="hangman" id="hangman">🎃</div>
+                            </div>
+                            
+                            <div class="word-display" id="word-display">
+                                _ _ _ _
+                            </div>
+                            
+                            <div class="letters" id="letters-container">
+                                <!-- Literele vor fi generate din JavaScript -->
+                            </div>
+                            
+                            <div class="controls">
+                                <button class="btn btn-hint" id="hint-btn">💡 Indicii în română</button>
+                                <button class="btn" id="new-word-btn">🔄 Ghicitoare nouă</button>
+                            </div>
+
+                            <div class="translation" id="translation" style="display: none;">
+                                <strong>Traducere:</strong> <span id="translation-text"></span>
+                            </div>
+                            
+                            <div class="message" id="message"></div>
+                        </div>
+                    `;
+                    initializeGuessGame();
+                    break;
+                    
+                case 'vocabulary':
+                    gameTitle.textContent = 'Vocabular German';
+                    gameDescription.textContent = 'Învață cuvinte noi în germană cu tematică de Halloween!';
+                    gameArea.innerHTML = `
+                        <div class="vocabulary-game">
+                            <div class="items-grid" id="vocabulary-items">
+                                <!-- Elementele vor fi generate dinamic -->
+                            </div>
+                            <div class="wordcloud" id="wordcloud">
+                                <!-- Cuvintele vor fi generate dinamic -->
+                            </div>
+                        </div>
+                    `;
+                    initializeVocabularyGame();
+                    break;
+                    
+                case 'articles':
+                    gameTitle.textContent = 'Jocul Articolelor';
+                    gameDescription.textContent = 'Alege articolul corect pentru fiecare cuvânt german!';
+                    gameArea.innerHTML = `
+                        <div class="articles-game">
+                            <div class="items-grid" id="articles-items">
+                                <!-- Elementele vor fi generate dinamic -->
+                            </div>
+                            <div class="wordcloud" id="articles-wordcloud">
+                                <!-- Cuvintele vor fi generate dinamic -->
+                            </div>
+                        </div>
+                    `;
+                    initializeArticlesGame();
+                    break;
+                    
+                case 'memory-new':
+                    gameTitle.textContent = 'Memory German';
+                    gameDescription.textContent = 'Gaseste perechile de cuvinte în germană și română!';
+                    gameArea.innerHTML = `
+                        <div class="memory-game">
+                            <div class="items-grid" id="memory-items">
+                                <!-- Cardurile vor fi generate dinamic -->
+                            </div>
+                        </div>
+                    `;
+                    initializeMemoryGame();
+                    break;
+                    
+                case 'math':
+                    gameTitle.textContent = 'Matematica de Halloween';
+                    gameDescription.textContent = 'Rezolvă problemele de matematică și culege bomboane!';
+                    gameArea.innerHTML = `
+                        <div class="math-game">
+                            <div class="math-container">
+                                <div class="math-header">
+                                    <h2 class="math-title">🎃 Kürbis Mathe-Abenteuer 🦇</h2>
+                                    <p class="math-subtitle">Lerne Mathe mit Halloween-Spaß!</p>
+                                </div>
+                                <div class="math-character" id="mathCharacter">👻</div>
+                                
+                                <div class="math-stats">
+                                    <div class="math-stat-item">
+                                        <div>Bonsoins</div>
+                                        <div id="mathCandyCount" class="math-stat-number">0/10</div>
+                                    </div>
+                                    <div class="math-stat-item">
+                                        <div>Fragen</div>
+                                        <div id="mathQuestionCount" class="math-stat-number">1/10</div>
+                                    </div>
+                                </div>
+
+                                <div class="math-candies" id="mathCandyContainer">
+                                    <!-- Candies will be added by JavaScript -->
+                                </div>
+
+                                <div class="math-german-help">
+                                    <p class="math-german-text"><strong>Deutsch Hilfe:</strong></p>
+                                    <p class="math-german-text">Gerade Zahlen = Numere pare</p>
+                                    <p class="math-german-text">Ungerade Zahlen = Numere impare</p>
+                                </div>
+
+                                <div class="math-question-box">
+                                    <div class="math-question" id="mathQuestionText"></div>
+                                    <div class="math-feedback" id="mathFeedback"></div>
+                                    <div class="math-options" id="mathOptionsContainer"></div>
+                                </div>
+
+                                <button class="math-next-btn" id="mathNextBtn" onclick="mathNextQuestion()" style="display: none;">Următoarea întrebare</button>
+                                <button class="math-restart-btn" id="mathRestartBtn" onclick="mathRestartGame()" style="display: none;">Joacă din nou!</button>
+                            </div>
+                        </div>
+                    `;
+                    initializeMathGame();
+                    break;
+                    
+                case 'story':
+                    gameTitle.textContent = 'Povestea de Halloween';
+                    gameDescription.textContent = 'Ascultă o poveste interesantă de Halloween în limba germană!';
+                    gameArea.innerHTML = `
+                        <div class="story-container">
+                            <h3 class="story-title">Die kleine Hexe und der Kürbis</h3>
+                            <p>Es war einmal eine kleine Hexe namens Lina. Sie lebte in einem kleinen Haus im Wald. An Halloween wollte sie eine besondere Überraschung für die Kinder im Dorf machen.</p>
+                            <p>Lina suchte den perfekten Kürbis. Sie fand einen großen, orangefarbenen Kürbis. "Perfekt!", rief sie. Sie schnitzte lustige Gesichter in den Kürbis und stellte eine Kerze hinein.</p>
+                            <p>Am Abend kamen die Kinder verkleidet zu Linas Haus. Sie trugen Kostüme von Geistern, Fledermäusen und Hexen. Als sie die leuchtenden Kürbisse sahen, riefen sie: "Wie schön!"</p>
+                            <p>Lina verteilte Süßigkeiten an alle Kinder. Es war ein wunderbares Halloween-Fest! Alle waren glücklich und dankbar.</p>
+                            <p><strong>Die kleine Hexe freute sich sehr.</strong></p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            // Adaugă evenimente pentru jocuri după ce sunt încărcate
+            addGameEvents();
+        }
+
+        // Funcție pentru amestecarea pieselor de puzzle
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Adaugă evenimente pentru jocuri
+        function addGameEvents() {
+            // Jocul vrăjitoarei
+            const witchOptions = document.querySelectorAll('.witch-option');
+            witchOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    if (option.getAttribute('data-correct') === 'true') {
+                        option.style.background = 'linear-gradient(145deg, #4CAF50, #45a049)';
+                        option.style.color = 'white';
+                        alert('Corect! Kessel mit Kürbis este ceainicul potrivit! 🎉');
+                    } else {
+                        option.style.background = 'linear-gradient(145deg, #f44336, #d32f2f)';
+                        option.style.color = 'white';
+                        alert('Mai încearcă! Acesta nu este ceainicul potrivit.');
+                    }
+                });
+            });
+            
+            // Jocul de potrivire
+            const imageCards = document.querySelectorAll('.image-card');
+            const wordCards = document.querySelectorAll('.word-card');
+            const matchingMessage = document.getElementById('matchingMessage');
+            
+            if (imageCards.length > 0) {
+                // Evenimente pentru drag & drop
+                imageCards.forEach(card => {
+                    card.addEventListener('dragstart', function(e) {
+                        draggedItem = this;
+                        setTimeout(() => this.classList.add('dragging'), 0);
+                    });
+                    
+                    card.addEventListener('dragend', function() {
+                        this.classList.remove('dragging');
+                    });
+                    
+                    // Evenimente pentru touch
+                    card.addEventListener('touchstart', function(e) {
+                        draggedItem = this;
+                        this.classList.add('dragging');
+                        e.preventDefault();
+                    });
+                    
+                    card.addEventListener('touchend', function() {
+                        this.classList.remove('dragging');
+                    });
+                });
+                
+                wordCards.forEach(card => {
+                    card.addEventListener('dragover', function(e) {
+                        e.preventDefault();
+                    });
+                    
+                    card.addEventListener('dragenter', function(e) {
+                        e.preventDefault();
+                        this.style.background = 'linear-gradient(145deg, #6a6a8a, #7a7a9a)';
+                    });
+                    
+                    card.addEventListener('dragleave', function() {
+                        this.style.background = 'linear-gradient(145deg, #4a4a6a, #5a5a7a)';
+                    });
+                    
+                    card.addEventListener('drop', function(e) {
+                        e.preventDefault();
+                        this.style.background = 'linear-gradient(145deg, #4a4a6a, #5a5a7a)';
+                        
+                        if (draggedItem.getAttribute('data-word') === this.getAttribute('data-word')) {
+                            this.innerHTML = draggedItem.innerHTML;
+                            this.classList.add('matched');
+                            draggedItem.style.visibility = 'hidden';
+                            
+                            // Verifică dacă toate potrivirile sunt corecte
+                            const allMatched = Array.from(wordCards).every(card => card.classList.contains('matched'));
+                            if (allMatched) {
+                                matchingMessage.innerHTML = '<p style="color:#4CAF50; font-size: 1.5rem; text-align: center;">Felicitări! Ai potrivit toate imaginile corect! 🎉</p>';
+                            }
+                        } else {
+                            matchingMessage.innerHTML = '<p style="color:#f44336; font-size: 1.5rem; text-align: center;">Mai încearcă! Această potrivire nu este corectă.</p>';
+                        }
+                    });
+                    
+                    // Evenimente pentru touch
+                    card.addEventListener('touchmove', function(e) {
+                        e.preventDefault();
+                    });
+                    
+                    card.addEventListener('touchend', function(e) {
+                        if (draggedItem && draggedItem.getAttribute('data-word') === this.getAttribute('data-word')) {
+                            this.innerHTML = draggedItem.innerHTML;
+                            this.classList.add('matched');
+                            draggedItem.style.visibility = 'hidden';
+                            
+                            // Verifică dacă toate potrivirile sunt corecte
+                            const allMatched = Array.from(wordCards).every(card => card.classList.contains('matched'));
+                            if (allMatched) {
+                                matchingMessage.innerHTML = '<p style="color:#4CAF50; font-size: 1.5rem; text-align: center;">Felicitări! Ai potrivit toate imaginile corect! 🎉</p>';
+                            }
+                        }
+                        draggedItem = null;
+                    });
+                });
+            }
+            
+            // Puzzle
+            const puzzlePieces = document.querySelectorAll('.puzzle-piece');
+            const checkPuzzleBtn = document.getElementById('checkPuzzle');
+            const puzzleMessage = document.getElementById('puzzleMessage');
+            
+            if (checkPuzzleBtn) {
+                checkPuzzleBtn.addEventListener('click', () => {
+                    let isCorrect = true;
+                    const currentPieces = document.querySelectorAll('.puzzle-piece');
+                    
+                    currentPieces.forEach((piece, index) => {
+                        const currentOrder = parseInt(piece.getAttribute('data-order'));
+                        const correctOrder = index + 1;
+                        
+                        if (currentOrder === correctOrder) {
+                            piece.classList.add('correct');
+                        } else {
+                            piece.classList.remove('correct');
+                            isCorrect = false;
+                        }
+                    });
+                    
+                    if (isCorrect) {
+                        puzzleMessage.innerHTML = '<p style="color:#4CAF50; font-size: 1.5rem; text-align: center;">Felicitări! Puzzle-ul este corect! 🎉</p>';
+                    } else {
+                        puzzleMessage.innerHTML = '<p style="color:#f44336; font-size: 1.5rem; text-align: center;">Mai încearcă! Nu toate piesele sunt în ordinea corectă.</p>';
+                    }
+                });
+            }
+            
+            // Permite schimbarea pieselor de puzzle
+            if (puzzlePieces.length > 0) {
+                let selectedPiece = null;
+                
+                puzzlePieces.forEach(piece => {
+                    piece.addEventListener('click', () => {
+                        if (!selectedPiece) {
+                            // Prima piesă selectată
+                            selectedPiece = piece;
+                            piece.style.border = '3px solid #ff6b35';
+                            piece.style.transform = 'scale(1.1)';
+                        } else {
+                            // A doua piesă selectată - le schimbăm
+                            const firstOrder = selectedPiece.getAttribute('data-order');
+                            const secondOrder = piece.getAttribute('data-order');
+                            
+                            selectedPiece.setAttribute('data-order', secondOrder);
+                            selectedPiece.textContent = secondOrder;
+                            piece.setAttribute('data-order', firstOrder);
+                            piece.textContent = firstOrder;
+                            
+                            // Resetăm selecția
+                            selectedPiece.style.border = '2px solid transparent';
+                            selectedPiece.style.transform = 'scale(1)';
+                            selectedPiece = null;
+                            
+                            // Verificăm dacă puzzle-ul este corect
+                            puzzlePieces.forEach(p => p.classList.remove('correct'));
+                            puzzleMessage.innerHTML = '';
+                        }
+                    });
+                });
+            }
+        }
+
+        // Inițializare joc Mix-Or-Match
+        function initializeMixMatch() {
+            const cardImages = [
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Bat.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Bones.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Cauldron.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Dracula.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Eye.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Ghost.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Pumpkin.png',
+                'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Skull.png'
+            ];
+            
+            const cardsContainer = document.getElementById('cards-container');
+            const startText = document.getElementById('start-text');
+            const gameOverText = document.getElementById('game-over-text');
+            const victoryText = document.getElementById('victory-text');
+            const timeRemainingElement = document.getElementById('time-remaining');
+            const flipsElement = document.getElementById('flips');
+            
+            // Creăm cărțile
+            let cards = [];
+            cardImages.forEach((image, index) => {
+                // Adăugăm fiecare imagine de două ori pentru a forma perechi
+                cards.push(createCard(image, index));
+                cards.push(createCard(image, index));
+            });
+            
+            // Amestecăm cărțile
+            shuffleArray(cards);
+            
+            // Adăugăm cărțile în container
+            cards.forEach(card => {
+                cardsContainer.appendChild(card);
+            });
+            
+            // Variabile pentru joc
+            let timeRemaining = 100;
+            let flips = 0;
+            let matchedCards = 0;
+            let busy = false;
+            let cardToCheck = null;
+            let countdown = null;
+            
+            // Evenimente pentru overlay-uri
+            [startText, gameOverText, victoryText].forEach(overlay => {
+                overlay.addEventListener('click', () => {
+                    overlay.classList.remove('visible');
+                    startGame();
+                });
+            });
+            
+            // Funcție pentru crearea unei cărți
+            function createCard(image, id) {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.setAttribute('data-id', id);
+                
+                const cardBack = document.createElement('div');
+                cardBack.classList.add('card-back', 'card-face');
+                
+                // Adăugăm păianjeni și pânze de păianjen
+                for (let i = 0; i < 4; i++) {
+                    const cobWeb = document.createElement('img');
+                    cobWeb.classList.add('cob-web', `cob-web-${['top-left', 'top-right', 'bottom-left', 'bottom-right'][i]}`);
+                    cobWeb.src = 'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Cobweb.png';
+                    cardBack.appendChild(cobWeb);
+                }
+                
+                const spider = document.createElement('img');
+                spider.classList.add('spider');
+                spider.src = 'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/Spider.png';
+                cardBack.appendChild(spider);
+                
+                const cardFront = document.createElement('div');
+                cardFront.classList.add('card-front', 'card-face');
+                
+                // Adăugăm pânze de păianjen gri
+                for (let i = 0; i < 4; i++) {
+                    const cobWeb = document.createElement('img');
+                    cobWeb.classList.add('cob-web', `cob-web-${['top-left', 'top-right', 'bottom-left', 'bottom-right'][i]}`);
+                    cobWeb.src = 'https://raw.githubusercontent.com/WebDevSimplified/Mix-Or-Match/master/Assets/Images/CobwebGrey.png';
+                    cardFront.appendChild(cobWeb);
+                }
+                
+                const cardValue = document.createElement('img');
+                cardValue.classList.add('card-value');
+                cardValue.src = image;
+                cardFront.appendChild(cardValue);
+                
+                card.appendChild(cardBack);
+                card.appendChild(cardFront);
+                
+                card.addEventListener('click', flipCard);
+                
+                return card;
+            }
+            
+            // Funcție pentru întoarcerea cărții
+            function flipCard() {
+                if (busy || this.classList.contains('visible') || this.classList.contains('matched')) {
+                    return;
+                }
+                
+                flips++;
+                flipsElement.textContent = flips;
+                
+                this.classList.add('visible');
+                
+                if (!cardToCheck) {
+                    cardToCheck = this;
+                } else {
+                    checkForMatch(this);
+                }
+            }
+            
+            // Funcție pentru verificarea potrivirii
+            function checkForMatch(card) {
+                if (card.getAttribute('data-id') === cardToCheck.getAttribute('data-id')) {
+                    cardMatch(card, cardToCheck);
+                } else {
+                    cardMismatch(card, cardToCheck);
+                }
+                cardToCheck = null;
+            }
+            
+            // Funcție pentru cărți potrivite
+            function cardMatch(card1, card2) {
+                matchedCards += 2;
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                
+                if (matchedCards === cards.length) {
+                    victory();
+                }
+            }
+            
+            // Funcție pentru cărți nepotrivite
+            function cardMismatch(card1, card2) {
+                busy = true;
+                setTimeout(() => {
+                    card1.classList.remove('visible');
+                    card2.classList.remove('visible');
+                    busy = false;
+                }, 1000);
+            }
+            
+            // Funcție pentru start joc
+            function startGame() {
+                timeRemaining = 100;
+                flips = 0;
+                matchedCards = 0;
+                busy = true;
+                
+                timeRemainingElement.textContent = timeRemaining;
+                flipsElement.textContent = flips;
+                
+                // Resetăm cărțile
+                cards.forEach(card => {
+                    card.classList.remove('visible');
+                    card.classList.remove('matched');
+                });
+                
+                // Amestecăm cărțile din nou
+                setTimeout(() => {
+                    shuffleArray(cards);
+                    cards.forEach((card, index) => {
+                        card.style.order = index;
+                    });
+                    busy = false;
+                }, 500);
+                
+                // Pornim timer-ul
+                clearInterval(countdown);
+                countdown = setInterval(() => {
+                    timeRemaining--;
+                    timeRemainingElement.textContent = timeRemaining;
+                    
+                    if (timeRemaining === 0) {
+                        gameOver();
+                    }
+                }, 1000);
+            }
+            
+            // Funcție pentru victorie
+            function victory() {
+                clearInterval(countdown);
+                victoryText.classList.add('visible');
+            }
+            
+            // Funcție pentru game over
+            function gameOver() {
+                clearInterval(countdown);
+                gameOverText.classList.add('visible');
+            }
+        }
+
+        // Inițializare joc Ghicitoarea Germană
+        function initializeGuessGame() {
+            // Ghicitori în română cu cuvinte în germană
+            const riddles = [
+                {
+                    riddle: "Are patru picioare, dar nu merge,Și în fiecare seară te așteaptă să te întinzi pe el.",
+                    word: "BETT",
+                    translation: "pat",
+                    hint: "Folosim să dormim"
+                },
+                {
+                    riddle: "Este rotundă, galbenă ca soarele,Și o mănânci la prânz cu plăcere.",
+                    word: "APFEL",
+                    translation: "măr",
+                    hint: "Este un fruct"
+                },
+                {
+                    riddle: "Zboară prin cer fără aripi,Și face ploaie când plânge.",
+                    word: "WOLKE",
+                    translation: "nor",
+                    hint: "Este alb și pe cer"
+                },
+                {
+                    riddle: "Are coadă, dar nu este animal,Îți arată drumul când ești pierdut.",
+                    word: "KARTE",
+                    translation: "hartă",
+                    hint: "O folosim la geografie"
+                },
+                {
+                    riddle: "Este mică, albă ca zăpada,Și sare când o lovești.",
+                    word: "BALL",
+                    translation: "minge",
+                    hint: "Jucăm fotbal cu ea"
+                },
+                {
+                    riddle: "Nu vorbește, dar îți răspunde,Și îți arată ceasul mereu.",
+                    word: "UHR",
+                    translation: "ceas",
+                    hint: "Îți spune cât este ceasul"
+                },
+                {
+                    riddle: "Este verde și înalt,Și îți dă umbră vara.",
+                    word: "BAUM",
+                    translation: "copac",
+                    hint: "Crește în pădure"
+                },
+                {
+                    riddle: "Are aripi, dar nu zboară,Și înoată pe ape mereu.",
+                    word: "ENTE",
+                    translation: "rață",
+                    hint: "Face 'mac-mac'"
+                },
+                {
+                    riddle: "Este dulce și pufos,Și îl mănânci la desert.",
+                    word: "EIS",
+                    translation: "înghețată",
+                    hint: "Se topește la soare"
+                },
+                {
+                    riddle: "Are multe pagini, dar nu vorbește,Și îți spune povești frumoase.",
+                    word: "BUCH",
+                    translation: "carte",
+                    hint: "O citim în fiecare seară"
+                },
+                {
+                    riddle: "Este mică și gri,Și îți dă lumină noaptea.",
+                    word: "LAMPE",
+                    translation: "lampă",
+                    hint: "O aprindem când este întuneric"
+                },
+                {
+                    riddle: "Are uși și ferestre,Și în ea locuim cu toții.",
+                    word: "HAUS",
+                    translation: "casă",
+                    hint: "Este locul unde stăm"
+                },
+                {
+                    riddle: "Este albă și rece,Și o bei când îți este sete.",
+                    word: "WASSER",
+                    translation: "apă",
+                    hint: "Este foarte importantă pentru viață"
+                },
+                {
+                    riddle: "Este pufos și mic,Și toarce când este fericit.",
+                    word: "KATZE",
+                    translation: "pisică",
+                    hint: "Are mustăți și lovesc cu laba"
+                },
+                {
+                    riddle: "Este cel mai bun prieten al omului,Și dă din coadă când te vede.",
+                    word: "HUND",
+                    translation: "câine",
+                    hint: "Face 'ham-ham'"
+                }
+            ];
+
+            // Elementele DOM
+            const wordDisplay = document.getElementById('word-display');
+            const lettersContainer = document.getElementById('letters-container');
+            const scoreElement = document.querySelector('.score');
+            const hangmanImage = document.getElementById('hangman');
+            const messageElement = document.getElementById('message');
+            const riddleElement = document.getElementById('riddle-text');
+            const hintElement = document.getElementById('hint-text');
+            const hintBtn = document.getElementById('hint-btn');
+            const newWordBtn = document.getElementById('new-word-btn');
+            const hearts = document.querySelectorAll('.heart');
+            const translationElement = document.getElementById('translation');
+            const translationText = document.getElementById('translation-text');
+
+            // Inițializarea jocului
+            function initGame() {
+                // Selectează o ghicitoare aleatorie
+                const randomIndex = Math.floor(Math.random() * riddles.length);
+                currentRiddle = riddles[randomIndex];
+                selectedWord = currentRiddle.word;
+                selectedTranslation = currentRiddle.translation;
+                
+                // Resetează variabilele jocului
+                guessedLetters = [];
+                wrongGuesses = 0;
+                
+                // Actualizează afișajul
+                updateRiddleDisplay();
+                updateWordDisplay();
+                updateScore();
+                updateHangmanImage();
+                updateHearts();
+                createLetterButtons();
+                
+                // Ascunde mesajele
+                messageElement.textContent = '';
+                messageElement.className = 'message';
+                hintElement.textContent = '';
+                translationElement.style.display = 'none';
+                
+                // Activează butoanele
+                document.querySelectorAll('.letter').forEach(btn => {
+                    btn.disabled = false;
+                });
+            }
+
+            // Afișează ghicitoarea
+            function updateRiddleDisplay() {
+                riddleElement.textContent = currentRiddle.riddle;
+            }
+
+            // Afișează cuvântul cu literele ghicite
+            function updateWordDisplay() {
+                const displayWord = selectedWord.split('').map(letter => 
+                    guessedLetters.includes(letter) ? letter : '_'
+                ).join(' ');
+                
+                wordDisplay.textContent = displayWord;
+                
+                // Verifică dacă jucătorul a câștigat
+                if (!displayWord.includes('_')) {
+                    endGame(true);
+                }
+            }
+
+            // Actualizează numărul de încercări rămase
+            function updateScore() {
+                scoreElement.textContent = maxWrongGuesses - wrongGuesses;
+            }
+
+            // Actualizează inimioarele
+            function updateHearts() {
+                hearts.forEach((heart, index) => {
+                    if (index < (maxWrongGuesses - wrongGuesses)) {
+                        heart.style.display = 'block';
+                    } else {
+                        heart.style.display = 'none';
+                    }
+                });
+            }
+
+            // Actualizează imaginea
+            function updateHangmanImage() {
+                const hangmanStages = ['🎃', '🎃', '🎃', '🎃', '🎃', '🎃'];
+                hangmanImage.textContent = hangmanStages[wrongGuesses];
+            }
+
+            // Creează butoanele pentru litere (doar literele din alfabetul german)
+            function createLetterButtons() {
+                lettersContainer.innerHTML = '';
+                // Alfabetul german - fără diacritice pentru că cuvintele sunt scrise fără ele
+                const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'.split('');
+                
+                alphabet.forEach(letter => {
+                    const button = document.createElement('button');
+                    button.className = 'letter';
+                    button.textContent = letter;
+                    button.addEventListener('click', () => guessLetter(letter, button));
+                    lettersContainer.appendChild(button);
+                });
+            }
+
+            // Funcția pentru ghicirea unei litere
+            function guessLetter(letter, button) {
+                // Dezactivează butonul
+                button.disabled = true;
+                
+                // Verifică dacă litera este în cuvânt
+                if (selectedWord.includes(letter)) {
+                    guessedLetters.push(letter);
+                    updateWordDisplay();
+                } else {
+                    wrongGuesses++;
+                    updateScore();
+                    updateHangmanImage();
+                    updateHearts();
+                    
+                    // Verifică dacă jucătorul a pierdut
+                    if (wrongGuesses >= maxWrongGuesses) {
+                        endGame(false);
+                    }
+                }
+            }
+
+            // Finalizează jocul
+            function endGame(isWin) {
+                // Dezactivează toate butoanele de litere
+                document.querySelectorAll('.letter').forEach(btn => {
+                    btn.disabled = true;
+                });
+                
+                // Afișează traducerea
+                translationText.textContent = selectedTranslation;
+                translationElement.style.display = 'block';
+                
+                // Afișează mesajul corespunzător
+                if (isWin) {
+                    const celebrations = ['🎉', '🌟', '🥳', '👏', '💫', '✨'];
+                    const randomCelebration = celebrations[Math.floor(Math.random() * celebrations.length)];
+                    
+                    messageElement.innerHTML = `
+                        <div class="celebration">${randomCelebration}</div>
+                        <div>BRAVO! Ești foarte deștept! 🧠</div>
+                        <div>Ai ghicit corect cuvântul german!</div>
+                        <div class="german-word">${selectedWord}</div>
+                        <div class="celebration">${randomCelebration}</div>
+                    `;
+                    messageElement.className = 'message win';
+                } else {
+                    messageElement.innerHTML = `
+                        <div>Mai încearcă! 💪</div>
+                        <div>Cuvântul german era: <strong>${selectedWord}</strong></div>
+                        <div>Hai să încercăm alta!</div>
+                    `;
+                    messageElement.className = 'message lose';
+                }
+            }
+
+            // Evenimente pentru butoane
+            hintBtn.addEventListener('click', () => {
+                hintElement.textContent = `Indiciu: ${currentRiddle.hint}`;
+            });
+
+            newWordBtn.addEventListener('click', initGame);
+
+            // Pornește jocul la încărcarea paginii
+            initGame();
+        }
+
+        // Inițializare joc Vocabular German
+        function initializeVocabularyGame() {
+            const vocabulary = [
+                { word: "Kürbis", article: "der", translation: "dovleac", icon: "🎃" },
+                { word: "Gespenst", article: "das", translation: "fantomă", icon: "👻" },
+                { word: "Fledermaus", article: "die", translation: "liliac", icon: "🦇" },
+                { word: "Hexe", article: "die", translation: "vrăjitoare", icon: "🧙‍♀️" },
+                { word: "Geist", article: "der", translation: "stafie", icon: "👻" },
+                { word: "Skelett", article: "das", translation: "schelet", icon: "💀" },
+                { word: "Spinne", article: "die", translation: "păianjen", icon: "🕷️" },
+                { word: "Fackel", article: "die", translation: "torță", icon: "🔦" },
+                { word: "Zauberer", article: "der", translation: "vrăjitor", icon: "🧙‍♂️" },
+                { word: "Vampir", article: "der", translation: "vampir", icon: "🧛‍♂️" },
+                { word: "Eule", article: "die", translation: "bufniță", icon: "🦉" },
+                { word: "Mond", article: "der", translation: "lună", icon: "🌕" },
+                { word: "Süßigkeiten", article: "die", translation: "dulciuri", icon: "🍬" },
+                { word: "Verkleidung", article: "die", translation: "costum", icon: "🎭" },
+            ];
+
+            const itemsContainer = document.getElementById('vocabulary-items');
+            const wordcloud = document.getElementById('wordcloud');
+
+            // Afișează elementele de vocabular
+            vocabulary.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'game-item-card';
+                card.innerHTML = `
+                    <div class="icon">${item.icon}</div>
+                    <div class="label">${item.word}</div>
+                    <div style="margin-top: 10px; font-size: 1rem; color: #ffcc00;">${item.translation}</div>
+                `;
+                card.addEventListener('click', () => {
+                    speakText(item.word);
+                });
+                itemsContainer.appendChild(card);
+            });
+
+            // Afișează wordcloud-ul
+            vocabulary.forEach(item => {
+                const chip = document.createElement('div');
+                chip.className = 'wordchip';
+                chip.textContent = item.word;
+                chip.addEventListener('click', () => {
+                    speakText(item.word);
+                });
+                wordcloud.appendChild(chip);
+            });
+
+            // Funcție pentru pronunție
+            function speakText(text) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'de-DE';
+                    utterance.rate = 0.9;
+                    speechSynthesis.speak(utterance);
+                }
+            }
+        }
+
+        // Inițializare joc Articole
+        function initializeArticlesGame() {
+            const vocabulary = [
+                { word: "Kürbis", article: "der", translation: "dovleac", icon: "🎃" },
+                { word: "Gespenst", article: "das", translation: "fantomă", icon: "👻" },
+                { word: "Fledermaus", article: "die", translation: "liliac", icon: "🦇" },
+                { word: "Hexe", article: "die", translation: "vrăjitoare", icon: "🧙‍♀️" },
+                { word: "Geist", article: "der", translation: "stafie", icon: "👻" },
+                { word: "Skelett", article: "das", translation: "schelet", icon: "💀" },
+                { word: "Spinne", article: "die", translation: "păianjen", icon: "🕷️" },
+                { word: "Fackel", article: "die", translation: "torță", icon: "🔦" },
+                { word: "Zauberer", article: "der", translation: "vrăjitor", icon: "🧙‍♂️" },
+                { word: "Vampir", article: "der", translation: "vampir", icon: "🧛‍♂️" },
+                { word: "Eule", article: "die", translation: "bufniță", icon: "🦉" },
+                { word: "Mond", article: "der", translation: "lună", icon: "🌕" },
+                { word: "Süßigkeiten", article: "die", translation: "dulciuri", icon: "🍬" },
+                { word: "Verkleidung", article: "die", translation: "costum", icon: "🎭" },
+            ];
+
+            const itemsContainer = document.getElementById('articles-items');
+            const wordcloud = document.getElementById('articles-wordcloud');
+
+            // Afișează elementele pentru jocul articolelor
+            vocabulary.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'game-item-card';
+                card.innerHTML = `
+                    <div class="icon">${item.icon}</div>
+                    <div class="label">${item.word}</div>
+                    <div style="margin-top: 10px; font-size: 1rem; color: #ffcc00;">Alege articolul corect:</div>
+                    <div class="article-options">
+                        <div class="article-option" data-article="der">der</div>
+                        <div class="article-option" data-article="die">die</div>
+                        <div class="article-option" data-article="das">das</div>
+                    </div>
+                `;
+                
+                const articleOptions = card.querySelectorAll('.article-option');
+                articleOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        if (option.dataset.article === item.article) {
+                            option.classList.add('correct');
+                            setTimeout(() => {
+                                card.style.background = 'linear-gradient(145deg, #4CAF50, #45a049)';
+                            }, 500);
+                        } else {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                });
+                
+                itemsContainer.appendChild(card);
+            });
+
+            // Afișează wordcloud-ul
+            vocabulary.forEach(item => {
+                const chip = document.createElement('div');
+                chip.className = 'wordchip';
+                chip.textContent = `${item.article} ${item.word}`;
+                chip.addEventListener('click', () => {
+                    speakText(`${item.article} ${item.word}`);
+                });
+                wordcloud.appendChild(chip);
+            });
+
+            // Funcție pentru pronunție
+            function speakText(text) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'de-DE';
+                    utterance.rate = 0.9;
+                    speechSynthesis.speak(utterance);
+                }
+            }
+        }
+
+        // Inițializare joc Memory German
+        function initializeMemoryGame() {
+            const vocabulary = [
+                { word: "Kürbis", translation: "dovleac", icon: "🎃" },
+                { word: "Gespenst", translation: "fantomă", icon: "👻" },
+                { word: "Fledermaus", translation: "liliac", icon: "🦇" },
+                { word: "Hexe", translation: "vrăjitoare", icon: "🧙‍♀️" },
+                { word: "Geist", translation: "stafie", icon: "👻" },
+                { word: "Skelett", translation: "schelet", icon: "💀" },
+            ];
+
+            const itemsContainer = document.getElementById('memory-items');
+            let flippedCards = [];
+            let matchedPairs = 0;
+
+            // Creează perechile de carduri
+            const cards = [];
+            vocabulary.forEach(item => {
+                cards.push({ type: 'german', content: item.word, pair: item.word, icon: item.icon });
+                cards.push({ type: 'romanian', content: item.translation, pair: item.word, icon: item.icon });
+            });
+
+            // Amestecă cardurile
+            shuffleArray(cards);
+
+            // Afișează cardurile
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'memory-card';
+                cardElement.innerHTML = `
+                    <div class="icon">?</div>
+                    <div class="label">?</div>
+                `;
+                cardElement.dataset.pair = card.pair;
+                cardElement.dataset.type = card.type;
+                cardElement.dataset.content = card.content;
+                cardElement.dataset.icon = card.icon;
+                
+                cardElement.addEventListener('click', () => {
+                    if (cardElement.classList.contains('flipped') || cardElement.classList.contains('matched')) {
+                        return;
+                    }
+                    
+                    // Întoarce cardul
+                    cardElement.classList.add('flipped');
+                    cardElement.innerHTML = `
+                        <div class="icon">${card.icon}</div>
+                        <div class="label">${card.content}</div>
+                    `;
+                    
+                    flippedCards.push(cardElement);
+                    
+                    if (flippedCards.length === 2) {
+                        // Verifică dacă perechea este corectă
+                        if (flippedCards[0].dataset.pair === flippedCards[1].dataset.pair && 
+                            flippedCards[0].dataset.type !== flippedCards[1].dataset.type) {
+                            // Pereche corectă
+                            setTimeout(() => {
+                                flippedCards.forEach(card => {
+                                    card.classList.add('matched');
+                                    card.style.background = 'linear-gradient(145deg, #4CAF50, #45a049)';
+                                });
+                                matchedPairs++;
+                                
+                                if (matchedPairs === vocabulary.length) {
+                                    setTimeout(() => {
+                                        alert('Felicitări! Ai găsit toate perechile! 🎉');
+                                    }, 500);
+                                }
+                            }, 500);
+                        } else {
+                            // Pereche incorectă - întoarce cardurile înapoi
+                            setTimeout(() => {
+                                flippedCards.forEach(card => {
+                                    card.classList.remove('flipped');
+                                    card.innerHTML = `
+                                        <div class="icon">?</div>
+                                        <div class="label">?</div>
+                                    `;
+                                });
+                            }, 1000);
+                        }
+                        setTimeout(() => {
+                            flippedCards = [];
+                        }, 1000);
+                    }
+                });
+                
+                itemsContainer.appendChild(cardElement);
+            });
+        }
+
+        // Inițializare joc Matematică
+        let mathCurrentQuestion = 0;
+        let mathCandies = 0;
+        let mathCorrectAnswers = 0;
+        let mathQuestions = [];
+        let mathCharacters = ['👻', '🦇', '🎃', '💀', '🕷️', '🕸️', '😱', '🧙', '🧛', '🧟'];
+
+        function initializeMathGame() {
+            generateMathQuestions();
+            mathCurrentQuestion = 0;
+            mathCandies = 0;
+            mathCorrectAnswers = 0;
+            updateMathCandyDisplay();
+            showMathQuestion();
+        }
+
+        function generateMathQuestions() {
+            mathQuestions = [];
+            
+            // Adunări simple (maxim 12)
+            for (let i = 1; i <= 5; i++) {
+                let num1 = Math.floor(Math.random() * 6) + 1;
+                let num2 = Math.floor(Math.random() * 6) + 1;
+                let sum = num1 + num2;
+                
+                // Asigură-te că suma nu depășește 12
+                while (sum > 12) {
+                    num1 = Math.floor(Math.random() * 6) + 1;
+                    num2 = Math.floor(Math.random() * 6) + 1;
+                    sum = num1 + num2;
+                }
+                
+                mathQuestions.push({
+                    type: 'addition',
+                    question: `${num1} + ${num2} = ?`,
+                    answer: sum,
+                    options: generateMathOptions(sum),
+                    character: mathCharacters[Math.floor(Math.random() * mathCharacters.length)]
+                });
+            }
+
+            // Scăderi simple (rezultat pozitiv)
+            for (let i = 1; i <= 3; i++) {
+                let num1 = Math.floor(Math.random() * 10) + 3;
+                let num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
+                let difference = num1 - num2;
+                
+                mathQuestions.push({
+                    type: 'subtraction',
+                    question: `${num1} - ${num2} = ?`,
+                    answer: difference,
+                    options: generateMathOptions(difference),
+                    character: mathCharacters[Math.floor(Math.random() * mathCharacters.length)]
+                });
+            }
+
+            // Numere pare/impare în germană
+        for (let i = 1; i <= 2; i++) {
+    let num = Math.floor(Math.random() * 10) + 1;
+    let isEven = num % 2 === 0;
+    mathQuestions.push({
+        type: 'german',
+        question: `Ist die Zahl ${num} gerade oder ungerade?`,
+        answer: isEven ? 'Gerade' : 'Ungerade',
+        options: ['Gerade', 'Ungerade'],
+        character: mathCharacters[Math.floor(Math.random() * mathCharacters.length)]
+    });
+}
+
+            // Amestecă întrebările
+            mathQuestions = mathQuestions.sort(() => Math.random() - 0.5);
+        }
+
+        function generateMathOptions(correctAnswer) {
+            let options = [correctAnswer];
+            while (options.length < 3) {
+                let option = correctAnswer + Math.floor(Math.random() * 5) - 2;
+                if (option !== correctAnswer && option > 0 && !options.includes(option)) {
+                    options.push(option);
+                }
+            }
+            return options.sort(() => Math.random() - 0.5);
+        }
+
+        function showMathQuestion() {
+            const question = mathQuestions[mathCurrentQuestion];
+            document.getElementById('mathQuestionText').textContent = question.question;
+            document.getElementById('mathCharacter').textContent = question.character;
+            document.getElementById('mathQuestionCount').textContent = `${mathCurrentQuestion + 1}/10`;
+            
+            const optionsContainer = document.getElementById('mathOptionsContainer');
+            optionsContainer.innerHTML = '';
+            document.getElementById('mathFeedback').textContent = '';
+            document.getElementById('mathNextBtn').style.display = 'none';
+            document.getElementById('mathRestartBtn').style.display = 'none';
+
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'math-option';
+                button.textContent = option;
+                button.onclick = () => checkMathAnswer(option, question.answer);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkMathAnswer(selected, correct) {
+            const options = document.querySelectorAll('.math-option');
+            const feedback = document.getElementById('mathFeedback');
+            
+            options.forEach(option => {
+                option.disabled = true;
+                if (option.textContent == correct) {
+                    option.classList.add('correct');
+                }
+                if (option.textContent == selected && selected != correct) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            if (selected == correct) {
+                feedback.innerHTML = '<span class="math-spooky-text">Corect! 🎉 +1 Bomboană!</span>';
+                mathCandies++;
+                mathCorrectAnswers++;
+                updateMathCandyDisplay();
+            } else {
+                feedback.innerHTML = '<span class="math-spooky-text">Greșit! Răspunsul corect era: ' + correct + '</span>';
+            }
+
+            document.getElementById('mathNextBtn').style.display = 'block';
+        }
+
+        function mathNextQuestion() {
+            mathCurrentQuestion++;
+            if (mathCurrentQuestion < mathQuestions.length) {
+                showMathQuestion();
+            } else {
+                mathEndGame();
+            }
+        }
+
+        function mathEndGame() {
+            document.getElementById('mathFeedback').innerHTML = `
+                <span class="math-spooky-text">🎉 Ai terminat! 🎉</span><br>
+                Ai răspuns corect la ${mathCorrectAnswers} din 10 întrebări!
+            `;
+            document.getElementById('mathNextBtn').style.display = 'none';
+            document.getElementById('mathRestartBtn').style.display = 'block';
+        }
+
+        function mathRestartGame() {
+            generateMathQuestions();
+            mathCurrentQuestion = 0;
+            mathCandies = 0;
+            mathCorrectAnswers = 0;
+            updateMathCandyDisplay();
+            showMathQuestion();
+            document.getElementById('mathRestartBtn').style.display = 'none';
+        }
+
+        function updateMathCandyDisplay() {
+            const container = document.getElementById('mathCandyContainer');
+            container.innerHTML = '';
+            document.getElementById('mathCandyCount').textContent = `${mathCandies}/10`;
+
+            for (let i = 0; i < 10; i++) {
+                const candy = document.createElement('div');
+                candy.className = `math-candy ${i < mathCandies ? 'collected' : ''}`;
+                candy.textContent = '🍬';
+                container.appendChild(candy);
+            }
+        }
+
+        // Încarcă primul joc la deschiderea paginii
+        window.addEventListener('DOMContentLoaded', () => {
+            loadGame('witch');
+            
+            // Verifică dimensiunea ecranului și ajustează comportamentul
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('visible');
+            } else {
+                sidebar.classList.add('visible');
+            }
+        });
+
+        // Ascultă schimbările de dimensiune ale ferestrei
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('visible');
+            } else {
+                sidebar.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>

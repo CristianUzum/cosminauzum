@@ -1,0 +1,3209 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplicație Siguranță Online - Clasa I</title>
+    <style>
+      :root {
+        --primary-blue: #2196f3;
+        --primary-green: #4caf50;
+        --primary-yellow: #ffc107;
+        --primary-red: #f44336;
+        --primary-purple: #9c27b0;
+        --light-bg: #f0f9ff;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:
+          "Comic Sans MS", "Chalkboard SE", "Arial Rounded MT Bold", sans-serif;
+      }
+
+      body {
+        background-color: var(--light-bg);
+        color: #333;
+        line-height: 1.6;
+        padding-bottom: 40px;
+      }
+
+      /* HEADER */
+      .app-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        color: white;
+        padding: 25px 20px;
+        text-align: center;
+        border-radius: 0 0 25px 25px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .app-header::before {
+        content: "🔒🌐🛡️";
+        font-size: 4rem;
+        opacity: 0.15;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        opacity: 0.95;
+      }
+
+      .date-badge {
+        display: inline-block;
+        background-color: var(--primary-yellow);
+        color: #333;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        margin-top: 10px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      }
+
+      /* CONTROLS */
+      .controls-container {
+        max-width: 1200px;
+        margin: 25px auto;
+        padding: 0 20px;
+      }
+
+      .controls {
+        background-color: var(--card-bg);
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+      }
+
+      .language-selector {
+        display: flex;
+        background-color: #f0f8ff;
+        border-radius: 15px;
+        padding: 5px;
+      }
+
+      .lang-btn {
+        padding: 12px 25px;
+        border: none;
+        background: none;
+        border-radius: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 1rem;
+      }
+
+      .lang-btn.active {
+        background-color: var(--primary-blue);
+        color: white;
+        box-shadow: 0 3px 8px rgba(33, 150, 243, 0.3);
+      }
+
+      .progress-display {
+        display: flex;
+        align-items: center;
+        background-color: #f0f8ff;
+        padding: 10px 20px;
+        border-radius: 15px;
+      }
+
+      .stars-count {
+        font-size: 1.5rem;
+        color: #ffd700;
+        margin-right: 10px;
+      }
+
+      .progress-text {
+        font-weight: bold;
+        color: var(--primary-blue);
+      }
+
+      /* MAIN CONTAINER */
+      .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* LESSONS SECTION */
+      .lessons-section {
+        background-color: var(--card-bg);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        color: var(--primary-blue);
+        font-size: 1.8rem;
+      }
+
+      .section-title i {
+        margin-right: 15px;
+        font-size: 2rem;
+      }
+
+      .lessons-tabs {
+        display: flex;
+        overflow-x: auto;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+      }
+
+      .lesson-tab {
+        padding: 15px 25px;
+        background-color: #f0f8ff;
+        border: none;
+        border-radius: 15px;
+        margin-right: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+      }
+
+      .lesson-tab i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .lesson-tab.active {
+        background-color: var(--primary-blue);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 12px rgba(33, 150, 243, 0.3);
+      }
+
+      .lesson-tab.completed {
+        background-color: #e8f5e9;
+        color: var(--primary-green);
+      }
+
+      .lesson-tab.completed::after {
+        content: " ✓";
+        font-weight: bold;
+        margin-left: 5px;
+      }
+
+      .lesson-content {
+        background-color: #f9f9f9;
+        border-radius: 20px;
+        padding: 30px;
+        min-height: 350px;
+        transition: all 0.5s ease;
+      }
+
+      .lesson-part {
+        display: none;
+      }
+
+      .lesson-part.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .lesson-title {
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .lesson-title i {
+        margin-right: 15px;
+        font-size: 2rem;
+      }
+
+      .language-text {
+        display: none;
+        margin-bottom: 25px;
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      .language-text.active {
+        display: block;
+      }
+
+      .german-text {
+        background-color: #e8f5e9;
+        border-left: 6px solid var(--primary-green);
+      }
+
+      .romanian-text {
+        background-color: #e3f2fd;
+        border-left: 6px solid var(--primary-blue);
+      }
+
+      .exercise-box {
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border: 2px dashed var(--primary-yellow);
+      }
+
+      .exercise-title {
+        color: var(--primary-yellow);
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .exercise-title i {
+        margin-right: 10px;
+      }
+
+      .exercise-instructions {
+        margin-bottom: 15px;
+      }
+
+      .exercise-choices {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .choice-btn {
+        padding: 15px;
+        border: 3px solid #ddd;
+        border-radius: 12px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+      }
+
+      .choice-btn:hover {
+        background-color: #e3f2fd;
+        transform: translateX(5px);
+      }
+
+      .choice-btn.selected {
+        background-color: #e3f2fd;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+      }
+
+      .choice-btn.correct {
+        background-color: #e8f5e9;
+        border-color: var(--primary-green);
+        color: #2e7d32;
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+      }
+
+      .choice-btn.incorrect {
+        background-color: #ffebee;
+        border-color: var(--primary-red);
+        color: #c62828;
+        box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2);
+      }
+
+      .choice-icon {
+        margin-right: 10px;
+        font-size: 1.2rem;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e3f2fd;
+        border-radius: 50%;
+        font-weight: bold;
+      }
+
+      .choice-btn.selected .choice-icon {
+        background-color: var(--primary-blue);
+        color: white;
+      }
+
+      .choice-btn.correct .choice-icon {
+        background-color: var(--primary-green);
+        color: white;
+      }
+
+      .choice-btn.incorrect .choice-icon {
+        background-color: var(--primary-red);
+        color: white;
+      }
+
+      .exercise-feedback {
+        margin-top: 15px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        display: none;
+        font-weight: bold;
+      }
+
+      .exercise-feedback.correct {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        display: block;
+      }
+
+      .exercise-feedback.incorrect {
+        background-color: #ffebee;
+        color: #c62828;
+        display: block;
+      }
+
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+
+      .nav-btn {
+        padding: 15px 30px;
+        border: none;
+        border-radius: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-btn i {
+        margin-right: 10px;
+      }
+
+      .prev-btn {
+        background-color: #f0f8ff;
+        color: var(--primary-blue);
+      }
+
+      .next-btn {
+        background-color: var(--primary-blue);
+        color: white;
+        box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+      }
+
+      .complete-btn {
+        background-color: var(--primary-green);
+        color: white;
+        box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* INTERACTIVE SECTION - MOVED UNDER LESSONS */
+      .interactive-section {
+        background-color: var(--card-bg);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+      }
+
+      .games-tabs {
+        display: flex;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #f0f8ff;
+      }
+
+      .game-tab {
+        padding: 12px 20px;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: #666;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .game-tab i {
+        margin-right: 8px;
+      }
+
+      .game-tab.active {
+        color: var(--primary-blue);
+        border-bottom: 3px solid var(--primary-blue);
+      }
+
+      .game-container {
+        margin-top: 10px;
+      }
+
+      .game {
+        background-color: #f0f8ff;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 25px;
+        display: none;
+      }
+
+      .game.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .game-title {
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .game-title i {
+        margin-right: 15px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .choices {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .choice {
+        padding: 18px 20px;
+        background-color: white;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 3px solid transparent;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .choice:hover {
+        transform: translateX(5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .choice.correct {
+        background-color: #e8f5e9;
+        border-color: var(--primary-green);
+        color: #2e7d32;
+      }
+
+      .choice.incorrect {
+        background-color: #ffebee;
+        border-color: var(--primary-red);
+        color: #c62828;
+      }
+
+      .choice-icon {
+        margin-right: 15px;
+        font-size: 1.3rem;
+      }
+
+      .game-result {
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        font-weight: bold;
+        display: none;
+      }
+
+      .game-result.correct {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .game-result.incorrect {
+        background-color: #ffebee;
+        color: #c62828;
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      /* MEMORY GAME STYLES - FIXED */
+      .memory-board {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .memory-card {
+        aspect-ratio: 1;
+        background-color: var(--primary-blue);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .memory-card .card-front,
+      .memory-card .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .memory-card .card-front {
+        background-color: var(--primary-blue);
+        color: white;
+        font-size: 1.8rem;
+        z-index: 2;
+      }
+
+      .memory-card .card-back {
+        background-color: white;
+        color: #333;
+        transform: rotateY(180deg);
+        font-size: 1.5rem;
+      }
+
+      .memory-card .card-back small {
+        font-size: 0.7rem;
+        margin-top: 5px;
+        display: block;
+        text-align: center;
+        line-height: 1.2;
+      }
+
+      .memory-card.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .memory-card.matched {
+        background-color: var(--primary-green);
+        cursor: default;
+      }
+
+      .memory-card.matched .card-back {
+        background-color: var(--primary-green);
+        color: white;
+      }
+
+      .story-text {
+        background-color: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+
+      .story-choices {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .story-choice {
+        padding: 15px;
+        background-color: white;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .story-choice:hover {
+        background-color: #e3f2fd;
+        border-color: var(--primary-blue);
+      }
+
+      .story-outcome {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #fff9c4;
+        border-radius: 12px;
+        display: none;
+      }
+
+      .story-outcome.show {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .reward-earned {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--primary-blue);
+      }
+
+      /* AVATAR & REWARDS */
+      .avatar-section {
+        background-color: var(--card-bg);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        margin-top: 30px;
+      }
+
+      .avatar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 4rem;
+        color: white;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .avatar-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-blue);
+      }
+
+      .badges-container {
+        margin-top: 25px;
+      }
+
+      .badges-title {
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .badges-title i {
+        margin-right: 15px;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .badge {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        background-color: #f0f8ff;
+        color: #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .badge.unlocked {
+        background-color: #fff9c4;
+        color: #ffd700;
+        box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
+      }
+
+      /* FOOTER */
+      .app-footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 2px dashed #ccc;
+        color: #666;
+        font-size: 0.9rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .controls {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .lesson-tab {
+          padding: 12px 20px;
+          font-size: 0.9rem;
+        }
+
+        .nav-buttons {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .memory-board {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* ANIMATIONS */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse {
+        animation: pulse 0.5s ease;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+
+      .shake {
+        animation: shake 0.5s ease;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1>
+          <i class="fas fa-shield-alt"></i>
+          <span id="main-title">Siguranța pe Internet</span>
+        </h1>
+        <p class="subtitle" id="subtitle-ro">
+          6 februarie - Ziua Siguranței pe Internet
+        </p>
+        <p class="subtitle" id="subtitle-de" style="display: none">
+          Safer Internet Day - 6. Februar
+        </p>
+        <div class="date-badge">
+          <i class="fas fa-calendar-alt"></i>
+          <span id="date-text">6 februarie 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTROLS -->
+    <div class="controls-container">
+      <div class="controls">
+        <div class="language-selector">
+          <button id="btn-german" class="lang-btn">
+            <i class="fas fa-flag"></i> Deutsch
+          </button>
+          <button id="btn-romanian" class="lang-btn active">
+            <i class="fas fa-flag"></i> Română
+          </button>
+          <button id="btn-both" class="lang-btn">
+            <i class="fas fa-language"></i> Ambele
+          </button>
+        </div>
+
+        <div class="progress-display">
+          <div class="stars-count">
+            <i class="fas fa-star"></i> <span id="total-stars">0</span>/25
+          </div>
+          <div class="progress-text">
+            <i class="fas fa-trophy"></i>
+            <span id="progress-text">Progres:</span>
+            <span id="progress-percent">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+      <!-- LESSONS SECTION -->
+      <section class="lessons-section">
+        <h2 class="section-title">
+          <i class="fas fa-book-open"></i>
+          <span id="lessons-title">Lecții despre Siguranța Online</span>
+        </h2>
+
+        <div class="lessons-tabs">
+          <button class="lesson-tab active" data-lesson="1">
+            <i class="fas fa-key"></i>
+            <span class="tab-text" data-ro="Parola" data-de="Passwort"
+              >Parola</span
+            >
+          </button>
+          <button class="lesson-tab" data-lesson="2">
+            <i class="fas fa-user-secret"></i>
+            <span
+              class="tab-text"
+              data-ro="Date Personale"
+              data-de="Persönliche Daten"
+              >Date Personale</span
+            >
+          </button>
+          <button class="lesson-tab" data-lesson="3">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span class="tab-text" data-ro="Pericole" data-de="Gefahren"
+              >Pericole</span
+            >
+          </button>
+          <button class="lesson-tab" data-lesson="4">
+            <i class="fas fa-comments"></i>
+            <span
+              class="tab-text"
+              data-ro="Prieteni Online"
+              data-de="Online-Freunde"
+              >Prieteni Online</span
+            >
+          </button>
+          <button class="lesson-tab" data-lesson="5">
+            <i class="fas fa-clock"></i>
+            <span class="tab-text" data-ro="Timp Online" data-de="Online-Zeit"
+              >Timp Online</span
+            >
+          </button>
+        </div>
+
+        <div class="lesson-content">
+          <!-- LESSON 1 -->
+          <div class="lesson-part active" id="lesson-1">
+            <h3 class="lesson-title">
+              <i class="fas fa-key"></i>
+              <span
+                class="lesson-title-text"
+                data-ro="Parole Puternice"
+                data-de="Starke Passwörter"
+                >Parole Puternice</span
+              >
+            </h3>
+
+            <div id="lesson1-german" class="language-text german-text">
+              <p>
+                <strong>Deutsch:</strong> Ein starkes Passwort ist wie ein
+                Schlüssel für dein Zimmer. Es sollte geheim bleiben und nicht zu
+                einfach sein!
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Verwende
+                eine Mischung aus Buchstaben, Zahlen und Zeichen. Beispiel:
+                "S0nn3_2026!"
+              </p>
+            </div>
+
+            <div
+              id="lesson1-romanian"
+              class="language-text romanian-text active"
+            >
+              <p>
+                <strong>Română:</strong> O parolă puternică este ca o cheie
+                pentru camera ta. Ar trebui să rămână secretă și să nu fie prea
+                ușoară!
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i>
+                <strong>Sfat:</strong> Folosește un amestec de litere, numere și
+                simboluri. Exemplu: "S0are_2026!"
+              </p>
+            </div>
+
+            <div id="lesson1-both" class="language-text">
+              <div class="german-text" style="margin-bottom: 15px">
+                <p>
+                  <strong>Deutsch:</strong> Ein starkes Passwort ist wie ein
+                  Schlüssel für dein Zimmer. Es sollte geheim bleiben und nicht
+                  zu einfach sein!
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i>
+                  <strong>Tipp:</strong> Verwende eine Mischung aus Buchstaben,
+                  Zahlen und Zeichen. Beispiel: "S0nn3_2026!"
+                </p>
+              </div>
+              <div class="romanian-text">
+                <p>
+                  <strong>Română:</strong> O parolă puternică este ca o cheie
+                  pentru camera ta. Ar trebui să rămână secretă și să nu fie
+                  prea ușoară!
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i>
+                  <strong>Sfat:</strong> Folosește un amestec de litere, numere
+                  și simboluri. Exemplu: "S0are_2026!"
+                </p>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">
+                <i class="fas fa-gamepad"></i>
+                <span
+                  class="exercise-title-text"
+                  data-ro="Exercițiu Practic"
+                  data-de="Praktische Übung"
+                  >Exercițiu Practic</span
+                >
+              </div>
+              <p class="exercise-instructions" id="exercise1-instructions">
+                Alege parolele puternice (trebuie să selectezi 2 opțiuni):
+              </p>
+              <div class="exercise-choices" id="exercise1-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+              <div class="exercise-feedback" id="exercise1-feedback"></div>
+            </div>
+          </div>
+
+          <!-- LESSON 2 -->
+          <div class="lesson-part" id="lesson-2">
+            <h3 class="lesson-title">
+              <i class="fas fa-user-secret"></i>
+              <span
+                class="lesson-title-text"
+                data-ro="Protejarea Datelor Personale"
+                data-de="Schutz persönlicher Daten"
+                >Protejarea Datelor Personale</span
+              >
+            </h3>
+
+            <div id="lesson2-german" class="language-text german-text">
+              <p>
+                <strong>Deutsch:</strong> Deine persönlichen Daten gehören nur
+                dir! Gib niemals deinen vollständigen Namen, deine Adresse,
+                Telefonnummer oder den Namen deiner Schule an Fremde weiter.
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Überlege
+                immer: "Würde ich diese Information auch einem Fremden auf der
+                Straße geben?"
+              </p>
+            </div>
+
+            <div id="lesson2-romanian" class="language-text romanian-text">
+              <p>
+                <strong>Română:</strong> Datele tale personale îți aparțin doar
+                ție! Nu oferi niciodată numele complet, adresa, numărul de
+                telefon sau numele școlii tale străinilor.
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i>
+                <strong>Sfat:</strong> Gândește-te întotdeauna: "Aș oferi
+                această informație unui străin pe stradă?"
+              </p>
+            </div>
+
+            <div id="lesson2-both" class="language-text">
+              <div class="german-text" style="margin-bottom: 15px">
+                <p>
+                  <strong>Deutsch:</strong> Deine persönlichen Daten gehören nur
+                  dir! Gib niemals deinen vollständigen Namen, deine Adresse,
+                  Telefonnummer oder den Namen deiner Schule an Fremde weiter.
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i>
+                  <strong>Tipp:</strong> Überlege immer: "Würde ich diese
+                  Information auch einem Fremden auf der Straße geben?"
+                </p>
+              </div>
+              <div class="romanian-text">
+                <p>
+                  <strong>Română:</strong> Datele tale personale îți aparțin
+                  doar ție! Nu oferi niciodată numele complet, adresa, numărul
+                  de telefon sau numele școlii tale străinilor.
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i>
+                  <strong>Sfat:</strong> Gândește-te întotdeauna: "Aș oferi
+                  această informație unui străin pe stradă?"
+                </p>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">
+                <i class="fas fa-gamepad"></i>
+                <span
+                  class="exercise-title-text"
+                  data-ro="Exercițiu Practic"
+                  data-de="Praktische Übung"
+                  >Exercițiu Practic</span
+                >
+              </div>
+              <p class="exercise-instructions" id="exercise2-instructions">
+                Ce informații sunt OK să împărtășești online? (Selectează 3
+                opțiuni):
+              </p>
+              <div class="exercise-choices" id="exercise2-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+              <div class="exercise-feedback" id="exercise2-feedback"></div>
+            </div>
+          </div>
+
+          <!-- LESSON 3 -->
+          <div class="lesson-part" id="lesson-3">
+            <h3 class="lesson-title">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span
+                class="lesson-title-text"
+                data-ro="Recunoașterea Pericolelor"
+                data-de="Erkennen von Gefahren"
+                >Recunoașterea Pericolelor</span
+              >
+            </h3>
+
+            <div id="lesson3-german" class="language-text german-text">
+              <p>
+                <strong>Deutsch:</strong> Im Internet gibt es Gefahren, die wie
+                gefährliche Tiere verkleidet sind. Lerne, sie zu erkennen!
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Wenn
+                etwas zu gut klingt, um wahr zu sein, ist es wahrscheinlich eine
+                Falle.
+              </p>
+            </div>
+
+            <div id="lesson3-romanian" class="language-text romanian-text">
+              <p>
+                <strong>Română:</strong> Pe internet există pericole care sunt
+                deghizate ca animale periculoase. Învață să le recunoști!
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Sfat:</strong> Dacă
+                ceva pare prea frumos pentru a fi adevărat, probabil este o
+                capcană.
+              </p>
+            </div>
+
+            <div id="lesson3-both" class="language-text">
+              <div class="german-text" style="margin-bottom: 15px">
+                <p>
+                  <strong>Deutsch:</strong> Im Internet gibt es Gefahren, die
+                  wie gefährliche Tiere verkleidet sind. Lerne, sie zu erkennen!
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Wenn
+                  etwas zu gut klingt, um wahr zu sein, ist es wahrscheinlich
+                  eine Falle.
+                </p>
+              </div>
+              <div class="romanian-text">
+                <p>
+                  <strong>Română:</strong> Pe internet există pericole care sunt
+                  deghizate ca animale periculoase. Învață să le recunoști!
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i> <strong>Sfat:</strong> Dacă
+                  ceva pare prea frumos pentru a fi adevărat, probabil este o
+                  capcană.
+                </p>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">
+                <i class="fas fa-gamepad"></i>
+                <span
+                  class="exercise-title-text"
+                  data-ro="Exercițiu Practic"
+                  data-de="Praktische Übung"
+                  >Exercițiu Practic</span
+                >
+              </div>
+              <p class="exercise-instructions" id="exercise3-instructions">
+                Care dintre acestea sunt pericole online? (Selectează 2
+                opțiuni):
+              </p>
+              <div class="exercise-choices" id="exercise3-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+              <div class="exercise-feedback" id="exercise3-feedback"></div>
+            </div>
+          </div>
+
+          <!-- LESSON 4 -->
+          <div class="lesson-part" id="lesson-4">
+            <h3 class="lesson-title">
+              <i class="fas fa-comments"></i>
+              <span
+                class="lesson-title-text"
+                data-ro="Prieteni Online"
+                data-de="Online-Freunde"
+                >Prieteni Online</span
+              >
+            </h3>
+
+            <div id="lesson4-german" class="language-text german-text">
+              <p>
+                <strong>Deutsch:</strong> Online-Freunde können nett sein, aber
+                sei vorsichtig! Nicht jeder, der online freundlich ist, ist
+                wirklich ein Freund.
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Treffe
+                dich niemals alleine mit jemandem, den du nur online kennst.
+                Sage immer deinen Eltern Bescheid.
+              </p>
+            </div>
+
+            <div id="lesson4-romanian" class="language-text romanian-text">
+              <p>
+                <strong>Română:</strong> Prietenii online pot fi drăguți, dar
+                fii atent! Nu toată lumea care este prietenoasă online este cu
+                adevărat un prieten.
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Sfat:</strong> Nu te
+                întâlni niciodată singur cu cineva pe care îl cunoști doar
+                online. Spune întotdeauna părinților.
+              </p>
+            </div>
+
+            <div id="lesson4-both" class="language-text">
+              <div class="german-text" style="margin-bottom: 15px">
+                <p>
+                  <strong>Deutsch:</strong> Online-Freunde können nett sein,
+                  aber sei vorsichtig! Nicht jeder, der online freundlich ist,
+                  ist wirklich ein Freund.
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Treffe
+                  dich niemals alleine mit jemandem, den du nur online kennst.
+                  Sage immer deinen Eltern Bescheid.
+                </p>
+              </div>
+              <div class="romanian-text">
+                <p>
+                  <strong>Română:</strong> Prietenii online pot fi drăguți, dar
+                  fii atent! Nu toată lumea care este prietenoasă online este cu
+                  adevărat un prieten.
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i> <strong>Sfat:</strong> Nu te
+                  întâlni niciodată singur cu cineva pe care îl cunoști doar
+                  online. Spune întotdeauna părinților.
+                </p>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">
+                <i class="fas fa-gamepad"></i>
+                <span
+                  class="exercise-title-text"
+                  data-ro="Exercițiu Practic"
+                  data-de="Praktische Übung"
+                  >Exercițiu Practic</span
+                >
+              </div>
+              <p class="exercise-instructions" id="exercise4-instructions">
+                Care dintre acestea sunt comportamente sigure cu prietenii
+                online? (Selectează 3 opțiuni):
+              </p>
+              <div class="exercise-choices" id="exercise4-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+              <div class="exercise-feedback" id="exercise4-feedback"></div>
+            </div>
+          </div>
+
+          <!-- LESSON 5 -->
+          <div class="lesson-part" id="lesson-5">
+            <h3 class="lesson-title">
+              <i class="fas fa-clock"></i>
+              <span
+                class="lesson-title-text"
+                data-ro="Timp Online"
+                data-de="Online-Zeit"
+                >Timp Online</span
+              >
+            </h3>
+
+            <div id="lesson5-german" class="language-text german-text">
+              <p>
+                <strong>Deutsch:</strong> Zu viel Zeit vor dem Bildschirm ist
+                nicht gut für dich. Denke daran, Pausen zu machen und auch
+                draußen zu spielen!
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Setze
+                dir eine Zeitbegrenzung für das Internet. Frage deine Eltern,
+                wie lange du online sein darfst.
+              </p>
+            </div>
+
+            <div id="lesson5-romanian" class="language-text romanian-text">
+              <p>
+                <strong>Română:</strong> Prea mult timp în fața ecranului nu
+                este bun pentru tine. Nu uita să faci pauze și să te joci și
+                afară!
+              </p>
+              <p>
+                <i class="fas fa-lightbulb"></i>
+                <strong>Sfat:</strong> Stabilește o limită de timp pentru
+                internet. Întreabă-ți părinții cât timp poți petrece online.
+              </p>
+            </div>
+
+            <div id="lesson5-both" class="language-text">
+              <div class="german-text" style="margin-bottom: 15px">
+                <p>
+                  <strong>Deutsch:</strong> Zu viel Zeit vor dem Bildschirm ist
+                  nicht gut für dich. Denke daran, Pausen zu machen und auch
+                  draußen zu spielen!
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i> <strong>Tipp:</strong> Setze
+                  dir eine Zeitbegrenzung für das Internet. Frage deine Eltern,
+                  wie lange du online sein darfst.
+                </p>
+              </div>
+              <div class="romanian-text">
+                <p>
+                  <strong>Română:</strong> Prea mult timp în fața ecranului nu
+                  este bun pentru tine. Nu uita să faci pauze și să te joci și
+                  afară!
+                </p>
+                <p>
+                  <i class="fas fa-lightbulb"></i>
+                  <strong>Sfat:</strong> Stabilește o limită de timp pentru
+                  internet. Întreabă-ți părinții cât timp poți petrece online.
+                </p>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">
+                <i class="fas fa-gamepad"></i>
+                <span
+                  class="exercise-title-text"
+                  data-ro="Exercițiu Practic"
+                  data-de="Praktische Übung"
+                  >Exercițiu Practic</span
+                >
+              </div>
+              <p class="exercise-instructions" id="exercise5-instructions">
+                Ce activități sănătoase poți face când nu ești online?
+                (Selectează 3 opțiuni):
+              </p>
+              <div class="exercise-choices" id="exercise5-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+              <div class="exercise-feedback" id="exercise5-feedback"></div>
+            </div>
+          </div>
+
+          <div class="nav-buttons">
+            <button id="prev-btn" class="nav-btn prev-btn" disabled>
+              <i class="fas fa-arrow-left"></i>
+              <span
+                id="prev-text"
+                data-ro="Lecția Anterioară"
+                data-de="Vorherige Lektion"
+                >Lecția Anterioară</span
+              >
+            </button>
+            <button id="complete-btn" class="nav-btn complete-btn">
+              <i class="fas fa-check-circle"></i>
+              <span
+                id="complete-text"
+                data-ro="Finalizează Lecția"
+                data-de="Lektion abschließen"
+                >Finalizează Lecția</span
+              >
+            </button>
+            <button id="next-btn" class="nav-btn next-btn">
+              <span
+                id="next-text"
+                data-ro="Următoarea Lecție"
+                data-de="Nächste Lektion"
+                >Următoarea Lecție</span
+              >
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE SECTION - MOVED HERE -->
+        <div class="interactive-section">
+          <h2 class="section-title">
+            <i class="fas fa-gamepad"></i>
+            <span
+              id="interactive-title"
+              data-ro="Zone Interactive"
+              data-de="Interaktive Zonen"
+              >Zone Interactive</span
+            >
+          </h2>
+
+          <div class="games-tabs">
+            <button class="game-tab active" data-game="quiz">
+              <i class="fas fa-question-circle"></i>
+              <span class="game-tab-text" data-ro="Quiz" data-de="Quiz"
+                >Quiz</span
+              >
+            </button>
+            <button class="game-tab" data-game="memory">
+              <i class="fas fa-brain"></i>
+              <span
+                class="game-tab-text"
+                data-ro="Joc de Memorie"
+                data-de="Memory-Spiel"
+                >Joc de Memorie</span
+              >
+            </button>
+            <button class="game-tab" data-game="story">
+              <i class="fas fa-book"></i>
+              <span
+                class="game-tab-text"
+                data-ro="Povestea lui Alex"
+                data-de="Alex Geschichte"
+                >Povestea lui Alex</span
+              >
+            </button>
+          </div>
+
+          <div class="game-container">
+            <!-- QUIZ GAME -->
+            <div class="game active" id="quiz-game">
+              <h3 class="game-title">
+                <i class="fas fa-question-circle"></i>
+                <span
+                  id="quiz-title"
+                  data-ro="Quiz de Siguranță Online"
+                  data-de="Online-Sicherheits-Quiz"
+                  >Quiz de Siguranță Online</span
+                >
+              </h3>
+
+              <div class="question" id="quiz-question">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="choices" id="quiz-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="game-result" id="quiz-result"></div>
+
+              <div class="reward-earned" id="quiz-reward" style="display: none">
+                <i class="fas fa-star"></i>
+                <span
+                  id="quiz-reward-text"
+                  data-ro="Ai câștigat o stea!"
+                  data-de="Du hast einen Stern verdient!"
+                  >Ai câștigat o stea!</span
+                >
+              </div>
+            </div>
+
+            <!-- MEMORY GAME -->
+            <div class="game" id="memory-game">
+              <h3 class="game-title">
+                <i class="fas fa-brain"></i>
+                <span
+                  id="memory-title"
+                  data-ro="Joc de Memorie: Bun vs. Rău"
+                  data-de="Memory-Spiel: Gut vs. Böse"
+                  >Joc de Memorie: Bun vs. Rău</span
+                >
+              </h3>
+
+              <div class="question" id="memory-instructions">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="memory-board" id="memory-board">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="game-result" id="memory-result"></div>
+
+              <div
+                class="reward-earned"
+                id="memory-reward"
+                style="display: none"
+              >
+                <i class="fas fa-star"></i>
+                <span
+                  id="memory-reward-text"
+                  data-ro="Ai câștigat o stea!"
+                  data-de="Du hast einen Stern verdient!"
+                  >Ai câștigat o stea!</span
+                >
+              </div>
+            </div>
+
+            <!-- STORY GAME -->
+            <div class="game" id="story-game">
+              <h3 class="game-title">
+                <i class="fas fa-book"></i>
+                <span
+                  id="story-title"
+                  data-ro="Povestea lui Alex: Aventura Online"
+                  data-de="Alex Geschichte: Das Online-Abenteuer"
+                  >Povestea lui Alex: Aventura Online</span
+                >
+              </h3>
+
+              <div class="story-text" id="story-text">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="story-choices" id="story-choices">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="story-outcome" id="story-outcome"></div>
+
+              <div
+                class="reward-earned"
+                id="story-reward"
+                style="display: none"
+              >
+                <i class="fas fa-star"></i>
+                <span
+                  id="story-reward-text"
+                  data-ro="Ai câștigat o stea!"
+                  data-de="Du hast einen Stern verdient!"
+                  >Ai câștigat o stea!</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- AVATAR & REWARDS -->
+    <div class="avatar-section">
+      <div class="avatar-container">
+        <div class="avatar" id="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="avatar-name" id="avatar-name">Exploratorul</div>
+        <div class="stars-count">
+          <i class="fas fa-star"></i>
+          <span id="stars-text" data-ro="Stele:" data-de="Sterne:">Stele:</span>
+          <span id="avatar-stars">0</span>
+        </div>
+      </div>
+
+      <div class="badges-container">
+        <h3 class="badges-title">
+          <i class="fas fa-medal"></i>
+          <span
+            id="badges-title"
+            data-ro="Insigne Obținute"
+            data-de="Errungene Abzeichen"
+            >Insigne Obținute</span
+          >
+        </h3>
+        <div class="badges" id="badges-container">
+          <div
+            class="badge"
+            data-badge="1"
+            data-ro-title="Expert în Parole"
+            data-de-title="Passwort-Experte"
+          >
+            <i class="fas fa-key"></i>
+          </div>
+          <div
+            class="badge"
+            data-badge="2"
+            data-ro-title="Protector de Date"
+            data-de-title="Datenschützer"
+          >
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <div
+            class="badge"
+            data-badge="3"
+            data-ro-title="Detectiv Online"
+            data-de-title="Online-Detektiv"
+          >
+            <i class="fas fa-search"></i>
+          </div>
+          <div
+            class="badge"
+            data-badge="4"
+            data-ro-title="Prieten Digital"
+            data-de-title="Digitaler Freund"
+          >
+            <i class="fas fa-users"></i>
+          </div>
+          <div
+            class="badge"
+            data-badge="5"
+            data-ro-title="Manager de Timp"
+            data-de-title="Zeitmanager"
+          >
+            <i class="fas fa-clock"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <p
+        id="footer1"
+        data-ro="Creat de Asociația Cod pentru Comunitate pentru Ziua Siguranței pe Internet"
+        data-de="Erstellt de Verein Cod pentru Comunitate für den Tag der Internetsicherheit"
+      >
+        Creat de
+        <a
+          href="https://codpentrucomunitate.org"
+          target="_blank"
+          style="color: inherit; text-decoration: underline"
+          >Asociația Cod pentru Comunitate</a
+        >
+      </p>
+
+      <p
+        id="footer2"
+        data-ro="© 2026 - codpentrucomunitate.org"
+        data-de="© 2026 - codpentrucomunitate.org"
+      >
+        © 2026 -
+        <a
+          href="https://codpentrucomunitate.org"
+          target="_blank"
+          style="color: inherit"
+          >codpentrucomunitate.org</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      // ============================
+      // APPLICATION STATE
+      // ============================
+      const appState = {
+        currentLanguage: "romanian",
+        currentLesson: 1,
+        currentGame: "quiz",
+        completedLessons: [],
+        stars: 0,
+        badges: [],
+        userName: "Exploratorul",
+        completedExercises: [],
+        completedGames: [],
+      };
+
+      // ============================
+      // UTILITY FUNCTIONS
+      // ============================
+      function getText(texts) {
+        if (appState.currentLanguage === "german") return texts.de;
+        if (appState.currentLanguage === "romanian") return texts.ro;
+        return `${texts.ro} / ${texts.de}`;
+      }
+
+      function shuffleArray(array) {
+        const newArray = [...array];
+        for (let i = newArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+        }
+        return newArray;
+      }
+
+      // ============================
+      // INITIALIZATION
+      // ============================
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeLanguage();
+        initializeLessons();
+        initializeGames();
+        updateProgress();
+
+        // Ask for user name
+        setTimeout(() => {
+          const userName = prompt(
+            getText({
+              ro: "Cum te numești?",
+              de: "Wie heißt du?",
+            }),
+            getText({
+              ro: "Exploratorul",
+              de: "Entdecker",
+            }),
+          );
+          if (userName && userName.trim()) {
+            appState.userName = userName.trim();
+            document.getElementById("avatar-name").textContent =
+              appState.userName;
+          }
+        }, 500);
+      });
+
+      // ============================
+      // LANGUAGE MANAGEMENT - FIXED VERSION
+      // ============================
+      function initializeLanguage() {
+        document
+          .getElementById("btn-german")
+          .addEventListener("click", () => setLanguage("german"));
+        document
+          .getElementById("btn-romanian")
+          .addEventListener("click", () => setLanguage("romanian"));
+        document
+          .getElementById("btn-both")
+          .addEventListener("click", () => setLanguage("both"));
+      }
+
+      function setLanguage(lang) {
+        appState.currentLanguage = lang;
+
+        // Update language buttons
+        document
+          .querySelectorAll(".lang-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        document.getElementById(`btn-${lang}`).classList.add("active");
+
+        // Update ALL text elements based on language
+        updateAllTexts();
+
+        // Update header based on language
+        updateHeader();
+
+        // Refresh ALL content
+        refreshAllContent();
+
+        // Force update progress to refresh text
+        updateProgress();
+      }
+
+      function updateAllTexts() {
+        const lang = appState.currentLanguage;
+
+        // Update all elements with data-ro and data-de attributes
+        document.querySelectorAll("[data-ro], [data-de]").forEach((element) => {
+          if (lang === "german") {
+            if (element.hasAttribute("data-de")) {
+              element.textContent = element.getAttribute("data-de");
+            }
+          } else if (lang === "romanian") {
+            if (element.hasAttribute("data-ro")) {
+              element.textContent = element.getAttribute("data-ro");
+            }
+          } else {
+            // Both languages - show both
+            if (
+              element.hasAttribute("data-ro") &&
+              element.hasAttribute("data-de")
+            ) {
+              element.textContent = `${element.getAttribute("data-ro")} / ${element.getAttribute("data-de")}`;
+            }
+          }
+        });
+
+        // Update badge titles
+        document.querySelectorAll(".badge").forEach((badge) => {
+          if (lang === "german") {
+            badge.title = badge.getAttribute("data-de-title");
+          } else {
+            badge.title = badge.getAttribute("data-ro-title");
+          }
+        });
+
+        // Update lesson content language visibility
+        updateLessonContent();
+      }
+
+      function updateHeader() {
+        const lang = appState.currentLanguage;
+        const mainTitle = document.getElementById("main-title");
+        const subtitleRo = document.getElementById("subtitle-ro");
+        const subtitleDe = document.getElementById("subtitle-de");
+        const dateText = document.getElementById("date-text");
+        const progressText = document.getElementById("progress-text");
+        const lessonsTitle = document.getElementById("lessons-title");
+
+        if (lang === "german") {
+          mainTitle.textContent = "Sicherheit im Internet";
+          subtitleRo.style.display = "none";
+          subtitleDe.style.display = "block";
+          dateText.textContent = "6. Februar 2026";
+          progressText.textContent = "Fortschritt:";
+          if (lessonsTitle) {
+            lessonsTitle.textContent = "Lektionen über Online-Sicherheit";
+          }
+        } else if (lang === "romanian") {
+          mainTitle.textContent = "Siguranța pe Internet";
+          subtitleRo.style.display = "block";
+          subtitleDe.style.display = "none";
+          dateText.textContent = "6 februarie 2026";
+          progressText.textContent = "Progres:";
+          if (lessonsTitle) {
+            lessonsTitle.textContent = "Lecții despre Siguranța Online";
+          }
+        } else {
+          mainTitle.textContent =
+            "Siguranța pe Internet / Sicherheit im Internet";
+          subtitleRo.style.display = "block";
+          subtitleDe.style.display = "block";
+          dateText.textContent = "6 februarie 2026 / 6. Februar 2026";
+          progressText.textContent = "Progres: / Fortschritt:";
+          if (lessonsTitle) {
+            lessonsTitle.textContent =
+              "Lecții despre Siguranța Online / Lektionen über Online-Sicherheit";
+          }
+        }
+      }
+
+      function refreshAllContent() {
+        // Update exercises
+        updateAllExercises();
+
+        // Update games
+        updateQuizContent();
+        updateMemoryGameContent();
+        updateStoryGameContent();
+
+        // Update navigation buttons text
+        updateNavigationText();
+
+        // Force a re-render of the current lesson
+        setCurrentLesson(appState.currentLesson);
+      }
+
+      // ============================
+      // LESSON MANAGEMENT
+      // ============================
+      function initializeLessons() {
+        // Lesson tabs
+        document.querySelectorAll(".lesson-tab").forEach((tab) => {
+          tab.addEventListener("click", function () {
+            const lessonId = parseInt(this.getAttribute("data-lesson"));
+            setCurrentLesson(lessonId);
+          });
+        });
+
+        // Navigation buttons
+        document
+          .getElementById("prev-btn")
+          .addEventListener("click", goToPreviousLesson);
+        document
+          .getElementById("next-btn")
+          .addEventListener("click", goToNextLesson);
+        document
+          .getElementById("complete-btn")
+          .addEventListener("click", completeCurrentLesson);
+
+        // Initialize exercises
+        initializeExercises();
+
+        // Set initial lesson
+        setCurrentLesson(1);
+      }
+
+      function setCurrentLesson(lessonId) {
+        appState.currentLesson = lessonId;
+
+        // Update lesson tabs
+        document.querySelectorAll(".lesson-tab").forEach((tab) => {
+          tab.classList.remove("active");
+
+          const tabLessonId = parseInt(tab.getAttribute("data-lesson"));
+          if (appState.completedLessons.includes(tabLessonId)) {
+            tab.classList.add("completed");
+          } else {
+            tab.classList.remove("completed");
+          }
+        });
+
+        document
+          .querySelector(`.lesson-tab[data-lesson="${lessonId}"]`)
+          .classList.add("active");
+
+        // Update lesson content
+        document.querySelectorAll(".lesson-part").forEach((part) => {
+          part.classList.remove("active");
+        });
+        document.getElementById(`lesson-${lessonId}`).classList.add("active");
+
+        // Update navigation buttons
+        updateNavigationButtons();
+
+        // Update language content
+        updateLessonContent();
+
+        // Update exercises
+        updateAllExercises();
+      }
+
+      function updateLessonContent() {
+        const lessonId = appState.currentLesson;
+
+        // Hide all language texts for this lesson
+        document
+          .querySelectorAll(`#lesson-${lessonId} .language-text`)
+          .forEach((el) => {
+            el.classList.remove("active");
+          });
+
+        // Show the correct language text
+        if (appState.currentLanguage === "german") {
+          document
+            .getElementById(`lesson${lessonId}-german`)
+            .classList.add("active");
+        } else if (appState.currentLanguage === "romanian") {
+          document
+            .getElementById(`lesson${lessonId}-romanian`)
+            .classList.add("active");
+        } else {
+          document
+            .getElementById(`lesson${lessonId}-both`)
+            .classList.add("active");
+        }
+      }
+
+      function goToPreviousLesson() {
+        if (appState.currentLesson > 1) {
+          setCurrentLesson(appState.currentLesson - 1);
+        }
+      }
+
+      function goToNextLesson() {
+        if (appState.currentLesson < 5) {
+          setCurrentLesson(appState.currentLesson + 1);
+        }
+      }
+
+      function completeCurrentLesson() {
+        const lessonId = appState.currentLesson;
+
+        if (!appState.completedLessons.includes(lessonId)) {
+          appState.completedLessons.push(lessonId);
+          addStars(2); // 2 stars for completing a lesson
+
+          // Unlock badge if all lessons completed
+          if (appState.completedLessons.length === 5) {
+            unlockBadge(5);
+          }
+
+          // Update UI
+          document
+            .querySelector(`.lesson-tab[data-lesson="${lessonId}"]`)
+            .classList.add("completed");
+          updateProgress();
+          updateNavigationButtons();
+
+          // Show completion message
+          alert(
+            getText({
+              ro: `Felicitări ${appState.userName}! Ai completat lecția ${lessonId} și ai câștigat 2 stele!`,
+              de: `Herzlichen Glückwunsch ${appState.userName}! Du hast Lektion ${lessonId} abgeschlossen und 2 Sterne verdient!`,
+            }),
+          );
+        }
+      }
+
+      function updateNavigationButtons() {
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const completeBtn = document.getElementById("complete-btn");
+
+        // Previous button
+        prevBtn.disabled = appState.currentLesson === 1;
+
+        // Next button
+        nextBtn.disabled = appState.currentLesson === 5;
+
+        // Complete button
+        const isCompleted = appState.completedLessons.includes(
+          appState.currentLesson,
+        );
+        completeBtn.disabled = isCompleted;
+      }
+
+      function updateNavigationText() {
+        // This is now handled by updateAllTexts()
+      }
+
+      // ============================
+      // EXERCISES - FIXED TRANSLATION
+      // ============================
+      function initializeExercises() {
+        // Exercise 1: Strong passwords
+        window.exercise1Data = {
+          instructions: {
+            ro: "Alege parolele puternice (trebuie să selectezi 2 opțiuni):",
+            de: "Wähle die starken Passwörter (du musst 2 Optionen auswählen):",
+          },
+          choices: [
+            { text: { ro: "caine", de: "Hund" }, correct: false },
+            { text: { ro: "123456", de: "123456" }, correct: false },
+            {
+              text: { ro: "AlbastruCer123!", de: "BlauerHimmel123!" },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "ParolaMeaSecretă2026!",
+                de: "MeinGeheimesPasswort2026!",
+              },
+              correct: true,
+            },
+          ],
+          correctCount: 2,
+        };
+
+        // Exercise 2: Personal data
+        window.exercise2Data = {
+          instructions: {
+            ro: "Ce informații sunt OK să împărtășești online? (Selectează 3 opțiuni):",
+            de: "Welche Informationen sind okay, online zu teilen? (Wähle 3 Optionen):",
+          },
+          choices: [
+            {
+              text: { ro: "Numele tău complet", de: "Dein vollständiger Name" },
+              correct: false,
+            },
+            { text: { ro: "Adresa ta", de: "Deine Adresse" }, correct: false },
+            {
+              text: { ro: "Culoarea ta preferată", de: "Deine Lieblingsfarbe" },
+              correct: true,
+            },
+            {
+              text: { ro: "Numele școlii tale", de: "Der Name deiner Schule" },
+              correct: false,
+            },
+            {
+              text: { ro: "Cartea ta preferată", de: "Dein Lieblingsbuch" },
+              correct: true,
+            },
+            {
+              text: { ro: "Numărul de telefon", de: "Telefonnummer" },
+              correct: false,
+            },
+            {
+              text: { ro: "Jocul tău preferat", de: "Dein Lieblingsspiel" },
+              correct: true,
+            },
+          ],
+          correctCount: 3,
+        };
+
+        // Exercise 3: Online dangers
+        window.exercise3Data = {
+          instructions: {
+            ro: "Care dintre acestea sunt pericole online? (Selectează 2 opțiuni):",
+            de: "Welche davon sind Online-Gefahren? (Wähle 2 Optionen):",
+          },
+          choices: [
+            {
+              text: {
+                ro: "Mesaj de la un străin care îți cere parola",
+                de: "Nachricht von einem Fremden, der nach deinem Passwort fragt",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Un joc educațional pentru copii",
+                de: "Ein Bildungs-Spiel für Kinder",
+              },
+              correct: false,
+            },
+            {
+              text: {
+                ro: "Oferta de a câștiga un premiu mare fără niciun efort",
+                de: "Angebot, einen großen Preis ohne Anstrengung zu gewinnen",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Un site cu poze cu animale",
+                de: "Eine Seite mit Tierbildern",
+              },
+              correct: false,
+            },
+          ],
+          correctCount: 2,
+        };
+
+        // Exercise 4: Online friends
+        window.exercise4Data = {
+          instructions: {
+            ro: "Care dintre acestea sunt comportamente sigure cu prietenii online? (Selectează 3 opțiuni):",
+            de: "Welche davon sind sichere Verhaltensweisen mit Online-Freunden? (Wähle 3 Optionen):",
+          },
+          choices: [
+            {
+              text: {
+                ro: "Întâlnirea singur cu cineva cunoscut doar online",
+                de: "Alleine Treffen mit jemandem, den man nur online kennt",
+              },
+              correct: false,
+            },
+            {
+              text: {
+                ro: "Vorbirea despre jocuri și hobby-uri comune",
+                de: "Über gemeinsame Spiele und Hobbys sprechen",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Împărtășirea adresei tale cu prietenii online",
+                de: "Deine Adresse mit Online-Freunden teilen",
+              },
+              correct: false,
+            },
+            {
+              text: {
+                ro: "Spunerea părinților despre prietenii online",
+                de: "Eltern über Online-Freunde informieren",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Refuzul să îți trimiți fotografii personale",
+                de: "Ablehnen, persönliche Fotos zu senden",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Împărtășirea numărului de telefon",
+                de: "Telefonnummer teilen",
+              },
+              correct: false,
+            },
+          ],
+          correctCount: 3,
+        };
+
+        // Exercise 5: Online time management
+        window.exercise5Data = {
+          instructions: {
+            ro: "Ce activități sănătoase poți face când nu ești online? (Selectează 3 opțiuni):",
+            de: "Welche gesunden Aktivitäten kannst du machen, wenn du nicht online bist? (Wähle 3 Optionen):",
+          },
+          choices: [
+            {
+              text: {
+                ro: "Jocuri pe tableta toată ziua",
+                de: "Den ganzen Tag Spiele auf dem Tablet",
+              },
+              correct: false,
+            },
+            {
+              text: {
+                ro: "Citirea unei cărți interesante",
+                de: "Ein interessantes Buch lesen",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Jocul în parc cu prietenii",
+                de: "Im Park mit Freunden spielen",
+              },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Vizionarea video-urilor non-stop",
+                de: "Non-Stop Videos ansehen",
+              },
+              correct: false,
+            },
+            {
+              text: { ro: "Desenarea sau pictarea", de: "Zeichnen oder Malen" },
+              correct: true,
+            },
+            {
+              text: {
+                ro: "Starea pe telefon toată seara",
+                de: "Den ganzen Abend am Telefon sein",
+              },
+              correct: false,
+            },
+          ],
+          correctCount: 3,
+        };
+
+        // Initialize all exercises
+        updateAllExercises();
+      }
+
+      function updateAllExercises() {
+        for (let i = 1; i <= 5; i++) {
+          updateExercise(i);
+        }
+      }
+
+      function updateExercise(exerciseNum) {
+        const exerciseData = window[`exercise${exerciseNum}Data`];
+        if (!exerciseData) return;
+
+        const instructions = document.getElementById(
+          `exercise${exerciseNum}-instructions`,
+        );
+        const choicesContainer = document.getElementById(
+          `exercise${exerciseNum}-choices`,
+        );
+        const feedback = document.getElementById(
+          `exercise${exerciseNum}-feedback`,
+        );
+
+        // Update instructions based on current language
+        instructions.textContent = getText(exerciseData.instructions);
+
+        // Clear choices
+        choicesContainer.innerHTML = "";
+
+        // Shuffle choices for this exercise
+        const shuffledChoices = shuffleArray(exerciseData.choices);
+
+        // Update choices with current language
+        shuffledChoices.forEach((choice, index) => {
+          const choiceBtn = document.createElement("button");
+          choiceBtn.className = "choice-btn";
+          choiceBtn.innerHTML = `
+                    <div class="choice-icon">${String.fromCharCode(65 + index)}</div>
+                    <div class="choice-text">${getText(choice.text)}</div>
+                `;
+
+          choiceBtn.dataset.correct = choice.correct;
+
+          choiceBtn.addEventListener("click", function () {
+            handleExerciseChoice(this, exerciseNum, index, shuffledChoices);
+          });
+
+          choicesContainer.appendChild(choiceBtn);
+        });
+
+        // Reset feedback
+        feedback.className = "exercise-feedback";
+        feedback.textContent = "";
+      }
+
+      function handleExerciseChoice(
+        choiceBtn,
+        exerciseNum,
+        choiceIndex,
+        shuffledChoices,
+      ) {
+        const exerciseData = window[`exercise${exerciseNum}Data`];
+        const feedback = document.getElementById(
+          `exercise${exerciseNum}-feedback`,
+        );
+        const choicesContainer = document.getElementById(
+          `exercise${exerciseNum}-choices`,
+        );
+
+        // Get all buttons
+        const allButtons = choicesContainer.querySelectorAll(".choice-btn");
+
+        // Toggle button state (selected/deselected)
+        choiceBtn.classList.toggle("selected");
+
+        // Get selected buttons
+        const selectedButtons = choicesContainer.querySelectorAll(
+          ".choice-btn.selected",
+        );
+
+        // Count how many buttons are selected
+        const selectedCount = selectedButtons.length;
+
+        // Reset correct/incorrect classes and feedback
+        allButtons.forEach((btn) => {
+          btn.classList.remove("correct", "incorrect");
+        });
+        feedback.className = "exercise-feedback";
+        feedback.textContent = "";
+
+        // If we selected the correct number of options, check answers
+        if (selectedCount === exerciseData.correctCount) {
+          // Check if all selected options are correct
+          let allSelectedCorrect = true;
+          selectedButtons.forEach((btn) => {
+            if (btn.dataset.correct !== "true") {
+              allSelectedCorrect = false;
+            }
+          });
+
+          // Check if all correct options are selected
+          let allCorrectSelected = true;
+          allButtons.forEach((btn, index) => {
+            if (
+              btn.dataset.correct === "true" &&
+              !btn.classList.contains("selected")
+            ) {
+              allCorrectSelected = false;
+            }
+          });
+
+          // If answers are perfect
+          if (allSelectedCorrect && allCorrectSelected) {
+            // All answers are correct
+            selectedButtons.forEach((btn) => {
+              btn.classList.add("correct");
+            });
+
+            feedback.textContent = getText({
+              ro: `✅ Excelent ${appState.userName}! Ai selectat toate răspunsurile corecte!`,
+              de: `✅ Ausgezeichnet ${appState.userName}! Du hast alle richtigen Antworten ausgewählt!`,
+            });
+            feedback.className = "exercise-feedback correct";
+
+            // Add stars if exercise not already completed
+            if (!appState.completedExercises.includes(exerciseNum)) {
+              appState.completedExercises.push(exerciseNum);
+              addStars(1);
+
+              // Unlock badge for completing all exercises
+              if (appState.completedExercises.length === 5) {
+                unlockBadge(3);
+              }
+            }
+          } else {
+            // Partially correct or incorrect answers
+            // Show which are correct and which incorrect
+            allButtons.forEach((btn) => {
+              if (btn.classList.contains("selected")) {
+                if (btn.dataset.correct === "true") {
+                  btn.classList.add("correct");
+                } else {
+                  btn.classList.add("incorrect");
+                }
+              }
+            });
+
+            feedback.textContent = getText({
+              ro: `❌ Mai încearcă ${appState.userName}! Nu toate răspunsurile selectate sunt corecte.`,
+              de: `❌ Versuche es nochmal ${appState.userName}! Nicht alle ausgewählten Antworten sind richtig.`,
+            });
+            feedback.className = "exercise-feedback incorrect";
+          }
+        } else if (selectedCount > exerciseData.correctCount) {
+          // Too many options selected
+          feedback.textContent = getText({
+            ro: `⚠️ Ai selectat prea multe opțiuni ${appState.userName}. Selectează doar ${exerciseData.correctCount}.`,
+            de: `⚠️ Du hast zu viele Optionen ausgewählt ${appState.userName}. Wähle nur ${exerciseData.correctCount}.`,
+          });
+          feedback.className = "exercise-feedback incorrect";
+        }
+        // If we have fewer options selected than needed, do nothing
+        // User can continue to select
+      }
+
+      // ============================
+      // GAMES MANAGEMENT
+      // ============================
+      function initializeGames() {
+        // Game tabs
+        document.querySelectorAll(".game-tab").forEach((tab) => {
+          tab.addEventListener("click", function () {
+            const gameId = this.getAttribute("data-game");
+            setCurrentGame(gameId);
+          });
+        });
+
+        // Initialize games
+        initializeQuizGame();
+        initializeMemoryGame();
+        initializeStoryGame();
+
+        // Set initial game
+        setCurrentGame("quiz");
+      }
+
+      function setCurrentGame(gameId) {
+        appState.currentGame = gameId;
+
+        // Update game tabs
+        document.querySelectorAll(".game-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document
+          .querySelector(`.game-tab[data-game="${gameId}"]`)
+          .classList.add("active");
+
+        // Update game content
+        document.querySelectorAll(".game").forEach((game) => {
+          game.classList.remove("active");
+        });
+        document.getElementById(`${gameId}-game`).classList.add("active");
+
+        // Update game content based on language
+        if (gameId === "quiz") updateQuizContent();
+        if (gameId === "memory") updateMemoryGameContent();
+        if (gameId === "story") updateStoryGameContent();
+      }
+
+      // ============================
+      // QUIZ GAME - FIXED TRANSLATION
+      // ============================
+      function initializeQuizGame() {
+        window.quizQuestions = [
+          {
+            question: {
+              ro: "Ce faci dacă primești un mesaj de la un străin care îți cere să dai clic pe un link?",
+              de: "Was machst du, wenn du eine Nachricht von einem Fremden bekommst, der dich bittet, auf einen Link zu klicken?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Dai clic pentru a vedea ce este",
+                  de: "Klicke, um zu sehen, was es ist",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Închizi mesajul și spui unui adult",
+                  de: "Schließe die Nachricht und sage einem Erwachsenen",
+                },
+                correct: true,
+              },
+              {
+                text: {
+                  ro: "Trimiți mesajul prietenilor tăi",
+                  de: "Sende die Nachricht an deine Freunde",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Răspunzi și întrebi cine este",
+                  de: "Antworte und frage, wer es ist",
+                },
+                correct: false,
+              },
+            ],
+            explanation: {
+              ro: "✅ Corect! Nu trebuie să dai clic pe linkuri de la persoane pe care nu le cunoști. Spune întotdeauna unui adult.",
+              de: "✅ Richtig! Du solltest nicht auf Links von Personen klicken, die du nicht kennst. Sage immer einem Erwachsenen.",
+            },
+          },
+          {
+            question: {
+              ro: "Cine ar trebui să știe parola ta?",
+              de: "Wer sollte dein Passwort kennen?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Doar tu și părinții tăi",
+                  de: "Nur du und deine Eltern",
+                },
+                correct: true,
+              },
+              {
+                text: {
+                  ro: "Toți prietenii tăi",
+                  de: "Alle deine Freunde",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Nimeni, ar trebui să o uiți",
+                  de: "Niemand, du solltest es vergessen",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Profesorul tău",
+                  de: "Dein Lehrer",
+                },
+                correct: false,
+              },
+            ],
+            explanation: {
+              ro: "✅ Corect! Parola ta este ca o cheie secretă. Doar tu și părinții tăi ar trebui să o știți.",
+              de: "✅ Richtig! Dein Passwort ist wie ein geheimer Schlüssel. Nur du und deine Eltern sollten es wissen.",
+            },
+          },
+          {
+            question: {
+              ro: "Cât timp ar trebui să petreci pe internet în fiecare zi?",
+              de: "Wie viel Zeit solltest du täglich im Internet verbringen?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Cât vreau, internetul este distractiv",
+                  de: "So viel ich will, das Internet macht Spaß",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Doar câteva ore, cu permisiunea părinților",
+                  de: "Nur ein paar Stunden, mit Erlaubnis der Eltern",
+                },
+                correct: true,
+              },
+              {
+                text: {
+                  ro: "Toată ziua, să nu ratez nimic",
+                  de: "Den ganzen Tag, um nichts zu verpassen",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Doar noaptea când alții dorm",
+                  de: "Nur nachts, wenn andere schlafen",
+                },
+                correct: false,
+              },
+            ],
+            explanation: {
+              ro: "✅ Corect! Este important să limitezi timpul petrecut online și să ai permisiunea părinților.",
+              de: "✅ Richtig! Es ist wichtig, die Online-Zeit zu begrenzen und die Erlaubnis der Eltern zu haben.",
+            },
+          },
+          {
+            question: {
+              ro: "Ce faci dacă un prieten online îți cere să vă întâlniți singuri?",
+              de: "Was machst du, wenn ein Online-Freund bittet, sich alleine zu treffen?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Accept imediat",
+                  de: "Sofort zustimmen",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Refuz și spun părinților",
+                  de: "Ablehnen und Eltern sagen",
+                },
+                correct: true,
+              },
+              {
+                text: {
+                  ro: "Întreb prieteni dacă să merg",
+                  de: "Freunde fragen, ob ich gehen soll",
+                },
+                correct: false,
+              },
+              {
+                text: {
+                  ro: "Merg dar nu spun nimănui",
+                  de: "Gehen, aber niemandem sagen",
+                },
+                correct: false,
+              },
+            ],
+            explanation: {
+              ro: "✅ Corect! Niciodată nu te întâlni singur cu cineva cunoscut doar online. Spune întotdeauna părinților!",
+              de: "✅ Richtig! Treffe dich niemals alleine mit jemandem, den du nur online kennst. Sage immer den Eltern!",
+            },
+          },
+        ];
+
+        window.currentQuizQuestion = 0;
+        window.quizCompletedQuestions = [];
+      }
+
+      function updateQuizContent() {
+        const questionData = window.quizQuestions[window.currentQuizQuestion];
+        const questionElement = document.getElementById("quiz-question");
+        const choicesContainer = document.getElementById("quiz-choices");
+        const resultElement = document.getElementById("quiz-result");
+        const rewardElement = document.getElementById("quiz-reward");
+
+        // Reset UI
+        resultElement.className = "game-result";
+        resultElement.textContent = "";
+        rewardElement.style.display = "none";
+
+        // Set question text in current language
+        questionElement.textContent = getText(questionData.question);
+
+        // Clear choices
+        choicesContainer.innerHTML = "";
+
+        // Add choices in current language
+        questionData.choices.forEach((choice, index) => {
+          const choiceElement = document.createElement("div");
+          choiceElement.className = "choice";
+          choiceElement.innerHTML = `
+                    <div class="choice-icon">${String.fromCharCode(65 + index)}.</div>
+                    <div class="choice-text">${getText(choice.text)}</div>
+                `;
+
+          choiceElement.addEventListener("click", function () {
+            checkQuizAnswer(
+              this,
+              choice.correct,
+              questionData.explanation,
+              questionData.choices,
+            );
+          });
+
+          choicesContainer.appendChild(choiceElement);
+        });
+      }
+
+      function checkQuizAnswer(choiceElement, isCorrect, explanation, choices) {
+        const resultElement = document.getElementById("quiz-result");
+        const rewardElement = document.getElementById("quiz-reward");
+        const allChoices = document.querySelectorAll("#quiz-choices .choice");
+
+        // Disable all choices after selection
+        allChoices.forEach((choice) => {
+          choice.style.pointerEvents = "none";
+        });
+
+        // Mark all choices as correct/incorrect
+        allChoices.forEach((choice) => {
+          choice.classList.remove("correct", "incorrect");
+        });
+
+        if (isCorrect) {
+          // Mark correct choice
+          choiceElement.classList.add("correct");
+
+          // Show result
+          resultElement.textContent = getText(explanation);
+          resultElement.classList.add("correct");
+
+          // Add stars if correct and not already earned
+          if (
+            !window.quizCompletedQuestions.includes(window.currentQuizQuestion)
+          ) {
+            window.quizCompletedQuestions.push(window.currentQuizQuestion);
+            addStars(1);
+            rewardElement.style.display = "block";
+
+            // Unlock badge for completing all quiz questions
+            if (
+              window.quizCompletedQuestions.length ===
+              window.quizQuestions.length
+            ) {
+              unlockBadge(1);
+            }
+          }
+        } else {
+          // Mark incorrect choice
+          choiceElement.classList.add("incorrect");
+
+          // Find and mark the correct answer
+          allChoices.forEach((choice, index) => {
+            if (choices[index].correct) {
+              choice.classList.add("correct");
+            }
+          });
+
+          // Find the correct answer text
+          const correctAnswer = choices.find((c) => c.correct);
+
+          // Show error message with correct answer
+          resultElement.innerHTML = getText({
+            ro: `❌ Ai greșit răspunsul!<br><br>Răspunsul corect este: <strong>${getText(correctAnswer.text)}</strong><br><br>${getText(explanation)}`,
+            de: `❌ Du hast die Antwort falsch!<br><br>Die richtige Antwort ist: <strong>${getText(correctAnswer.text)}</strong><br><br>${getText(explanation)}`,
+          });
+          resultElement.classList.add("incorrect");
+        }
+
+        // Move to next question after delay
+        setTimeout(() => {
+          window.currentQuizQuestion =
+            (window.currentQuizQuestion + 1) % window.quizQuestions.length;
+
+          // Re-enable choices for next question
+          allChoices.forEach((choice) => {
+            choice.style.pointerEvents = "auto";
+          });
+
+          updateQuizContent();
+        }, 4000);
+      }
+
+      // ============================
+      // MEMORY GAME - FIXED VERSION (NO IMAGE INVERSION)
+      // ============================
+      function initializeMemoryGame() {
+        // Memory cards with proper orientation
+        window.memoryCards = [
+          {
+            type: "good",
+            emoji: "🔒",
+            text: { ro: "Parolă puternică", de: "Starkes Passwort" },
+          },
+          {
+            type: "good",
+            emoji: "👨‍👩‍👧‍👦",
+            text: { ro: "Spui părinților", de: "Sage es den Eltern" },
+          },
+          {
+            type: "good",
+            emoji: "⏰",
+            text: { ro: "Timp limitat online", de: "Begrenzte Online-Zeit" },
+          },
+          {
+            type: "good",
+            emoji: "👥",
+            text: { ro: "Prieteni adevărați", de: "Echte Freunde" },
+          },
+          {
+            type: "bad",
+            emoji: "🎁",
+            text: { ro: "Oferta prea bună", de: "Zu gutes Angebot" },
+          },
+          {
+            type: "bad",
+            emoji: "👤",
+            text: { ro: "Străin online", de: "Fremder online" },
+          },
+          {
+            type: "bad",
+            emoji: "🏠",
+            text: { ro: "Spui adresa", de: "Adresse sagen" },
+          },
+          {
+            type: "bad",
+            emoji: "⏳",
+            text: { ro: "Prea mult timp online", de: "Zu viel Zeit online" },
+          },
+        ];
+
+        // Duplicate cards for matching pairs
+        window.memoryCards = [...window.memoryCards, ...window.memoryCards];
+
+        // Shuffle cards
+        window.memoryCards = shuffleArray(window.memoryCards);
+
+        // Reset game state
+        window.memoryFlippedCards = [];
+        window.memoryMatchedCards = [];
+        window.memoryGameCompleted = false;
+      }
+
+      function updateMemoryGameContent() {
+        const instructions = document.getElementById("memory-instructions");
+        const board = document.getElementById("memory-board");
+        const resultElement = document.getElementById("memory-result");
+        const rewardElement = document.getElementById("memory-reward");
+
+        // Reset UI
+        resultElement.className = "game-result";
+        resultElement.textContent = "";
+        rewardElement.style.display = "none";
+
+        // Set instructions in current language
+        instructions.innerHTML = getText({
+          ro: "Găsește perechile de cărți! Alege cărțile care reprezintă acțiuni sigure online!",
+          de: "Finde die Kartenpaare! Wähle die Karten, die sichere Online-Aktionen darstellen!",
+        });
+
+        // Clear board
+        board.innerHTML = "";
+
+        // Create cards with two faces - CORRECT ORIENTATION
+        window.memoryCards.forEach((card, index) => {
+          const cardElement = document.createElement("div");
+          cardElement.className = "memory-card";
+          cardElement.dataset.index = index;
+          cardElement.dataset.type = card.type;
+          cardElement.dataset.emoji = card.emoji;
+
+          // Check if card is matched or flipped
+          const isMatched = window.memoryMatchedCards.includes(index);
+          const isFlipped = window.memoryFlippedCards.includes(index);
+
+          // Create card with two faces
+          cardElement.innerHTML = `
+                    <div class="card-front">?</div>
+                    <div class="card-back">
+                        <div>${card.emoji}<br><small>${getText(card.text)}</small></div>
+                    </div>
+                `;
+
+          // Add appropriate classes
+          if (isMatched) {
+            cardElement.classList.add("matched");
+          } else if (isFlipped) {
+            cardElement.classList.add("flipped");
+          }
+
+          cardElement.addEventListener("click", () => flipMemoryCard(index));
+          board.appendChild(cardElement);
+        });
+
+        // Check if game is completed
+        if (window.memoryMatchedCards.length === window.memoryCards.length) {
+          window.memoryGameCompleted = true;
+          resultElement.textContent = getText({
+            ro: "🎉 Felicitări! Ai câștigat jocul de memorie!",
+            de: "🎉 Herzlichen Glückwunsch! Du hast das Memory-Spiel gewonnen!",
+          });
+          resultElement.classList.add("correct");
+
+          // Add stars if not already earned
+          if (!appState.completedGames.includes("memory")) {
+            appState.completedGames.push("memory");
+            addStars(2);
+            rewardElement.style.display = "block";
+
+            // Unlock badge for completing memory game
+            unlockBadge(2);
+          }
+        }
+      }
+
+      function flipMemoryCard(index) {
+        // Don't allow flipping if card is already matched or flipped, or if 2 cards are already flipped
+        if (
+          window.memoryMatchedCards.includes(index) ||
+          window.memoryFlippedCards.includes(index) ||
+          window.memoryFlippedCards.length >= 2 ||
+          window.memoryGameCompleted
+        ) {
+          return;
+        }
+
+        // Add card to flipped cards
+        window.memoryFlippedCards.push(index);
+
+        // Update display
+        updateMemoryGameContent();
+
+        // Check for match if 2 cards are flipped
+        if (window.memoryFlippedCards.length === 2) {
+          const card1 = window.memoryCards[window.memoryFlippedCards[0]];
+          const card2 = window.memoryCards[window.memoryFlippedCards[1]];
+
+          // Check if cards match (same emoji)
+          if (card1.emoji === card2.emoji) {
+            // Cards match - add to matched cards
+            window.memoryMatchedCards.push(...window.memoryFlippedCards);
+            window.memoryFlippedCards = [];
+
+            // Update display after delay
+            setTimeout(updateMemoryGameContent, 500);
+          } else {
+            // Cards don't match - flip back after delay
+            setTimeout(() => {
+              window.memoryFlippedCards = [];
+              updateMemoryGameContent();
+            }, 1000);
+          }
+        }
+      }
+
+      // ============================
+      // STORY GAME
+      // ============================
+      function initializeStoryGame() {
+        window.storyState = {
+          currentStep: 0,
+          starsEarned: 0,
+        };
+
+        window.storySteps = [
+          {
+            text: {
+              ro: "Alex este un copil care tocmai a primit permisiunea să folosească internetul. El vrea să se joce un joc online nou. Ce ar trebui să facă mai întâi?",
+              de: "Alex ist ein Kind, das gerade die Erlaubnis bekommen hat, das Internet zu nutzen. Er möchte ein neues Online-Spiel spielen. Was sollte er zuerst tun?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Să descarce jocul imediat",
+                  de: "Das Spiel sofort herunterladen",
+                },
+                nextStep: 1,
+                feedback: {
+                  ro: "❌ Alex a descărcat un joc fără să ceară permisiunea părinților. Nu este o idee bună!",
+                  de: "❌ Alex hat ein Spiel heruntergeladen, ohne die Eltern zu fragen. Das ist keine gute Idee!",
+                },
+              },
+              {
+                text: {
+                  ro: "Să ceară permisiunea părinților",
+                  de: "Die Eltern um Erlaubnis bitten",
+                },
+                nextStep: 2,
+                feedback: {
+                  ro: "✅ Excelent! Alex a cerut permisiunea părinților înainte să descarce jocul.",
+                  de: "✅ Ausgezeichnet! Alex hat die Eltern um Erlaubnis gebeten, bevor er das Spiel heruntergeladen hat.",
+                },
+              },
+            ],
+          },
+          {
+            text: {
+              ro: "Alex a descărcat jocul fără permisiune. În timp ce se joacă, un străin îi cere să împărtășească numele său complet și adresa. Ce ar trebui să facă?",
+              de: "Alex hat das Spiel ohne Erlaubnis heruntergeladen. Während er spielt, bittet ihn ein Fremder, seinen vollständigen Namen und seine Adresse zu teilen. Was sollte er tun?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Să îi spună informațiile",
+                  de: "Die Informationen sagen",
+                },
+                nextStep: 3,
+                feedback: {
+                  ro: "❌ Periculos! Alex nu ar trebui să ofere niciodată informații personale străinilor!",
+                  de: "❌ Gefährlich! Alex sollte niemals persönliche Informationen an Fremde geben!",
+                },
+              },
+              {
+                text: {
+                  ro: "Să refuze și să spună părinților",
+                  de: "Ablehnen und den Eltern sagen",
+                },
+                nextStep: 4,
+                feedback: {
+                  ro: "✅ Foarte bine! Alex a refuzat să împărtășească informații personale și a spus părinților.",
+                  de: "✅ Sehr gut! Alex hat verweigert, persönliche Informationen zu teilen, und hat es den Eltern gesagt.",
+                },
+              },
+            ],
+          },
+          {
+            text: {
+              ro: "Părinții lui Alex au dat permisiunea pentru joc. Acum el trebuie să creeze un cont. Ce parolă ar trebui să aleagă?",
+              de: "Alex' Eltern haben die Erlaubnis für das Spiel gegeben. Jetzt muss er ein Konto erstellen. Welches Passwort sollte er wählen?",
+            },
+            choices: [
+              {
+                text: {
+                  ro: "Parola simplă 'alex123'",
+                  de: "Das einfache Passwort 'alex123'",
+                },
+                nextStep: 5,
+                feedback: {
+                  ro: "❌ Parola este prea simplă! Străinii ar putea să o ghicească ușor.",
+                  de: "❌ Das Passwort ist zu einfach! Fremde könnten es leicht erraten.",
+                },
+              },
+              {
+                text: {
+                  ro: "Parola puternică 'Al3xJ0c2026!'",
+                  de: "Das starke Passwort 'Al3xJ0c2026!'",
+                },
+                nextStep: 6,
+                feedback: {
+                  ro: "✅ Perfect! Aceasta este o parolă puternică și sigură.",
+                  de: "✅ Perfekt! Das ist ein starkes und sicheres Passwort.",
+                },
+              },
+            ],
+          },
+        ];
+
+        window.storyEndings = [
+          {
+            step: 3,
+            text: {
+              ro: "Alex a oferit informații personale unui străin. Părinții lui au aflat și i-au explicat că acest lucru este periculos. Data viitoare va fi mai atent!",
+              de: "Alex hat persönliche Informationen an einen Fremden gegeben. Seine Eltern haben es herausgefunden und ihm erklärt, dass das gefährlich ist. Nächstes Mal wird er vorsichtiger sein!",
+            },
+          },
+          {
+            step: 4,
+            text: {
+              ro: "Alex a acționat corect! A refuzat să împărtășească informații personale și a informat părinții. Ei l-au lăudat pentru alegerea inteligentă!",
+              de: "Alex hat richtig gehandelt! Er hat verweigert, persönliche Informationen zu teilen, und die Eltern informiert. Sie haben ihn für die kluge Wahl gelobt!",
+            },
+          },
+          {
+            step: 5,
+            text: {
+              ro: "Alex a ales o parolă simplă care a fost spartă. Cineva a intrat în contul său. Data viitoare va alege o parolă mai puternică!",
+              de: "Alex hat ein einfaches Passwort gewählt, das geknackt wurde. Jemand ist in sein Konto eingedrungen. Nächstes Mal wird er ein stärkeres Passwort wählen!",
+            },
+          },
+          {
+            step: 6,
+            text: {
+              ro: "Excelent! Alex a ales o parolă puternică și și-a păstrat contul în siguranță. Acum se poate bucura de joc în siguranță!",
+              de: "Ausgezeichnet! Alex hat ein starkes Passwort gewählt und sein Konto sicher gehalten. Jetzt kann er das Spiel sicher genießen!",
+            },
+          },
+        ];
+      }
+
+      function updateStoryGameContent() {
+        const storyText = document.getElementById("story-text");
+        const choicesContainer = document.getElementById("story-choices");
+        const outcomeElement = document.getElementById("story-outcome");
+        const rewardElement = document.getElementById("story-reward");
+
+        // Reset UI
+        outcomeElement.className = "story-outcome";
+        outcomeElement.textContent = "";
+        rewardElement.style.display = "none";
+
+        // Check if we're at an ending
+        const ending = window.storyEndings.find(
+          (e) => e.step === window.storyState.currentStep,
+        );
+        if (ending) {
+          storyText.textContent = getText(ending.text);
+          choicesContainer.innerHTML = "";
+
+          // Add restart button
+          const restartBtn = document.createElement("button");
+          restartBtn.className = "story-choice";
+          restartBtn.textContent = getText({
+            ro: "Joacă din nou povestea",
+            de: "Spiele die Geschichte nochmal",
+          });
+          restartBtn.addEventListener("click", () => {
+            window.storyState.currentStep = 0;
+            window.storyState.starsEarned = 0;
+            updateStoryGameContent();
+          });
+          choicesContainer.appendChild(restartBtn);
+
+          // Add stars if not already earned
+          if (
+            window.storyState.starsEarned > 0 &&
+            !appState.completedGames.includes("story")
+          ) {
+            appState.completedGames.push("story");
+            addStars(window.storyState.starsEarned);
+            rewardElement.style.display = "block";
+
+            // Unlock badge for completing story game
+            unlockBadge(4);
+          }
+
+          return;
+        }
+
+        // Get current step
+        const currentStep = window.storySteps[window.storyState.currentStep];
+        if (!currentStep) return;
+
+        storyText.textContent = getText(currentStep.text);
+
+        // Clear choices
+        choicesContainer.innerHTML = "";
+
+        // Add choices
+        currentStep.choices.forEach((choice, index) => {
+          const choiceBtn = document.createElement("button");
+          choiceBtn.className = "story-choice";
+          choiceBtn.textContent = getText(choice.text);
+
+          choiceBtn.addEventListener("click", () => {
+            // Show feedback
+            outcomeElement.textContent = getText(choice.feedback);
+            outcomeElement.classList.add("show");
+
+            // Check if choice is correct (for this story, first choice is usually wrong, second is right)
+            if (index === 1) {
+              // Second choice is usually correct
+              window.storyState.starsEarned++;
+            }
+
+            // Move to next step after delay
+            setTimeout(() => {
+              window.storyState.currentStep = choice.nextStep;
+              updateStoryGameContent();
+            }, 3000);
+          });
+
+          choicesContainer.appendChild(choiceBtn);
+        });
+      }
+
+      // ============================
+      // PROGRESS & REWARDS
+      // ============================
+      function addStars(count) {
+        appState.stars += count;
+        updateProgress();
+
+        // Check for badge unlocks based on stars
+        if (appState.stars >= 5 && !appState.badges.includes(1)) {
+          unlockBadge(1);
+        }
+        if (appState.stars >= 10 && !appState.badges.includes(2)) {
+          unlockBadge(2);
+        }
+        if (appState.stars >= 15 && !appState.badges.includes(3)) {
+          unlockBadge(3);
+        }
+        if (appState.stars >= 20 && !appState.badges.includes(4)) {
+          unlockBadge(4);
+        }
+      }
+
+      function unlockBadge(badgeId) {
+        if (!appState.badges.includes(badgeId)) {
+          appState.badges.push(badgeId);
+
+          const badgeElement = document.querySelector(
+            `.badge[data-badge="${badgeId}"]`,
+          );
+          badgeElement.classList.add("unlocked");
+          badgeElement.classList.add("pulse");
+
+          // Show notification
+          const badgeNames = {
+            1: { ro: "Expert în Parole", de: "Passwort-Experte" },
+            2: { ro: "Protector de Date", de: "Datenschützer" },
+            3: { ro: "Detectiv Online", de: "Online-Detektiv" },
+            4: { ro: "Prieten Digital", de: "Digitaler Freund" },
+            5: { ro: "Manager de Timp", de: "Zeitmanager" },
+          };
+
+          alert(
+            `${getText({ ro: "Ai deblocat o insignă nouă:", de: "Du hast ein neues Abzeichen freigeschaltet:" })} ${getText(badgeNames[badgeId])} ${appState.userName}!`,
+          );
+
+          setTimeout(() => {
+            badgeElement.classList.remove("pulse");
+          }, 1000);
+        }
+      }
+
+      function updateProgress() {
+        // Update stars count
+        document.getElementById("total-stars").textContent = appState.stars;
+        document.getElementById("avatar-stars").textContent = appState.stars;
+
+        // Update progress percentage
+        const maxStars = 30;
+        const percentage = Math.min(
+          100,
+          Math.round((appState.stars / maxStars) * 100),
+        );
+        document.getElementById("progress-percent").textContent =
+          `${percentage}%`;
+
+        // Update avatar based on progress
+        const avatar = document.getElementById("user-avatar");
+        if (appState.stars >= 25) {
+          avatar.innerHTML = '<i class="fas fa-crown"></i>';
+          avatar.style.background = "linear-gradient(135deg, #FFD700, #FF9800)";
+        } else if (appState.stars >= 20) {
+          avatar.innerHTML = '<i class="fas fa-hero"></i>';
+          avatar.style.background = "linear-gradient(135deg, #9C27B0, #673AB7)";
+        } else if (appState.stars >= 15) {
+          avatar.innerHTML = '<i class="fas fa-user-shield"></i>';
+          avatar.style.background = "linear-gradient(135deg, #2196F3, #3F51B5)";
+        } else if (appState.stars >= 10) {
+          avatar.innerHTML = '<i class="fas fa-user-check"></i>';
+          avatar.style.background = "linear-gradient(135deg, #4CAF50, #2196F3)";
+        } else if (appState.stars >= 5) {
+          avatar.innerHTML = '<i class="fas fa-user-graduate"></i>';
+          avatar.style.background = "linear-gradient(135deg, #00BCD4, #009688)";
+        }
+      }
+    </script>
+  </body>
+</html>

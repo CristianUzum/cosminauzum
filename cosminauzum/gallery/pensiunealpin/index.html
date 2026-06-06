@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pensiunea Alpin</title>
+        <link rel="icon" type="image/png" href="img/logo.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+ 
+    </head>
+    <body> 
+         <div class="scrollToTop-btn">
+      <i class="fas fa-angle-up"></i>
+    </div>
+
+        <!-- header -->
+        <header class = "header" id = "header">
+        	 <video id="myVideo" autoplay muted loop>
+        <source src="img/pensiunealpin.mp4" type="video/mp4" />
+         Your browser does not support HTML5 video.
+    		</video>
+            <div class = "head-top">
+                <div class = "site-name">
+                    <span><img src="img/logo.png"></span>
+                </div>
+                <div class = "site-nav">
+                    <span id = "nav-btn">MENIU <i class = "fas fa-bars"></i></span>
+                </div>
+            </div>
+
+            <div class = "head-bottom flex">
+                <h2>Pensiunea Alpin</h2>
+                <p>este locul ideal in care sa iti petreci un weekend impreuna cu prietenii sau familia.</p>
+                <button type = "button" class = "head-btn" class = "btn" data-modal-target="modal5">Video</button>       
+            </div>
+        </header>
+        <!-- end of header -->
+            <div class="modal" id="modal5">
+                            <div class="modal-content">
+                                <span class="modal-close">&times;</span>
+                                    <video id="myVideo" controls>
+        <source src="img/pensiunealpin.mp4" type="video/mp4" />
+         Your browser does not support HTML5 video.
+            </video>
+                            </div>
+                        </div>
+        <!-- side navbar -->
+        <div class = "sidenav" id = "sidenav">
+            <span class = "cancel-btn" id = "cancel-btn">
+                <i class = "fas fa-times"></i>
+            </span>
+
+            <ul class = "navbar">
+                <li><a href = "#header">Despre</a></li>
+                <li><a href = "#services">Servici</a></li>
+                <li><a href = "#rooms">Camere</a></li>
+                <li><a href = "#customers">Opinii</a></li>
+            </ul>
+            <button class = "btn sign-up"><a href="coming_soon/index.html">Inscrie-te</a></button>
+            <button class = "btn log-in"><a href="coming_soon/index.html">Autentificare</a></button>
+        </div>
+        <!-- end of side navbar -->
+
+        <!-- fullscreen modal -->
+        <div id = "modal"></div>
+        <!-- end of fullscreen modal -->
+
+        <!-- body content  -->
+        <section class = "services sec-width" id = "services">
+            <div class = "title">
+                <h2>servicii</h2>
+            </div>
+            <div class = "services-container">
+                <!-- single service -->
+                <article class = "service">
+                    <div class = "service-icon">
+                        <span>
+                            <img src="img/pescuit.png">
+                        </span>
+                    </div>
+                    <div class = "service-content">
+                        <h2>Pescuit</h2>
+                           <p>Zona montană este o zonă în care practicile culturale și economice au fost păstrate și conservate de‐ a lungul timpului. Suntem oare conştienţi de cât de multe ne oferă cultura? Există anumite servicii, denumite şi servicii culturale ale ecosistemelor care sporesc bunăstarea umană, aducând beneficii nemateriale (îmbogăţirea spirituală, educaţia şi dezvoltarea, reflecţia, inspiraţia, apartenenţa, patrimoniu cultural, recreerea, experienţa estetică), dar dacă nu le acordăm importanţa cuvenită începem să le pierdem într-un ritm alert. Pescuitul este unul dintre aceste servicii. Puteti pescui singuri sau asistati de intrumatorul nea Nelu.  </p>
+                           <button type = "button" class = "btn" data-modal-target="modal1">Mai mult</button>
+                          <div class="modal" id="modal1">
+ 							<div class="modal-content">
+    							<span class="modal-close">&times;</span>
+    								<img src="img/53.jpg">
+  							</div>
+						</div>
+                    </div>
+                </article>
+                <!-- end of single service -->
+                <!-- single service -->
+                <article class = "service">
+                    <div class = "service-icon">
+                        <span>
+                            <img src="img/semineu.png">
+                        </span>
+                    </div>
+                    <div class = "service-content">
+                        <h2>Semineu</h2>
+                        <p>Puteti servi masa la lumina calda a flacarilor ce danseaza intr-un semineu superb. Sau afara langa un foc de. Mancarurile de toate felurile va vor fi servite fie ca te afli pe  terasa restaurantului, ori in gradina la foisor.
+                       </p>
+                       <br>
+                        <br>
+                        <button type = "button" class = "btn" data-modal-target="modal2">Mai mult</button>
+                          <div class="modal" id="modal2">
+ 							<div class="modal-content">
+    							<span class="modal-close">&times;</span>
+    								<img src="img/73.jpg">
+  							</div>
+						</div>
+                    </div>
+                </article>
+                <!-- end of single service -->
+                <!-- single service -->
+                <article class = "service">
+                    <div class = "service-icon">
+                        <span>
+                            <img src="img/baie.png">
+                        </span>
+                    </div>
+                    <div class = "service-content">
+                        <h2>Baie proprie</h2>
+                        <p>Fiecare cameră include baie proprie cu duș, uscător de păr, priză pentru aparatul de ras, prosoape, obiecte de igienă. Intrarea se va face direct din camera. Orice aveti nevoie pentru baie se va pune la dispozitie de catre personal.
+                        
+                        </p>
+                        <button type = "button" class = "btn" data-modal-target="modal3">Mai mult</button>
+                          <div class="modal" id="modal3">
+ 							<div class="modal-content">
+    							<span class="modal-close">&times;</span>
+    								<img src="img/8.jpg">
+  							</div>
+						</div>
+                    </div>
+                </article>
+                <!-- end of single service -->
+                <!-- single service -->
+                <article class = "service">
+                    <div class = "service-icon">
+                        <span>
+                            <img src="img/sala.png">
+                        </span>
+                    </div>
+                    <div class = "service-content">
+                        <h2>Sala de mese</h2>
+                        <p>Restaurantul este situat la parterul pensiunii si are o capacitate maxima  de 150 locuri.Bucataria noastra este mandria noastra; locul curat unde sunt preparate mancarurile, pe care tu si ai tai veti dori sa le incercati. Bauturile de toate felurile va vor mentine buna dispozitie fie ca te afli pe terasele camerelor, sau pe terasa restaurantului, ori in gradina la foisor.</p>
+                        <button type = "button" class = "btn" data-modal-target="modal4">Mai mult</button>
+                        <div class="modal" id="modal4">
+ 							<div class="modal-content">
+    							<span class="modal-close">&times;</span>
+    								<img src="img/60.jpg">
+  							</div>
+						</div>
+                    </div>
+                </article>
+                <!-- end of single service -->
+            </div>
+        </section>
+
+        <div class = "book">
+            <form class = "book-form">
+                <div class = "form-item">
+                    <label for = "checkin-date">Check In: </label>
+                    <input type = "date" id = "chekin-date">
+                </div>
+                <div class = "form-item">
+                    <label for = "checkout-date">Check Out: </label>
+                    <input type = "date" id = "chekout-date">
+                </div>
+                <div class = "form-item">
+                    <label for = "adult">Adulti: </label>
+                    <input type = "number" min = "1" value = "1" id = "adult">
+                </div>
+                <div class = "form-item">
+                    <label for = "children">Copii: </label>
+                    <input type = "number" min = "1" value = "1" id = "children">
+                </div>
+                <div class = "form-item">
+                    <label for = "rooms">Camere: </label>
+                    <input type = "number" min = "1" value = "1" id = "rooms">
+                </div>
+                <div class = "form-item">
+                   <input type = "submit" class = "btn" value = "Rezerva">
+                </div>
+            </form>
+        </div>
+
+        <section class = "rooms sec-width" id = "rooms">
+            <div class = "title">
+                <h2>camere</h2>
+            </div>
+            <div class = "rooms-container">
+                <!-- single room -->
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "img/41.jpg" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                        <h3>Camere</h3>
+                        <ul>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                               Camera dubla
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Baie in camera
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                TV
+                            </li>
+                        </ul>
+                        <p>Camerele splendid mobilate aici, combină agreabilul cu un confort modern. Toate camerele noastre îți oferă priveliști minunate ale împrejurimilor; paturile au saltele ergonomice, perne pufoase și cearșafuri fine. Fiecare cameră include o terasa proprie, pentru un plus de flexibilitate adus șederii tale în România.</p>
+                        <p>Printre facilitățile suplimentare se numără  Wi-Fi de mare viteză gratuit, un televizor cu ecran plat si parcare! Bucură-te de cea mai comfortabilă cazare la munte și descoperă beneficiile pescuitului de munte din România!</p>
+                        <p class = "rate">
+                            <span>$ /</span> Pe Noapte
+                        </p>
+                        <button type = "button" class = "btn"><a href="coming_soon/index.html">Rezerva</a></button>
+                    </div>
+                </article>
+                <!-- end of single room -->
+                <!-- single room -->
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "img/39.jpg" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                        <h3>Camere</h3>
+                        <ul>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Camera Tripla
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Baie in camera
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                TV
+                            </li>
+                        </ul>
+                        <p>Camerele splendid mobilate aici, combină agreabilul cu un confort modern. Toate camerele noastre îți oferă priveliști minunate ale împrejurimilor; paturile au saltele ergonomice, perne pufoase și cearșafuri fine. Fiecare cameră include o terasa proprie, pentru un plus de flexibilitate adus șederii tale în România.</p>
+                        <p>Printre facilitățile suplimentare se numără  Wi-Fi de mare viteză gratuit, un televizor cu ecran plat si parcare! Bucură-te de cea mai comfortabilă cazare la munte și descoperă beneficiile pescuitului de munte din România!</p>
+                        <p class = "rate">
+                            <span>$ /</span> Pe Noapte
+                        </p>
+                        <button type = "button" class = "btn"><a href="coming_soon/index.html">Rezerva</a></button>
+                    </div>
+                </article>
+                <!-- end of single room -->
+                <!-- single room -->
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "img/30.jpg" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                        <h3>Camere</h3>
+                        <ul>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Apartament
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Baie in camera
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Televizor
+                            </li>
+                        </ul>
+                        <p>Camerele și apartamentele splendid mobilate aici, combină agreabilul cu un confort modern. Toate camerele noastre îți oferă priveliști minunate ale împrejurimilor; paturile au saltele ergonomice, perne pufoase și cearșafuri fine. Fiecare cameră include o terasa proprie, pentru un plus de flexibilitate adus șederii tale în România.</p>
+                        <p>Printre facilitățile suplimentare se numără  Wi-Fi de mare viteză gratuit, un televizor cu ecran plat si parcare! Bucură-te de cea mai comfortabilă cazare la munte și descoperă beneficiile pescuitului de munte din România!</p>
+                        <p class = "rate">
+                            <span>$ /</span> Pe Noapte
+                        </p>
+                        <button type = "button" class = "btn"><a href="coming_soon/index.html">Rezerva</a></button>
+                    </div>
+                </article>
+                <!-- end of single room -->
+            </div>
+        </section>
+
+
+        <section class = "customers" id = "customers">
+            <div class = "sec-width">
+                <div class = "title">
+                    <h2>opinii</h2>
+                </div>
+                <div class = "customers-container">
+                    <!-- single customer -->
+                    <div class = "customer">
+                        <div class = "rating">
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "far fa-star"></i></span>
+                        </div>
+                        <h3>Ne-am simtit minunat</h3>
+                        <p>Multumim pentru ospitalitate! Gazdele, mancarea, locatia au fost minunante! Recomandam cu drag!</p>
+                        <img src = "img/client1.png" alt = "customer image">
+                        <span>Maria, Craiova</span>
+                    </div>
+                    <!-- end of single customer -->
+                    <!-- single customer -->
+                    <div class = "customer">
+                        <div class = "rating">
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                        </div>
+                        <h3>„Loc perfect pentru relaxare. Pensiune construita cu atentie la detalii si bun gust.”</h3>
+                        <p>Liniste, peisaje, mancare gustoasa, gradina verde, atent ingrijita, cu copaci si aer curat. Am traversat tara pentru a vedea o zona deosebita si asteptarile au fost confirmate. Felicitari proprietarului! Ar trebui predat la scoala acest mod de lucru.</p>
+                        <img src = "img/client2.png" alt = "customer image">
+                        <span>George, Arad</span>
+                    </div>
+                    <!-- end of single customer -->
+                    <!-- single customer -->
+                    <div class = "customer">
+                        <div class = "rating">
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                            <span><i class = "fas fa-star"></i></span>
+                        </div>
+                        <h3>Mancare deosebita</h3>
+                        <p>O surpriza placuta aceasta pensiune, gazda extrem de primitoare, prietenoasa si mic dejun variat, cu preparate facute "in casa" conditii de hotel. Nu cred ca o sa gasiti o alta asemenea pensiune.</p>
+                        <img src = "img/client1.png" alt = "customer image">
+                        <span>Crina, Timis</span>
+                    </div>
+                    <!-- end of single customer -->
+                </div>
+            </div>
+        </section>
+        <!-- end of body content -->
+        
+        <!-- footer -->
+        <footer class = "footer">
+            <div class = "footer-container">
+                <div>
+                    <h2>Despre noi </h2>
+                    <p>Pensiunea Alpin este localizata in Luncanii de Jos / com. Tomesti. Jud. Timis. Preturi speciale pentru grupuri organizate.<br>Va asteptam cu drag.</p>
+                    <ul class = "social-icons">
+                        <li class = "flex">
+                            <a href="https://web.facebook.com/pensiuneaalpinluncaniidejos/"><i class = "fa fa-facebook fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Detalii</h2>
+                    <a href="coming_soon/index.html">Galerie</a>
+                </div>
+
+
+                <div>
+                    <h2>Contact</h2>
+                    <div class = "contact-item">
+                        <span>
+                            <i class = "fas fa-map-marker-alt"></i>
+                        </span>
+                        <span>
+                            Nr. 79A, Luncanii de Jos, jud Timis, Romania
+                        </span>
+                    </div>
+                    <div class = "contact-item">
+                        <span>
+                            <i class = "fas fa-phone-alt"></i>
+                        </span>
+                        <span>
+                            +40751 758 783
+                        </span>
+                    </div>
+                    <div class = "contact-item">
+                        <span>
+                            <i class = "fas fa-envelope"></i>
+                        </span>
+                        <span>
+                            alpinpensiune@gmail.com
+                        </span>
+                
+                    </div>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22284.378770716936!2d22.309134!3d45.720116999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe1bffdb0ccc789b3!2sPensiunea%20Alpin!5e0!3m2!1sro!2sro!4v1618931995292!5m2!1sro!2sro" width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script>.Pensiunea Alpin</p>
+        </footer>
+        <!-- end of footer -->
+    
+        <script src="script.js"></script>
+        <script src="modal.js"></script>
+    </body>
+</html>

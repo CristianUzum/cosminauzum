@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Pinyon+Script&display=swap');
+
+:root {
+    --primaryColor: rgb(236, 63, 30);
+    --white: #fff;
+    --black: rgba(0, 0, 0, 0.7);
+    --blue2: #4e9fee;
+    --yellow: #ffda5d;
+    --blue: #e7f3ff;
+  }
+*{  box-sizing: border-box;
+    position: relative;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: lightblue;
+  }
+  body::-webkit-scrollbar
+{
+   width: 15px;
+   background-color: rgba(78, 158, 238, 0.238);
+}
+body::-webkit-scrollbar-thumb
+{
+   height: auto;
+   background: rgba(255, 217, 93, 0.851);
+   border: 5px solid transparent;
+   border-radius: 5px;
+}
+.nav {
+    height: 90px;
+    width: 100%;
+    background-color: var(--blue2);
+    position: relative;
+  }
+  
+  .nav .nav-header {
+    display: inline;
+  }
+  
+  .nav .nav-header .nav-title {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    color: var(--white);
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav .nav-btn {
+    display: none;
+  }
+  
+  .nav .nav-links {
+    display: inline;
+    float: right;
+    font-size: 28px;
+  }
+  
+  .nav .nav-links a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  .nav .nav-links a span{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px var(--blue2);
+    color: #efefef;
+  }
+  
+  .nav  .nav-links  a  img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .nav  .nav-links a span:hover {
+    color: var(--yellow);
+  }
+  
+  .nav #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav .nav-header{
+      height:auto;
+    }
+    .nav .nav-links a span{
+      display: inline-flexbox;
+      padding: 8px;
+    }
+    .nav .nav-btn {
+      display: inline-block;
+      position: absolute;
+      align-items: center;
+      right: 0px;
+      top: 0px;
+      z-index: 999;
+     
+     
+    }
+    .nav .nav-btn label {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      padding: 25px;
+      margin: 5px 5px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+    }
+    .nav .nav-btn label:hover,.nav  #nav-check:checked ~ .nav-btn label {
+      background-color:  var(--primaryColor);  }
+    .nav .nav-btn label span {
+      display: block;
+      width: 30px;
+      height: 12px;
+      border-top: 2px solid #eee;
+    }
+    .nav .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color:  var(--blue2);
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 90px;
+      left: 0px;
+      z-index: 999;
+    }
+    .nav .nav-links a {
+      display: flex;
+      width: 100%;
+    }
+    .nav #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+
+  footer {
+    background-color: var(--blue2);
+    padding: 0.25rem;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 1px 1px 1px #808080;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+  }
+
+
+.game { 
+    height: 100vh;
+}
+
+#item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#item li {
+    list-style: none;
+    padding-right: 50px;
+
+}
+#item li a button{
+    font-family: "Leckerli One";
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #580570;
+    padding: 10px;
+    border-radius: 5%;
+}
+#item li a button:hover {
+    color: #6ca464;
+    cursor: pointer;
+    background-color: #f5f1e7;
+   
+    }
+
+#item .icon a img:hover {
+    background-color: #f5f1e7;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+#item .icon a {
+    text-decoration: none;
+    padding-right: 10px;
+}
+#item .icon img {
+    padding: 2px;
+    width: 35px;
+    height: 35px;
+}
+.seasons {
+    position: relative;
+}
+#changing_image{
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  margin: -25px -25px -25px -25px;
+}
+
+
+@media screen and (max-width: 1192px){
+    .nav {
+    padding: 1rem 4rem;
+    }
+
+    .nav h2 {
+    font-size: 2.5rem;
+    }
+
+    #item li {
+    padding-right: 30px;
+
+    }
+    #item li a button {
+    font-size: 0.9rem;
+    }
+}
+@media screen and (max-width: 991px){
+    .nav {
+    padding: 1rem 3rem;
+    }
+
+    .nav h2 {
+    font-size: 1.5rem;
+    }
+
+    #item li {
+    padding-right: 30px;
+
+    }
+    #item li a button {
+    font-size: 0.7rem;
+    }
+}
+@media screen and (max-width: 768px){
+         .nav {
+    padding: 1rem 2rem;
+    }
+
+    .nav h2 {
+    font-size: 1rem;
+    }
+
+    #item li {
+    padding-right: 10px;
+
+    }
+    #item li a button {
+    font-size: 0.5rem;
+    }
+    #changing_image{
+  left: 30%;
+}
+}

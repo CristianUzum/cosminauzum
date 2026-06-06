@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitatie</title>
+    <link rel="icon" type="png/gif" href="images/rapunzel-png-21351.png" />
+
+    <!-- Library CSS -->
+    <link href="css/glanz_library.css" rel="stylesheet" />
+
+    <!-- Icons CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Theme CSS -->
+    <link href="css/glanz_style.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Dosis:wght@300;400;700&family=Open+Sans:wght@300;400;700&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="robots" content="noindex" />
+
+    <style>
+      :root {
+        --bubbles: url("https://contentservice.mc.reyrey.net/image_v1.0.0/?id=fd9933b3-b13a-51d7-bd23-72e3cce8d659&637975576050571648");
+      }
+
+      #bubble_machine {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        pointer-events: none;
+      }
+
+      .bubble {
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        pointer-events: all;
+        cursor: pointer;
+        filter: drop-shadow(0px 3px 3px rgba(250, 0, 0, 0.05));
+        transform: translateX(-50%);
+        animation: bubble_float 10s linear forwards;
+      }
+      @keyframes bubble_float {
+        100% {
+          top: -130px;
+          transform: translateX(-50%) rotate(360deg);
+        }
+      }
+
+      .bubble:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: var(--bubbles);
+        background-size: auto 100%;
+        background-position: 0 0;
+      }
+      .pop_bubble:after {
+        animation: pop_bubble 0.3s steps(6) forwards;
+      }
+      @keyframes pop_bubble {
+        100% {
+          transform: scale(2);
+          background-position: -600% 0;
+        }
+      }
+    </style>
+  </head>
+
+  <!-- Body -->
+
+  <body class="gla_middle_titles">
+    <!-- Page -->
+    <div class="gla_page" id="gla_page">
+      <!-- To Top -->
+      <a href="#gla_page" class="gla_top ti ti-angle-up gla_go"></a>
+
+      <!-- Header -->
+      <header>
+        <nav class="gla_light_nav gla_transp_nav">
+          <div class="container">
+            <div class="gla_logo_container clearfix">
+              <img
+                src="./images/me.jpg"
+                alt="picture"
+                style="border-radius: 50%"
+              />
+              <div class="gla_logo_txt">
+                <!-- Logo -->
+                <a href="#gla_page" class="gla_logo">Ana-Maria</a>
+
+                <!-- Text Logo -->
+                <div class="gla_logo_und">15 Septembrie 2024</div>
+              </div>
+            </div>
+
+            <!-- Menu -->
+            <div class="gla_main_menu gla_main_menu_mobile">
+              <div class="gla_main_menu_icon">
+                <i></i><i></i><i></i><i></i>
+                <b>Meniu</b>
+                <b class="gla_main_menu_icon_b">Înapoi</b>
+              </div>
+            </div>
+
+            <!-- Menu Content -->
+            <div
+              class="gla_main_menu_content gla_image_bck"
+              data-color="rgba(0,0,0,0.9)"
+              data-image="images/WhatsApp Image 2024-08-27 at 14.17.25_0b71185d.jpg"
+            >
+              <!-- Over -->
+              <div class="gla_over" data-color="#000" data-opacity="0.7"></div>
+            </div>
+
+            <div class="gla_main_menu_content_menu gla_wht_txt text-right">
+              <div class="container">
+                <ul>
+                  <li><a href="#our-wedding" class="gla_go">Ce?</a></li>
+                  <li><a href="#when" class="gla_go">Când?</a></li>
+                  <li><a href="#where" class="gla_go">Unde?</a></li>
+                  <li><a href="#confirmation" class="gla_go">Confirmare</a></li>
+                </ul>
+                <div class="gla_main_menu_content_menu_copy">
+                  <p>Petrecere <br />Ana-Maria</p>
+                  <img
+                    src="./images/me.jpg"
+                    alt="picture"
+                    style="border-radius: 50%; width: 100px; height: 110px"
+                  />
+                </div>
+              </div>
+              <!-- container end -->
+            </div>
+            <!-- menu content end -->
+
+            <!-- Top Menu -->
+            <div class="gla_default_menu">
+              <ul>
+                <li><a href="#our-wedding" class="gla_go">Ce?</a></li>
+                <li><a href="#when" class="gla_go">Când?</a></li>
+                <li><a href="#where" class="gla_go">Unde?</a></li>
+                <li><a href="#confirmation" class="gla_go">Confirmare</a></li>
+              </ul>
+            </div>
+            <!-- Top Menu End -->
+          </div>
+          <!-- container end -->
+        </nav>
+      </header>
+      <!-- Header End -->
+
+      <!-- Slider -->
+      <div
+        class="gla_slider gla_image_bck gla_wht_txt gla_fixed"
+        id="our-wedding"
+        data-image="images/2.jpg"
+        data-stellar-background-ratio="0.8"
+      >
+        <!-- Over -->
+        <div class="gla_over" data-color="#9abab6" data-opacity="0.2"></div>
+
+        <div class="container">
+          <!-- Slider Texts -->
+          <div class="gla_slide_txt gla_slide_center_bottom text-center">
+            <div class="gla_slide_midtitle">
+              Va invit sa sarbatorim ziua mea!
+            </div>
+            <div class="gla_slide_subtitle">Ana-Maria</div>
+            <br />
+            <h3 style="margin-bottom: 0">Împreună cu sora și părintii mei</h3>
+            <h4
+              style="
+                font: 400 20px Dosis, Arial;
+                font-weight: bold;
+                font-size: 2em;
+              "
+            >
+              Zoe, Cosmina și Cristian Uzum
+            </h4>
+          </div>
+          <!-- Slider Texts End -->
+        </div>
+        <!-- container end -->
+      </div>
+      <!-- Slider End -->
+
+      <!-- Content -->
+      <section id="gla_content" class="gla_content">
+        <!-- section -->
+        <section
+          class="gla_section gla_wht_txt gla_fixed"
+          id="when"
+          style="
+            background-image: url('images/3.jpg');
+            background-repeat: repeat;
+          "
+        >
+          <!-- Over -->
+          <div class="gla_over" data-color="#040c0a" data-opacity="0.8"></div>
+
+          <div class="container text-center">
+            <p>
+              <img
+                src="images/animations/3.gif"
+                data-bottom-top="@src:images/animations/3.gif"
+                height="150"
+                alt=""
+              />
+            </p>
+            <h2>15 Septembrie 2024</h2>
+            <h3 class="gla_subtitle">Reșita, România</h3>
+            <div
+              class="gla_countdown"
+              data-year="2024"
+              data-month="09"
+              data-day="18"
+              data-hour="10"
+              data-minute="31"
+            ></div>
+          </div>
+          <!-- container end -->
+        </section>
+        <!-- section end -->
+
+        <section
+          class="gla_section gla_image_bck gla_fixed gla_wht_txt"
+          data-stellar-background-ratio="0.8"
+          data-image="./images/rapunzel.png"
+        >
+          <!-- Over -->
+          <div class="gla_over" data-color="#282828" data-opacity="0.4"></div>
+
+          <div class="container text-center">
+            <p>
+              <img
+                src="images/animations/5.gif"
+                data-bottom-top="@src:images/animations/5.gif"
+                height="150"
+                alt=""
+                class="skrollable skrollable-after"
+                style=""
+              />
+            </p>
+            <h3>
+              "Zilele de naştere sunt încărcate cu memoriile de ieri, cu
+              bucuriile de azi şi cu visele de mâine."
+            </h3>
+          </div>
+          <!-- container end -->
+        </section>
+
+        <!-- section -->
+        <section
+          class="gla_section gla_image_bck gla_wht_txt gla_fixed"
+          data-stellar-background-ratio="0.4"
+          id="where"
+          data-image="images/2023-03-31.jpg"
+        >
+          <!-- Over -->
+          <div class="gla_over" data-color="#282828" data-opacity="0.4"></div>
+
+          <div class="container text-center">
+            <h2>Detaliile evenimentului</h2>
+            <h3 class="gla_subtitle">Când și unde</h3>
+            <div class="row text-center">
+              <div class="container text-center">
+                <div
+                  class="gla_round_im gla_image_bck"
+                  data-image="images/2024-05-19.jpg"
+                ></div>
+                <h3>Petrecerea</h3>
+                <h4>Mickey's Paradise</h4>
+                <p>
+                  <strong>Duminica, 15 Septembrie 2024</strong>
+                  <br />
+                  Ora 18:00<br />
+                  Str. Timisoare nr.15b, et.2 <br />
+                  Reșita, România
+                </p>
+                <a
+                  href="https://www.google.com/maps/dir//Strada+Timi%C8%99oarei+15b,+Re%C8%99i%C8%9Ba+320232/@45.3162584,21.7907302,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x474fd7c143a43123:0x3c7754b24de2c4a2!2m2!1d21.8731308!2d45.316288?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+                  class="btn"
+                  -toggle="modal"
+                  data-target="https://www.google.com/maps/dir//Strada+Timi%C8%99oarei+15b,+Re%C8%99i%C8%9Ba+320232/@45.3162584,21.7907302,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x474fd7c143a43123:0x3c7754b24de2c4a2!2m2!1d21.8731308!2d45.316288?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+                  >Vezi hartă</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- container end -->
+        </section>
+        <!-- section end -->
+
+        <!-- section -->
+        <!-- section -->
+        <section
+          class="gla_section gla_wht_txt gla_fixed"
+          id="confirmation"
+          style="
+            background-image: url('images/3.jpg');
+            background-repeat: repeat;
+          "
+        >
+          <!-- Over -->
+          <div class="gla_over" data-color="#040c0a" data-opacity="0.8"></div>
+
+          <div class="container text-center">
+            <h2>Confirmare</h2>
+
+            <div class="row">
+              <div class="col-md-8 col-md-push-2">
+                <form
+                  action="https://formspree.io/f/xyyvzrpl"
+                  method="POST"
+                  class="confirmation-wrapper"
+                >
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="numberOfPersons">Câte persoane</label>
+                      <select
+                        name="numberOfPersons"
+                        class="form-control form-opacity"
+                        id="numberOfPersons"
+                      >
+                        <option value="0">Alege număr persoane</option>
+                        <option value="1">O persoană</option>
+                        <option value="2">Două persoane</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 personName">
+                      <label for="fname">Numele tău</label>
+                      <input
+                        type="text"
+                        id="fname"
+                        class="form-control form-opacity"
+                        placeholder="Nume"
+                        name="name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="message">Vrei să ne transmiți ceva?</label>
+                      <textarea
+                        name="message"
+                        class="form-control form-opacity"
+                        id="message"
+                      ></textarea>
+                    </div>
+                    <div
+                      class="alert alert-danger serverErrors"
+                      style="display: none"
+                    ></div>
+                  </div>
+                  <div class="col-md-12">
+                    <input
+                      type="submit"
+                      value="Trimite"
+                      class="btn btn-green confirmation"
+                      data-value="true"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- container end -->
+        </section>
+        <!-- section end -->
+
+        <!-- section -->
+        <section
+          class="gla_section gla_image_bck gla_wht_txt gla_fixed"
+          data-stellar-background-ratio="0.4"
+          data-image="./images/mockup-figurine-rapunzel-768x768.png"
+          style="
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+          "
+        >
+          <!-- Over -->
+          <div class="gla_over" data-color="#282828" data-opacity="0.4"></div>
+
+          <div class="container text-center">
+            <p>
+              <img
+                src="images/animations/thnyou_wh1.gif"
+                alt=""
+                height="200"
+                data-bottom-top="@src:images/animations/thnyou_wh1.gif"
+              />
+            </p>
+            <img
+              src="./images/me.jpg"
+              alt="picture"
+              style="border-radius: 50%; width: 100px; height: 110px"
+            />
+
+            <h3>Ana-Maria</h3>
+          </div>
+          <!-- container end -->
+        </section>
+        <!-- section end -->
+      </section>
+      <!-- Content End -->
+      <div id="bubble_machine"></div>
+    </div>
+    <!-- Page End -->
+
+    <script>
+      window.language = "ro";
+    </script>
+    <script type="text/javascript">
+      const bm = document.querySelector("#bubble_machine"),
+        bubble_rate = 500; //milliseconds per release
+
+      function addBubble() {
+        var b = document.createElement("div");
+        b.className = "bubble";
+        b.style.width = Math.random() * 100 + 28 + "px";
+        b.style.left = Math.random() * 100 + "%";
+        b.style.animationDuration = Math.floor(Math.random() * 10) + 8 + "s";
+        // b.style.filter = 'hue-rotate('+Math.random()*360+'deg)'
+        b.onclick = function () {
+          this.classList.add("pop_bubble");
+        };
+        b.onanimationend = function () {
+          this.remove();
+        };
+        bm.appendChild(b);
+
+        setTimeout(addBubble, bubble_rate);
+      }
+
+      addBubble();
+    </script>
+    <!-- JQuery -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <!-- Library JS -->
+    <script src="js/glanz_library.js"></script>
+
+    <!-- Theme JS -->
+    <script src="js/glanz_script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/gif/png" href="../images/movie.gif">
+    <title>Movies - FunKidsVideos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+</head>
+
+<body>
+    <section class="nav">
+        <input type="checkbox" id="nav-check">
+        <a class="nav-header" href="../index.html">
+          <img class="nav-title" src="../fun.png">
+        </a>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links">
+          <a href="../cartoons/index.html" target="_blank"><img src="../images/cartoon.gif"><span>cartoons</span></a>
+          <a href="index.html" target="_blank"><img src="../images/movie.gif"><span>movies</span></a>
+          <a href="../music/index.html" target="_blank"><img src="../images/music.gif"><span>music</span></a>
+          <a href="../games/index.html" target="_blank"><img src="../images/game.gif"><span>games</span></a>
+          <a href="../learn/index.html" target="_blank"><img src="../images/book.gif"><span>learn</span></a>
+        </div>
+      </section>
+    <section class="main">
+        <h2 class="title"></h2>
+        <div class="container">
+            <div id="video_player">
+                <video controls id="main-Video" src="../video/movie/Scoala Iepurasilor - Pazitorii Oului De Aur (Rabbit Schol) 2017 Film Pentru Copii Dublat In Romana.mp4"></video>
+            </div>
+            <div class="playlistBx">
+                <div class="header">
+                    <div class="row">
+                        <span class="videos"></span>
+                    </div>
+                </div>
+                <ul class="playlist" id="playlist">
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+      <footer>
+        <p> Fun Kids Videos &copy; <script>document.write(new Date().getFullYear());</script></p>
+      </footer>
+    </section>
+    <script src="video-list.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

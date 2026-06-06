@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8 Martie - Ziua Mamei!</title>
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Dancing Script", cursive;
+        background: linear-gradient(to bottom, #ffe6e6, #fff);
+        background-image: url("./mom.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        object-fit: contain;
+        min-height: 100vh;
+      }
+
+      .header {
+        background: linear-gradient(45deg, #ff3333, #ffffff);
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 1rem;
+      }
+
+      .navbar a {
+        color: #ff1a1a;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: color 0.3s;
+        padding: 10px 20px;
+      }
+
+      .navbar a:hover {
+        color: #ffffff;
+      }
+
+      .title {
+        font-size: 3.5rem;
+        color: #ff1a1a;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        animation: bounce 2s infinite;
+      }
+
+      .hero-section {
+        position: relative;
+        padding: 100px 20px;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 1.5rem;
+      }
+
+      .hero-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 3rem;
+        color: #d6336c;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease;
+      }
+
+      .tribute-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .tribute-text {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 6px 8px rgba(244, 24, 24, 0.1);
+        animation: fadeIn 1.5s ease;
+      }
+
+      /* Quotes Carousel Styles */
+      .quotes-section {
+        padding: 4rem 20px;
+        background: linear-gradient(
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.8)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10 80 Q30 60 50 80 T90 80" fill="none" stroke="%23d6336c" stroke-width="2" opacity="0.1"/></svg>');
+      }
+      .carousel-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 2rem;
+        padding: 2rem 0;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .quote-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 6px 8px rgba(244, 24, 24, 0.1);
+        text-align: center;
+        margin: 0 10px;
+        font-size: 1.5rem;
+      }
+
+      .owl-nav {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .owl-nav button {
+        color: #d6336c !important;
+        margin: 0 10px;
+        padding: 5px 15px !important;
+        border-radius: 50%;
+        font-size: 1.5rem;
+      }
+
+      .owl-nav button:hover {
+        color: #f84310 !important;
+      }
+
+      @media (min-width: 768px) {
+        /* .quote-card {
+          flex: 0 0 40%;
+        } */
+        .hero-title {
+          font-size: 4rem;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      .section {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(255, 50, 50, 0.1);
+      }
+
+      .section h2 {
+        font-size: 2rem;
+        color: #ff1a1a;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .poem {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        text-align: center;
+        margin-bottom: 2rem;
+        white-space: pre-line; /* Păstrează formatarea poeziei */
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+      }
+
+      .flowers {
+        position: fixed;
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      @keyframes fall {
+        from {
+          transform: translateY(-100vh) rotate(0deg);
+        }
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      .flower {
+        position: absolute;
+        animation: fall 10s linear infinite;
+        font-size: 1.5rem;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 1rem;
+        background: linear-gradient(45deg, #ff3333, #ffffff);
+        color: #ff1a1a;
+        font-size: 1.3rem;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .footer #dedication {
+        font-size: 1.2rem;
+        order: 1; /* Mută dedicația deasupra */
+      }
+
+      .footer #credits {
+        order: 2; /* Mută credits sub dedicație */
+      }
+
+      .footer #dedication::before,
+      .footer #dedication::after {
+        content: "❤️";
+        margin: 0 0.3rem;
+      }
+      .footer a {
+        color: #ec240e;
+      }
+      .footer a:hover {
+        color: #ffffff;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .title {
+          font-size: 2.5rem;
+        }
+        .poem {
+          font-size: 1rem;
+        }
+        #language-select {
+          font-size: 14px;
+          padding: 8px 1px;
+        }
+      }
+
+      #language-select {
+        padding: 8px;
+        font-size: 16px;
+        border: 2px solid #e74c3c;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: #c0392b;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        max-width: 50px; /* Limitează lățimea */
+        width: 100%; /* Asigură-te că ocupă 100% din lățimea disponibilă */
+      }
+
+      #language-select:hover {
+        border-color: #c0392b;
+        background-color: #fce4ec;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #language-select:focus {
+        outline: none;
+        border-color: #e91e63;
+        box-shadow: 0 0 8px rgba(233, 30, 99, 0.5);
+      }
+
+      #language-select:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #e74c3c, #f39c12, #9b59b6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      #language-select:focus:before {
+        opacity: 0.2;
+      }
+
+      #language-select option {
+        background-color: #ffffff;
+        color: #c0392b;
+        padding: 8px 16px;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Adaugă tranziție pentru culoare */
+      }
+
+      /* Ajustări pentru ecrane mici */
+      @media (max-width: 600px) {
+        #language-select {
+          font-size: 14px;
+          padding: 5px;
+        }
+        .navbar {
+          gap: 10px;
+        }
+      }
+    </style>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title" id="title">8 Martie - Ziua Mamei! 🌸</h1>
+      <div class="navbar">
+        <a href="martisor.html" id="link-martisor">Mărțișor</a>
+        <a href="index.html" id="link-women-day">8 Martie</a>
+        <select id="language-select">
+          <option value="ro">Ro</option>
+          <option value="en">En</option>
+          <option value="fr">Fr</option>
+          <option value="de">De</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flowers" id="flowers"></div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title" id="hero-title"></h1>
+        <div class="tribute-columns">
+          <div class="tribute-text" id="tribute-text"></div>
+          <div class="tribute-text" id="importance-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quotes Carousel -->
+    <section class="quotes-section">
+      <div class="owl-carousel owl-theme" id="carousel"></div>
+    </section>
+    <!-- Secțiunea cu poezie -->
+    <div class="section">
+      <h2 id="poem-title">Poezie despre Mamă</h2>
+      <div class="poem" id="poem">
+        Mama, tu ești lumina mea, În sufletul tău găsesc pace și căldură. Cu
+        dragoste necondiționată, Îmi îmbraci viața în culori pure.
+      </div>
+    </div>
+
+    <!-- Secțiunea cu melodii -->
+    <div class="section">
+      <h2 id="songs-title">Melodii despre Mamă</h2>
+      <div class="video-container">
+        <div id="player"></div>
+      </div>
+    </div>
+
+    <div class="footer" id="footer">
+      <div id="dedication">Dedicat mamelor mele</div>
+      <div id="credits">
+        Made by
+        <a href="https://www.cosminauzum.com" target="_blank"
+          >www.cosminauzum.com</a
+        >
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+      const translations = {
+        ro: {
+          title: "8 Martie - Ziua Mamei! 🌸",
+          heroTitle: "Mama - iubirea necondiționată din viața fiecărui copil",
+          tributeText:
+            "Mama este primul și cel mai important pilon al vieții noastre. Ea ne învață primele cuvinte, ne ține în brațe când plângem și ne inspiră să devenim cei mai buni oameni care putem fi.",
+          importanceText:
+            "În fiecare zi, femeia aduce lumina dragostei necondiționate, puterea sacrificiului și caldura unui cămin. Ea este temelia societății și sufletul familiei.",
+          carouselQuotes: [
+            "Mama este singura persoană din lume care te iubește înainte să te cunoască.",
+            "Mâna care scutură leagănul domîne lumea.",
+            "Dragostea unei mame este combustibilul care permite unui om obișnuit să facă lucruri neobișnuite.",
+          ],
+          poemTitle: "Poezie despre Mamă",
+          poem: `Mama, tu ești lumina mea,
+  În sufletul tău găsesc pace și căldură.
+  Cu dragoste necondiționată,
+  Îmi îmbraci viața în culori pure.`,
+          songsTitle: "Melodii despre Mamă",
+          martisor: "Mărțișor",
+          womenDay: "8 Martie",
+          dedication: "Dedicat mamelor mele",
+          credits:
+            "Realizat de <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+          videoId: "1tCXnzGwiHs",
+        },
+        en: {
+          title: "8 March - Mother's Day! 🌸",
+          heroTitle: "Mother - Unconditional Love in Every Child's Life",
+          tributeText:
+            "Mother is the first and most important pillar of our lives. She teaches us our first words, holds us when we cry, and inspires us to become the best people we can be.",
+          importanceText:
+            "Every day, women bring the light of unconditional love, the strength of sacrifice, and the warmth of a home. They are the foundation of society and the soul of the family.",
+          carouselQuotes: [
+            "A mother is the only person in the world who loves you before she meets you.",
+            "The hand that rocks the cradle rules the world.",
+            "A mother's love is the fuel that enables a normal human being to do the impossible.",
+          ],
+          poemTitle: "Poem about Mother",
+          poem: `Mother, you are my light,
+  In your soul, I find peace and warmth.
+  With unconditional love,
+  You wrap my life in pure colors.`,
+          songsTitle: "Songs about Mother",
+          martisor: "Mărțișor",
+          womenDay: "Women's Day",
+          dedication: "Dedicated to my mothers",
+          credits:
+            "Made by <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+          videoId: "EQpwL5n0blg",
+        },
+        fr: {
+          title: "8 Mars - Fête des Mères! 🌸",
+          heroTitle:
+            "Mère - L'amour inconditionnel dans la vie de chaque enfant",
+          tributeText:
+            "La mère est le premier et le plus important pilier de notre vie. Elle nous apprend nos premiers mots, nous tient dans ses bras quand nous pleurons et nous inspire à devenir les meilleures personnes que nous pouvons être.",
+          importanceText:
+            "Chaque jour, les femmes apportent la lumière de l'amour inconditionnel, la force du sacrifice et la chaleur d'un foyer. Elles sont le fondement de la société et l'âme de la famille.",
+          carouselQuotes: [
+            "Une mère est la seule personne au monde qui vous aime avant de vous rencontrer.",
+            "La main qui berce le berceau gouverne le monde.",
+            "L'amour d'une mère est le carburant qui permet à un être humain normal de faire l'impossible.",
+          ],
+          poemTitle: "Poème sur la Mère",
+          poem: `Maman, tu es ma lumière,
+  Dans ton âme, je trouve paix et chaleur.
+  Avec un amour inconditionnel,
+  Tu enveloppes ma vie de couleurs pures.`,
+          songsTitle: "Chansons sur la Mère",
+          martisor: "Mărțișor",
+          womenDay: "Journée des Femmes",
+          dedication: "Dédié à mes mères",
+          credits:
+            "Réalisé par <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+          videoId: "gWJiv1Tn048",
+        },
+        de: {
+          title: "8 März - Muttertag! 🌸",
+          heroTitle: "Mutter – Bedingungslose Liebe im Leben jedes Kindes",
+          tributeText:
+            "Die Mutter ist die erste und wichtigste Säule unseres Lebens. Sie bringt uns unsere ersten Worte bei, hält uns, wenn wir weinen, und inspiriert uns, die besten Menschen zu werden, die wir sein können.",
+          importanceText:
+            "Frauen bringen jeden Tag das Licht bedingungsloser Liebe, die Kraft der Aufopferung und die Wärme eines Zuhauses. Sie sind das Fundament der Gesellschaft und die Seele der Familie.",
+          carouselQuotes: [
+            "Eine Mutter ist die einzige Person auf der Welt, die dich liebt, bevor sie dich kennenlernt.",
+            "Die Hand, die die Wiege wiegt, regiert die Welt.",
+            "Die Liebe einer Mutter ist der Treibstoff, der es einem normalen Menschen ermöglicht, das Unmögliche zu tun.",
+          ],
+          poemTitle: "Gedicht über die Mutter",
+          poem: `Mama, du bist mein Licht,
+  In deiner Seele finde ich Frieden und Wärme.
+  Mit bedingungsloser Liebe,
+  Hüllst du mein Leben in reine Farben.`,
+          songsTitle: "Lieder über die Mutter",
+          martisor: "Mărțișor",
+          womenDay: "Frauentag",
+          dedication: "Gewidmet meinen Müttern",
+          credits:
+            "Erstellt von <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+          videoId: "2CH-GXJdp_Q",
+        },
+      };
+
+      let player; // Variabilă globală pentru player-ul YouTube
+
+      // Încarcă YouTube IFrame API
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // Funcție pentru inițializarea player-ului YouTube
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          height: "315",
+          width: "560",
+          videoId: translations.ro.videoId, // Inițializează cu video pentru română
+          playerVars: {
+            autoplay: 1,
+            controls: 1,
+          },
+        });
+      }
+
+      // Elemente existente
+      const languageSelect = document.getElementById("language-select");
+      const title = document.getElementById("title");
+      const poemTitle = document.getElementById("poem-title");
+      const poem = document.getElementById("poem");
+      const songsTitle = document.getElementById("songs-title");
+      const linkMartisor = document.getElementById("link-martisor");
+      const linkWomenDay = document.getElementById("link-women-day");
+      const dedication = document.getElementById("dedication");
+      const credits = document.getElementById("credits");
+
+      // Elemente noi
+      const heroTitle = document.getElementById("hero-title");
+      const tributeText = document.getElementById("tribute-text");
+      const importanceText = document.getElementById("importance-text");
+      const carousel = document.getElementById("carousel");
+
+      languageSelect.addEventListener("change", (e) => {
+        const lang = e.target.value;
+        updateLanguage(lang);
+      });
+
+      function updateLanguage(lang) {
+        const translation = translations[lang];
+
+        // Actualizează elementele existente
+        title.textContent = translation.title;
+        poemTitle.textContent = translation.poemTitle;
+        poem.textContent = translation.poem;
+        songsTitle.textContent = translation.songsTitle;
+        linkMartisor.textContent = translation.martisor;
+        linkWomenDay.textContent = translation.womenDay;
+        dedication.textContent = translation.dedication;
+        credits.innerHTML = translation.credits;
+
+        // Actualizează elementele noi
+        heroTitle.textContent = translation.heroTitle;
+        tributeText.textContent = translation.tributeText;
+        importanceText.textContent = translation.importanceText;
+
+        // Actualizează caruselul
+        carousel.innerHTML = translation.carouselQuotes
+          .map(
+            (quote) => `
+            <div class="quote-card">${quote}</div>
+        `
+          )
+          .join("");
+
+        // Reîncarcă Owl Carousel
+        if ($("#carousel").data("owl.carousel")) {
+          $("#carousel").trigger("destroy.owl.carousel"); // Distruge instanța existentă
+        }
+
+        // Reinițializează Owl Carousel
+        $("#carousel").owlCarousel({
+          loop: true, // Permite loop infinit
+          margin: 20, // Spațiu între carduri
+          nav: true, // Afișează săgețile de navigare
+          autoplay: true, // Activează mișcarea automată
+          autoplayTimeout: 3000, // Intervalul între slide-uri (3 secunde)
+          autoplayHoverPause: true, // Pauză la hover
+          responsive: {
+            0: {
+              items: 1, // 1 card pe mobil
+            },
+            600: {
+              items: 2, // 2 carduri pe tabletă
+            },
+            1000: {
+              items: 3, // 3 carduri pe desktop
+            },
+          },
+        });
+
+        // Actualizează videoclipul YouTube
+        if (player && player.loadVideoById) {
+          player.loadVideoById(translation.videoId);
+        }
+      }
+
+      // Inițializează cu română
+      updateLanguage("ro");
+
+      // Funcție pentru crearea florilor
+      function createFlower() {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.innerHTML = "🌸";
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = Math.random() * 3 + 7 + "s";
+        document.getElementById("flowers").appendChild(flower);
+
+        setTimeout(() => flower.remove(), 10000);
+      }
+
+      setInterval(createFlower, 300);
+    </script>
+  </body>
+</html>
