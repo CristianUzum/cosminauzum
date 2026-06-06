@@ -1,4 +1,4 @@
-FROM nginx:24-alpine
+FROM nginx:alpine
 RUN apk update && apk upgrade --no-cache
 # Set the working directory inside the container to Nginx's default public folder
 WORKDIR /usr/share/nginx/html
@@ -7,7 +7,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 
 # Copy all files and folders from your current directory into the container
-COPY . /usr/share/nginx/html
+COPY . .
 
 # Expose port 80 to the outside world
 EXPOSE 80
