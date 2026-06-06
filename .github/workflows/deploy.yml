@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd ~/web
+            cd ~/release/dev
             git fetch origin dev
             git checkout dev
             git pull origin dev
@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd ~/web
+            cd ~/release/prod
             git fetch origin main
             git checkout main
             git pull origin main
