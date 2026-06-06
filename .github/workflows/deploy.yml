@@ -38,7 +38,7 @@ jobs:
             cd ~/release/dev
 
             if [ ! -d ".git" ]; then
-              git clone -b dev https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git .
+              git clone -b dev https://github.com/CristianUzum/cosminauzum.git .
             else
               git fetch origin dev
               git checkout dev
@@ -66,13 +66,13 @@ jobs:
 
             # If it's not a git repo yet, clone it. Otherwise, clean and pull.
             if [ ! -d ".git" ]; then
-              git clone -b dev https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git .
+              git clone -b main https://github.com/CristianUzum/cosminauzum.git .
             else
-              git fetch origin dev
-              git checkout dev
-              git reset --hard origin/dev
+              git fetch origin main
+              git checkout main
+              git reset --hard origin/main
               git clean -fd
-              git pull origin dev
+              git pull origin main
             fi
             
             # Spin up using the production configuration matrix
