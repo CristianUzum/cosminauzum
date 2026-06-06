@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM nginx:24-alpine
 RUN apk update && apk upgrade --no-cache
 # Set the working directory inside the container to Nginx's default public folder
 WORKDIR /usr/share/nginx/html

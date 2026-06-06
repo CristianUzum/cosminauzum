@@ -27,15 +27,13 @@ services:
   # Development Website Environment
   dev-website:
     dev-website:
-      build: 
+    build: 
       context: ./cosminauzum
       dockerfile: Dockerfile
+    container_name: dev-cosminauzum
     restart: unless-stopped
     networks:
       - dev-web-network
-    volumes:
-      # Map to a separate 'dev' local folder so changes don't touch production HTML
-      - ./dev/html/cosminauzum:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dev-cosminauzum.rule=Host(`dev.cosminauzum.com`)"
