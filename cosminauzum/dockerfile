@@ -4,7 +4,7 @@ RUN apk update && apk upgrade --no-cache
 
 COPY . .
 
-# <-- Uncomment if you created the nginx.conf
+## <-- Uncomment if you created the nginx.conf
 #COPY nginx.conf /etc/nginx/conf.d/default.conf  
 
 EXPOSE 80
