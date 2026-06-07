@@ -1,0 +1,376 @@
+:root {
+  --gold-crayola:  rgb(224, 203, 167);
+  --quick-silver:rgb(246, 246, 246);
+  --davys-grey: rgb(0, 158, 89);
+  --smoky-black-1: rgb(20, 99, 56);
+  --smoky-black-2: rgb(0, 158, 89);
+  --smoky-black-3:  rgb(0, 158, 89);
+  --eerie-black-1:  rgb(224, 203, 167);
+  --eerie-black-2: rgba(21, 157, 98, 0.671);
+  --eerie-black-3: rgba(0, 158, 90, 0.473);
+  --eerie-black-4:rgb(0, 158, 89);
+  --white: hsla(0, 0%, 100%, 1);
+  --white-alpha-20: hsla(138, 25%, 38%, 0.2);
+  --white-alpha-10: hsla(153, 48%, 33%, 0.1);
+  --green: rgb(0, 158, 89);
+  --green-alpha-80: hsla(144, 29%, 44%, 0.8);
+  --green-alpha-15: hsla(143, 50%, 30%, 0.15);
+  }
+  .header { top: 51px; box-shadow: 0px 6px 6px var(--eerie-black-4);}
+.about {
+    margin-top: 200px;
+}
+.contact-section1 {
+  position: relative;
+  text-align: center;
+ overflow: hidden;
+}
+
+.contact-section h1 {
+  color: var(--green);
+  text-shadow: 1px 1px 1px black;
+  font-size: 2em;
+  margin-bottom: 4rem;
+}
+
+.contact-section p {
+  font-size: 2rem;
+  color:var(--white);
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  padding: 0 100px;
+  margin: 3%;
+}
+
+
+.aroma1-animation {
+  position: relative;
+  margin-bottom: 0 !important;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  align-items: flex-start;
+ 
+}
+
+.aroma1 {
+  width: 100px; /* Lățime mai mare pentru a crea un arc */
+  height: 40px; /* Înălțime mai mică pentru a forma un arc */
+  background: linear-gradient(to bottom, rgba(230, 213, 189, 0.7), transparent);
+  border-top-left-radius: 100px;  /* Rotunjim colțurile de sus */
+  border-top-right-radius: 100px; /* pentru a crea un arc */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;
+  animation: zigzagAroma1 5s ease-in-out infinite;
+}
+
+/* Animația zig-zag care urcă */
+@keyframes zigzagAroma1 {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-10px) translateY(-20px);
+  }
+  50% {
+    transform: translateX(10px) translateY(-40px);
+  }
+  75% {
+    transform: translateX(-15px) translateY(-60px);
+  }
+  100% {
+    transform: translateX(10px) translateY(-80px);
+    opacity: 0; /* Aroma dispare treptat */
+  }
+}
+
+
+  .cakes1 {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    animation: fadeInCakes1 2s ease-in-out forwards;
+    animation-delay: 3s;
+  }
+
+  .cake1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    transform: scale(0.8);
+    animation: cakeAppear1 1.5s forwards ease-in-out;
+  }
+
+  /* Animație individuală pentru fiecare prăjitură */
+  .cake1:nth-child(1) {
+    animation-delay: 3.5s;
+  }
+
+  .cake1:nth-child(2) {
+    animation-delay: 4s;
+  }
+
+  .cake1:nth-child(3) {
+    animation-delay: 4.5s;
+  }
+
+  @keyframes cakeAppear1 {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Stil pentru mesaje */
+  .popup-message {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--green);
+    padding: 10px 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease-in-out;
+  }
+
+  /* Stil pentru diferite apariții ale mesajului */
+  .popup-message.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .popup-message.left {
+    animation: slide-in-left 1s forwards;
+  }
+
+  .popup-message.right {
+    animation: slide-in-right 1s forwards;
+  }
+
+  .popup-message.top {
+    animation: slide-in-top 1s forwards;
+  }
+
+  .popup-message.bottom {
+    animation: slide-in-bottom 1s forwards;
+  }
+
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%) scale(0);
+    }
+    to {
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%) scale(0);
+    }
+    to {
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes slide-in-top {
+    from {
+      transform: translateY(-100%) scale(0);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slide-in-bottom {
+    from {
+      transform: translateY(100%) scale(0);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .contact-section {
+    padding: 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  #location-1, #location-3 {
+    background-color: var(--green); /* Green background */
+  }
+  
+  #location-2, #location-4 {
+    background-color: var(--gold-crayola); /* Gold-crayola background */
+  }
+  
+ /* Contact Sections */
+.contact-section {
+    padding: 40px 20px;
+    color: var(--white);
+}
+
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-gold-crayola {
+    background-color: var(--gold-crayola);
+    color: var(--smoky-black-1); /* Adjust text color for better contrast if needed */
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.contact-details, .contact-image {
+    flex: 1 1 45%;
+    min-width: 280px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* .contact-details h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.contact-details p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.contact-details a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.contact-links {
+    margin-top: 15px;
+}
+
+.footer-link {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 16px;
+} */
+
+.contact-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.btn-menu{
+    border: 2px solid var(--green);
+  }
+  .btn2 {
+    position: relative;
+    color: var(--green);
+    font-size: var(--fontSize-label-1);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letterSpacing-5);
+    max-width: max-content;
+    border: 2px solid var(--green);
+    padding: 12px 45px;
+    overflow: hidden;
+    z-index: 1;
+    text-shadow: 1px 1px 1px black;
+  }
+
+  .btn2::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 200%;
+    border-radius: var(--radius-circle);
+    background-color: var(--green);
+    transition: var(--transition-2);
+    z-index: -1;
+    
+  }
+  .btn2:is(:hover, :focus-visible)::before { bottom: -50%; }
+
+  .btn2:hover {
+    color: var(--gold-crayola);
+}
+.btn:hover {
+    color: var(--green);
+}
+.btn-review{
+    margin: 0 auto;
+}
+
+.reviews-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+.odd_review{
+    background-color: var(--gold-crayola);
+}
+.even_review{
+    background-color: var(--green);
+}
+.reviews-section .section-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+   color: var(--white);
+   text-shadow: 1px 1px 1px black;
+}
+
+.reviews-carousel .review-item {
+    background-color: var(--white);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-carousel .review-item p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.reviews-carousel .review-item span {
+    font-size: 16px;
+    color: var(--smoky-black-1);
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-details, .contact-image {
+        flex: 1 1 100%;
+        padding: 10px 0;
+    }
+    .contact-section p {
+      font-size: 2rem;
+      color:var(--white);
+      text-shadow: 1px 1px 1px black;
+      text-align: justify;
+      padding: 0px;
+      margin: 3%;
+    }
+    
+}

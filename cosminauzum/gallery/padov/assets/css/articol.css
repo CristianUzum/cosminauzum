@@ -1,0 +1,238 @@
+:root {
+    /**
+* COLORS
+*/
+--gold-crayola:  rgb(224, 203, 167);
+--quick-silver:rgb(246, 246, 246);
+--davys-grey: rgb(0, 158, 89);
+--smoky-black-1: rgb(20, 99, 56);
+--smoky-black-2: rgb(0, 158, 89);
+--smoky-black-3:  rgb(0, 158, 89);
+--eerie-black-1:  rgb(224, 203, 167);
+--eerie-black-2: rgba(21, 157, 98, 0.671);
+--eerie-black-3: rgba(0, 158, 90, 0.473);
+--eerie-black-4:rgb(0, 158, 89);
+--white: hsla(0, 0%, 100%, 1);
+--white-alpha-20: hsla(138, 25%, 38%, 0.2);
+--white-alpha-10: hsla(153, 48%, 33%, 0.1);
+--green: rgb(0, 158, 89);
+--green-alpha-80: hsla(144, 29%, 44%, 0.8);
+--green-alpha-15: hsla(143, 50%, 30%, 0.15);
+}
+
+.topbar .link:is(:hover, :focus-visible) { color: var(--eerie-black-4);}
+.btn-menu{
+  border: 2px solid var(--green);
+  margin: 10px;
+  }
+
+.articol{
+        margin-top: 200px;
+        background-color: var(--green);
+        /* box-shadow: 0 -8px 8px var(--eerie-black-3); */
+}
+
+.box {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.short-description {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Poți schimba în funcție de preferință */
+    margin: 0 auto; /* Pentru a-l centra */
+}
+
+.video-container video {
+    width: 100%;
+    height: auto; /* Menține proporțiile video-ului */
+    display: block; /* Elimină margini suplimentare */
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+ul, ol {
+    font-size: 1.3em;
+    margin-left: 20px;
+}
+.ingredients{
+    margin-top: 20px;
+}
+/* Stiluri pentru galeria de imagini */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gallery-item {
+    width: 23%;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px; /* Setează înălțimea imaginii */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Toate imaginile au aceeași dimensiune */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item p {
+    text-align: center;
+    font-size: 1em;
+    position: absolute;
+    bottom: 0; /* Paragraful va apărea în partea de jos a imaginii */
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    background-color: var(--gold-crayola); /* Fundal semi-transparent */
+    color: var(--white);
+    z-index: 1; /* Face ca textul să fie deasupra imaginii */
+    transition: opacity 0.3s ease; /* Animare pentru transparență */
+    opacity: 0; /* Implicit, paragraful este ascuns */
+}
+
+/* Afișează textul doar la hover */
+.gallery-item:hover p {
+    opacity: 1;
+}
+
+
+
+/* Animații */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* Stiluri pentru modal */
+.modal {
+    display: none; /* Ascuns implicit */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 50%;
+    max-height: 80%;
+}
+
+.modal img {
+    width: 100%;
+    height: auto;
+}
+
+/* Stil pentru butoanele de navigare */
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-nav.left {
+    left: 10px;
+}
+
+.modal-nav.right {
+    right: 10px;
+}
+
+
+/* Responsivitate */
+@media (max-width: 768px) {
+    ul, ol {
+        font-size: 1em;
+    }     
+    .gallery-item {
+        width: 48%;
+        height: 180px; /* Ajustare pentru ecrane mici */
+    }
+    .modal-content {
+        max-width: 90%;
+        max-height: 80%;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .short-description {
+        font-size: 1em;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: 250px;
+    }
+}
+
+@media (max-width: 469px) {
+    .gallery-item {
+        width: 100%;
+        height: 150px; /* Ajustare pentru telefoane */
+    }
+}
+/* Animație de apariție la scroll */
+.gallery-item, h2, .video-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.gallery-item.visible, h2.visible, .video-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

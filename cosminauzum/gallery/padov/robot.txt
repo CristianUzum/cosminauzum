@@ -1,0 +1,38 @@
+User-agent: *
+
+# Permiteți indexarea website-ului
+Allow: /
+
+# Excludeți directoarele inutile din indexare
+Disallow: *.jpg
+Disallow: *.css
+Disallow: *.js
+Disallow: *.png
+Disallow: *.SVG
+Disallow: *.JPG
+Disallow: *.php
+Disallow: *.PNG
+Disallow: /img/
+Disallow: /js/
+Disallow: /styles.css/
+
+# Includeți fișierul sitemap
+Sitemap: https://www.padov.ro/sitemap.xml
+
+# Crawl-delay (opțional)
+Crawl-delay: 10
+
+# Comentarii
+# Exludeți pagina de contact din indexare
+# #Disallow: /contact/
+
+# Exludeți pagina despre din indexare
+# #Disallow: /despre/
+Disallow: /wp/
+Disallow: /wp_admin/
+Disallow: /wp_content/
+Disallow: /wp_includes/
+Disallow: /PHPMailer/
+Disallow: /404/
+Disallow: /wp-cli/
+Disallow: /well-known/

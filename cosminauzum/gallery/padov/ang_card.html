@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joburi Disponibile</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333333;
+      }
+
+      /* Secțiunea de carduri joburi */
+      .job-cards-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 50px;
+      }
+
+      .job-card {
+        width: 400px;
+        height: 450px;
+        perspective: 1000px;
+        margin: 20px;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.6s ease;
+      }
+
+      .job-card.active {
+        animation: pulseLight 2s infinite;
+        box-shadow: 0 0 20px rgba(255, 99, 71, 0.5);
+      }
+
+      @keyframes pulseLight {
+        0% {
+          box-shadow: 1px 0 30px rgba(71, 77, 255, 0.7);
+        }
+        50% {
+          box-shadow: 10px 0 80px rgba(71, 255, 154, 0.53);
+        }
+        100% {
+          box-shadow: 5px 5px 55px rgba(209, 45, 16, 0.641);
+        }
+      }
+
+      .job-card .card-front,
+      .job-card .card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      .card-front {
+        background-color: #ff6347;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+      }
+
+      .card-back {
+        background-color: #ffffff;
+        transform: rotateY(180deg);
+        text-align: left;
+        color: #333;
+      }
+
+      .job-card.flipped .card-front {
+        transform: rotateY(180deg);
+      }
+
+      .job-card.flipped .card-back {
+        transform: rotateY(0);
+      }
+
+      /* Cardurile inactive */
+      .job-card.inactive {
+        cursor: not-allowed;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      /* Stilizare pentru text */
+      .card-front h2,
+      .card-back h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .card-back ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .card-back ul li {
+        margin-bottom: 10px;
+      }
+
+      /* Responsivitate */
+      @media (max-width: 1024px) {
+        .job-cards-section {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .job-card {
+          width: 90%;
+          margin: 10px auto;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .job-cards-section {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Secțiunea de carduri joburi -->
+    <section class="job-cards-section">
+      <!-- Card activ -->
+      <div class="job-card active" onclick="flipCard(this)">
+        <div class="card-front">
+          <h2>Vânzătoare</h2>
+          <p>Lugoj</p>
+        </div>
+        <div class="card-back">
+          <h3>Responsabilități:</h3>
+          <ul>
+            <li>Întâmpinarea clienților</li>
+            <li>Prezentarea și recomandarea produselor</li>
+            <li>Servirea clienților</li>
+            <li>Promovarea campaniilor de marketing</li>
+            <li>Menținerea patiseriei la standard de igienă</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card inactiv -->
+      <div class="job-card inactive">
+        <div class="card-front">
+          <h2>Cofetar</h2>
+          <p>Caransebeș</p>
+        </div>
+      </div>
+
+      <!-- Card activ -->
+      <div class="job-card active" onclick="flipCard(this)">
+        <div class="card-front">
+          <h2>Șofer</h2>
+          <p>Reșița</p>
+        </div>
+        <div class="card-back">
+          <h3>Responsabilități:</h3>
+          <ul>
+            <li>Livrarea produselor la clienți</li>
+            <li>Întreținerea vehiculului de livrare</li>
+            <li>Gestionarea documentelor de livrare</li>
+            <li>Asigurarea calității produselor livrate</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card inactiv -->
+      <div class="job-card inactive">
+        <div class="card-front">
+          <h2>Ajutor de cofetar</h2>
+          <p>Lugoj</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Funcția pentru a face flip la cardurile active
+      function flipCard(card) {
+        if (!card.classList.contains("inactive")) {
+          card.classList.toggle("flipped");
+        }
+      }
+    </script>
+  </body>
+</html>

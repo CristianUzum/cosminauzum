@@ -26,10 +26,9 @@ services:
 
   # Development Website Environment
   dev-website:
-    dev-website:
     build: 
       context: ./cosminauzum
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     container_name: dev-cosminauzum
     restart: unless-stopped
     networks:
