@@ -1,0 +1,453 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: linear-gradient(to right top, #69ec8f, #62e287, #5cd980, #56cf78, #4fc671, #4ec770, #4dc970, #4cca6f, #51d675, #55e27b, #5aef80, #5ffb86);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: gradientBackground 10s ease infinite;
+    /* Animație de fundal */
+    font-weight: bold;
+
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    max-width: 800px;
+    width: 90%;
+    /* Lățime relativă pentru ecrane mici */
+    margin: 20px;
+    padding: 25px;
+    background-image: linear-gradient(to left bottom, #ebff80, #cffc7d, #b1f97d, #90f581, #67f187);
+    border-radius: 20px;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.2);
+    /* Umbră mai pronunțată */
+    animation: fadeIn 1s ease-in-out;
+    backdrop-filter: blur(10px);
+    /* Efect de blur pentru fundal */
+    text-shadow: 1px 1px 1px #0f0d0d;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stiluri pentru header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Fundal semi-transparent */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Container pentru logo */
+.logo-container {
+    margin-right: 15px;
+}
+
+/* Stiluri pentru logo */
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+/* Titlul paginii */
+h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Container pentru butoanele de limbă */
+.language-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Fundal semi-transparent */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Stiluri pentru butoanele de limbă */
+.language-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-buttons button {
+    padding: 10px 15px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right top, #e5f357, #eee257, #f3d25a, #f4c360, #f1b567);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.language-buttons button:hover {
+    background-image: linear-gradient(to left bottom, #e5f357, #eee257, #f3d25a, #f4c360, #f1b567);
+}
+
+/* Stiluri responsive */
+@media (max-width: 600px) {
+    .language-buttons button {
+        width: 100%;
+    }
+}
+
+/* Stiluri responsive */
+@media (max-width: 600px) {
+    .language-buttons button {
+        width: 100%;
+        /* Butoanele ocupă întreaga lățime pe ecrane mici */
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Fundal semi-transparent */
+    color: #0f0d0d;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 1);
+    /* Fundal mai solid la hover */
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: #444;
+    gap: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    padding: 5px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.quantity {
+    width: 60px;
+    padding: 5x;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.quantity:focus {
+    border-color: rgba(219, 240, 57, 0.482);
+    /* Culoare verde la focus */
+}
+
+.unit {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.unit:focus {
+    border-color: rgba(246, 192, 43, 0.337);
+    /* Culoare verde la focus */
+}
+
+.add-product {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    /* Permite elementelor să se încadreze pe ecrane mici */
+}
+
+.product-input,
+.quantity-input,
+.unit-input,
+.category-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+
+}
+
+.product-input:focus,
+.quantity-input:focus,
+.unit-input:focus,
+.category-input:focus {
+    border-color: hsla(108, 61%, 41%, 0.411);
+    /* Culoare verde la focus */
+}
+
+.delete-btn {
+    width: auto;
+    height: auto;
+    padding: 8px;
+    background-color: rgb(245, 70, 58);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: rgb(86, 8, 4);
+}
+
+.add-btn {
+    padding: 10px 15px;
+    background-color: rgba(48, 211, 86, 0.364);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: rgba(175, 209, 41, 0.475);
+    transform: scale(1.05);
+    /* Efect de scalare la hover */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: hsla(161, 86%, 55%, 0.427);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-shadow: 2px 1px 2px #1e1b1b;
+}
+
+button:hover {
+    background-color: rgba(9, 133, 50, 0.437);
+    transform: scale(1.05);
+    /* Efect de scalare la hover */
+}
+
+#share {
+    background-color: #f3d25a;
+}
+
+#share:hover {
+    background-color: #f1b567;
+}
+
+/* Stiluri pentru ecrane mici */
+@media (max-width: 768px) {
+    .category {
+        flex: 1 1 50%;
+        /* Ocupă întreaga lățime pe ecrane mici */
+    }
+
+    .add-product {
+        flex-direction: column;
+        /* Așează elementele vertical pe ecrane mici */
+    }
+
+    .product-input,
+    .quantity-input,
+    .unit-input,
+    .category-input,
+    .add-btn {
+        width: 100%;
+        /* Ocupă întreaga lățime pe ecrane mici */
+    }
+
+    h1 {
+        font-size: 2rem;
+        /* Titlu mai mic pe ecrane mici */
+    }
+
+    button {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    li {
+        margin: 5px 0;
+        padding: 5px;
+        font-size: 1rem;
+        gap: 5px;
+
+    }
+
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .quantity {
+        width: 30px;
+    }
+
+}
+
+/* Stiluri pentru footer */
+footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Fundal semi-transparent */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin-bottom: 20px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    /* Umbră deasupra footer-ului */
+    backdrop-filter: blur(10px);
+    /* Efect de blur pentru fundal */
+    animation: fadeIn 1s ease-in-out;
+    max-width: 800px;
+    width: 90%;
+    font-size: 1rem;
+}
+
+.footer-rights {
+    margin: 0;
+    color: #f36e0f;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0c5a22;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    text-shadow: 1px 1px 1px #141313;
+    letter-spacing: 1px;
+}
+
+footer a:hover {
+    color: #f1b567;
+    text-decoration: underline;
+}
+
+#select-all-products {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+#select-all-products:hover {
+    background-color: #45a049;
+}
+
+#deselect-all-products {
+    padding: 10px 20px;
+    background-image: linear-gradient(to right top, #e5f357, #eee257, #f3d25a, #f4c360, #f1b567);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+#deselect-all-products:hover {
+    background-color: #e87911;
+}

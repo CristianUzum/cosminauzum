@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitație Petrecere Sf. Gheorghe</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        background: radial-gradient(
+          circle,
+          rgba(5, 215, 0, 0.2) 0%,
+          rgba(255, 215, 0, 0.3) 70%
+        );
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+      }
+
+      .invitation-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      .invitation-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 215, 0, 0.1) 0%,
+          rgba(255, 215, 0, 0) 70%
+        );
+        transform: rotate(30deg);
+        z-index: 0;
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 3rem;
+        color: #d4af37;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        animation: pulse 2s infinite;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 30px;
+      }
+
+      .dragon {
+        font-size: 4rem;
+        margin: 20px 0;
+        animation: bounce 2s infinite;
+        display: inline-block;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .details {
+        background: rgba(212, 175, 55, 0.1);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .details p {
+        margin: 10px 0;
+        font-size: 1.1rem;
+      }
+
+      .highlight {
+        font-weight: bold;
+        color: #d4af37;
+      }
+
+      .confirmation-btn {
+        background: linear-gradient(45deg, #d4af37, #f9d423);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        transition: all 0.3s ease;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+        animation: pulse-glow 2s infinite;
+      }
+
+      .confirmation-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+        animation: none;
+      }
+
+      .confirmation-btn:active {
+        transform: translateY(1px);
+      }
+
+      .confirmation-btn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(255, 255, 255, 0) 45%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(255, 255, 255, 0) 55%
+        );
+        transform: rotate(30deg);
+        animation: shine 3s infinite;
+      }
+
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: rgba(212, 175, 55, 0.2);
+        border-radius: 50%;
+        animation: float 10s infinite linear;
+      }
+
+      .signature {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.8rem;
+        color: #d4af37;
+        margin-top: 20px;
+      }
+
+    
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(20px, 20px) rotate(90deg);
+        }
+        50% {
+          transform: translate(0, 40px) rotate(180deg);
+        }
+        75% {
+          transform: translate(-20px, 20px) rotate(270deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(360deg);
+        }
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(30deg);
+        }
+        20%,
+        100% {
+          transform: translateX(100%) rotate(30deg);
+        }
+      }
+
+      .footer {
+        margin-top: 80px;
+        font-size: 0.9rem;
+        color: #777;
+        cursor: pointer;
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 100%;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 10px;    
+      }
+
+      .footer a {
+        color: #d4af37;
+        text-decoration: none;
+        z-index: 999;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+       #toggleMusic{  position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #d4af37;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: background 0.3s ease;
+
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .dragon {
+          font-size: 3rem;
+        }
+
+        .details {
+          padding: 15px;
+        }
+
+        .signature {
+          font-size: 1.5rem;
+        }
+        #toggleMusic{ 
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+
+      }
+      }
+     
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="invitation-card">
+        <div class="floating-elements" id="floatingElements"></div>
+
+        <h1>Petrecere Sf. Gheorghe!</h1>
+        <h2>Ziua noastră de nume se apropie!</h2>
+
+        <div class="dragon" id="dragon">🐉</div>
+
+        <div class="details">
+          <p><span class="highlight">Data:</span> 23 Aprilie 2025</p>
+          <p><span class="highlight">Ora:</span> 13:00</p>
+          <p><span class="highlight">Locația:</span> Acasă</p>
+        </div>
+
+        <p>Confirmă prezența pe WhatsApp!</p>
+
+        <button class="confirmation-btn" id="confirmButton">
+          Confirmă acum
+        </button>
+
+        <p class="signature">Vă așteptăm cu drag, <br />Gelica mică și Gelica mare!</p>
+
+        <div class="footer">
+          <p>
+            Design realizat de
+            <a href="https://www.cosminauzum.com" target="_blank"
+              >www.cosminauzum.com</a
+            >
+          </p>
+        </div>
+      </div>
+      <audio id="bgMusic" loop>
+        <source src="house-party-232066.mp3" type="audio/mpeg" />
+        Browserul tău nu suportă redarea audio.
+      </audio>
+      <button id="toggleMusic" >
+    🔈
+  </button>
+  
+    </div>
+
+    <script>
+      // Dragon animation on hover
+      const dragon = document.getElementById("dragon");
+      dragon.addEventListener("mouseover", () => {
+        dragon.style.animation = "none";
+        dragon.style.transform = "scale(1.2) rotate(10deg)";
+      });
+      dragon.addEventListener("mouseout", () => {
+        dragon.style.animation = "bounce 2s infinite";
+        dragon.style.transform = "scale(1) rotate(0deg)";
+      });
+
+      // Confirm button WhatsApp
+      document.getElementById("confirmButton").addEventListener("click", () => {
+        const message = encodeURIComponent("Salut! Confirm prezența la petrecere 🎉");
+        window.open(`https://wa.me/?text=${message}`, "_blank");
+      });
+
+      // Generate floating elements
+      const container = document.getElementById("floatingElements");
+      for (let i = 0; i < 10; i++) {
+        const el = document.createElement("div");
+        el.classList.add("floating-element");
+        const size = Math.random() * 20 + 10;
+        el.style.width = `${size}px`;
+        el.style.height = `${size}px`;
+        el.style.top = `${Math.random() * 100}%`;
+        el.style.left = `${Math.random() * 100}%`;
+        el.style.animationDelay = `${Math.random() * 10}s`;
+        container.appendChild(el);
+      }
+    </script>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  const toggleBtn = document.getElementById("toggleMusic");
+  let isPlaying = false;
+
+  toggleBtn.addEventListener("click", () => {
+    if (!isPlaying) {
+      music.play();
+      toggleBtn.textContent = "🔊";
+    } else {
+      music.pause();
+      toggleBtn.textContent = "🔈";
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+  </body>
+</html>

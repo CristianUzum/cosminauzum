@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXHW5KCL');</script>
+<!-- End Google Tag Manager -->
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Cosmina Uzum - Your Trusted Web Developer"
+    />
+    <meta
+      property="og:description"
+      content="Based in Romania, Uzum Gelica-Cosmina PFA offers top-notch web design, development, and SEO services. With years of experience, we create tailored websites for clients worldwide."
+    />
+    <meta property="og:url" content="https://www.cosminauzum.com/" />
+    <meta property="og:site_name" content="Cosmina Uzum" />
+    <meta
+      property="og:image"
+      content="https://www.cosminauzum.com/images/icon/logo.png"
+    />
+    <meta name="author" content="Cosmina Uzum" />
+    <link rel="canonical" href="https://www.cosminauzum.com/" />
+    <title>Cosmina Uzum - Web development</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/easy.css" />
+    <link rel="stylesheet" href="css/slick.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="shortcut icon" href="images/icon/purple.png" type="image/png" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXHW5KCL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Start site wrapper -->
+    <div class="site-wrapper">
+      <div class="header-index">
+        <!-- ====== 1.1. Header section ====== -->
+        <header>
+          <nav class="container navbar">
+            <div class="container-nav flex">
+              <!-- site logo -->
+              <a class="navbar-logo" href="./index.html"
+                ><img src="logo/png/logo-no-background.png" alt="logo"
+              /></a>
+              <button class="navbar-toggler" onclick="openNav()" type="button">
+                <span class="fa-solid fa-bars"></span>
+              </button>
+              <!-- menus -->
+              <ul class="navbar-nav flex">
+                <li><a class="nav-link active" href="./index.html">Home</a></li>
+                <li><a class="nav-link" href="./about.html">About</a></li>
+                <li><a class="nav-link" href="./contact.html">Contact</a></li>
+                <li class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarScrollingDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Various
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarScrollingDropdown"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="./services.html"
+                        >Services</a
+                      >
+                    </li>
+                    <li><a class="dropdown-item" href="./pricing.html">Pricing Plans</a></li>
+                    <li><a class="dropdown-item" href="./gallery.html">Portfolio</a></li>
+                    <li><a class="dropdown-item" href="./index.html#faq">FAQ</a></li>
+                    <!-- <li><a class="dropdown-item" href="">Blog</a></li> -->
+                    <!-- <li><a class="dropdown-item" href="">Coming Soon</a></li>
+                                    <li><a class="dropdown-item" href="">404</a></li> -->
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex nav-right">
+              <p>
+                <a href="tel:+40733402340">
+                  <i class="fa-solid fa-phone"></i
+                  ><span>+40 733 402 340</span></a
+                >
+              </p>
+              <!-- header buttons -->
+              <!-- <i onclick="open_search_bar()" class="fa-solid fa-magnifying-glass"></i> -->
+              <div class="chat-icon">
+                <div id="envelope">
+                  <img
+                    src="./images/chatbot.png"
+                    alt="https://www.flaticon.com/authors/rukanicon"
+                  />
+                </div>
+              </div>
+              <i onclick="open_right_side()" class="fa-solid fa-bars"></i>
+            </div>
+          </nav>
+          <!-- Sidebar -->
+          <aside id="mySidepanel" class="sidepanel">
+            <div class="sidebar flex">
+              <a href="./index.html"
+                ><img src="logo/png/logo-no-background.png" alt="logo"
+              /></a>
+              <button class="closebtn btn_hover1" onclick="closeNav()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div>
+              <!-- side menus -->
+              <ul>
+                <li><a class="nav-link active" href="./index.html">Home</a></li>
+                <li><a class="nav-link" href="./about.html">About</a></li>
+                <li><a class="nav-link" href="./contact.html">Contact</a></li>
+                <li class="pages"><a href="#">Various</a></li>
+                <li class="collapse_btn">
+                  <a
+                    class="nav-link plus_collapse"
+                    data-bs-toggle="collapse"
+                    href="javascript:void(0);"
+                    onclick="toggleCollapse('pages')"
+                    aria-expanded="false"
+                    aria-controls="pages"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </a>
+                  <div class="collapse" id="pages">
+                    <ul>
+                      <li>
+                        <a class="nav-link" href="./services.html">Services</a>
+                      </li>
+                      <li>
+                        <a class="nav-link" href="./pricing.html"
+                          >Pricing Plans</a
+                        >
+                      </li>
+                      <li>
+                        <a class="nav-link" href="./gallery.html">Portfolio</a>
+                      </li>
+                      <li><a class="nav-link" href="./index.html#faq">FAQ</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- Right Sidebar -->
+          <section class="header-right-sidebar" id="right_side">
+            <div class="flex flex-sb">
+              <a href="/" class="logo"
+                ><img src="logo/png/logo-no-background.png" alt="logo"
+              /></a>
+              <button
+                class="close_right_sidebar fa-solid fa-xmark"
+                onclick="close_right_sade()"
+              ></button>
+            </div>
+            <p>
+              Experienced developer, dedicated to the needs of the client as
+              well as the user, creating websites based on the needs of each
+              individual business.
+            </p>
+
+            <a href="./about.html" class="btn_hover1">About</a>
+            <hr />
+            <h4>Contact details:</h4>
+            <ul class="flex">
+              <li>
+                <a href="mailto:cosmi.logo@gmail.com">
+                  <i class="fa-regular fa-envelope"></i
+                ></a>
+                <a href="mailto:cosmi.logo@gmail.com" class="text-lowercase"
+                  >cosmi.logo@gmail.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+40733402340">
+                  <i class="fa-solid fa-phone"></i
+                ></a>
+                <a href="tel:+40733402340">+40 733 402 340</a>
+              </li>
+              <li>
+                <a href="#"> <i class="fa-sharp fa-regular fa-clock"></i></a>
+                <a href="#">Working hours: M-F 9AM - 6PM</a>
+              </li>
+              <li>
+                <a href="https://wa.me/40733402340">
+                  <i class="fa-brands fa-whatsapp"></i
+                ></a>
+                <a href="https://wa.me/40733402340">WhatsApp</a>
+              </li>
+            </ul>
+            <span class="flex">
+              <a href="https://www.facebook.com/CosminaUzum/"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <!-- <a href="#"><i class="fa-brands fa-instagram"></i></a> -->
+              <a href="https://www.linkedin.com/in/cosmina-uzum-55118aa5/"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+              <a href="https://github.com/CosminaUzum"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+            </span>
+          </section>
+        </header>
+      </div>
+      <!-- ====== End of 1.1. Header section ====== -->
+      <section class="gallery_1-heading">
+        <div class="container">
+        <div class="heading-content">
+            <h1 class="wow-title">Explore Our Stunning Creations</h1>
+            <p class="description">
+                From websites to invitations, business cards, animations, and menus
+              - witness the elegance of visual craftsmanship.
+            </p>
+            <button class="btn_hover2 btn"><a href="./contact.html">Contact Us</a></button>
+        </div>
+        <div class="animated-image">
+            <div class="image-stack">
+                <img src="./images/butterfly.jpg" alt="Butterfly" />
+                <img src="./images/pensiunealpin.jpg" alt="Pensiune Alpin" />
+                <img src="./images/padov.png" alt="Padov" />
+                <img src="./images/dr-muresan.jpg" alt="ArtivisonMed" />
+            </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="product-gallery">
+      <span></span>
+      <div class="container">
+      <h2>Our Products</h2>
+
+        <div class="gallery_1-categories">
+          <button class="filter-btn active-filter" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="website" id="website">Websites</button>
+          <button class="filter-btn" data-filter="app" id="app">Apps</button>
+          <button class="filter-btn" data-filter="invitation" id="invitation">Invitations</button>
+          <button class="filter-btn" data-filter="business-card" id="business-card" >Business Cards</button>
+      </div>
+  
+      <div class="gallery_1" id="gallery_1">
+          <img src="./images/padov.png" alt="Padov" class="gallery_1-item website" data-title="Padov" data-description="Responsive Website, with Custom Features, SEO, UI/UX Design "data-url="https://padov.ro/" >
+          <img src="./images/labrutarasu.jpg" alt="La Brutăraşu" class="gallery_1-item website" data-title="La Brutăraşu" data-description="Responsive Website, with Custom Features, SEO, UI/UX Design "data-url="https://www.labrutarasu.ro/" >
+          <img src="./images/schedule.png" alt="Schedule App" class="gallery_1-item app" data-title="Scheduling App" data-description="Scheduling App for your website" data-url="./index.html" >
+          <img src="./images/birthday.jpg" alt="Invitation birthday" class="gallery_1-item invitation" data-title="Invitation for yor birthday" data-description="Responsive Website, with Custom Features, UI/UX Design." data-url="./gallery/birthday/index_r.html" >
+          <img src="./images/business_card.png" alt="Business Card 1" class="gallery_1-item business-card" data-title="Business Card 1" data-description="Business Card with QR" data-url="./gallery/padov/index.html" >
+          <img src="./images/butterfly.jpg" alt="Butterfly" class="gallery_1-item website" data-title="Butterfly" data-description="Template website" data-url="./gallery/butterfly/index.html" >
+          <img src="./images/dr-muresan.jpg" alt="ArtivisonMed" class="gallery_1-item website" data-title="ArtivisonMed" data-description="Responsive Website, with Custom Features, SEO, UI/UX Design" data-url="https://dr-muresan.ro/" >
+          <img src="./images/christening.jpg" alt="Christening Invitation" class="gallery_1-item invitation" data-title="Christening Invitation" data-description="Responsive Website, with Custom Features, UI/UX Design" data-url="./gallery/christening/index.html" >
+          <img src="./images/black_business_card.png" alt="Business Card 2" class="gallery_1-item business-card" data-title="Business Card 2" data-description="Business Card with QR" >
+          <img src="./images/pensiunealpin.jpg" alt="Pensiune Alpin" class="gallery_1-item website" data-title="Pensiune Alpin" data-description="Responsive Website, with Custom Features, SEO, UI/UX Design "data-url="https://www.pensiunealpin.ro/" >
+          <img src="./images/halloween.jpg" alt="Halloween" class="gallery_1-item website" data-title="Halloween" data-description="Template Website"data-url="./gallery/halloween/index.html" >
+      </div>
+  
+      <!-- Lightbox / Modal -->
+      <div id="lightbox" class="lightbox">
+          <span class="close">&times;</span>
+          <img class="lightbox-img" id="lightbox-img">
+          <div class="lightbox-caption">
+              <h3 id="lightbox-title"></h3>
+              <p id="lightbox-description"></p>
+          </div>
+          <div class="lightbox-controls">
+              <a class="prev">&#10094;</a>
+              <a class="next">&#10095;</a>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+    
+      <!-- ====== 1.15. Footer section ====== -->
+      <footer>
+        <div class="footer-menu">
+          <div class="container">
+            <div class="flex flex-start footer-center">
+              <div class="w-33 flex flex-col gap-2 flex-start">
+                <a href="./index.html" class="footer-logo"
+                  ><img
+                    src="./logo/png/logo-no-background.png"
+                    alt="footer-logo"
+                /></a>
+                <p>
+                  Through smart strategy and design, you can have a website that
+                  not only looks amazing, but also actively contributes to
+                  achieving and exceeding your business goals.
+                </p>
+                <h4>Don't be offline. Be online!</h4>
+
+                <span class="flex gap-2">
+                  <div class="chat-icon">
+                    <div id="envelope">
+                      <img
+                        src="./images/chatbot.png"
+                        alt="https://www.flaticon.com/authors/rukanicon"
+                      />
+                    </div>
+                  </div>
+                  <a href="https://www.facebook.com/CosminaUzum/"
+                    ><i class="fa-brands fa-facebook"></i
+                  ></a>
+                  <!-- <a href="#"><i class="fa-brands fa-instagram"></i></a> -->
+                  <a href="https://github.com/CosminaUzum"
+                    ><i class="fa-brands fa-github"></i
+                  ></a>
+                  <a href="https://www.linkedin.com/in/cosmina-uzum-55118aa5/"
+                    ><i class="fa-brands fa-linkedin"></i
+                  ></a>
+                </span>
+              </div>
+              <div class="w-16 mt-1">
+                <h4>Useful links</h4>
+                <ul class="flex flex-col gap-2 flex-start">
+                  <li><a href="./index.html">Home</a></li>
+                  <li><a href="./about.html">About</a></li>
+                  <li><a href="./gallery.html">Portfolio</a></li>
+                  <!-- <li><a href="#blog">Blog</a></li> -->
+                </ul>
+              </div>
+              <div class="w-16 mt-45 flex-end">
+                <ul class="flex flex-col gap-2 flex-start">
+                  <li><a href="./index.html#faq">FAQ</a></li>
+                  <li><a href="./contact.html">Contact</a></li>
+                  <!-- <li><a href="#">Team</a></li> -->
+                  <li><a href="#">Privacy policy</a></li>
+                </ul>
+                <!-- Chat window -->
+                <div id="chat-box" class="hidden">
+                  <div id="chat-header">
+                    <h4>Business Chatbot</h4>
+                    <span id="close-btn">&times;</span>
+                  </div>
+                  <div id="chat-content">
+                    <div id="chat-messages"></div>
+                  </div>
+                  <div id="chat-input">
+                    <input
+                      type="text"
+                      id="user-input"
+                      placeholder="Ask your work-related questions here..."
+                    />
+                    <button id="send-btn">Send</button>
+                  </div>
+                </div>
+              </div>
+              <div class="w-33 mt-1 flex flex-col flex-start">
+                <h4>Contact</h4>
+                <ul class="flex flex-col gap-2 flex-start">
+                  <li>
+                    <a href="mailto:cosmi.logo@gmail.com">
+                      <i class="fa-solid fa-envelope"></i
+                    ></a>
+                    <a href="mailto:cosmi.logo@gmail.com" class="text-lowercase"
+                      >cosmi.logo@gmail.com</a
+                    >
+                  </li>
+                  <li>
+                    <a href="tel:+40733402340">
+                      <i class="fa-solid fa-phone"></i
+                    ></a>
+                    <a href="tel:+40733402340">+40 733 402 340</a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa-sharp fa-regular fa-clock"></i
+                    ></a>
+                    <a href="#">Working hours: M-F 9AM - 18PM</a>
+                  </li>
+                  <li>
+                    <a href="https://wa.me/40733402340">
+                      <i class="fa-brands fa-whatsapp"></i
+                    ></a>
+                    <a href="https://wa.me/40733402340">WhatsApp</a>
+                  </li>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <div class="container flex flex-center gap-2 flex-wrap">
+            <h5>
+              Copyright © 2021 -
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              Cosmina Uzum
+              <a href="https://www.cosminauzum.com/" class="p-0"> </a>
+            </h5>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- end site wrapper -->
+
+    <!-- button back to top -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn_hover3">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+    <!-- free meeting schedule button -->
+    <button
+      id="scheduleFixButton"
+      class="schedule-btn open-modal-btn btn_hover3"
+    >
+      <i class="fa-solid fa-calendar-days"></i> Schedule a Free Consultation
+    </button>
+
+    <!-- Free meeting schedule modal -->
+    <!-- Modal Structure -->
+    <div id="schedule-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal-btn">&times;</span>
+
+        <div class="container_contact">
+          <!-- Part 1: Logo, Title, Paragraph, and Listed Items -->
+          <div class="part1">
+            <img
+              src="./logo/cosminauzum-high-resolution-logo-white-transparent.png"
+              alt="Logo"
+              class="logo"
+            />
+            <h3>Schedule a Meeting</h3>
+            <p>We are excited to meet you!</p>
+            <ul>
+              <li><i class="far fa-clock"></i> 30 Min</li>
+              <li><i class="fas fa-video"></i> Video call</li>
+              <li><i class="fab fa-google"></i> Meet</li>
+            </ul>
+          </div>
+
+          <!-- Part 2: Calendar Section -->
+          <div class="part2" id="calendar-section">
+            <div class="calendar-header">
+              <span id="month-name"></span>
+              <div class="arrows">
+                <button id="prev-month">&lt;</button>
+                <button id="next-month">&gt;</button>
+              </div>
+            </div>
+
+            <div class="timezone-selector">
+              <label for="timezone-select">Select Timezone:</label>
+              <select id="timezone-select">
+                <option value="Europe/Bucharest">Bucharest (GMT+3)</option>
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">New York (GMT-5)</option>
+                <option value="Europe/London">London (GMT+0)</option>
+                <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
+                <option value="Australia/Sydney">Sydney (GMT+10)</option>
+              </select>
+            </div>
+
+            <div class="calendar-body">
+              <div class="days-header">
+                <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span
+                ><span>Thu</span><span>Fri</span><span>Sat</span>
+              </div>
+              <div class="days-grid" id="days-grid"></div>
+            </div>
+          </div>
+
+          <!-- Part 3: Selected Day and Available Time Slots -->
+          <div class="part3" id="timeslots-section">
+            <h4 id="selected-day">No date selected</h4>
+            <div class="timeslots">
+              <!-- Available time intervals will be populated here -->
+            </div>
+          </div>
+
+          <!-- Form Section (Initially Hidden) -->
+          <div class="form-section" id="form-section" style="display: none">
+            <h2>Fill in your information</h2>
+            <form id="meeting-form">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+
+              <label for="phone">Phone:</label>
+              <input type="tel" id="phone" name="phone" required />
+
+              <label for="message">Message:</label>
+              <textarea id="message" name="message"></textarea>
+
+              <p class="gdpr">
+                By submitting this form, you agree to our
+                <a href="#">GDPR policy</a>.
+              </p>
+
+              <button type="button" id="back-button">Go Back</button>
+              <button type="submit" id="confirm-button">Confirm</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 150,
+        duration: 1250,
+        once: true,
+      });
+    </script>
+     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    
+        <script type="text/javascript">
+              (function(){
+          emailjs.init({
+            publicKey: "axm62-nrRXhVpMnv5",
+          });
+       })();
+                emailjs.init("axm62-nrRXhVpMnv5"); // Replace with your EmailJS user ID
+                // emailjs.init("YOUR_USER_ID"); 
+           
+        </script>
+
+    <!-- jquery js cdn -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+      integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- jquery min js cdn -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- slick carousel min js cdn -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+      integrity="sha256-DHF4zGyjT7GOMPBwpeehwoey18z8uiz98G4PRu2lV0A="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.6.0/lightgallery.umd.js"></script>
+
+    <!-- custom js -->
+    <script src="js/script.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/meeting.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>

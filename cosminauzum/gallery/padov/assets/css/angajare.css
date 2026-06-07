@@ -1,0 +1,404 @@
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+
+  /**
+   * COLORS
+   */
+
+  --gold-crayola:  rgb(224, 203, 167);
+  --quick-silver:rgb(246, 246, 246);
+  --davys-grey: rgb(0, 158, 89);
+  --smoky-black-1: rgb(20, 99, 56);
+  --smoky-black-2: rgb(0, 158, 89);
+  --smoky-black-3:  rgb(0, 158, 89);
+  --eerie-black-1: rgb(224, 203, 167);
+  --eerie-black-2: rgba(21, 157, 98, 0.671);
+  --eerie-black-3: rgba(0, 158, 90, 0.473);
+  --eerie-black-4:rgb(0, 158, 89);
+  --eerie-black-5: rgb(224, 203, 167);
+  --white: hsla(0, 0%, 100%, 1);
+  --white-alpha-20: hsla(138, 25%, 38%, 0.2);
+  --white-alpha-10: hsla(153, 48%, 33%, 0.1);
+  --green: rgb(0, 158, 89);
+  --green-alpha-80: hsla(144, 29%, 44%, 0.8);
+  --green-alpha-15: hsla(143, 50%, 30%, 0.15);
+
+  /**
+   * GRADIENT COLOR
+   */
+
+  --loading-text-gradient: linear-gradient(90deg, transparent 0% 16.66%, var(--smoky-black-3) 33.33% 50%,  transparent 66.66% 75%);
+  --gradient-1: linear-gradient(to top,hsla(0, 0%, 0%, 0.9),hsla(0, 0%, 0%, 0.7),transparent);
+
+  /**
+   * TYPOGRAPHY
+   */
+
+  /* font-family */
+  --fontFamily-forum: 'Forum', cursive;
+  --fontFamily-dm_sans: 'DM Sans', sans-serif;
+
+  /* font-size */
+  --fontSize-display-1: calc(1.3rem + 6.7vw);
+  --fontSize-headline-1: calc(2rem + 2.5vw);
+  --fontSize-headline-2: calc(1.3rem + 2.4vw);
+  --fontSize-title-1: calc(1.6rem + 1.2vw);
+  --fontSize-title-2: 2.2rem;
+  --fontSize-title-3: 2.1rem;
+  --fontSize-title-4: calc(1.6rem + 1.2vw);
+  --fontSize-body-1: 2.4rem;
+  --fontSize-body-2: 1.6rem;
+  --fontSize-body-3: 1.8rem;
+  --fontSize-body-4: 1.6rem;
+  --fontSize-label-1: 1.4rem;
+  --fontSize-label-2: 1.2rem;
+
+  /* font-weight */
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  /* line-height */
+  --lineHeight-1: 1em;
+  --lineHeight-2: 1.2em;
+  --lineHeight-3: 1.5em;
+  --lineHeight-4: 1.6em;
+  --lineHeight-5: 1.85em;
+  --lineHeight-6: 1.4em;
+
+  /* letter-spacing */
+  --letterSpacing-1: 0.15em;
+  --letterSpacing-2: 0.4em;
+  --letterSpacing-3: 0.2em;
+  --letterSpacing-4: 0.3em;
+  --letterSpacing-5: 3px;
+
+  /**
+   * SPACING
+   */
+
+  --section-space: 70px;
+
+  /**
+   * SHADOW
+   */
+
+  --shadow-1: 0px 0px 25px 0px hsla(0, 0%, 0%, 0.25);
+
+  /**
+   * BORDER RADIUS
+   */
+
+  --radius-24: 24px;
+  --radius-circle: 50%;
+
+  /**
+   * TRANSITION
+   */
+
+  --transition-1: 250ms ease;
+  --transition-2: 500ms ease;
+  --transition-3: 1000ms ease;
+
+}
+
+
+
+
+
+    .topbar .link:is(:hover, :focus-visible) { color: var(--eerie-black-4);}
+    .header { top: 51px; box-shadow: 0px 6px 6px var(--eerie-black-4);}
+  
+    .job{
+      margin-top: 250px;
+      background-color: var(--eerie-black-5);
+    }
+    .btn-menu{
+        border: 2px solid var(--green);
+      }
+/* Secțiunea 1: Text Animat */
+.hero-section1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: var(--gold-crayola);
+    text-align: center;
+    color: var(--green);
+    padding: 20px;
+}
+
+.animate-text {
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.hero-section1 p{
+  font-size: 1.5em;
+}
+/* Secțiunea 2: Carduri Joburi */
+.job-cards-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.job-card {
+    width: 290px;
+    height: 420px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 20px;
+    position: relative;
+  }
+
+  
+  .job-card.active {
+    animation: pulse 2s infinite;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.job-card.inactive {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--gold-crayola);
+    color: black;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    border-radius: 5px;
+}
+
+.inactive .badge {
+    background-color: red;
+    color: white;
+}
+
+
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-front {
+    background-color: var(--green);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .card-front h2 {
+    font-size: 2em;
+  }
+
+  .card-front p {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .card-back {
+    background-color: #ffffff;
+    transform: rotateY(180deg);
+    padding: 20px;
+  }
+
+  /* Hover și touch */
+  .job-card.flipped .card-front {
+    transform: rotateY(180deg);
+  }
+
+  .job-card.flipped .card-back {
+    transform: rotateY(0);
+  }
+
+  .card-back h3 {
+    margin-bottom: 5px;
+    font-size: 1.8em;
+    color: var(--green);
+    margin-right: 10px;
+  }
+
+  .card-back ul {
+    list-style-type: decimal;
+    padding-left: 10px;
+    font-size: 1em;
+    color: black;
+  }
+  .card-back ul li{
+    list-style-type: decimal !important;
+  }
+
+  /* Secțiunea de Descriere și Oferte */
+  .details-section {
+    padding: 50px;
+    text-align: center;
+    background-color: var(--green);
+  }
+
+  .details-section h2 {
+    color: var(--gold-crayola);
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .details-section p {
+    
+    margin-bottom: 30px;
+  }
+
+  .details-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .details-section ul li {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+
+  /* Secțiunea de formular */
+  .apply-section {
+    padding: 50px;
+    background-color: #ffffff;
+  }
+
+  .apply-section h2 {
+    color: var(--green);
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .apply-section form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(194, 153, 95, 0.358);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .apply-section label {
+    font-size: 1em;
+    margin: 10px 0 5px;
+    color: black;
+    text-align: justify;
+  }
+
+  .apply-section input,
+  .apply-section select {
+    padding: 10px;
+    font-size: 1em;
+    color: black;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+ 
+  label a{
+    color: var(--green);
+  }
+  .apply-section input[type="checkbox"] {
+    width: auto;
+  }
+
+  .apply-section button {
+    padding: 15px;
+    font-size: 1em;
+    background-color: #a72828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .apply-section button:hover {
+    background-color: var(--green);
+  }
+
+  .gdpr-text {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: black;
+  }
+
+  /* Responsive design */
+  @media (max-width: 1024px) {
+    .job-cards-section {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .job-card {
+      width: 90%;
+      margin: 10px auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section1 p{
+      font-size: 1em;
+    }
+    .job-cards-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+  }
+  @media (max-width: 468px) {
+   
+    .card-front h2 {
+      font-size: 1.5em;
+    }
+  
+    .card-front p {
+      font-size: 1em;
+    }
+    .card-back h3 {
+        margin-bottom: 5px;
+        font-size: 1.2em;
+        color: var(--green);
+      }
+  }

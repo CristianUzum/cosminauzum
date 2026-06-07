@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pipepline Processors</title>
+    <link rel="icon" type="image/gif/png" href="cpu.gif">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  </head>
+  <body>
+
+
+<main>
+<header>
+      <img src="p1.jpg" class="banner">
+          <a href="#home" class="logo"> <img src='cpu.gif'/>
+            <h2><span>P</span>
+                <span>I</span>
+                <span>P</span>
+                <span>E</span>
+                <span>L</span>
+                <span>I</span>
+                <span>N</span>
+                <span>E</span>
+                <br>
+              PROCESSORS
+            </h2> 
+          </a>
+ 
+      <nav> 
+        <ul>
+          <li> <a href="#home" class="active1">Home</a> </li>
+          <li> <a href="#about" class="active2">About</a> </li>
+          <li> <a href="#" class="active2">Store</a> </li>
+          <li> <a href="#"><img src="img-cart/user.png"></a> 
+                  <ul class="dropdown"> 
+                    <li><a href="#">Login</a></li> 
+                    <li><a href="#">Logout</a></li>  
+                 </ul>
+          </li>
+          <li> <a href="#"><img src="img-cart/cart.png"></a> 
+            </li>
+        </ul>
+        
+      </nav>
+
+
+    </header>
+
+    <section id="home">
+      <div class="banner2">
+       <div class="banner2_title">
+        <h2 animate__animated animate__bounce><span>P</span>
+                <span>I</span>
+                <span>P</span>
+                <span>E</span>
+                <span>L</span>
+                <span>I</span>
+                <span>N</span>
+                <span>E</span></h2><strong>PROCESSORS</strong>
+              </div>
+        <a class="btn_home" href="#store">EXPL<span>ORE</span></a>
+      </div>
+    </section>
+</main>
+<div class="desktop">
+  <div class="desktop_p">
+  <p>Website only for desktop.</p>
+  <p>Under development - responsive version for <span> Pipeline Processors</span>.</p>
+</div>
+ </div>
+        
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(window).scroll(function(){
+      var scroll = $(window).scrollTop();
+      if (scroll > 0){
+        $("header").addClass('scrolled');
+      }else{
+        $("header").removeClass('scrolled');
+      }
+    })
+</script>
+    <script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+</body>
+</html>
+      

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dragobete - Sărbătoarea Dragostei</title>
+    <style>
+      body {
+        font-family: "Great Vibes", cursive;
+        margin: 0;
+        background: linear-gradient(to right, #ff99cc, #ff1a66);
+        color: #660033;
+        line-height: 1.6;
+        overflow-x: hidden; /* Previne scroll-ul orizontal */
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header {
+        text-align: center;
+        padding: 30px 0;
+        animation: fadeIn 2s;
+      }
+
+      h1 {
+        font-size: 3em;
+        text-shadow: 2px 2px 4px #ffffff;
+        margin: 0;
+      }
+
+      .heart {
+        position: absolute;
+        color: #ff0066;
+        animation: float 3s infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .section {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(102, 0, 51, 0.3);
+        animation: slideIn 1s;
+        font-size: 1.5em; /* Font mai mare pentru text */
+      }
+
+      .love-ideas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .love-idea {
+        background: #fff0f5;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s;
+        font-size: 1.3em;
+      }
+
+      .love-idea:hover {
+        transform: scale(1.05);
+      }
+
+      footer {
+        background: #660033;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        position: relative;
+        width: 100%;
+        font-family: Arial, sans-serif;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      footer a {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #ee9ab6;
+        text-shadow: 1px 1px 1px #252323;
+      }
+      footer a:hover {
+        color: #e2d8d6;
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        margin: 20px 0;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .language-selector {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .language-selector button {
+        background: #ff1a66;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 1.2em;
+      }
+
+      .language-selector button:hover {
+        background: #cc0044;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5em;
+        }
+
+        .section {
+          padding: 15px;
+          font-size: 1.3em; /* Font mai mic pe ecrane mici */
+        }
+
+        .love-idea {
+          font-size: 1.2em;
+          padding: 10px;
+        }
+
+        .language-selector button {
+          padding: 8px 15px;
+          font-size: 0.9em;
+        }
+
+        footer {
+          padding: 10px;
+          font-size: 0.9em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        .section {
+          padding: 10px;
+          font-size: 1.2em; /* Font mai mic pe ecrane foarte mici */
+        }
+
+        .love-ideas {
+          grid-template-columns: 1fr;
+        }
+
+        .love-idea {
+          font-size: 1em;
+        }
+
+        .language-selector button {
+          padding: 6px 12px;
+          font-size: 0.8em;
+        }
+
+        footer {
+          font-size: 0.8em;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Animație inimi -->
+      <div class="heart">❤</div>
+      <div class="heart" style="left: 10%; animation-delay: 1s">❤</div>
+      <div class="heart" style="left: 30%; animation-delay: 2s">❤</div>
+      <div class="heart" style="left: 50%; animation-delay: 0.5s">❤</div>
+      <div class="heart" style="left: 70%; animation-delay: 3s">❤</div>
+      <div class="heart" style="left: 90%; animation-delay: 1.5s">❤</div>
+
+      <!-- Selector de limbă -->
+      <div class="language-selector">
+        <button onclick="changeLanguage('ro')">Română</button>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('de')">Deutsch</button>
+        <button onclick="changeLanguage('fr')">Français</button>
+      </div>
+
+      <header>
+        <h1 id="title">Dragobete - Sărbătoarea Dragostei</h1>
+      </header>
+
+      <div class="section">
+        <h2 id="meaning-title">Semnificația zilei de 24 februarie</h2>
+        <p id="meaning-text">
+          Dragobetele este sărbătoarea tradițională a dragostei și primăverii la
+          români. Este considerat ziua în care păsările își aleg perechea,
+          simbolizând renasterea naturii și puterea iubirii.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="love-title">Importanța dragostei</h2>
+        <p id="love-text1">
+          Dragostea este forța care ne unește și ne face să trăim cu adevărat.
+          Ea ne inspiră să fim mai buni, să împărtășim bucurii și suferințe, și
+          să construim legături durabile.
+        </p>
+        <p id="love-text2">
+          În această zi specială, sărbătorim frumusețea sentimentelor pure și a
+          conexiunilor profunde dintre oameni.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 id="ideas-title">Idei pentru Dragobete</h2>
+        <div class="love-ideas">
+          <div class="love-idea" id="idea1">Scrie o scrisoare de dragoste</div>
+          <div class="love-idea" id="idea2">Plantează un copac împreună</div>
+          <div class="love-idea" id="idea3">Plimbări sub lumina lunii</div>
+          <div class="love-idea" id="idea4">
+            Gătește împreună o masă specială
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="movie-title">Film romantic</h2>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/RS2BVDpZ7O0?si=GZjIDloF4MFYL-g3"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div id="dedication">Dedicat soțului meu</div>
+      <div>
+        © 2024
+        <a
+          href="https://www.cosminauzum.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >www.cosminauzum.com</a
+        >
+        <br />
+        <span id="rights">Toate drepturile rezervate</span>
+      </div>
+    </footer>
+
+    <script>
+      const translations = {
+        ro: {
+          title: "Dragobete - Sărbătoarea Dragostei",
+          meaningTitle: "Semnificația zilei de 24 februarie",
+          meaningText:
+            "Dragobetele este sărbătoarea tradițională a dragostei și primăverii la români. Este considerat ziua în care păsările își aleg perechea, simbolizând renasterea naturii și puterea iubirii.",
+          loveTitle: "Importanța dragostei",
+          loveText1:
+            "Dragostea este forța care ne unește și ne face să trăim cu adevărat. Ea ne inspiră să fim mai buni, să împărtășim bucurii și suferințe, și să construim legături durabile.",
+          loveText2:
+            "În această zi specială, sărbătorim frumusețea sentimentelor pure și a conexiunilor profunde dintre oameni.",
+          ideasTitle: "Idei pentru Dragobete",
+          idea1: "Scrie o scrisoare de dragoste",
+          idea2: "Plantează un copac împreună",
+          idea3: "Plimbări sub lumina lunii",
+          idea4: "Gătește împreună o masă specială",
+          movieTitle: "Film romantic",
+          dedication: "Dedicat soțului meu",
+          rights: "Toate drepturile rezervate",
+        },
+        en: {
+          title: "Dragobete - The Celebration of Love",
+          meaningTitle: "The Meaning of February 24th",
+          meaningText:
+            "Dragobete is the traditional celebration of love and spring in Romania. It is considered the day when birds choose their mates, symbolizing the rebirth of nature and the power of love.",
+          loveTitle: "The Importance of Love",
+          loveText1:
+            "Love is the force that unites us and makes us truly alive. It inspires us to be better, to share joys and sorrows, and to build lasting bonds.",
+          loveText2:
+            "On this special day, we celebrate the beauty of pure feelings and deep connections between people.",
+          ideasTitle: "Ideas for Dragobete",
+          idea1: "Write a love letter",
+          idea2: "Plant a tree together",
+          idea3: "Walks under the moonlight",
+          idea4: "Cook a special meal together",
+          movieTitle: "Romantic Movie",
+          dedication: "Dedicated to my husband",
+          rights: "All rights reserved",
+        },
+        de: {
+          title: "Dragobete - Das Fest der Liebe",
+          meaningTitle: "Die Bedeutung des 24. Februars",
+          meaningText:
+            "Dragobete ist das traditionelle Fest der Liebe und des Frühlings in Rumänien. Es gilt als der Tag, an dem die Vögel ihre Partner wählen und symbolisiert die Wiedergeburt der Natur und die Kraft der Liebe.",
+          loveTitle: "Die Bedeutung der Liebe",
+          loveText1:
+            "Liebe ist die Kraft, die uns vereint und uns wirklich leben lässt. Sie inspiriert uns, besser zu sein, Freuden und Sorgen zu teilen und dauerhafte Bindungen aufzubauen.",
+          loveText2:
+            "An diesem besonderen Tag feiern wir die Schönheit reiner Gefühle und tiefer Verbindungen zwischen Menschen.",
+          ideasTitle: "Ideen für Dragobete",
+          idea1: "Schreibe einen Liebesbrief",
+          idea2: "Pflanze gemeinsam einen Baum",
+          idea3: "Spaziergänge im Mondschein",
+          idea4: "Koche zusammen ein besonderes Essen",
+          movieTitle: "Romantischer Film",
+          dedication: "Gewidmet meinem Ehemann",
+          rights: "Alle Rechte vorbehalten",
+        },
+        fr: {
+          title: "Dragobete - La Fête de l'Amour",
+          meaningTitle: "La signification du 24 février",
+          meaningText:
+            "Dragobete est la fête traditionnelle de l'amour et du printemps en Roumanie. Elle est considérée comme le jour où les oiseaux choisissent leur partenaire, symbolisant la renaissance de la nature et la puissance de l'amour.",
+          loveTitle: "L'importance de l'amour",
+          loveText1:
+            "L'amour est la force qui nous unit et nous fait vraiment vivre. Il nous inspire à être meilleurs, à partager joies et peines, et à construire des liens durables.",
+          loveText2:
+            "En ce jour spécial, nous célébrons la beauté des sentiments purs et des connexions profondes entre les gens.",
+          ideasTitle: "Idées pour Dragobete",
+          idea1: "Écris une lettre d'amour",
+          idea2: "Plante un arbre ensemble",
+          idea3: "Promenades au clair de lune",
+          idea4: "Cuisine un repas spécial ensemble",
+          movieTitle: "Film romantique",
+          dedication: "Dédié à mon mari",
+          rights: "Tous droits réservés",
+        },
+      };
+
+      function changeLanguage(lang) {
+        document.getElementById("title").textContent = translations[lang].title;
+        document.getElementById("meaning-title").textContent =
+          translations[lang].meaningTitle;
+        document.getElementById("meaning-text").textContent =
+          translations[lang].meaningText;
+        document.getElementById("love-title").textContent =
+          translations[lang].loveTitle;
+        document.getElementById("love-text1").textContent =
+          translations[lang].loveText1;
+        document.getElementById("love-text2").textContent =
+          translations[lang].loveText2;
+        document.getElementById("ideas-title").textContent =
+          translations[lang].ideasTitle;
+        document.getElementById("idea1").textContent = translations[lang].idea1;
+        document.getElementById("idea2").textContent = translations[lang].idea2;
+        document.getElementById("idea3").textContent = translations[lang].idea3;
+        document.getElementById("idea4").textContent = translations[lang].idea4;
+        document.getElementById("movie-title").textContent =
+          translations[lang].movieTitle;
+        document.getElementById("dedication").textContent =
+          translations[lang].dedication;
+        document.getElementById("rights").textContent =
+          translations[lang].rights;
+      }
+
+      // Set default language to Romanian
+      changeLanguage("ro");
+    </script>
+  </body>
+</html>

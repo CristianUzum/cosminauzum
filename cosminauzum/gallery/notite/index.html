@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoteApp</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+IN&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background-animation"></div>
+    <div class="container">
+      <h1>NoteApp</h1>
+
+      <!-- Formular pentru notițe -->
+      <div class="note-form">
+        <input type="text" id="note-title" placeholder="Titlu notiță" />
+        <input
+          type="text"
+          id="note-category"
+          placeholder="Categorie (opțional)"
+        />
+        <textarea id="note-content" placeholder="Scrie aici..."></textarea>
+        <label>
+          <input type="checkbox" id="note-important" /> Importantă
+        </label>
+        <button id="save-note">Salvează Notița</button>
+      </div>
+
+      <!-- Formular pentru To-Do -->
+      <div class="todo-form">
+        <input type="text" id="todo-task" placeholder="Task nou" />
+        <input
+          type="text"
+          id="todo-category"
+          placeholder="Categorie (opțional)"
+        />
+        <label> <input type="checkbox" id="todo-important" /> Important </label>
+        <button id="save-todo">Adaugă Task</button>
+      </div>
+
+      <!-- Butoane de sortare -->
+      <div class="sort-buttons">
+        <button id="sort-important">Sortează după importantă</button>
+        <button id="sort-category">Sortează după categorie</button>
+        <button id="sort-date">Sortează după dată</button>
+      </div>
+
+      <!-- Secțiunea pentru notițe -->
+      <div class="notes-section">
+        <h2>Notițe</h2>
+        <div class="notes-grid" id="notes-grid"></div>
+      </div>
+
+      <!-- Secțiunea pentru To-Do -->
+      <div class="todo-section">
+        <h2>To-Do</h2>
+        <div class="todo-list" id="todo-list"></div>
+      </div>
+    </div>
+
+    <!-- Modal pentru afișarea și editarea conținutului -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <!-- Starea de vizualizare -->
+        <div id="view-mode">
+          <h2 id="modal-title"></h2>
+          <p><strong>Categorie:</strong> <span id="modal-category"></span></p>
+          <p><strong>Data:</strong> <span id="modal-date"></span></p>
+          <p><strong>Importantă:</strong> <span id="modal-important"></span></p>
+          <div id="modal-content" class="modal-body"></div>
+          <button id="edit-button">Editare</button>
+        </div>
+
+        <!-- Starea de editare -->
+        <div id="edit-mode" style="display: none">
+          <h2>Editare</h2>
+          <form id="edit-form">
+            <input type="text" id="edit-title" placeholder="Titlu" />
+            <input
+              type="text"
+              id="edit-category"
+              placeholder="Categorie (opțional)"
+            />
+            <textarea id="edit-content" placeholder="Conținut"></textarea>
+            <label>
+              <input type="checkbox" id="edit-important" /> Importantă
+            </label>
+            <button type="submit">Salvează modificările</button>
+            <button type="button" id="cancel-edit">Anulează</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="copyright">
+        <div class="container">
+          <h4>
+            Made by © 2021 -
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            <a href="https://www.cosminauzum.com/">www.cosminauzum.com</a>
+          </h4>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

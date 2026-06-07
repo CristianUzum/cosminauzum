@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/gif/png" href="ladybug.png" />
+    "
+    <title>Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbfbef;
+        z-index: 1000;
+      }
+
+      #ladyB {
+        width: 120px;
+        height: 120px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      body.loaded #loader {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s ease, visibility 1s ease;
+      }
+
+      body.loaded #ladyB {
+        position: absolute;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        animation: none;
+      }
+      body {
+        font-family: "Roboto Condensed", sans-serif;
+        /* background-image: url("bubu.png"); */
+        background-image: linear-gradient(
+          to right top,
+          #d16ba5,
+          #f17b94,
+          #ff9384,
+          #ffb17c,
+          #ffd180,
+          #f0e187,
+          #dff096,
+          #ccfeac,
+          #b0ffbb,
+          #94ffcc,
+          #79fedf,
+          #5ffbf1
+        );
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #333;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #marikita {
+        position: absolute;
+        margin: auto;
+        z-index: 99999;
+      }
+
+      h1,
+      h5,
+      h6 {
+        color: #f4f2ee;
+        font-weight: bolder;
+        text-shadow: 1px 1px 1px #000;
+      }
+      h2 {
+        color: #b0ffbb;
+        text-shadow: 1px 1px 1px #000;
+      }
+      .calendar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+      .month {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .month h3 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        color: #444;
+      }
+      .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+      }
+      .day,
+      .number {
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #eee;
+        cursor: pointer;
+      }
+      .day {
+        font-weight: bold;
+        background-color: #f8f9fa;
+      }
+      .number.empty {
+        visibility: hidden;
+      }
+      .number.holiday {
+        background-color: #ffcccc !important;
+        z-index: 3;
+      }
+      .number.divers {
+        background-color: #f17070;
+      }
+      .number.birthday {
+        background-color: #ccffcc !important;
+        z-index: 2;
+      }
+      .number.vacation {
+        background-color: #ccccff;
+      }
+      .number.today {
+        background-color: #ffeb3b !important;
+        font-weight: bold;
+        z-index: 1;
+      }
+      .month-image {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        border-radius: 10px 10px 0 0;
+      }
+      .back-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .back-button:hover {
+        background-color: #0056b3;
+      }
+      .event-item {
+        margin-bottom: 10px;
+        color: #792a57;
+        background-color: #ca84ac83;
+        padding: 15px;
+      }
+      .add-event-form {
+        margin-top: 10px;
+      }
+
+      .copyright a {
+        color: #ffd700; /* Auriu */
+        font-weight: bold; /* Corectat "bolum si nu fixat d" */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .copyright a:hover {
+        color: #ff4500; /* Portocaliu intens */
+        text-decoration: underline;
+      }
+      footer {
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        background-color: #28a745; /* Verde mai intens */
+        border-top: 1px solid #2c6643;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      id="marikita"
+      version="1.1"
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      width="120px"
+      height="120px"
+      viewBox="0 0 200 200"
+      enable-background="new 0 0 200 200"
+      xml:space="preserve"
+    >
+      <g>
+        <path
+          fill="#1E0F03"
+          d="M58.9,87.7c5.8,8.6,19.3,11.9,28.8,13.4c15,2.4,30.7-0.5,42-11.2c2-1.9-1-5-3.1-3.1c-10.2,9.7-24.2,12-37.7,10.1c-8.1-1.1-21.2-4.1-26.2-11.4C61.1,83.2,57.3,85.4,58.9,87.7L58.9,87.7z"
+        />
+      </g>
+      <g>
+        <path
+          fill="#1E0F03"
+          d="M62.7,144.6c4.8-7.2,17.2-9.8,25-11.2c13.8-2.5,28.6,0.1,38.9,9.9c2,1.9,5.1-1.1,3.1-3.1c-11-10.4-26.1-13.5-40.8-11.4c-9.8,1.4-24,4.7-30,13.6C57.3,144.7,61.1,146.9,62.7,144.6L62.7,144.6z"
+        />
+      </g>
+      <g>
+        <path
+          fill="#1E0F03"
+          d="M49.7,110.9c11.7,4.6,25.6,5.7,38,6.3c18,0.9,37.2-0.9,53.2-9.7c2.5-1.4,0.3-5.1-2.2-3.8c-15.4,8.5-33.7,9.8-51,9.1c-12.1-0.5-25.5-1.6-36.9-6.1C48.2,105.7,47.1,109.9,49.7,110.9L49.7,110.9z"
+        />
+      </g>
+
+      <path
+        opacity="0.5"
+        fill="#754C24"
+        d="M95.8,82.5c-0.2,1.6-0.7,5.6-1.3,11c-0.5-5.4-1.1-9.5-1.3-11c0,0-32.1,24.7-32.4,37.5s26.2,45.4,32.4,28.2c0.5-1.4,0.9-3,1.3-4.7c0.4,1.7,0.8,3.3,1.3,4.7c6.2,17.2,32.7-15.5,32.4-28.2C127.9,107.2,95.8,82.5,95.8,82.5z"
+      />
+      <g>
+        <path
+          fill="#031612"
+          d="M109,93.8c0,0,0.5-19.2-8.3-23c-8.8-3.8-19.7-1.5-22.1,8.7C76.2,89.6,78,90.9,78,90.9s15.4,4.5,24.7,4.3C109,93.8,109,93.8,109,93.8z"
+        />
+        <defs>
+          <filter
+            id="Adobe_OpacityMaskFilter"
+            filterUnits="userSpaceOnUse"
+            x="82.3"
+            y="68.2"
+            width="26.9"
+            height="26.6"
+          >
+            <feColorMatrix
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+            />
+          </filter>
+        </defs>
+        <mask
+          maskUnits="userSpaceOnUse"
+          x="82.3"
+          y="68.2"
+          width="26.9"
+          height="26.6"
+          id="SVGID_4_"
+        >
+          <g filter="url(#Adobe_OpacityMaskFilter)">
+            <radialGradient
+              id="SVGID_1_"
+              cx="-2880.4756"
+              cy="361.5264"
+              r="39.4054"
+              fx="-2873.3943"
+              fy="339.6682"
+              gradientTransform="matrix(0.1665 0.3426 -0.3484 0.1693 702.0382 1008.21)"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0.1116" style="stop-color: #ffffff" />
+              <stop offset="0.7033" style="stop-color: #000418" />
+            </radialGradient>
+            <polygon
+              fill="url(#SVGID_1_)"
+              points="104.3,54.6 123.6,94.2 81.3,114.8 62,75.2"
+            />
+          </g>
+        </mask>
+        <path
+          opacity="0.3"
+          mask="url(#SVGID_4_)"
+          fill="#FFFFFF"
+          enable-background="new    "
+          d="M89.3,69.4c6.3-3.1,14.1-0.2,17.3,6.5c3.2,6.7,5.3,22.4-5.6,17.6c-6.3,3.1-14.1,0.2-17.3-6.5C80.5,80.4,83,72.5,89.3,69.4z"
+        />
+      </g>
+      <g>
+        <path
+          fill="none"
+          stroke="#17211A"
+          stroke-width="1.4553"
+          stroke-miterlimit="10"
+          d="M97.8,75.2c-2.3-7.8-1.5-23.9,11-25"
+        />
+        <ellipse
+          transform="matrix(0.6001 -0.7999 0.7999 0.6001 3.6804 109.1467)"
+          fill="#17211A"
+          stroke="#17211A"
+          stroke-width="1.4553"
+          stroke-miterlimit="10"
+          cx="111"
+          cy="50.9"
+          rx="2"
+          ry="2.6"
+        />
+      </g>
+      <g>
+        <path
+          fill="none"
+          stroke="#17211A"
+          stroke-width="1.4553"
+          stroke-miterlimit="10"
+          d="M75.1,50.5c13.4,2.2,14.5,20,12.1,28.4"
+        />
+        <ellipse
+          transform="matrix(0.5751 0.8181 -0.8181 0.5751 72.9019 -37.9212)"
+          fill="#17211A"
+          stroke="#17211A"
+          stroke-width="1.4553"
+          stroke-miterlimit="10"
+          cx="73"
+          cy="51.2"
+          rx="2.3"
+          ry="2.7"
+        />
+      </g>
+      <radialGradient
+        id="SVGID_2_"
+        cx="103.8008"
+        cy="111.1855"
+        r="34.2325"
+        gradientTransform="matrix(0.9258 0.2927 -0.301 0.9519 32.1128 -20.9102)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" style="stop-color: #f15a24" />
+        <stop offset="1" style="stop-color: #c1272d" />
+      </radialGradient>
+      <path
+        fill="url(#SVGID_2_)"
+        d="M104.6,84.2c18.2,5.8,28.6,24.4,23.2,41.6c-5.4,17.2-24.6,26.5-42.9,20.7c-18.2-5.8-28.6-24.4-23.2-41.6C67.1,87.7,86.3,78.4,104.6,84.2z"
+      />
+      <ellipse
+        transform="matrix(-0.9411 0.3381 -0.3381 -0.9411 175.9313 194.1811)"
+        fill="#17211A"
+        cx="71.1"
+        cy="112.4"
+        rx="6.8"
+        ry="7.6"
+      />
+      <path
+        fill="#17211A"
+        d="M78.6,97.4c-1.3-3.6,0.4-7.4,3.7-8.6c3.3-1.2,7,0.7,8.3,4.3c1.3,3.6-0.4,7.4-3.7,8.6C83.6,102.9,79.9,100.9,78.6,97.4z"
+      />
+      <circle fill="#17211A" cx="83.2" cy="132.3" r="7.3" />
+      <path
+        fill="#17211A"
+        d="M116.8,120.5c-3.6-1-5.7-5.1-4.6-9.1c1.1-4.1,4.9-6.5,8.6-5.6c3.6,1,5.7,5.1,4.6,9.1C124.2,119,120.4,121.5,116.8,120.5z"
+      />
+      <path
+        fill="#17211A"
+        d="M102,101.9c-3.4-0.9-5.3-4.6-4.3-8.3c1-3.7,4.5-5.9,7.9-5c3.4,0.9,5.3,4.6,4.3,8.3C109,100.6,105.4,102.8,102,101.9z"
+      />
+      <circle fill="#17211A" cx="106.8" cy="132" r="7.3" />
+      <path
+        fill="#4F2A0C"
+        d="M94.4,82.5c-1,5.1-1.3,40.8-0.5,65.7c0,0,2.4,0,1.4,0c0,0,0.9-25.5,0.6-38.7C95.5,96.2,94.4,82.5,94.4,82.5z"
+      />
+    </svg>
+
+    <div id="loader">
+      <svg
+        id="ladyB"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="120px"
+        height="120px"
+        viewBox="0 0 200 200"
+        enable-background="new 0 0 200 200"
+        xml:space="preserve"
+      >
+        <g>
+          <path
+            fill="#1E0F03"
+            d="M58.9,87.7c5.8,8.6,19.3,11.9,28.8,13.4c15,2.4,30.7-0.5,42-11.2c2-1.9-1-5-3.1-3.1c-10.2,9.7-24.2,12-37.7,10.1c-8.1-1.1-21.2-4.1-26.2-11.4C61.1,83.2,57.3,85.4,58.9,87.7L58.9,87.7z"
+          />
+        </g>
+        <g>
+          <path
+            fill="#1E0F03"
+            d="M62.7,144.6c4.8-7.2,17.2-9.8,25-11.2c13.8-2.5,28.6,0.1,38.9,9.9c2,1.9,5.1-1.1,3.1-3.1c-11-10.4-26.1-13.5-40.8-11.4c-9.8,1.4-24,4.7-30,13.6C57.3,144.7,61.1,146.9,62.7,144.6L62.7,144.6z"
+          />
+        </g>
+        <g>
+          <path
+            fill="#1E0F03"
+            d="M49.7,110.9c11.7,4.6,25.6,5.7,38,6.3c18,0.9,37.2-0.9,53.2-9.7c2.5-1.4,0.3-5.1-2.2-3.8c-15.4,8.5-33.7,9.8-51,9.1c-12.1-0.5-25.5-1.6-36.9-6.1C48.2,105.7,47.1,109.9,49.7,110.9L49.7,110.9z"
+          />
+        </g>
+
+        <path
+          opacity="0.5"
+          fill="#754C24"
+          d="M95.8,82.5c-0.2,1.6-0.7,5.6-1.3,11c-0.5-5.4-1.1-9.5-1.3-11c0,0-32.1,24.7-32.4,37.5s26.2,45.4,32.4,28.2c0.5-1.4,0.9-3,1.3-4.7c0.4,1.7,0.8,3.3,1.3,4.7c6.2,17.2,32.7-15.5,32.4-28.2C127.9,107.2,95.8,82.5,95.8,82.5z"
+        />
+        <g>
+          <path
+            fill="#031612"
+            d="M109,93.8c0,0,0.5-19.2-8.3-23c-8.8-3.8-19.7-1.5-22.1,8.7C76.2,89.6,78,90.9,78,90.9s15.4,4.5,24.7,4.3C109,93.8,109,93.8,109,93.8z"
+          />
+          <defs>
+            <filter
+              id="Adobe_OpacityMaskFilter"
+              filterUnits="userSpaceOnUse"
+              x="82.3"
+              y="68.2"
+              width="26.9"
+              height="26.6"
+            >
+              <feColorMatrix
+                type="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+              />
+            </filter>
+          </defs>
+          <mask
+            maskUnits="userSpaceOnUse"
+            x="82.3"
+            y="68.2"
+            width="26.9"
+            height="26.6"
+            id="SVGID_4_"
+          >
+            <g filter="url(#Adobe_OpacityMaskFilter)">
+              <radialGradient
+                id="SVGID_1_"
+                cx="-2880.4756"
+                cy="361.5264"
+                r="39.4054"
+                fx="-2873.3943"
+                fy="339.6682"
+                gradientTransform="matrix(0.1665 0.3426 -0.3484 0.1693 702.0382 1008.21)"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0.1116" style="stop-color: #ffffff" />
+                <stop offset="0.7033" style="stop-color: #000418" />
+              </radialGradient>
+              <polygon
+                fill="url(#SVGID_1_)"
+                points="104.3,54.6 123.6,94.2 81.3,114.8 62,75.2"
+              />
+            </g>
+          </mask>
+          <path
+            opacity="0.3"
+            mask="url(#SVGID_4_)"
+            fill="#FFFFFF"
+            enable-background="new    "
+            d="M89.3,69.4c6.3-3.1,14.1-0.2,17.3,6.5c3.2,6.7,5.3,22.4-5.6,17.6c-6.3,3.1-14.1,0.2-17.3-6.5C80.5,80.4,83,72.5,89.3,69.4z"
+          />
+        </g>
+        <g>
+          <path
+            fill="none"
+            stroke="#17211A"
+            stroke-width="1.4553"
+            stroke-miterlimit="10"
+            d="M97.8,75.2c-2.3-7.8-1.5-23.9,11-25"
+          />
+          <ellipse
+            transform="matrix(0.6001 -0.7999 0.7999 0.6001 3.6804 109.1467)"
+            fill="#17211A"
+            stroke="#17211A"
+            stroke-width="1.4553"
+            stroke-miterlimit="10"
+            cx="111"
+            cy="50.9"
+            rx="2"
+            ry="2.6"
+          />
+        </g>
+        <g>
+          <path
+            fill="none"
+            stroke="#17211A"
+            stroke-width="1.4553"
+            stroke-miterlimit="10"
+            d="M75.1,50.5c13.4,2.2,14.5,20,12.1,28.4"
+          />
+          <ellipse
+            transform="matrix(0.5751 0.8181 -0.8181 0.5751 72.9019 -37.9212)"
+            fill="#17211A"
+            stroke="#17211A"
+            stroke-width="1.4553"
+            stroke-miterlimit="10"
+            cx="73"
+            cy="51.2"
+            rx="2.3"
+            ry="2.7"
+          />
+        </g>
+        <radialGradient
+          id="SVGID_2_"
+          cx="103.8008"
+          cy="111.1855"
+          r="34.2325"
+          gradientTransform="matrix(0.9258 0.2927 -0.301 0.9519 32.1128 -20.9102)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0" style="stop-color: #f15a24" />
+          <stop offset="1" style="stop-color: #c1272d" />
+        </radialGradient>
+        <path
+          fill="url(#SVGID_2_)"
+          d="M104.6,84.2c18.2,5.8,28.6,24.4,23.2,41.6c-5.4,17.2-24.6,26.5-42.9,20.7c-18.2-5.8-28.6-24.4-23.2-41.6C67.1,87.7,86.3,78.4,104.6,84.2z"
+        />
+        <ellipse
+          transform="matrix(-0.9411 0.3381 -0.3381 -0.9411 175.9313 194.1811)"
+          fill="#17211A"
+          cx="71.1"
+          cy="112.4"
+          rx="6.8"
+          ry="7.6"
+        />
+        <path
+          fill="#17211A"
+          d="M78.6,97.4c-1.3-3.6,0.4-7.4,3.7-8.6c3.3-1.2,7,0.7,8.3,4.3c1.3,3.6-0.4,7.4-3.7,8.6C83.6,102.9,79.9,100.9,78.6,97.4z"
+        />
+        <circle fill="#17211A" cx="83.2" cy="132.3" r="7.3" />
+        <path
+          fill="#17211A"
+          d="M116.8,120.5c-3.6-1-5.7-5.1-4.6-9.1c1.1-4.1,4.9-6.5,8.6-5.6c3.6,1,5.7,5.1,4.6,9.1C124.2,119,120.4,121.5,116.8,120.5z"
+        />
+        <path
+          fill="#17211A"
+          d="M102,101.9c-3.4-0.9-5.3-4.6-4.3-8.3c1-3.7,4.5-5.9,7.9-5c3.4,0.9,5.3,4.6,4.3,8.3C109,100.6,105.4,102.8,102,101.9z"
+        />
+        <circle fill="#17211A" cx="106.8" cy="132" r="7.3" />
+        <path
+          fill="#4F2A0C"
+          d="M94.4,82.5c-1,5.1-1.3,40.8-0.5,65.7c0,0,2.4,0,1.4,0c0,0,0.9-25.5,0.6-38.7C95.5,96.2,94.4,82.5,94.4,82.5z"
+        />
+      </svg>
+    </div>
+    <div class="container">
+      <h1 class="text-center my-4">Calendar</h1>
+      <div class="text-center my-4">
+        <label for="yearSelect">Selectează anul:</label>
+        <select id="yearSelect" class="form-control d-inline-block w-auto">
+          <!-- Opțiunile pentru ani vor fi populate din JavaScript -->
+        </select>
+      </div>
+      <h2 class="text-center my-4">Clasa Pregătitoare B - Germană</h2>
+      <div class="calendar" id="calendar">
+        <!-- Lunile vor fi populate din JavaScript -->
+      </div>
+    </div>
+
+    <!-- Modal pentru evenimente și sărbători -->
+    <div
+      class="modal fade"
+      id="eventModal"
+      tabindex="-1"
+      aria-labelledby="eventModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="eventModalLabel">
+              Evenimente și sărbători
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="eventList"></div>
+            <div id="holidayInfo"></div>
+            <div id="diversInfo"></div>
+            <form id="eventForm" class="add-event-form">
+              <input
+                type="text"
+                id="eventInput"
+                class="form-control"
+                placeholder="Adaugă un eveniment"
+              />
+              <select id="eventType" class="form-control mt-2">
+                <option value="Eveniment">Eveniment</option>
+                <option value="Zi de naștere">Zi de naștere</option>
+                <option value="notiță">Notiță</option>
+              </select>
+              <button type="submit" class="btn btn-primary mt-2">Adaugă</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="copyright text-center my-4">
+        <div class="container flex flex-center gap-2 flex-wrap">
+          <h5>
+            Made by
+            <a href="https://www.cosminauzum.com/" class="p-0"
+              >www.cosminauzum.com
+            </a>
+          </h5>
+        </div>
+        <h6>
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+        </h6>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Simulează încărcarea
+        setTimeout(function () {
+          $("body").addClass("loaded");
+
+          // Ascunde loader-ul și activează urmărirea mouse-ului
+          $("#loader").hide(); // Ascunde loader-ul complet
+        }, 3000); // 3 secunde de loader
+      });
+      // Funcție pentru scroll personalizat
+      function smoothScrollTo(target) {
+        const targetElement = document.querySelector(target);
+        if (targetElement) {
+          const offset =
+            targetElement.getBoundingClientRect().top + window.scrollY;
+          const duration = 800; // Durata animației în milisecunde
+          const start = window.scrollY;
+          const distance = offset - start;
+          let startTime = null;
+
+          function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, start, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+          }
+
+          // Funcție de easing pentru o animație mai plăcută
+          function easeInOutQuad(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return (c / 2) * t * t + b;
+            t--;
+            return (-c / 2) * (t * (t - 2) - 1) + b;
+          }
+
+          requestAnimationFrame(animation);
+        }
+      }
+
+      // Exemplu de utilizare:
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = this.getAttribute("href");
+          smoothScrollTo(target);
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(document).mousemove(girarMarikita);
+      });
+      function girarMarikita(e) {
+        var box = $("#marikita");
+        var boxCenter = [
+          box.offset().left + box.width() / 2,
+          box.offset().top + box.height() / 2,
+        ];
+        var angle =
+          Math.atan2(e.pageX - boxCenter[0], -(e.pageY - boxCenter[1])) *
+          (180 / Math.PI);
+
+        box.css({
+          "-webkit-transform": "rotate(" + angle + "deg)",
+          "-moz-transform": "rotate(" + angle + "deg)",
+          transform: "rotate(" + angle + "deg)",
+        });
+        moverMarikita(e);
+      }
+
+      function moverMarikita(e) {
+        var $mouseX = e.pageX;
+        var $mouseY = e.pageY;
+        $("#marikita")
+          .stop()
+          .animate({ left: $mouseX + "px", top: $mouseY + "px" }, 700);
+      }
+    </script>
+    <script>
+      // Funcție pentru a genera toate datele dintr-un interval
+      function generateDateRange(startDate, endDate) {
+        const dates = [];
+        let currentDate = new Date(startDate);
+
+        while (currentDate <= new Date(endDate)) {
+          dates.push(formatDate(currentDate)); // Formatează data și o adaugă în array
+          currentDate.setDate(currentDate.getDate() + 1); // Trecem la următoarea zi
+        }
+
+        return dates;
+      }
+
+      // Sărbători și vacanțe în România pentru 2025
+      const holidays = {
+        "01-01": "Anul Nou",
+        "01-02": "Anul Nou",
+        "01-06": "Boboteaza",
+        "01-07": "Sfântul Ioan Botezătorul",
+        "01-24": "Ziua Unirii Principatelor Române",
+        "04-18": "Paște ortodox (Vinerea Mare)",
+        "04-20": "Paște ortodox",
+        "04-21": "A doua zi de Paște ortodox",
+        "05-01": "Ziua Muncii",
+        "06-01": "Ziua Copilului",
+        "06-05": "Ziua Învăţătorului",
+        "06-08": "Rusalii",
+        "06-09": "A doua zi de Rusalii",
+        "08-15": "Adormirea Maicii Domnului",
+        "11-30": "Sfântul Andrei",
+        "12-01": "Ziua Națională a României",
+        "12-25": "Crăciunul",
+        "12-26": "Crăciunul",
+      };
+
+      const diverse = {
+        "04-14": "începutul Saptămânii verzi",
+        "04-29": "Comper Română Etapa 2",
+        "05-06": "Comper Matematică Etapa 2",
+        "06-03": "Comper Română Etapa Naţională",
+        "06-10": "Comper Matematică Etapa Naţională",
+      };
+
+      // Zile de naștere
+      const birthdays = [
+        { date: "01-19", name: "Ziua de naștere - Frau Yvonne" },
+        { date: "01-19", name: "Ziua de naștere - Daria" },
+        { date: "02-22", name: "Ziua de naștere - Karina" },
+        { date: "02-25", name: "Ziua de naștere - Lara" },
+        { date: "03-09", name: "Ziua de naștere - Maya" },
+        { date: "04-25", name: "Ziua de naștere - Sara" },
+        { date: "05-12", name: "Ziua de naștere - Mihai" },
+        { date: "06-11", name: "Ziua de naștere - Ema" },
+        { date: "08-09", name: "Ziua de naștere - David R." },
+        { date: "08-14", name: "Ziua de naștere - Ionela" },
+        { date: "08-27", name: "Ziua de naștere - Maria" },
+        { date: "09-18", name: "Ziua de naștere - Ana" },
+        { date: "09-26", name: "Ziua de naștere - David G." },
+        { date: "12-04", name: "Ziua de naștere - Nicol" },
+      ];
+
+      // Vacanțe
+      const vacations = {
+        ...generateDateRange("02-08-2025", "02-16-2025").reduce((acc, date) => {
+          acc[date.slice(5)] = "Vacanță"; // Folosim doar lună-zi pentru a repeta anual
+          return acc;
+        }, {}),
+        ...generateDateRange("04-18-2025", "04-25-2025").reduce((acc, date) => {
+          acc[date.slice(5)] = "Vacanța de primavara";
+          return acc;
+        }, {}),
+        ...generateDateRange("06-23-2025", "09-07-2025").reduce((acc, date) => {
+          acc[date.slice(5)] = "Vacanță";
+          return acc;
+        }, {}),
+      };
+
+      // Funcție pentru a formata data ca "YYYY-MM-DD"
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      // Funcție pentru a obține sărbătorile pentru un an specific
+      function getHolidaysForYear(year) {
+        const result = {};
+        for (const [key, value] of Object.entries(holidays)) {
+          result[`${year}-${key}`] = value;
+        }
+        return result;
+      }
+
+      // Funcție pentru a obține zilele de naștere pentru un an specific
+      function getBirthdaysForYear(year) {
+        return birthdays.map((b) => ({
+          date: `${year}-${b.date}`,
+          name: b.name,
+        }));
+      }
+
+      // Funcție pentru a obține vacanțele pentru un an specific
+      function getVacationsForYear(year) {
+        const result = {};
+        for (const [key, value] of Object.entries(vacations)) {
+          result[`${year}-${key}`] = value;
+        }
+        return result;
+      }
+
+      // Funcție pentru a genera calendarul pentru un an specific
+      function generateCalendar(year) {
+        const calendar = document.getElementById("calendar");
+        calendar.innerHTML = "";
+
+        const months = [
+          "Ianuarie",
+          "Februarie",
+          "Martie",
+          "Aprilie",
+          "Mai",
+          "Iunie",
+          "Iulie",
+          "August",
+          "Septembrie",
+          "Octombrie",
+          "Noiembrie",
+          "Decembrie",
+        ];
+        const images = [
+          "ian.jpg",
+          "feb.jpg",
+          "martie.jpg",
+          "april.jpg",
+          "mai.jpg",
+          "iun.jpg",
+          "iul.jpg",
+          "aug.jpg",
+          "sept.jpg",
+          "oct.jpg",
+          "noi.jpg",
+          "dec.jpg",
+        ];
+
+        const holidaysForYear = getHolidaysForYear(year);
+        const birthdaysForYear = getBirthdaysForYear(year);
+        const vacationsForYear = getVacationsForYear(year);
+
+        months.forEach((month, index) => {
+          const monthDiv = document.createElement("div");
+          monthDiv.className = "month";
+          monthDiv.innerHTML = `
+      <h3>${month} ${year}</h3>
+      <img src="${images[index]}" class="month-image" alt="${month}">
+      <div class="days"></div>
+    `;
+          const daysDiv = monthDiv.querySelector(".days");
+
+          // Adaugă zilele săptămânii
+          ["L", "M", "M", "J", "V", "S", "D"].forEach((day) => {
+            const dayDiv = document.createElement("div");
+            dayDiv.className = "day";
+            dayDiv.textContent = day;
+            daysDiv.appendChild(dayDiv);
+          });
+
+          // Adaugă zilele lunii
+          const firstDay = new Date(year, index, 1).getDay();
+          const daysInMonth = new Date(year, index + 1, 0).getDate();
+
+          for (let i = 1; i < firstDay; i++) {
+            const emptyDiv = document.createElement("div");
+            emptyDiv.className = "number empty";
+            daysDiv.appendChild(emptyDiv);
+          }
+
+          for (let i = 1; i <= daysInMonth; i++) {
+            const date = new Date(year, index, i);
+            const formattedDate = formatDate(date);
+            const monthDay = formattedDate.slice(5); // Extrage "MM-DD" din "YYYY-MM-DD"
+            const numberDiv = document.createElement("div");
+            numberDiv.className = "number";
+            numberDiv.textContent = i;
+
+            // Verifică dacă este sărbătoare
+            if (holidays[monthDay]) {
+              numberDiv.classList.add("holiday");
+            }
+
+            // Verifică dacă este eveniment divers
+            if (diverse[monthDay]) {
+              numberDiv.classList.add("divers");
+            }
+
+            // Verifică dacă este zi de naștere
+            const birthdayEvents = birthdaysForYear.filter(
+              (b) => b.date === formattedDate
+            );
+            if (birthdayEvents.length > 0) {
+              numberDiv.classList.add("birthday");
+            }
+
+            // Verifică dacă este vacanță
+            if (vacations[monthDay]) {
+              numberDiv.classList.add("vacation");
+            }
+
+            // Verifică dacă există evenimente personalizate
+            const events =
+              JSON.parse(localStorage.getItem("calendarEvents")) || {};
+            if (events[formattedDate]) {
+              numberDiv.classList.add("event");
+            }
+
+            // Verifică dacă este ziua curentă
+            const today = formatDate(new Date());
+            if (formattedDate === today) {
+              numberDiv.classList.add("today");
+            }
+
+            // Deschide modalul la click
+            numberDiv.addEventListener("click", () => openModal(formattedDate));
+            daysDiv.appendChild(numberDiv);
+          }
+
+          calendar.appendChild(monthDiv);
+        });
+
+        // Scroll automat la luna curentă
+        const currentMonthIndex = new Date().getMonth(); // Indexul lunii curente (0-11)
+        const currentMonthElement = document.getElementById(
+          `month-${currentMonthIndex}`
+        );
+        if (currentMonthElement) {
+          currentMonthElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      // Funcție pentru a genera un ID unic
+      function generateId() {
+        return "event-" + Date.now();
+      }
+
+      // Încarcă evenimentele din localStorage
+      function loadEvents() {
+        return JSON.parse(localStorage.getItem("calendarEvents")) || {};
+      }
+
+      // Salvează evenimentele în localStorage
+      function saveEvents(events) {
+        localStorage.setItem("calendarEvents", JSON.stringify(events));
+      }
+
+      // Adaugă un eveniment
+      function addEvent(date, text, type) {
+        const events = loadEvents();
+        const id = generateId();
+        if (!events[date]) events[date] = [];
+        events[date].push({ id, text, type });
+        saveEvents(events);
+        return id;
+      }
+
+      // Șterge un eveniment
+      function deleteEvent(id) {
+        const events = loadEvents();
+        for (const date in events) {
+          events[date] = events[date].filter((event) => event.id !== id);
+        }
+        saveEvents(events);
+        const currentDate = $("#eventModal").data("currentDate");
+        if (currentDate) openModal(currentDate); // Reîncarcă evenimentele în modal
+      }
+
+      // Editează un eveniment
+      function editEvent(id, newText, newType) {
+        const events = loadEvents();
+        for (const date in events) {
+          const eventIndex = events[date].findIndex((event) => event.id === id);
+          if (eventIndex !== -1) {
+            events[date][eventIndex].text = newText;
+            events[date][eventIndex].type = newType;
+            break;
+          }
+        }
+        saveEvents(events);
+        const currentDate = $("#eventModal").data("currentDate");
+        if (currentDate) openModal(currentDate); // Reîncarcă evenimentele în modal
+      }
+
+      // Prompt pentru editarea unui eveniment
+      function editEventPrompt(id) {
+        const events = loadEvents();
+        for (const date in events) {
+          const event = events[date].find((e) => e.id === id);
+          if (event) {
+            const newText = prompt("Editează evenimentul:", event.text);
+            const newType = prompt("Editează tipul evenimentului:", event.type);
+            if (newText !== null && newType !== null) {
+              editEvent(id, newText, newType);
+            }
+            break;
+          }
+        }
+      }
+
+      function openModal(date) {
+        const eventList = document.getElementById("eventList");
+        const holidayInfo = document.getElementById("holidayInfo");
+        const diversInfo = document.getElementById("diversInfo");
+
+        // Afișează data curentă în modal
+        $("#eventModalLabel").text(`Evenimente și sărbători - ${date}`);
+
+        // Afișează evenimentele existente
+        const events = loadEvents();
+        eventList.innerHTML = events[date]
+          ? events[date]
+              .map(
+                (event) => `
+    <div class="event-item">
+        <strong>${event.type}:</strong> ${event.text}
+        <button onclick="editEventPrompt('${event.id}')" class="btn btn-sm btn-warning">Editează</button>
+        <button onclick="deleteEvent('${event.id}')" class="btn btn-sm btn-danger">Șterge</button>
+    </div>
+  `
+              )
+              .join("")
+          : "";
+
+        // Afișează informații despre sărbători, zile de naștere și evenimente diverse
+        let info = "";
+        const monthDay = date.slice(5); // Extrage "MM-DD" din "YYYY-MM-DD"
+
+        // Verifică dacă este sărbătoare
+        if (holidays[monthDay]) {
+          info += `<div class="alert alert-info">${holidays[monthDay]}</div>`;
+        }
+
+        // Verifică dacă este eveniment divers
+        if (diverse[monthDay]) {
+          info += `<div class="alert alert-info">${diverse[monthDay]}</div>`;
+        }
+
+        // Verifică dacă este zi de naștere
+        const birthdayEvents = birthdays.filter((b) => b.date === monthDay);
+        if (birthdayEvents.length > 0) {
+          info += birthdayEvents
+            .map((b) => `<div class="alert alert-success">${b.name}</div>`)
+            .join("");
+        }
+
+        // Verifică dacă este vacanță
+        if (vacations[monthDay]) {
+          info += `<div class="alert alert-warning">${vacations[monthDay]}</div>`;
+        }
+
+        holidayInfo.innerHTML = info;
+
+        // Formular pentru adăugarea de evenimente
+        const eventForm = document.getElementById("eventForm");
+        eventForm.onsubmit = (e) => {
+          e.preventDefault();
+          const eventInput = document.getElementById("eventInput");
+          const eventType = document.getElementById("eventType").value;
+          if (eventInput.value) {
+            addEvent(date, eventInput.value, eventType);
+            eventInput.value = "";
+            openModal(date); // Reîncarcă evenimentele în modal
+          }
+        };
+
+        $("#eventModal").data("currentDate", date);
+        $("#eventModal").modal("show");
+      }
+
+      // La încărcarea paginii, generează calendarul pentru anul curent
+      $(document).ready(function () {
+        // Populează selectorul de ani
+        const yearSelect = document.getElementById("yearSelect");
+        for (let year = 2025; year <= 2030; year++) {
+          const option = document.createElement("option");
+          option.value = year;
+          option.textContent = year;
+          yearSelect.appendChild(option);
+        }
+
+        // Generează calendarul pentru anul selectat
+        yearSelect.addEventListener("change", () => {
+          generateCalendar(parseInt(yearSelect.value));
+        });
+
+        // Generează calendarul pentru anul curent
+        generateCalendar(2025);
+      });
+    </script>
+  </body>
+</html>

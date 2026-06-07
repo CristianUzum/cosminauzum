@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meniu Revelion 2024-2025</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff5e6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .menu-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: linear-gradient(145deg, #f9f1e7, #ffffff);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .menu-header {
+        text-align: center;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .menu-header h1 {
+        font-size: 2.5em;
+        margin: 0;
+        color: #b02a37;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .menu-header p {
+        font-size: 1.2em;
+        margin: 5px 0;
+        color: #555;
+      }
+
+      .countdown {
+        font-size: 1.5em;
+        color: #b02a37;
+        margin-top: 10px;
+      }
+
+      .menu-section {
+        margin: 20px 0;
+      }
+
+      .menu-section h2 {
+        font-size: 1.8em;
+        color: #b02a37;
+        border-bottom: 2px solid #b02a37;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      .menu-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu-items li {
+        font-size: 1.2em;
+        padding: 5px 0;
+        border-bottom: 1px dashed #ccc;
+      }
+
+      .menu-section img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      .guest-name {
+        text-align: center;
+        font-size: 1.5em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #b02a37;
+        color: #fff;
+        font-size: 1em;
+        margin-top: 20px;
+      }
+
+      .footer-links {
+        margin-top: 10px;
+      }
+
+      .footer-links a,
+      footer p a {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .animated-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .circle {
+        position: absolute;
+        border: 2px solid;
+        border-radius: 50%;
+        animation: move 15s infinite;
+      }
+
+      @keyframes move {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(100vw, -100vh) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+        .menu-container {
+          border: none;
+          box-shadow: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .menu-header h1 {
+          font-size: 2em;
+        }
+        .menu-section h2 {
+          font-size: 1.5em;
+        }
+        .menu-items li {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="animated-background">
+      <div
+        class="circle"
+        style="
+          width: 100px;
+          height: 100px;
+          top: 10%;
+          left: 20%;
+          border-color: #f09;
+        "
+      ></div>
+      <div
+        class="circle"
+        style="
+          width: 150px;
+          height: 150px;
+          top: 30%;
+          left: 40%;
+          border-color: #fa0;
+        "
+      ></div>
+      <div
+        class="circle"
+        style="
+          width: 200px;
+          height: 200px;
+          top: 50%;
+          left: 60%;
+          border-color: #0ff;
+        "
+      ></div>
+    </div>
+
+    <div class="menu-container">
+      <div class="menu-header">
+        <h1>Meniu Revelion 2024-2025</h1>
+        <p>Sărbătorește noaptea cu arome delicioase!</p>
+        <p>31 Decembrie 2024 - 1 Ianuarie 2025</p>
+      </div>
+
+      <div class="menu-section">
+        <h2><img src="./cocktail.png" alt="Icon Băuturi" /> Băuturi</h2>
+        <ul class="menu-items">
+          <li>Suc de vișine, mango, piure de fructe, Tedy</li>
+          <li>Limonadă</li>
+          <li>Bere Kozel, Peroni</li>
+          <li>Cognac, Lichior, Tequila</li>
+          <li>Şampanie</li>
+          <li>Apă plată și minerală</li>
+          <li>Ciocolată caldă</li>
+          <li>Cafea, cappuccino, latte macchiato, ceai</li>
+        </ul>
+        <h2>Snacksuri</h2>
+        <ul class="menu-items">
+          <li>Sărățele fragede</li>
+          <li>Biscuiți sărați</li>
+          <li>Alune și caju</li>
+          <li>Fursecuri cu stafide</li>
+        </ul>
+      </div>
+
+      <div class="menu-section">
+        <h2><img src="./appetizer.png" alt="Icon Aperitive" /> Aperitive</h2>
+        <ul class="menu-items">
+          <li>Platou cu brânzeturi și măsline</li>
+          <li>Salată de vinete cu roșii, castraveți și ardei</li>
+          <li>Salata Aida(fasole rosie, porumb, branza feta, ciuperci)</li>
+          <li>Salata de icre de hering</li>
+          <li>Bruschete cu rosii si parmezan</li>
+        </ul>
+      </div>
+
+      <div class="menu-section">
+        <h2><img src="./diet.png" alt="Icon Fel Principal" /> Fel Principal</h2>
+        <ul class="menu-items">
+          <li>Supă de broccoli</li>
+          <li>Cascaval pane şi cartofi dulci</li>
+          <li>Coaste de porc la cutor in sos de miere</li>
+          <li>Tagliatele cu spanac si sos de rosii</li>
+          <li>Cotlet de porc cu sos de roșii și piure de cartofi</li>
+          <li>Păstrăv la cuptor cu mămăligă, smântână și mujdei</li>
+        </ul>
+      </div>
+
+      <div class="menu-section">
+        <h2><img src="./piece-of-cake.png" alt="Icon Dulciuri" /> Desert</h2>
+        <ul class="menu-items">
+          <li>Tiramisu</li>
+          <li>Cremșnit cu mouse de ciocolata de strawberry</li>
+          <li>Tort cu mouse de căpșuni, ananas si piersici</li>
+          <li>Amandină</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Creat de<a href="https://www.cosminauzum.com/"
+          >cosminauzum.com</a
+        >
+      </p>
+      <!-- <div class="footer-links">
+        <a href="#">Termeni și condiții</a>
+        <a href="#">Politica de confidențialitate</a>
+        <a href="#">Facebook</a>
+      </div> -->
+    </footer>
+
+    <script>
+      // Personalizarea numelui invitatului
+      const guestName = "Melinda"; // Înlocuiește cu numele dorit
+      document.getElementById("guest-name").textContent = guestName;
+
+      // Countdown până la miezul nopții
+      const countdownElement = document.getElementById("countdown");
+      const newYear = new Date("2025-01-01T00:00:00");
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = newYear - now;
+
+        const hours = String(
+          Math.floor((diff / (1000 * 60 * 60)) % 24)
+        ).padStart(2, "0");
+        const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(
+          2,
+          "0"
+        );
+        const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+
+        countdownElement.textContent = `${hours}:${minutes}:${seconds}`;
+
+        if (diff <= 0) {
+          countdownElement.textContent = "La mulți ani!";
+          clearInterval(interval);
+        }
+      }
+
+      const interval = setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>

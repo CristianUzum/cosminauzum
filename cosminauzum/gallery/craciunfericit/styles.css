@@ -1,0 +1,245 @@
+/* Basic catalog styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  background-color: transparent;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#flipbook {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./tree.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.cover-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asigură că imaginea nu depășește dimensiunile */
+  border-radius: 5px;
+  background-color: #891618;}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Atribuie un efect de umbră mai vizibil */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 1px 1px #891618;
+}
+
+.overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(243, 233, 190);/* Atribuie un efect de umbră mai vizibil */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(136, 23, 23);
+}
+
+.overlay h1 {
+  font-size: 4vw; /* Ajustează fontul pe baza lățimii ferestrei */
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+/* Product grid page */
+.product-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border-left: 0.4px solid brown;
+  box-sizing: content-box;
+  text-align: center;
+  overflow: hidden;
+}
+
+.product-grid .greeting {
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 100%;
+  width: auto;
+}
+
+.greeting h2 {
+  font-size: 1.8vw;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Last page: Stamp */
+.stamp {
+  position: absolute;
+  background-color: #f2f2f2;
+  border: 2px solid #3e8e41;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+}
+.stamp h3 {
+  color: #891618;
+}
+.stamp a {
+  text-decoration: none;
+  color: #3e8e41;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.stamp a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation buttons container */
+.nav-buttons-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #3e8e41;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav-button:hover {
+  background-color: rgba(51, 51, 51, 0.8);
+}
+
+/* Responsive styles for smaller devices */
+@media (max-width: 768px) {
+  .catalog {
+    width: 100vw;
+    height: auto;
+  }
+
+  #flipbook {
+    height: 100%;
+    max-height: none;
+  }
+
+  .cover-content img {
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+
+  .overlay h1 {
+    font-size: 6vw; /* Font mai mic pe ecrane mici */
+  }
+
+  .product-grid .greeting h2 {
+    font-size: 6vw;
+  }
+
+  .nav-button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  /* Elimină fundalul verde pe mobil */
+  body {
+    background-color: #f0f0f0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog {
+    width: 100vw;
+  }
+  
+  #flipbook {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+  }
+
+  .cover-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .overlay h1 {
+    font-size: 6vw;
+  }
+
+  .product-info h2 {
+    font-size: 4vw;
+  }
+
+  .product-info p {
+    font-size: 3.5vw;
+  }
+
+  .nav-button {
+    font-size: 4vw;
+    padding: 6px 12px;
+  }
+}
+
+/* Page background for the first page (cover) */
+.product-grid {
+  background-image: url('./tree.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

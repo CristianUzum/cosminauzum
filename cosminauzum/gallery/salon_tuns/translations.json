@@ -1,0 +1,152 @@
+{
+    "ro": {
+        "logo": "Salon de Tuns",
+        "nav": {
+            "home": "Acasă",
+            "about": "Despre",
+            "services": "Servicii",
+            "contact": "Contact",
+            "reviews": "Recenzii"
+        },
+        "home": {
+            "title": "Salon de Tuns Modern",
+            "subtitle": "Stil și precizie pentru fiecare client",
+            "cta1": "Serviciile Noastre",
+            "cta2": "Contactează-ne"
+        },
+        "about": {
+            "title": "Despre Noi",
+            "content": "Salonul nostru de tuns este locul unde stilul întâlnește precizia. Cu o echipă de profesioniști dedicați, oferim tunsori moderne și personalizate pentru a te face să te simți încrezător și elegant.",
+            "benefits": [
+                "✔ Stiluri personalizate – adaptate la forma feței și stilul tău.",
+                "✔ Produse de calitate – folosim cele mai bune produse pentru îngrijirea părului.",
+                "✔ Experiență relaxantă – într-un mediu modern și confortabil.",
+                "✔ Consultanță profesională – sfaturi pentru îngrijirea părului."
+            ],
+            "closing": "Fiecare client este special pentru noi. Vino și descoperă diferența!"
+        },
+        "services": {
+            "title": "Servicii",
+            "items": [
+                {
+                    "title": "Tunsori pentru Bărbați",
+                    "description": "Tunsori clasice sau moderne, adaptate stilului tău."
+                },
+                {
+                    "title": "Tunsori pentru Femei",
+                    "description": "Stiluri elegante și moderne pentru orice ocazie."
+                },
+                {
+                    "title": "Îngrijire Păr",
+                    "description": "Tratamente și sfaturi pentru un păr sănătos."
+                }
+            ]
+        },
+        "reviews": {
+            "title": "Recenzii",
+            "items": [
+                {
+                    "text": "Cel mai bun salon din oraș! Echipa este foarte profesionistă și prietenoasă.",
+                    "author": "Maria P."
+                },
+                {
+                    "text": "Tunsura perfectă de fiecare dată. Recomand cu încredere!",
+                    "author": "Andrei M."
+                },
+                {
+                    "text": "Cel mai bun salon din oraș! Echipa este foarte profesionistă și prietenoasă.",
+                    "author": "Maria P."
+                },
+                {
+                    "text": "Tunsura perfectă de fiecare dată. Recomand cu încredere!",
+                    "author": "Andrei M."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Contact",
+            "address": "Resita, str. Principala, nr.1",
+            "phone": "Telefon: +40 712 345 678"
+        },
+        "footer": {
+            "rights": "Toate drepturile rezervate",
+            "madeBy": "Realizat de",
+            "backToTop": "Înapoi sus"
+        }
+    },
+    "en": {
+        "logo": "Haircut Salon",
+        "nav": {
+            "home": "Home",
+            "about": "About",
+            "services": "Services",
+            "contact": "Contact",
+            "reviews": "Reviews"
+        },
+        "home": {
+            "title": "Modern Haircut Salon",
+            "subtitle": "Style and precision for every client",
+            "cta1": "Our Services",
+            "cta2": "Contact Us"
+        },
+        "about": {
+            "title": "About Us",
+            "content": "Our haircut salon is where style meets precision. With a team of dedicated professionals, we offer modern and personalized haircuts to make you feel confident and elegant.",
+            "benefits": [
+                "✔ Personalized styles – tailored to your face shape and style.",
+                "✔ Quality products – we use the best hair care products.",
+                "✔ Relaxing experience – in a modern and comfortable environment.",
+                "✔ Professional advice – tips for hair care."
+            ],
+            "closing": "Every client is special to us. Come and discover the difference!"
+        },
+        "services": {
+            "title": "Services",
+            "items": [
+                {
+                    "title": "Men's Haircuts",
+                    "description": "Classic or modern haircuts tailored to your style."
+                },
+                {
+                    "title": "Women's Haircuts",
+                    "description": "Elegant and modern styles for any occasion."
+                },
+                {
+                    "title": "Hair Care",
+                    "description": "Treatments and advice for healthy hair."
+                }
+            ]
+        },
+        "reviews": {
+            "title": "Reviews",
+            "items": [
+                {
+                    "text": "The best salon in town! The team is very professional and friendly.",
+                    "author": "Maria P."
+                },
+                {
+                    "text": "Perfect haircut every time. Highly recommend!",
+                    "author": "Andrei M."
+                },
+                {
+                    "text": "The best salon in town! The team is very professional and friendly.",
+                    "author": "Maria P."
+                },
+                {
+                    "text": "Perfect haircut every time. Highly recommend!",
+                    "author": "Andrei M."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Contact",
+            "address": "Resita, str. Principala, nr.1",
+            "phone": "Phone: +40 712 345 678"
+        },
+        "footer": {
+            "rights": "All rights reserved",
+            "madeBy": "Made by",
+            "backToTop": "Back to Top"
+        }
+    }
+}

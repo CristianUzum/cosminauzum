@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Cabinet oftalmologic - ArtVision Med oftalmologie Timisoara - Dr Muresan; consultatii, tratamente si operatie cataracta, strabism, blefaroplastie, ochelari">
+  <meta name="keywords" content="oftalmolog, Muresan, Timisoara, contact">
+  <meta name="author" content="Cosmina Uzum">
+  <title>ArtVision - Contact</title>
+  <link rel="icon" type="image/gif/png" href="../img/logo.png">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css" />
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="./styles.css" />
+  
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="navigation">
+      <nav class="nav d-flex container">
+        <div class="nav-header d-flex">
+          <a href="https://dr-muresan.ro/"> <div class="logo">
+            <img src="../img/logo.png" alt="logo"/>
+          </div></a>
+
+          <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+
+        <div class="nav-menu d-flex">
+          <ul class="nav-list d-flex">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">Acasa</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="../despre/index.html" class="nav-link">Despre</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="../servicii/index.html" class="nav-link">Servicii</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="../galerie/index.html" class="nav-link">Galerie</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="../index.html#reviews" class="nav-link">Recenzii</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="../blog/index.html" class="nav-link">Blog</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+   <!-- Contact -->
+   <section class="section contact" id="contact">
+    <div class="contact-center container">
+      <div class="left" data-aos="fade-down-right" data-aos-duration="2000">
+        <a href="./index.html"><h2>Contact</h2></a>
+        <p>
+       <span><i class="fa fa-calendar" aria-hidden="true"></i>
+        Program:</span><br>  Luni-Miercuri 12.30-19.30 <br> Marți-Joi-Vineri 8.30-15.30
+        </p>
+        <div class="follow">
+          <a href="https://www.facebook.com/artvisionmed?ref=embed_page"><span><i class="fab fa-facebook-f"></i></span> Facebook</a>
+      </div>
+        <div class="bottom">
+          <div>
+            <a href="https://www.google.com/maps/place/Dr.Muresan+Cabinet+Oftalmologic+Timisoara.+Consultatii+Oftalmologice+Timisoara.+Oftalmologie+Cataracta+Timisoara.+Chirurgie+Cataracta,+Glaucom+Timisoara./@45.7421751,21.2099779,17.5z/data=!4m6!3m5!1s0x47455d73f2f87d05:0x9d8ca3066bc98db6!8m2!3d45.7424118!4d21.2106404!16s%2Fg%2F1q5hsmwby?coh=164777&entry=tt&shorturl=1"><span><i class="fas fa-map-marked-alt"></i></span></a>
+            <h4>Adresa</h4>
+            <div class="small">Str.Iancu Văcărescu <br>nr.8, Timișoara</div> 
+          </div>
+          <div>
+            <a href="mailto:contact@dr-muresan.ro"><span><i class="far fa-envelope-open"></i></span></a>
+            <h4>Email</h4>
+            <div class="small">contact@dr-muresan.ro </div> 
+          </div>
+          <div>
+            <a href="tel:+40256217518"><span><i class="fas fa-phone-alt"></i></span></a>
+            <h4>Telefon</h4>
+            <div class="small">0256.217.518 <br> 0723.012.087</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right" data-aos="fade-up-left" data-aos-duration="2000">
+        <form class="form" action="mail.php" method="POST" id="restricted-link" onsubmit="return validateForm()">
+            <div>
+              <input type="text" placeholder="Nume si prenume" name="name user" required/>
+              <input type="email" placeholder="E-mail" name="email" required/>
+              <input type="tel" placeholder="Telefon" name="country_code" title="Error Message" pattern="[0]{1}[0-9]{9}" required/>
+            </div>
+              <input type="text" id="subject" name="subject" placeholder="Introduceți subiectul" required />
+              <textarea id="message" name="message" cols="30" rows="10" placeholder="Introduceți mesajul dvs."></textarea>
+            <div class="form-group gdpr-container">
+              <input type="checkbox" id="gdpr_checkbox" name="gdpr_consent" required />
+              <label for="gdpr_checkbox"><a href="gdpr.html">Sunt de acord cu prelucrarea datelor personale conform politicii GDPR</a>.</label>
+            </div>
+            <button type="submit" id="submit-button" disabled>Trimite</button>       
+        </form>  
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; ARTVISION MED 2023-<script>document.write(new Date().getFullYear());</script> <br> <a href="https://www.cosminauzum.com/">Cosmina Uzum</a></p>
+  </footer>
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Gsap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <!-- Glidejs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <!-- Custom Script -->
+  <script src="../js/slider.js"></script>
+  <script src="../js/index.js"></script>
+ <script src="./script.js"></script>
+</body>
+
+</html>

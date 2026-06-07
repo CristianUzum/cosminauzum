@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziua Copilului</title>
+        <link rel="icon" type="image/gif/png" href="images/purple.png">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+    <a href="https://cosminauzum.com/" class="logo"><img src="images/purple.png">PlayGround</a>
+
+    <div id="menu" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <ul>
+        <li><a href="#home">Acasa</a></li>
+        <li><a href="#games">Jocuri</a></li>
+       <li><img src="images/flagro.png" alt="Romanian" title="Romanian">
+        <ul class="dropdown"> 
+                    <li><a href="index.html"><img src="images/flaguk.png" alt="English" title="English"></a></li> 
+                    <li><a href="index_ro.html"><img src="images/flagro.png" alt="Romanian" title="Romanian"></a></li>  
+                 </ul></li>
+             </ul>
+
+    
+    </nav>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+    <video id="myVideo" autoplay muted loop>
+        <source src="video/education.mp4" type="video/mp4" />
+         Your browser does not support HTML5 video.
+            </video>
+    <div class="content">
+        <h3>La multi ani <br> tuturor copiiilor!</h3>
+        <p>“Copiii au nevoie mai degrabă de modele decât de critici.”</p>
+        
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- icons section  -->
+
+<div class="icons-container">
+
+    <div class="icons">
+        <img src="images/icon1.png" alt="">
+        <h3>fericire</h3>
+        <p>“Cel mai bun mod de a face copiii buni este de a-i face fericiți.”</p>
+        <!-- <a href="#" class="btn">learn more</a> -->
+    </div>
+
+    <div class="icons">
+        <img src="images/icon2.png" alt="">
+        <h3>prietenie</h3>
+        <p>“Doar acolo unde se adună copiii, există șanse reale de distracție.”</p>
+        <!-- <a href="#" class="btn">learn more</a> -->
+    </div>
+
+    <div class="icons">
+        <img src="images/icon3.png" alt="">
+        <h3>iubire</h3>
+        <p>“Trebuie să îți iubești copiii în mod altruist. Este greu. Dar este singura cale.”</p>
+        <!-- <a href="#" class="btn">learn more</a> -->
+    </div>
+
+    <div class="icons">
+        <img src="images/icon4.png" alt="">
+        <h3>îmbratisare</h3>
+        <p>“Îmbrățișările pot face mult bine, mai ales pentru copii.”</p>
+        <!-- <a href="#" class="btn">learn more</a> -->
+    </div>
+
+</div>
+
+<!-- games section starts  -->
+
+<section class="games" id="games">
+
+    <h1 class="heading">Jocuri</h1>
+    <p>“Despre joc se vorbește adesea ca și cum ar fi o ușurare a învățăturii serioase. <br> Dar pentru copii jocul este o învățatura serioasă. <br> Jocul este cu adevărat opera copilăriei.”</p>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="images/fit_shape.jpg" alt="">
+            <h3 class="title">Potriveste Forma</h3>
+            <div class="info">
+                <h3>Potriveste forma</h3>
+                <p>Gaseste forma potrivita</p>
+                <a href="game1/index_ro.html" class="btn">joaca-te</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="images/animals_sound.jpg" alt="">
+            <h3 class="title">Sunetele animalelor</h3>
+            <div class="info">
+                <h3>Sunetele animalelor</h3>
+                <p>Poti auzi suntele animalelor</p>
+                <a href="game/index_ro.html" class="btn">joaca-te</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="images/mine.jpg" alt="">
+            <h3 class="title">Mina</h3>
+            <div class="info">
+                <h3>Mina</h3>
+                <p>Minesweeper este un joc video de puzzle pentru un singur jucător. Obiectivul jocului este de a curăța o placă dreptunghiulară care conține „mine” sau bombe ascunse fără a detona niciuna dintre ele.</p>
+                <a href="mine/index_ro.html" class="btn">joaca-te</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="images/x&0.jpg" alt="">
+            <h3 class="title">X & O</h3>
+            <div class="info">
+                <h3>X si O</h3>
+                <p>Pentru a câștiga jocul, un jucător trebuie să plaseze trei dintre semnele sale pe un rând orizontal, vertical sau diagonal.</p>
+                <a href="x&o/index_ro.html" class="btn">joaca-te</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- games section ends -->
+
+
+<!-- footer section starts  -->
+
+<div class="footer">
+
+<span class="footer-title">Cosmina Uzum</span>
+      <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script></p>
+
+</div>
+
+<!-- footer section ends -->
+
+
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+    var counter = 1;
+    setInterval(function(){
+      document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if(counter > 4){
+        counter = 1;
+      }
+    }, 5000);
+
+     window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-menu");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<!-- custom js file link  -->
+<script src="script.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slow Food Turda</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Favicon (logo în head) -->
+    <link rel="icon" href="assets/logo/5.jpg" type="image/png" />
+    <!-- Slick Carousel CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <!-- Include Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-left">
+          <div class="logo">
+            <img
+              src="assets/logo/5.jpg"
+              alt="Logo Slow Food Turda"
+              class="logo-img"
+            />
+          </div>
+          <div class="language-switcher">
+            <button onclick="changeLanguage('ro')">RO</button>
+            <button onclick="changeLanguage('en')">EN</button>
+            <button onclick="changeLanguage('hu')">HU</button>
+          </div>
+        <div class="nav-right">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#about" data-translate="about">Despre Noi</a></li>
+            <li><a href="#mission" data-translate="mission">Misiune</a></li>
+            <li><a href="#chef" data-translate="chef">Chef</a></li>
+            <li><a href="#gallery" data-translate="gallery">Galerie</a></li>
+            <li><a href="#events" data-translate="events">Evenimente</a></li>
+            <li><a href="#location" data-translate="location">Locație</a></li>
+            <li><a href="#contact" data-translate="contact">Contact</a></li>
+            <li><a href="#reviews" data-translate="reviews">Review-uri</a></li>
+            <li><a href="#resources" data-translate="resources">Resurse</a></li>
+          </ul>
+
+          <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Secțiunea Despre Noi -->
+    <section id="about" class="about-section">
+      <div class="about-content">
+        <h1 id="about-title"> {text} Slow Food Turda</h1>
+        <p id="about-text">
+          {text} Este un proiect emblematic în comunitatea locală, dedicat promovării
+          gastronomiei tradiționale, a produselor locale și a valorilor
+          alimentare sustenabile.
+        </p>
+      </div>
+    </section>
+
+    <!-- Secțiunea Misiune și Valori -->
+    <section id="mission" class="mission-section">
+      <div class="mission-text">
+        <h2 id="mission-title">Misiune și Valori</h2>
+        <p id="mission-text">
+          Prin ateliere, evenimente și proiecte educaționale, Slow Food Turda
+          promovează consumul responsabil, păstrarea tradițiilor și educația
+          gastronomică.
+        </p>
+      </div>
+      <div class="mission-image">
+        <img src="assets/mission.jpg" alt="Misiune Slow Food Turda" />
+      </div>
+    </section>
+
+    <!-- Secțiunea Chef Marta Pozsonyi -->
+    <section id="chef" class="chef-section">
+      <div class="chef-image">
+        <img src="assets/chef.jpg" alt="Chef Marta Pozsonyi" />
+      </div>
+      <div class="chef-text">
+        <h2 id="chef-title">Chef Marta Pozsonyi</h2>
+        <p id="chef-text">
+          Chef Marta Pozsonyi este liderul Slow Food Turda și unul dintre cei
+          mai pasionați activiști în domeniul gastronomiei.
+        </p>
+      </div>
+    </section>
+
+    <!-- Galerie de mâncare -->
+    <section id="gallery" class="gallery-section">
+      <div class="global-container">
+        <h2 id="gallery-title">Galerie de Mâncare</h2>
+        <div class="gallery-grid">
+          <img src="assets/food1.jpg" alt="Fel de mâncare 1" />
+          <img src="assets/food2.jpg" alt="Fel de mâncare 2" />
+          <img src="assets/food3.jpg" alt="Fel de mâncare 3" />
+          <img src="assets/food4.jpg" alt="Fel de mâncare 4" />
+          <img src="assets/food5.jpg" alt="Fel de mâncare 5" />
+          <img src="assets/food6.jpg" alt="Fel de mâncare 6" />
+          <img src="assets/food7.jpg" alt="Fel de mâncare 7" />
+          <img src="assets/food8.jpg" alt="Fel de mâncare 8" />
+          <img src="assets/food9.jpg" alt="Fel de mâncare 9" />
+          <img src="assets/food10.jpg" alt="Fel de mâncare 10" />
+          <img src="assets/food11.jpg" alt="Fel de mâncare 11" />
+          <img src="assets/food12.jpg" alt="Fel de mâncare 12" />
+          <img src="assets/food13.jpg" alt="Fel de mâncare 13" />
+          <img src="assets/food14.jpg" alt="Fel de mâncare 14" />
+          <img src="assets/food15.jpg" alt="Fel de mâncare 15" />
+          <img src="assets/food16.jpg" alt="Fel de mâncare 16" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Evenimente și diplome -->
+    <section id="events" class="events-section">
+      <h2 id="events-title">Evenimente</h2>
+      <!-- Swiper Container -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slide-uri -->
+          <div class="swiper-slide">
+            <img src="assets/event1.jpg" alt="Eveniment 1" />
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/event2.jpg" alt="Eveniment 2" />
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/event3.jpg" alt="Eveniment 3" />
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/event5.jpg" alt="Eveniment 4" />
+          </div>
+        </div>
+        <!-- Navigare (opțional) -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Paginare (opțional) -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Locație și hartă -->
+    <section id="location" class="location-section">
+      <div class="location-text">
+        <h2 id="location-title">Locație</h2>
+        <p id="contact-info">Adresă: Strada Ghe. Lazăr nr. 8, Turda</p>
+        <p>Telefon: +40 746 366 728</p>
+        <p>Email: martapozsonyi@slowfoodturda.ro</p>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/LbHxmiziDxQ?si=2JAqWJhD6G5HgWPg"
+            title="YouTube video player"
+            frameborder="0"
+            width="400"
+            height="350"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.123456789012!2d23.7890123456789!3d46.56789012345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDM0JzA0LjQiTiAyM8KwNDcnMjEuNiJF!5e0!3m2!1sen!2sro!4v1234567890123!5m2!1sen!2sro"
+          width="400"
+          height="350"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+
+<!-- Secțiunea Review-uri -->
+<section id="reviews" class="reviews-section">
+  <h2 id="reviews-title" data-translate="reviews-title">Ce spun clienții noștri</h2>
+  <div class="reviews-carousel">
+    <div class="review">
+      <p id="review-1-text" data-translate="review-1-text">
+        " În sfârşit un loc cu mâncare delicioasă pregătită ca la mama acasă!
+        O locație drăguță cu un personal extrem de amabil şi primitor.
+        O experință plăcută şi cu adevărat locală."
+      </p>
+      <span id="review-1-author" data-translate="review-1-author">- Raluca B.</span>
+    </div>
+    <div class="review">
+      <p id="review-2-text" data-translate="review-2-text">
+        "O organizație mică și drăguță, cu un impact minunat asupra comunității. Marta a vorbit cu grupul pe care l-am adus acolo despre inițiativă și se vedea pasiunea și dăruirea în ochii ei și pe șorțul ei, pe mâini. Mâncarea este ca și cum mama ar găti-o acasă. Porțiile sunt doar suficiente, calitatea produselor este imbatabilă - produse locale, respectând principiul slow food. Il recomand cu caldura."
+      </p>
+      <span id="review-2-author" data-translate="review-2-author">- Andrada B.</span>
+    </div>
+    <div class="review">
+      <p id="review-3-text" data-translate="review-3-text">
+        "Cele mai bune servicii pe care le-am experimentat vreodată în România.
+        Mi s-a recomandat Slow food Turda și nu pot decât să recomand cu căldură mâncărurile delicioase făcute în casă, o echipă profesionistă care vă stă la dispoziție și întotdeauna cu o abordare utilă și un zâmbet pe buze împreună cu Geniala proprietară Marta, care este Pilonul și conducerea. , ea pune energie, suflet și ingrediente minunate în ea :)
+        Vă mulțumim din suflet
+        Cu stima
+        Levi"
+      </p>
+      <span id="review-3-author" data-translate="review-3-author">- Rishu</span>
+    </div>
+  </div>
+</section>
+
+    <!-- Secțiunea Resurse -->
+    <section id="resources" class="resources-section">
+      <h2 id="resources-title">Resurse</h2>
+      <div class="resources-container">
+        <!-- Articole și clipuri despre Slow Food Turda -->
+        <div class="resource-category">
+          <h3 id="resources-slowfood-title">Despre Slow Food Turda</h3>
+          <ul>
+            <li>
+              <a
+                href="https://example.com/articol1"
+                target="_blank"
+                id="resources-slowfood-link1"
+                >Articol despre Slow Food Turda</a
+              >
+            </li>
+            <li>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/LbHxmiziDxQ?si=2JAqWJhD6G5HgWPg"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="origin"
+                allowfullscreen
+              ></iframe>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Articole și clipuri despre Chef Marta Pozsonyi -->
+        <div class="resource-category">
+          <h3 id="resources-chef-title">Despre Chef Marta Pozsonyi</h3>
+          <ul>
+            <li>
+              <a
+                href="https://example.com/articol2"
+                target="_blank"
+                id="resources-chef-link1"
+                >Articol despre Chef Marta Pozsonyi</a
+              >
+            </li>
+            <li>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/_7jZ9-z0KSU?si=W3W5u0aV2J9KKLbB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin" allowfullscreen></iframe>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <!-- Descrierea firmei -->
+    <div class="footer-description">
+      <h3 data-translate="footer-about-title">{text} Slow Food Turda</h3>
+      <p data-translate="footer-about-text">
+        Slow Food Turda este un proiect dedicat promovării gastronomiei
+        tradiționale și a valorilor alimentare sustenabile.
+      </p>
+    </div>
+
+    <!-- Link-uri utile -->
+    <div class="footer-links">
+      <h3 data-translate="footer-useful-links">Link-uri utile</h3>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/slowfood.turda" target="_blank"
+            >Facebook Slow Food Turda</a
+          >
+        </li>
+        <li>
+          <a href="https://www.facebook.com/cgturda/photos_by" target="_blank"
+            >Comunitatea Gastronomică Turda</a
+          >
+        </li>
+        <li><a href="tel:+40746366728">Telefon: +40 746 366 728</a></li>
+        <li>
+          <a href="https://wa.me/40746366728" target="_blank"
+            >WhatsApp: +40746 366 728</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- ANPC -->
+    <div class="footer-anpc">
+      <h3 data-translate="footer-anpc">ANPC</h3>
+      <a href="https://anpc.ro" target="_blank">
+        <img src="assets/icon-anpc.png" alt="ANPC Logo 1" />
+      </a>
+
+      <br />
+
+      <a href="https://anpc.ro" target="_blank">
+        <img src="assets/icon-europa-eu-anpc.png" alt="ANPC Logo 2" />
+      </a>
+    </div>
+  </div>
+
+  <!-- Textul de copyright -->
+  <p id="footer-text">
+    Creat de <a href="https://www.cosminauzum.com">www.cosminauzum.com</a>
+  </p>
+</footer>
+
+    <!-- Slick Carousel JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

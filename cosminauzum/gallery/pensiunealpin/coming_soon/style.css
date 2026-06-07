@@ -1,0 +1,78 @@
+body, html{
+  height: 100%;
+  margin: 0px;
+  font-family: sans-serif, Helvetica , Arial ;
+  overflow: hidden;
+  padding: 0px;
+}
+*{
+  box-sizing: border-box;
+}
+.container{
+  background: #000;
+  color: white;
+  height: 100%;
+}
+
+.content{
+  padding: 2em;
+  width: 50%;
+  position: relative;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}
+
+h2 {
+  
+  font-size: 35px;
+  text-shadow: 2px 2px 4px grey;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 15px;
+  top: 50%;
+  left: 50%;
+}
+img {
+ width: 500px;
+  height:auto;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  top: 70%;
+  left: 60%;
+  background-color:  rgba(255, 255, 255, 0.3);
+}
+
+
+@media screen and (max-width: 800px){
+  .content{
+  padding: 1.5em;
+  width: 80%;
+}
+
+  h2 {
+    font-size: 25px;
+  letter-spacing: 12px;
+  left: 70%;
+}
+img {
+ width: 300px; 
+}
+}
+
+@media screen and (max-width: 300px){
+   .content{
+  padding: 1em;
+  width: 100%;
+}
+
+  h2 {
+    font-size: 20px;
+  letter-spacing: 10px;
+  left: 60%;
+}
+img {
+ width: 200px; 
+}
+}

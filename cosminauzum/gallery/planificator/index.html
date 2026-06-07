@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planificator Activități Copii</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Planificator de Activități pentru Copii</h1>
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.cosminauzum.com/gallery/planificator/index.html"
+            >Activități</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.cosminauzum.com/gallery/planificator/recompense.html"
+            >Recompense</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <form id="activity-form">
+        <label for="day-select">Alege ziua:</label>
+        <select id="day-select">
+          <option value="monday">Luni</option>
+          <option value="tuesday">Marți</option>
+          <option value="wednesday">Miercuri</option>
+          <option value="thursday">Joi</option>
+          <option value="friday">Vineri</option>
+          <option value="saturday">Sâmbătă</option>
+          <option value="sunday">Duminică</option>
+        </select>
+
+        <label for="time-input">Alege ora:</label>
+        <input type="time" id="time-input" required />
+
+        <label for="activity-input">Activitate:</label>
+        <input
+          type="text"
+          id="activity-input"
+          placeholder="Ex: Desen, Citit"
+          required
+        />
+
+        <button type="submit">Adaugă Activitate</button>
+      </form>
+
+      <div class="week-container" id="week-container">
+        <div class="day" id="monday">
+          <h2>Luni</h2>
+          <ul class="activities-list"></ul>
+        </div>
+        <div class="day" id="tuesday">
+          <h2>Marți</h2>
+          <ul class="activities-list"></ul>
+        </div>
+        <div class="day" id="wednesday">
+          <h2>Miercuri</h2>
+          <ul class="activities-list"></ul>
+        </div>
+        <div class="day" id="thursday">
+          <h2>Joi</h2>
+          <ul class="activities-list"></ul>
+        </div>
+        <div class="day" id="friday">
+          <h2>Vineri</h2>
+          <ul class="activities-list"></ul>
+        </div>
+        <div class="day" id="saturday">
+          <h2>Sâmbătă</h2>
+          <ul class="activities-list"></ul>
+        </div>
+        <div class="day" id="sunday">
+          <h2>Duminică</h2>
+          <ul class="activities-list"></ul>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        © 2025 Creat de
+        <a href="https://www.cosminauzum.com">www.cosminauzum.com</a>
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

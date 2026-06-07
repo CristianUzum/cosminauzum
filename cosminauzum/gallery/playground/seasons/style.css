@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Pinyon+Script&display=swap');
+*{
+	margin:0;
+	padding:0;
+    box-sizing: border-box;
+    font-family: "Leckerli One", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: lightblue;
+    /*background-image:url("img/snow.png");
+    background-repeat: repeat;
+    animation: snow 1s linear infinite;*/ 
+    height: 100vh;
+}
+/*@keyframes snow{
+
+    0%{
+        background-position:0 0; 
+    }
+     20%{
+        background-position:50px 50px; 
+    }
+     40%{
+        background-position:100px 100px; 
+    }
+     60%{
+        background-position:150px 150px; 
+    }
+     80%{
+        background-position:200px 200px; 
+    }
+     100%{
+        background-position:250px 250px; 
+    }
+}
+*/
+.nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 6.5rem;
+    background-image: url("../src/img/flower.jpg");
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    z-index: 10;
+}
+
+
+.nav h2 {
+    color: #580570;
+    font-size: 2.5rem;
+    font-family: "Leckerli One";
+}
+.nav h2 span {
+    color: #fff;
+    font-family: "Leckerli One";
+}
+#item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#item li {
+    list-style: none;
+    padding-right: 50px;
+
+}
+#item li a button{
+    font-family: "Leckerli One";
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #580570;
+    padding: 10px;
+    border-radius: 5%;
+}
+#item li a button:hover {
+    color: #6ca464;
+    cursor: pointer;
+    background-color: #f5f1e7;
+   
+    }
+
+#item .icon a img:hover {
+    background-color: #f5f1e7;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+#item .icon a {
+    text-decoration: none;
+    padding-right: 10px;
+}
+#item .icon img {
+    padding: 2px;
+    width: 35px;
+    height: 35px;
+}
+.seasons {
+    position: relative;
+}
+#changing_image{
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  margin: -25px -25px -25px -25px;
+}
+
+
+@media screen and (max-width: 1192px){
+    .nav {
+    padding: 1rem 4rem;
+    }
+
+    .nav h2 {
+    font-size: 2.5rem;
+    }
+
+    #item li {
+    padding-right: 30px;
+
+    }
+    #item li a button {
+    font-size: 0.9rem;
+    }
+
+@media screen and (max-width: 991px){
+    .nav {
+    padding: 1rem 3rem;
+    }
+
+    .nav h2 {
+    font-size: 1.5rem;
+    }
+
+    #item li {
+    padding-right: 30px;
+
+    }
+    #item li a button {
+    font-size: 0.7rem;
+    }
+@media screen and (max-width: 768px){
+         .nav {
+    padding: 1rem 2rem;
+    }
+
+    .nav h2 {
+    font-size: 1rem;
+    }
+
+    #item li {
+    padding-right: 10px;
+
+    }
+    #item li a button {
+    font-size: 0.5rem;
+    }
+    #changing_image{
+  left: 30%;
+}
+}

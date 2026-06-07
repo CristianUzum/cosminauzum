@@ -26,19 +26,23 @@ services:
     networks:
       - prod-web-network
 
-  prod-website:
-    image: nginx:alpine
+  prod-cosminauzum:
+    build: 
+      context: ./cosminauzum
+      dockerfile: Dockerfile
     container_name: prod-cosminauzum
     restart: unless-stopped
+    volumes:
+      - ~/web/cosminauzum/images:/usr/share/nginx/html/images:ro
+      - ~/web/cosminauzum/gallery:/usr/share/nginx/html/gallery:ro
+      - ~/web/cosminauzum/video:/usr/share/nginx/html/gallery:ro
     networks:
       - prod-web-network
-    volumes:
-      - ./prod/html/cosminauzum:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cosminauzum.rule=Host(`cosminauzum.com`) || Host(`www.cosminauzum.com`)"
-      - "traefik.http.routers.cosminauzum.entrypoints=websecure"
-      - "traefik.http.routers.cosminauzum.tls.certresolver=myresolver"
+      - "traefik.http.routers.prod-cosminauzum.rule=Host(`prod.cosminauzum.com`)"
+      - "traefik.http.routers.prod-cosminauzum.entrypoints=websecure"
+      - "traefik.http.routers.prod-cosminauzum.tls.certresolver=myresolver"
 
   prod-codpentrucomunitate:
     build: 

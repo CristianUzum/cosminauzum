@@ -1,0 +1,106 @@
+	<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Video</title>
+    <link rel="icon" type="image/gif/png" href="../assets/svg/copac.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    
+    <div class="nav"id="navBar">
+                <ul id="item">
+                <a href="../msv/index.html"><img src="../assets/svg/logo2.png"><a>
+               
+              <li><a href="../dece/index.html">DE CE?</a></li>
+              <li><a href="../cercetare/index.html">cercetare</a></li>
+              <li><a href="index.html">video</a></li>
+              <li><a href="../exemple/index.html">exemple</a></li>
+              <li><a href="../traditii/index.html">traditii</a></li>
+              <li><a href="../eco/index.html">eco</a></li>
+              <li><a href="../conexe/index.html">conexe</a></li>
+              <li><a href="../contact/index.html">contact</a></li>
+                <div class="container-1">
+              <span class="icon"><i class="fa fa-search"></i></span>
+              <form action="index.html" method="post">
+              <input id="search" type="search"  placeholder="Search..." />
+          </form>
+              </div>
+              
+         
+
+            </div>
+    <div class="sidebar">
+      <a class="home" href="../index.html"><i class="fas fa-home"></i></a>
+      <label for="check">
+            <img src="../assets/svg/video.png" id="sidebar_btn"></i>
+      </label>
+         <h4><span>Introduction</span></h4>
+      <a onclick="playVideo('../assets/video/msv.mp4')">Maharishi Vedic Arhitecture</span></a>
+      <a onclick="playVideo('vet.mp4')">Test</span></a>
+      <a href="#"><span>Tables</span></a>
+      <a href="#"><span>Forms</span></a>
+      <a href="#"><span>About</span></a>
+      <a href="#"><span>Settings</span></a>
+    </div>
+    <div class="content">
+      <!-- <div class="card" id="changing_video"> -->
+    
+      </div>
+      
+    </div>
+    <div class="video-player" id="videoPlayer">
+        <video width="100%" controls autoplay id="myVideo">
+        	<source src="../assets/video/msv.mp4" type="video/mp4">
+        </video>
+      </div>
+
+  <!--   <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script> -->
+        <script type="text/javascript">
+      function openPage(){
+        var x =document.getElementById('search').value;
+        if(x === "de ce"){
+          window.open("../dece/index.html");
+        }
+        if(x === "exemple"){
+          window.open("../exemple/index.html");
+        }
+         if(x === "cercetare"){
+          window.open("../cercetare/index.html");
+        }
+        if(x === "eco"){
+          window.open("../eco/index.html");
+        }
+         if(x === "traditii"){
+          window.open("../traditii/index.html");
+        }
+        if(x === "msv"){
+          window.open("../msv/index.html");
+        }
+         if(x === "contact"){
+          window.open("../contact/index.html");
+        }
+        if(x === "conexe"){
+          window.open("../conexe/index.html");
+        }
+      }
+
+      var videoPlayer = document.getElementById("videoPlayer");
+      var myVideo = document.getElementById("myVideo");
+
+      	function playVideo(file){
+      		myVideo.src = file;
+      		videoPlayer.style.display = "block";
+      	}
+
+    </script>
+</body>
+</html>

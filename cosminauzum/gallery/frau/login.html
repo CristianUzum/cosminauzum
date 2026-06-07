@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accesul Părinților | Elternzugang</title>
+
+    <script>
+      (function () {
+        const authToken = localStorage.getItem("parentAuthToken");
+        const authExpiry = localStorage.getItem("parentAuthExpiry");
+        const now = new Date().getTime();
+
+        if (authToken && authExpiry && now < parseInt(authExpiry)) {
+          // Doar dacă totul e valid, mergem la index
+          window.location.replace("index.html");
+        } else {
+          // Altfel curățăm datele vechi ca să evităm clipirea/bucla
+          localStorage.removeItem("parentAuthToken");
+          localStorage.removeItem("parentAuthExpiry");
+        }
+      })();
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Reset și stiluri generale */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --primary-color: #2e7d32;
+        --secondary-color: #c62828;
+        --light-color: #f1f8e9;
+        --dark-color: #1b5e20;
+        --text-color: #333;
+        --text-light: #666;
+      }
+      body.login-page {
+        font-family: "Quicksand", sans-serif;
+        background: linear-gradient(
+          135deg,
+          rgba(46, 125, 50, 0.9),
+          rgba(198, 40, 40, 0.1)
+        );
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .login-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("./img/50.jpeg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.3;
+        z-index: -1;
+      }
+      .login-container {
+        width: 100%;
+        max-width: 450px;
+        position: relative;
+        z-index: 2;
+      }
+      .login-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        padding: 40px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 3px solid var(--secondary-color);
+        position: relative;
+        overflow: hidden;
+      }
+      .login-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+      }
+      .login-logo {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .login-logo img {
+        width: 100px;
+        height: 100px;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      }
+      .login-title {
+        text-align: center;
+        color: var(--primary-color);
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      .login-subtitle {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+      .language-switcher {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      .lang-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid var(--primary-color);
+        padding: 10px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        color: var(--primary-color);
+      }
+      .lang-btn.active {
+        background: var(--primary-color);
+        color: white;
+      }
+      .form-group {
+        margin-bottom: 25px;
+      }
+      .form-label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      .form-input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        font-size: 1.1rem;
+      }
+      .password-input-container {
+        position: relative;
+      }
+      .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        border-radius: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .message {
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        display: none;
+      }
+      .message.error {
+        background: rgba(255, 68, 68, 0.1);
+        color: #ff4444;
+        border-left: 4px solid #ff4444;
+      }
+      .message.success {
+        background: rgba(0, 200, 81, 0.1);
+        color: #00c851;
+        border-left: 4px solid #00c851;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20%,
+        60% {
+          transform: translateX(-5px);
+        }
+        40%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
+  </head>
+  <body class="login-page">
+    <div class="login-background"></div>
+
+    <div class="login-container animate__animated animate__fadeIn">
+      <div class="login-card">
+        <div class="login-logo">
+          <img
+            src="https://img.icons8.com/color/144/000000/family.png"
+            alt="Logo"
+          />
+        </div>
+
+        <div class="language-switcher">
+          <button class="lang-btn active" id="lang-de">🇩🇪 Deutsch</button>
+          <button class="lang-btn" id="lang-ro">🇷🇴 Română</button>
+        </div>
+
+        <div class="content-de">
+          <h1 class="login-title">Elternzugang</h1>
+          <p class="login-subtitle">
+            Geben Sie das Passwort ein, um fortzufahren
+          </p>
+        </div>
+
+        <div class="content-ro" style="display: none">
+          <h1 class="login-title">Acces Părinți</h1>
+          <p class="login-subtitle">Introduceți parola pentru a continua</p>
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="password" class="form-label content-de">Passwort</label>
+            <label
+              for="password"
+              class="form-label content-ro"
+              style="display: none"
+              >Parolă</label
+            >
+            <div class="password-input-container">
+              <input
+                type="password"
+                id="password"
+                class="form-input"
+                placeholder="••••••••"
+                required
+              />
+              <button type="button" class="toggle-password" id="togglePassword">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="message error content-de" id="errorMessageDe">
+            Falsches Passwort!
+          </div>
+          <div class="message error content-ro" id="errorMessageRo">
+            Parolă incorectă!
+          </div>
+          <div class="message success content-de" id="successMessageDe">
+            Erfolg! Weiterleitung...
+          </div>
+          <div class="message success content-ro" id="successMessageRo">
+            Succes! Redirecționare...
+          </div>
+
+          <button type="submit" class="login-btn">
+            <span class="content-de">ANMELDEN</span>
+            <span class="content-ro" style="display: none">AUTENTIFICARE</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const langDeBtn = document.getElementById("lang-de");
+        const langRoBtn = document.getElementById("lang-ro");
+        const contentDe = document.querySelectorAll(".content-de");
+        const contentRo = document.querySelectorAll(".content-ro");
+        const loginForm = document.getElementById("loginForm");
+        const passwordInput = document.getElementById("password");
+
+        // Setări Parolă
+        const CORRECT_PASSWORD = "Omizile2026";
+
+        // Switch Limbă
+        function updateLang(lang) {
+          localStorage.setItem("loginLang", lang);
+          if (lang === "ro") {
+            contentDe.forEach((el) => (el.style.display = "none"));
+            contentRo.forEach((el) => (el.style.display = "block"));
+            langRoBtn.classList.add("active");
+            langDeBtn.classList.remove("active");
+          } else {
+            contentDe.forEach((el) => (el.style.display = "block"));
+            contentRo.forEach((el) => (el.style.display = "none"));
+            langDeBtn.classList.add("active");
+            langRoBtn.classList.remove("active");
+          }
+        }
+
+        langDeBtn.onclick = () => updateLang("de");
+        langRoBtn.onclick = () => updateLang("ro");
+        updateLang(localStorage.getItem("loginLang") || "de");
+
+        // Toggle Password
+        document.getElementById("togglePassword").onclick = function () {
+          const type = passwordInput.type === "password" ? "text" : "password";
+          passwordInput.type = type;
+          this.querySelector("i").classList.toggle("fa-eye");
+          this.querySelector("i").classList.toggle("fa-eye-slash");
+        };
+
+        // Form Submit
+        loginForm.onsubmit = function (e) {
+          e.preventDefault();
+          document
+            .querySelectorAll(".message")
+            .forEach((m) => (m.style.display = "none"));
+
+          if (passwordInput.value === CORRECT_PASSWORD) {
+            const expiry = new Date().getTime() + 24 * 60 * 60 * 1000; // 24h
+            localStorage.setItem(
+              "parentAuthToken",
+              "valid_token_" + Math.random()
+            );
+            localStorage.setItem("parentAuthExpiry", expiry.toString());
+
+            const lang = localStorage.getItem("loginLang") || "de";
+            document.getElementById(
+              lang === "de" ? "successMessageDe" : "successMessageRo"
+            ).style.display = "block";
+
+            setTimeout(() => window.location.replace("index.html"), 1500);
+          } else {
+            const lang = localStorage.getItem("loginLang") || "de";
+            document.getElementById(
+              lang === "de" ? "errorMessageDe" : "errorMessageRo"
+            ).style.display = "block";
+            loginForm.style.animation = "shake 0.5s";
+            setTimeout(() => (loginForm.style.animation = ""), 500);
+            passwordInput.value = "";
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

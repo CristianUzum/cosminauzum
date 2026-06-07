@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salon de Tuns</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="sticky-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="logoS.jpg" alt="Salon de Tuns Logo" class="logo-img" />
+          <span class="logo-text">Salon de Tuns</span>
+        </div>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ro">RO</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" data-translate="nav.home">Acasă</a></li>
+          <li><a href="#about" data-translate="nav.about">Despre</a></li>
+          <li>
+            <a href="#services" data-translate="nav.services">Servicii</a>
+          </li>
+          <li><a href="#contact" data-translate="nav.contact">Contact</a></li>
+          <li><a href="#reviews" data-translate="nav.reviews">Recenzii</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+      <div class="hero-content" data-aos="fade-up">
+        <h1 data-translate="home.title">Salon de Tuns Modern</h1>
+        <p data-translate="home.subtitle">
+          Stil și precizie pentru fiecare client
+        </p>
+        <div class="cta-buttons">
+          <a href="#services" class="cta-btn" data-translate="home.cta1"
+            >Serviciile Noastre</a
+          >
+          <a
+            href="#contact"
+            class="cta-btn secondary"
+            data-translate="home.cta2"
+            >Contactează-ne</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-content">
+          <div class="text-content">
+            <h2 data-translate="about.title">Despre Noi</h2>
+            <p data-translate="about.content">
+              Salonul nostru de tuns este locul unde stilul întâlnește precizia.
+              Cu o echipă de profesioniști dedicați, oferim tunsori moderne și
+              personalizate pentru a te face să te simți încrezător și elegant.
+            </p>
+            <h3 data-translate="about.benefitsTitle">
+              De ce să ne alegi pe noi?
+            </h3>
+            <ul>
+              <li data-translate="about.benefits.0">
+                ✔ Stiluri personalizate – adaptate la forma feței și stilul tău.
+              </li>
+              <li data-translate="about.benefits.1">
+                ✔ Produse de calitate – folosim cele mai bune produse pentru
+                îngrijirea părului.
+              </li>
+              <li data-translate="about.benefits.2">
+                ✔ Experiență relaxantă – într-un mediu modern și confortabil.
+              </li>
+              <li data-translate="about.benefits.3">
+                ✔ Consultanță profesională – sfaturi pentru îngrijirea părului.
+              </li>
+            </ul>
+            <p data-translate="about.closing">
+              Fiecare client este special pentru noi. Vino și descoperă diferența!
+            </p>
+          </div>
+          <div class="image-content">
+            <img src="2.jpg" alt="Salon de Tuns" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title" data-translate="services.title">Servicii</h2>
+        <div class="services-grid">
+          <div class="service-card" data-aos="fade-up">
+            <h3 data-translate="services.items.0.title">Tunsori pentru Bărbați</h3>
+            <p data-translate="services.items.0.description">
+              Tunsori clasice sau moderne, adaptate stilului tău.
+            </p>
+          </div>
+          <div class="service-card" data-aos="fade-up">
+            <h3 data-translate="services.items.1.title">Tunsori pentru Femei</h3>
+            <p data-translate="services.items.1.description">
+              Stiluri elegante și moderne pentru orice ocazie.
+            </p>
+          </div>
+          <div class="service-card" data-aos="fade-up">
+            <h3 data-translate="services.items.2.title">Îngrijire Păr</h3>
+            <p data-translate="services.items.2.description">
+              Tratamente și sfaturi pentru un păr sănătos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section">
+      <div class="container">
+        <h2 class="section-title" data-translate="reviews.title">Recenzii</h2>
+        <div class="reviews-carousel">
+          <div class="review-card" data-aos="fade-up">
+            <p data-translate="reviews.items.0.text">
+              "Cel mai bun salon din oraș! Echipa este foarte profesionistă și
+              prietenoasă."
+            </p>
+            <p class="author" data-translate="reviews.items.0.author">
+              – Maria P.
+            </p>
+          </div>
+          <div class="review-card" data-aos="fade-up">
+            <p data-translate="reviews.items.1.text">
+              "Tunsura perfectă de fiecare dată. Recomand cu încredere!"
+            </p>
+            <p class="author" data-translate="reviews.items.1.author">
+              – Andrei M.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container contact-container">
+        <div class="contact-image"></div>
+        <div class="contact-info">
+          <h2 data-translate="contact.title">Contact</h2>
+          <p data-translate="contact.address">
+            Resita, str. Principala, nr.1
+          </p>
+          <p data-translate="contact.phone">
+            Telefon: <a href="tel:+40712345678">+40 712 345 678</a>
+          </p>
+          <p><strong>Program:</strong></p>
+          <ul>
+            <li>Luni - Vineri: 10:00 - 20:00</li>
+            <li>Sâmbătă: 10:00 - 18:00</li>
+            <li>Duminică: Închis</li>
+          </ul>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/SalonDeTuns"
+              class="social-link"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://wa.me/40721846644" class="social-link"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; <span id="current-year"></span>
+          <span data-translate="footer.rights">Toate drepturile rezervate</span>
+        </p>
+        <p data-translate="footer.madeBy">Realizat de</p>
+        <a href="https://www.cosminauzum.com" target="_blank"
+          >www.cosminauzum.com</a
+        >
+        <button class="back-to-top" data-translate="footer.backToTop">
+          Înapoi sus
+        </button>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

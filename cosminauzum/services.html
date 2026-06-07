@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXHW5KCL');</script>
+<!-- End Google Tag Manager -->
+    <meta property="og:locale" content="ro_RO" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Cosmina Uzum - Your Trusted Web Developer" />
+    <meta property="og:description" content="Based in Romania, Uzum Gelica-Cosmina PFA offers top-notch web design, development, and SEO services. With years of experience, we create tailored websites for clients worldwide." />
+    <meta property="og:url" content="https://www.cosminauzum.com/" />
+	<meta property="og:site_name" content="Cosmina Uzum" />
+    <meta property="og:image" content="https://www.cosminauzum.com/images/icon/logo.png" />
+    <meta name="author" content="Cosmina Uzum">
+    <link rel="canonical" href="https://www.cosminauzum.com/" />
+    <title>Cosmina Uzum - Web development</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/easy.css"/>
+    <link rel="stylesheet" href="css/slick.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/services.css"/>
+    <link rel="stylesheet" href="css/chat.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="shortcut icon" href="images/icon/purple.png" type="image/png"/>
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+ 
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXHW5KCL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Start site wrapper -->
+    <div class="site-wrapper">
+        <div class="header-index">
+            <!-- ====== 1.1. Header section ====== -->
+            <header>
+                <nav class="container navbar">
+                    <div class="container-nav flex">
+                        <!-- site logo -->
+                        <a class="navbar-logo" href="./index.html"><img src="logo/png/logo-no-background.png" alt="logo"></a>
+                        <button class="navbar-toggler" onclick="openNav()" type="button">
+                            <span class="fa-solid fa-bars"></span>
+                        </button>
+                        <!-- menus -->
+                        <ul class="navbar-nav flex">
+                            <li><a class="nav-link active" href="./index.html">Home</a></li>
+                            <li><a class="nav-link" href="./about.html">About</a></li>
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Various
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                    <li><a class="dropdown-item" href="./services.html">Services</a></li>
+                                    <li><a class="dropdown-item" href="./pricing.html">Pricing Plans</a></li>
+                                    <li><a class="" href="./gallery.html">Portfolio</a></li>
+                                    
+                            <li><a class="dropdown-item" href="./contact.html">Contact</a></li>
+                                    <li><a class="dropdown-item" href="./index.html#faq">FAQ</a></li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex nav-right">
+                        
+                        <p> <a href="tel:+40733402340"> <i class="fa-solid fa-phone"></i><span>+40 733 402 340</span></a></p>
+                        <!-- header buttons -->
+                        <!-- <i onclick="open_search_bar()" class="fa-solid fa-magnifying-glass"></i> -->
+                        <div class="chat-icon">  <div id="envelope">
+                            <img src="./images/chatbot.png" alt="https://www.flaticon.com/authors/rukanicon">
+                          </div>
+                        </div>
+                        <i onclick="open_right_side()" class="fa-solid fa-bars"></i>
+                    </div>
+                </nav>
+                <!-- Sidebar -->
+                <aside id="mySidepanel" class="sidepanel">
+                    <div class="sidebar flex">
+                        <a href="./index.html"><img src="logo/png/logo-no-background.png" alt="logo"></a>
+                        <button class="closebtn btn_hover1" onclick="closeNav()"><i
+                                class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div>
+                        <!-- side menus -->
+                        <ul>
+                            <li><a class="nav-link active" href="./index.html">Home</a></li>
+                            <li><a class="nav-link" href="./about.html">About</a></li>
+                            <li><a class="nav-link" href="./contact.html">Contact</a></li>
+                            <li class="pages"><a href="#">Various</a></li>
+                            <li class="collapse_btn">
+                                <a class="nav-link plus_collapse" data-bs-toggle="collapse" href="javascript:void(0);" onclick="toggleCollapse('pages')" aria-expanded="false" aria-controls="pages">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                                <div class="collapse" id="pages">
+                                    <ul>
+                                        <li><a class="nav-link" href="./services.html">Services</a></li>
+                                        <li><a class="nav-link" href="./pricing.html">Pricing Plans</a></li>
+                                        <li><a class="nav-link" href="./gallery.html">Portfolio</a></li>
+                                        <li><a class="nav-link" href="./index.html#faq">FAQ</a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- searchbar -->
+                <!-- <div id="search-bar">
+                    <div class="btn_hover1" onclick="close_search_bar()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <form id="search-form" method="GET" action="javascript:void(0);">
+                        <input type="search" id="search-input" required placeholder="Write here...">
+                        <button type="submit" class="btn_hover1">Search</button>
+                    </form>
+                </div>
+                 -->
+
+                <!-- Right Sidebar -->
+                <section class="header-right-sidebar" id="right_side">
+                    <div class="flex flex-sb">
+                        <a href="./index.html" class="logo"><img src="logo/png/logo-no-background.png" alt="logo"></a>
+                        <button class="close_right_sidebar fa-solid fa-xmark" onclick="close_right_sade()"> </button>
+                    </div>
+                    <p>Experienced developer, dedicated to the needs of the client as well as the user, creating websites based on the needs of each individual business.
+                    </p>
+                    
+                    <a href="./about.html" class="btn_hover1">About</a>
+                    <hr>
+                    <h4>Contact details:</h4>
+                    <ul class="flex">
+                        <li>
+                            <a href="mailto:cosmi.logo@gmail.com"> <i class="fa-regular fa-envelope"></i></a>
+                            <a href="mailto:cosmi.logo@gmail.com" class="text-lowercase">cosmi.logo@gmail.com</a>
+                        </li>
+                        <li>
+                            <a href="tel:+40733402340"> <i class="fa-solid fa-phone"></i></a>
+                            <a href="tel:+40733402340">+40 733 402 340</a>
+                        </li>
+                        <li>
+                            <a href="#"> <i class="fa-sharp fa-regular fa-clock"></i></a>
+                            <a href="#">Working hours: M-F 9AM - 6PM</a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/40733402340"> <i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://wa.me/40733402340">WhatsApp</a>
+                        </li>
+                    </ul>
+                    <span class="flex">
+                        <a href="https://www.facebook.com/CosminaUzum/"><i class="fa-brands fa-facebook"></i></a>
+                        <!-- <a href="#"><i class="fa-brands fa-instagram"></i></a> -->
+                        <a href="https://www.linkedin.com/in/cosmina-uzum-55118aa5/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/CosminaUzum"><i class="fa-brands fa-github"></i></a>
+                    </span>
+                </section>
+                </header>
+  <!-- ====== End of 1.1. Header section ====== -->
+   <!-- Services Section -->
+   <section id="services">
+                <div class="header-content">
+                    <h1>Bringing Your Vision to Life</h1>
+                    <p>Your reliable partner for web development and digital solutions</p>
+                    <a href="contact.html" class="cta-button btn_hover1 btn">Get in Touch</a>
+                  </div>
+            
+                
+                  <!-- <h2>Our Services</h2> -->
+                  <div class="container1">
+                    <svg
+                      id="circle-nav-services"
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 650 550"
+                    >
+                      <defs>
+                        <filter id="service-shadow" height="2" width="2" y="-.5" x="-.5">
+                          <feOffset result="offOut" in="SourceGraphic" dx="0" dy="5" />
+                          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="12" />
+                          <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                        </filter>
+                      </defs>
+            
+                      <symbol id="circle-nav-copy" viewBox="0 0 300 300">
+                        <defs>
+                          <style>
+                            .cls-1 {
+                              font-size: 28px;
+                              font-family: Roboto-Bold, Roboto;
+                              font-weight: 700;
+                            }
+            
+                            .cls-2 {
+                              font-size: 23px;
+                              letter-spacing: -0.02em;
+                            }
+            
+                            .cls-3 {
+                              font-size: 20px;
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-4 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-5 {
+                              font-size: 16px;
+                              font-family: Roboto-Regular, Roboto;
+                            }
+            
+                            .cls-6 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-7 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-8 {
+                              letter-spacing: -0.02em;
+                            }
+            
+                            .cls-9 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-10 {
+                              letter-spacing: 0.01em;
+                            }
+            
+                            .cls-11 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-12 {
+                              letter-spacing: -0.04em;
+                            }
+            
+                            .cls-13 {
+                              letter-spacing: -0.02em;
+                            }
+            
+                            .cls-14 {
+                              letter-spacing: 0.01em;
+                            }
+            
+                            .cls-15 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-16 {
+                              letter-spacing: -0.06em;
+                            }
+            
+                            .cls-17 {
+                              letter-spacing: -0.02em;
+                            }
+            
+                            .cls-18 {
+                              letter-spacing: 0.01em;
+                            }
+            
+                            .cls-19 {
+                              letter-spacing: 0.02em;
+                            }
+            
+                            .cls-20 {
+                              letter-spacing: -0.01em;
+                            }
+            
+                            .cls-21 {
+                              letter-spacing: -0.03em;
+                            }
+                          </style>
+                        </defs>
+                        <title>Services</title>
+                        <text class="cls-1" transform="translate(99 1865)">
+          
+                          <tspan x="18" y="0">Web</tspan>
+                          <tspan x="0" y="28">Consulting</tspan>
+                        </text>
+                        <text class="cls-2" transform="translate(57 1930)">
+                          <tspan x="8" y="20">Expert web consulting</tspan>
+                          <tspan x="0" y="58">for businesses of all sizes.</tspan>
+                        </text>
+                        
+                        
+                        <text class="cls-1" transform="translate(125 646)">SEO</text>
+                        <text class="cls-2" transform="translate(73 663)">
+                          <tspan class="cls-1" x="10" y="15">Optimization</tspan> 
+                          <tspan class="cls-2" x="-40" y="75">Elevate your online presence</tspan>
+                          <tspan x="-10" y="115">with our SEO services.</tspan>  
+                        </text>
+
+                        <text class="cls-1" transform="translate(87 65)">Responsive
+                          <tspan x="30" dy="1.2em">Design</tspan>
+                        </text>
+                        <text class="cls-2" transform="translate(63 108)">
+                          <tspan  x="40" y="25">We create</tspan>
+                          <tspan  x="14" y="52">websites that fit</tspan>
+                          <tspan x="-2" y="85">perfectly on any screen.</tspan>
+                        </text>
+                        
+                        <text class="cls-1" transform="translate(87 365)">
+                          <tspan x="18" y="-8">Custom</tspan>
+                          <tspan x="10" y="20">Features</tspan>
+                        </text>
+                        <text class="cls-2" transform="translate(56 437)">
+                          <tspan x="30" y="6">Unique features,</tspan>
+                          <tspan x="20" y="35">exceptional results.</tspan>
+                          <tspan x="-25" y="68">Let's build something special.</tspan>
+                        </text>
+
+                        <text class="cls-1" x="115" y="966" font-size="24">
+                          Website
+                          <tspan x="85" dy="1.2em">Maintenance</tspan>
+                        </text>
+                        <text class="cls-2" transform="translate(65 1037)">
+                          <tspan x="-40" y="0">Ongoing website maintenance</tspan>
+                          <tspan x="-30" y="30">ensures optimal performance</tspan>
+                          <tspan x="-10" y="60">and user experience.</tspan>
+                        </text>
+                        
+                        <text class="cls-1" transform="translate(138 1266)">
+                            <tspan x="-20" y="0"> UI/UX</tspan>
+                          <tspan x="-22" y="28">Design</tspan>
+                        </text>
+                        <text class="cls-2" transform="translate(47 1323)">
+                          <tspan x="18" y="5">Innovative designs</tspan>
+                          <tspan x="-20" y="40">for startups with big ambitions.</tspan>
+                        </text>
+
+                        <text class="cls-1" transform="translate(89 1566)">
+                          <tspan x="26" y="0">Web</tspan>
+                          <tspan x="-4" y="30">Development</tspan>
+                        </text>
+                        <text class="cls-2" transform="translate(47 1636)">
+                          <tspan x="40" y="0">We're with you</tspan>
+                          <tspan x="15" y="28">every step of the way,</tspan>
+                          <tspan x="-10" y="58">from design to maintenance.</tspan>
+                        </text>
+                      </symbol>
+                      <symbol>
+                      <svg id="responsive_design" viewBox="0 0 512 512" width="64" height="64">
+                        <image href="./images/icon/responsive.png" width="512" height="512" />
+                    </svg>
+                  </symbol>
+                    
+                      <symbol>
+                      <svg id="custom_features" viewBox="0 0 512 512" width="64" height="64">
+                        <image href="./images/icon/customization.png" width="512" height="512" />
+                    </svg>
+                  </symbol>
+                      <symbol>
+                        <svg id="seo_optimization" viewBox="0 0 512 512" width="64" height="64">
+                          <image href="./images/icon/optimization.png" width="512" height="512" />
+                      </svg>
+                      </symbol>
+                      <svg>
+                      <symbol>
+                        <svg id="website_maintenance" viewBox="0 0 512 512" width="64" height="64">
+                        <image href="./images/icon/settings.png" width="512" height="512"/>
+                      </svg>
+                      </symbol>
+                      <symbol>
+                        <svg id="ui/ux_design" viewBox="0 0 512 512" width="64" height="64">
+                        <image href="./images/icon/design.png" width="512" height="512"/>
+                      </svg>
+                      </symbol>
+                      <symbol>
+                        <svg id="web_development" viewBox="0 0 512 512" width="64" height="64">
+                        <image href="./images/icon/app-development.png" width="512" height="512"/>
+                      </svg>
+                      </symbol>
+                      <symbol>
+                        <svg id="web_consultation" viewBox="0 0 512 512" width="64" height="64">
+                        <image href="./images/icon/consultant.png" width="512" height="512"/>
+                      </svg>
+                      </symbol>
+            
+                      <!-- arc travelled by the pointer -->
+                      <svg x="150" y="0" width="350" height="350" viewBox="0 0 500 500">
+                        <linearGradient
+                          id="a"
+                          gradientUnits="userSpaceOnUse"
+                          x1="250.2542"
+                          y1="496.283"
+                          x2="250.2542"
+                          y2="-.2102"
+                        >
+                          <stop offset="0" stop-color="#800080" />
+                          <stop offset="1" stop-color="#ffc0cb" stop-opacity="0" />
+                        </linearGradient>
+                        <path
+                          fill="url(#a)"
+                          d="M250.3 0c137 0 248.1 111.1 248.1 248.1S387.3 496.2 250.3 496.2 2.2 385.1 2.2 248.1 113.2 0 250.3 0C112.5 0 .8 111.7.8 249.5S112.5 499 250.3 499s249.5-111.7 249.5-249.5S388 0 250.3 0z"
+                        />
+                      </svg>
+            
+                      <g id="service-collection">
+                        <!-- this gets filled dynamically -->
+                      </g>
+                      <circle cx="325" cy="170" r="140" class="center" />
+                      <use
+                      x="185"
+                      y="30"
+                      width="280"
+                      height="280"
+                      xlink:href="#circle-nav-copy"
+                      class="nav-copy"
+                    />
+                    
+                    <rect
+                      data-url="#support"
+                      id="learn-more"
+                      x="280"
+                      y="250"
+                      width="90"
+                      height="30"
+                      rx="5"
+                      ry="5"
+                    />
+                    
+                    <text 
+                      x="325"  
+                      y="267"  
+                      class="learn-more-text"
+                      text-anchor="middle" 
+                      dominant-baseline="middle" 
+                    >
+                      Learn more
+                    </text>
+                    </svg>
+                    </svg>
+                  </div>
+</section>
+                  <section id="our-skills">
+                    
+                    <div class="container3">
+                     
+                      <div class="desc">
+                        <div class="heading">
+                          <h2>Our skills</h2>
+                        </div>
+                        <div class="text">
+                          <span></span>
+                          <p>Improve your business efficiency and productivity with our custom software solutions. Our passionate development team uses a wide range of technologies to create applications that are tailored to your exact needs. </p>
+                        </div>
+                      </div>
+                      <div class="skills">
+                  
+                        <div class="column" id="column-1">
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon fa-brands fa-square-js"></i>
+                  
+                              <p class="skill-txt">
+                                java script  
+                              </p>                       
+                            </div>
+                          </div>
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon fa-brands fa-react"></i>
+                              <p class="skill-txt">
+                                react js
+                              </p>
+                            </div>
+                          </div>
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon a-solid fa-a"></i>
+                  
+                              <p class="skill-txt">
+                               azure
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <div class="column" id="column-2">
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon fa-brands fa-node"></i>
+                
+                              <p class="skill-txt">
+                                node js
+                              </p>
+                            </div>
+                          </div>
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon fa-brands fa-docker"></i>
+                              <p class="skill-txt">
+                               docker
+                              </p>
+                            </div>
+                          </div>
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon fa-solid fa-leaf"></i>
+                              <p class="skill-txt">
+                               Mongo db
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <div class="column" id="column-2">
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <i class="skill-icon fa-brands fa-python"></i>
+                              <p class="skill-txt">
+                                python
+                              </p>                            
+                            </div>
+                          </div>
+                          
+                          <div class="skill">
+                            <div class="skill-desc">
+                              <img class="skill-icon" src="./images/icon/rudder.png"/>
+                              <p class="skill-txt">
+                                Kubernetes
+                              </p>
+                            </div>
+                          </div>
+                          <div class="skill hidden">
+                            <div class="skill-desc">
+                              <i class="skill-icon">
+                  
+                              </i>
+                              <p class="skill-txt">
+                  
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clear-fix"></div>
+                    </div>
+                  </section>
+
+
+           <section id="support">
+            <h2 class="sup_h2">OUR SERVICES</h2>
+            <div class="support-container">
+            </div>
+           </section>    
+          
+        <!-- ====== 1.15. Footer section ====== -->
+        <footer>
+            <div class="footer-menu">
+                <div class="container">
+                    <div class="flex flex-start footer-center">
+                        <div class="w-33 flex flex-col gap-2 flex-start">
+                            <a href="index.html" class="footer-logo"><img src="./logo/png/logo-no-background.png" alt="footer-logo" ></a>
+                            <p>Through smart strategy and design, you can have a website that not only looks amazing, but also actively contributes to achieving and exceeding your business goals.
+                            </p>
+                                <h4>Don't be offline. Be online!</h4>
+                                
+                            <span class="flex gap-2">
+                                <div class="chat-icon">  <div id="envelope">
+                                    <img src="./images/chatbot.png" alt="https://www.flaticon.com/authors/rukanicon">
+                                  </div>
+                                </div>
+                                <a href="https://www.facebook.com/CosminaUzum/"><i class="fa-brands fa-facebook"></i></a>
+                                <!-- <a href="#"><i class="fa-brands fa-instagram"></i></a> -->
+                                <a href="https://github.com/CosminaUzum"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/cosmina-uzum-55118aa5/"><i class="fa-brands fa-linkedin"></i></a>
+                            </span>
+                        </div>
+                        <div class="w-16 mt-1">
+                            <h4>Useful links</h4>
+                            <ul class="flex flex-col gap-2 flex-start">
+                              <li><a href="./index.html">Home</a></li>
+                              <li><a href="./about.html">About</a></li>
+                              <li><a href="./gallery.html">Portfolio</a></li>
+                                <!-- <li><a href="#blog">Blog</a></li> -->
+                            </ul>
+                        </div>
+                        <div class="w-16 mt-45 flex-end">
+                            <ul class="flex flex-col gap-2 flex-start">
+                                <li><a href="./index.html#faq">FAQ</a></li>
+                                <li><a href="./contact.html">Contact</a></li>
+                                <!-- <li><a href="#">Team</a></li> -->
+                                <li><a href="#">Privacy policy</a></li>
+                                </ul>
+                                  <!-- Chat window -->
+                                  <div id="chat-box" class="hidden">
+                                    <div id="chat-header">
+                                      <h4>Business Chatbot</h4>
+                                      <span id="close-btn">&times;</span>
+                                    </div>
+                                    <div id="chat-content">
+                                      <div id="chat-messages"></div>
+                                    </div>
+                                    <div id="chat-input">
+                                      <input
+                                        type="text"
+                                        id="user-input"
+                                        placeholder="Ask your work-related questions here..."
+                                      />
+                                      <button id="send-btn">Send</button>
+                                    </div>
+                                  </div>
+                        </div>
+                        <div class="w-33 mt-1 flex flex-col flex-start">
+                            <h4>Contact</h4>
+                            <ul class="flex flex-col gap-2 flex-start">
+                                <li>
+                                    <a href="mailto:cosmi.logo@gmail.com"> <i class="fa-solid fa-envelope"></i></a>
+                                    <a href="mailto:cosmi.logo@gmail.com" class="text-lowercase">cosmi.logo@gmail.com</a>
+                                </li>
+                                <li>
+                                    <a href="tel:+40733402340"> <i class="fa-solid fa-phone"></i></a>
+                                    <a href="tel:+40733402340">+40 733 402 340</a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="fa-sharp fa-regular fa-clock"></i></a>
+                                    <a href="#">Working hours: M-F 9AM - 18PM</a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/40733402340"> <i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="https://wa.me/40733402340">WhatsApp</a>
+                                </li>
+                                <!-- <li><img src="./images/icon/icon-anpc.png" alt="icon-anpc"/></li>
+                                <li><img src="./images/icon/icon-europa-eu-anpc.png" alt="icon-europa-eu-anpc"/> </li> -->
+                            </ul>
+                            <!-- <img src="./images/icon/icon-anpc.png" alt="icon-anpc"/>
+                            -->
+                             <!-- Envelope button to open chat -->
+    
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container flex flex-center gap-2 flex-wrap">
+                    <h5>Copyright © 2021 - <script>document.write(new Date().getFullYear());</script> Cosmina Uzum <a href="https://www.cosminauzum.com/" class="p-0"> </a></h5>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+
+    <!-- end site wrapper -->
+
+
+    <!-- button back to top -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn_hover3"><i class="fa-solid fa-chevron-up"></i></button>
+    <!-- free meeting schedule button -->
+    <button id="scheduleFixButton" class="schedule-btn open-modal-btn btn_hover3"><i class="fa-solid fa-calendar-days"></i> Schedule a Free Consultation</button>
+
+<!-- Free meeting schedule modal -->
+ <!-- Modal Structure -->
+<div id="schedule-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal-btn">&times;</span>
+        
+        <div class="container_contact">
+            <!-- Part 1: Logo, Title, Paragraph, and Listed Items -->
+            <div class="part1">
+                <img src="./logo/cosminauzum-high-resolution-logo-white-transparent.png" alt="Logo" class="logo">
+                <h3>Schedule a Meeting</h3>
+                <p>We are excited to meet you!</p>
+                <ul>
+                    <li><i class="far fa-clock"></i> 30 Min</li>
+                    <li><i class="fas fa-video"></i> Video call</li>
+                    <li><i class="fab fa-google"></i> Meet</li>
+                </ul>
+            </div>
+
+            <!-- Part 2: Calendar Section -->
+            <div class="part2" id="calendar-section">
+                <div class="calendar-header">
+                    <span id="month-name"></span>
+                    <div class="arrows">
+                        <button id="prev-month">&lt;</button>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                </div>
+                
+                <div class="timezone-selector">
+                    <label for="timezone-select">Select Timezone:</label>
+                    <select id="timezone-select">
+                        <option value="Europe/Bucharest">Bucharest (GMT+3)</option>
+                        <option value="UTC">UTC</option>
+                        <option value="America/New_York">New York (GMT-5)</option>
+                        <option value="Europe/London">London (GMT+0)</option>
+                        <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
+                        <option value="Australia/Sydney">Sydney (GMT+10)</option>
+                    </select>
+                </div>
+                
+                <div class="calendar-body">
+                    <div class="days-header">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div class="days-grid" id="days-grid"></div>
+                </div>
+            </div>
+
+            <!-- Part 3: Selected Day and Available Time Slots -->
+            <div class="part3" id="timeslots-section">
+                <h4 id="selected-day">No date selected</h4>
+                <div class="timeslots">
+                    <!-- Available time intervals will be populated here -->
+                </div>
+            </div>
+
+            <!-- Form Section (Initially Hidden) -->
+            <div class="form-section" id="form-section" style="display: none;">
+                <h2>Fill in your information</h2>
+                <form id="meeting-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message"></textarea>
+
+                    <p class="gdpr">By submitting this form, you agree to our <a href="#">GDPR policy</a>.</p>
+
+                    <button type="button" id="back-button">Go Back</button>
+                    <button type="submit" id="confirm-button">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 150,
+            duration: 1250,
+            once: true,
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+    <script type="text/javascript">
+          (function(){
+      emailjs.init({
+        publicKey: "axm62-nrRXhVpMnv5",
+      });
+   })();
+            emailjs.init("axm62-nrRXhVpMnv5"); // Replace with your EmailJS user ID
+            // emailjs.init("YOUR_USER_ID"); 
+       
+    </script>
+    
+    
+
+    <!-- jquery js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- jquery min js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- slick carousel min js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" integrity="sha256-DHF4zGyjT7GOMPBwpeehwoey18z8uiz98G4PRu2lV0A=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    <!-- custom js -->
+    <script src="js/script.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/meeting.js"></script>
+    <script src="js/chat.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        "use strict";
+        var heading = $('#our-skills .desc .heading h1'),
+            txt = $('#our-skills .desc .text'),
+            skillItem = $('#our-skills .skills .column .skill'),
+            tl = new TimelineLite();
+    
+        tl
+            .from(heading, 0.3, {opacity : 0, y : -20}, '+=0.3')
+            .from(txt, 0.3, {opacity : 0, y : -20})
+            .staggerFrom(skillItem, 0.2, {x : -10, autoAlpha : 0}, 0.1);
+        
+    });
+    </script>
+</body>
+
+</html>

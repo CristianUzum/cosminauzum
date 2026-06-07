@@ -1,0 +1,36 @@
+User-agent: *
+
+# PermiteÈ›i indexarea website-ului
+Allow: /
+
+# ExcludeÈ›i directoarele inutile din indexare
+Disallow: *.jpg
+Disallow: *.css
+Disallow: *.js
+Disallow: *.png
+Disallow: *.SVG
+Disallow: *.JPG
+Disallow: *.php
+Disallow: *.PNG
+Disallow: /images/
+Disallow: /js/
+Disallow: /css/
+# IncludeÈ›i fiÈ™ierul sitemap
+Sitemap: https://www.cosminauzum.com/sitemap.xml
+
+# Crawl-delay (opÈ›ional)
+Crawl-delay: 10
+
+# Comentarii
+# ExludeÈ›i pagina de contact din indexare
+
+# ExludeÈ›i pagina despre din indexare
+
+Disallow: /wp/
+Disallow: /wp_admin/
+Disallow: /wp_content/
+Disallow: /wp_includes/
+Disallow: /PHPMailer/
+Disallow: /404/
+Disallow: /wp-cli/
+Disallow: /well-known/

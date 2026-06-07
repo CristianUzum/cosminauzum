@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+/* 
+header {
+    text-align: center;
+    background-color: #ffcccb;
+    padding: 20px;
+    color: white;
+} */
+.navbar {
+    background-color: #ffcccb;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+#activity-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #ffe4e1;
+    padding: 15px;
+    gap: 10px;
+}
+
+#activity-form label {
+    margin-right: 5px;
+}
+
+.week-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+
+.day {
+    background-color: #ffe4b5;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+}
+
+.activities-list {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.activities-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0px;
+    padding: 5px 10px;
+    background-color: #f5deb3;
+    border-radius: 5px;
+
+}
+
+.activities-list li button {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+
+/* .activities-list li {
+    margin: 8px 0;
+    padding: 5px;
+    background-color: #f5deb3;
+    border-radius: 5px;
+    position: relative;
+}
+
+.activities-list li button {
+    position: absolute;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 3px;
+} */
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #ffcccb;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}
+
+footer p a {
+    text-decoration: none;
+    color: white;
+}

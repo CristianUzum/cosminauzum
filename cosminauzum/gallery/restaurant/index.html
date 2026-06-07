@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ora Hotel - Restaurant de elită în Reșița</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary-color: #c19a6b;
+        --secondary-color: #1a1a1a;
+        --light-color: #f8f8f8;
+        --dark-color: #222;
+        --text-color: #333;
+        --text-light: #777;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color);
+        overflow-x: hidden;
+        background-color: var(--light-color);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        padding: 20px 0;
+      }
+
+      header.scrolled {
+        background-color: rgba(26, 26, 26, 0.95);
+        padding: 10px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--light-color);
+        text-decoration: none;
+        font-family: "Playfair Display", serif;
+      }
+
+      .logo span {
+        color: var(--primary-color);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        color: var(--light-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        color: var(--light-color);
+        font-size: 24px;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--light-color);
+        text-align: center;
+      }
+
+      .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--light-color);
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background-color: var(--light-color);
+        color: var(--secondary-color);
+      }
+
+      /* About Section */
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 42px;
+        color: var(--secondary-color);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+      }
+
+      .section-title h2:after {
+        content: "";
+        position: absolute;
+        width: 70px;
+        height: 3px;
+        background-color: var(--primary-color);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title p {
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 20px auto 0;
+        line-height: 1.6;
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .about-text {
+        flex: 1;
+        padding-right: 50px;
+      }
+
+      .about-text h3 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--secondary-color);
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+      }
+
+      .about-image {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image .image-overlay {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 15px solid var(--primary-color);
+        bottom: -30px;
+        left: -30px;
+        z-index: -1;
+      }
+
+      /* Services Section */
+      .services {
+        background-color: var(--secondary-color);
+        color: var(--light-color);
+      }
+
+      .services .section-title h2 {
+        color: var(--light-color);
+      }
+
+      .services-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .service-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 40px 30px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .service-icon {
+        font-size: 50px;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .service-card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .service-card p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+      }
+
+      /* Gallery Section */
+      .gallery {
+        background-color: #f5f5f5;
+      }
+
+      .gallery-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .swiper-container {
+        width: 100%;
+        height: 500px;
+        margin-bottom: 50px;
+      }
+
+      .swiper-slide {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .swiper-slide:hover img {
+        transform: scale(1.1);
+      }
+
+      .swiper-slide-content {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: white;
+        transition: bottom 0.3s ease;
+      }
+
+      .swiper-slide:hover .swiper-slide-content {
+        bottom: 0;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: var(--primary-color);
+      }
+
+      .swiper-pagination-bullet-active {
+        background: var(--primary-color);
+      }
+
+      /* Menu Section */
+      .menu-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .menu-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .menu-tab {
+        padding: 10px 25px;
+        margin: 0 10px;
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 30px;
+        font-weight: 600;
+      }
+
+      .menu-tab.active,
+      .menu-tab:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .menu-items {
+        display: none;
+      }
+
+      .menu-items.active {
+        display: block;
+      }
+
+      .menu-item {
+        display: flex;
+        margin-bottom: 30px;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-item-image {
+        flex: 0 0 200px;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .menu-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .menu-item:hover .menu-item-image img {
+        transform: scale(1.1);
+      }
+
+      .menu-item-content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .menu-item-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        align-items: center;
+      }
+
+      .menu-item-title {
+        font-size: 22px;
+        color: var(--secondary-color);
+      }
+
+      .menu-item-price {
+        font-size: 22px;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      .menu-item-description {
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      /* Team Section */
+      .team {
+        background-color: var(--secondary-color);
+        color: var(--light-color);
+      }
+
+      .team .section-title h2 {
+        color: var(--light-color);
+      }
+
+      .team-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .team-member {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .team-member-image {
+        height: 300px;
+        overflow: hidden;
+      }
+
+      .team-member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .team-member:hover .team-member-image img {
+        transform: scale(1.1);
+      }
+
+      .team-member-info {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .team-member-name {
+        font-size: 22px;
+        margin-bottom: 5px;
+      }
+
+      .team-member-position {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .team-member-bio {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        margin: 0 5px;
+        color: var(--light-color);
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        background-color: #f5f5f5;
+      }
+
+      .testimonials-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .testimonial-slider {
+        position: relative;
+      }
+
+      .testimonial-item {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin: 20px;
+        text-align: center;
+      }
+
+      .testimonial-text {
+        font-size: 18px;
+        font-style: italic;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .testimonial-text:before {
+        content: '"';
+        font-size: 60px;
+        color: var(--primary-color);
+        opacity: 0.3;
+        position: absolute;
+        top: -20px;
+        left: -10px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .testimonial-author-image {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+      }
+
+      .testimonial-author-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .testimonial-author-info h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+        text-align: left;
+      }
+
+      .testimonial-author-info p {
+        color: var(--text-light);
+        text-align: left;
+      }
+
+      /* Contact Section */
+      .contact {
+        background-color: var(--secondary-color);
+        color: var(--light-color);
+      }
+
+      .contact .section-title h2 {
+        color: var(--light-color);
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .contact-info-item {
+        display: flex;
+        margin-bottom: 30px;
+      }
+
+      .contact-info-icon {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: var(--primary-color);
+        font-size: 20px;
+      }
+
+      .contact-info-content h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .contact-info-content p,
+      .contact-info-content a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-info-content a:hover {
+        color: var(--primary-color);
+      }
+
+      .contact-form {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form h3 {
+        color: var(--secondary-color);
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: "Montserrat", sans-serif;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #a5825a;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: var(--light-color);
+        padding: 70px 0 20px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-col h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--primary-color);
+      }
+
+      .footer-col p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-color);
+        padding-left: 5px;
+      }
+
+      .footer-social-links {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .footer-social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        margin-right: 10px;
+        color: var(--light-color);
+        transition: all 0.3s ease;
+      }
+
+      .footer-social-links a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        margin-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-bottom p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+
+      .footer-bottom a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-bottom a:hover {
+        color: #a5825a;
+      }
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background-color: var(--secondary-color);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 60px;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-text {
+          padding-right: 0;
+          margin-bottom: 40px;
+        }
+
+        .about-image {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background-color: var(--secondary-color);
+          flex-direction: column;
+          align-items: center;
+          padding-top: 40px;
+          transition: all 0.5s ease;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .hero h1 {
+          font-size: 48px;
+        }
+
+        .hero p {
+          font-size: 18px;
+        }
+
+        .btn {
+          display: block;
+          width: 80%;
+          margin: 0 auto 15px;
+        }
+
+        .btn-outline {
+          margin-left: auto;
+        }
+
+        .menu-item {
+          flex-direction: column;
+        }
+
+        .menu-item-image {
+          flex: 0 0 100%;
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h1 {
+          font-size: 36px;
+        }
+
+        .section-title h2 {
+          font-size: 32px;
+        }
+
+        .testimonial-item {
+          padding: 20px;
+        }
+
+        .testimonial-author {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .testimonial-author-image {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+
+        .testimonial-author-info h4,
+        .testimonial-author-info p {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <nav class="navbar">
+        <a href="#" class="logo">ORA <span>HOTEL</span></a>
+        <div class="menu-toggle" id="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Acasă</a></li>
+          <li><a href="#about">Despre Noi</a></li>
+          <li><a href="#services">Servicii</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#menu">Meniu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <video autoplay muted loop class="hero-video">
+        <source src="./1303-145340146.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 data-aos="fade-down" data-aos-delay="300">Ora Hotel</h1>
+        <p data-aos="fade-up" data-aos-delay="500">
+          Un restaurant de elită în inima Reșiței, unde tradiția întâlnește
+          rafinamentul
+        </p>
+        <div data-aos="fade-up" data-aos-delay="700">
+          <a href="#contact" class="btn">Rezervă acum</a>
+          <a href="#menu" class="btn btn-outline">Explorează Meniul</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="section-title">
+        <h2>Despre Ora Hotel</h2>
+        <p>
+          Descoperă povestea din spatele celui mai rafinat restaurant din Reșița
+        </p>
+      </div>
+      <div class="about-content">
+        <div class="about-text" data-aos="fade-right">
+          <h3>O experiență culinară de neuitat</h3>
+          <p>
+            Fondat în 2010, Ora Hotel s-a afirmat rapid ca un punct de referință
+            în gastronomia de elită din Banat. Localul nostru combină armonios
+            eleganța unui restaurant de clasă mondială cu căldura și
+            autenticitatea bucătăriei tradiționale românești.
+          </p>
+          <p>
+            Cu un spațiu care poate găzdui evenimente de până la 200 de
+            persoane, suntem mândrii să fim aleși pentru cele mai importante
+            evenimente din viața clienților noștri: nunti, botezuri, aniversări
+            și evenimente corporative.
+          </p>
+          <p>
+            Bucătaria noastră este condusă de un chef cu experiență
+            internațională, iar echipa de ospătari este atentă la fiecare
+            detaliu pentru a vă oferi o experiență memorabilă.
+          </p>
+          <a href="#gallery" class="btn">Explorează Spațiul</a>
+        </div>
+        <div class="about-image" data-aos="fade-left">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Restaurant Interior"
+          />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+      <div class="section-title">
+        <h2>Serviciile Noastre</h2>
+        <p>
+          Oferim o gamă completă de servicii pentru a transforma orice eveniment
+          într-unul memorabil
+        </p>
+      </div>
+      <div class="services-container">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <h3>Evenimente Speciale</h3>
+          <p>
+            Organizăm nunti, botezuri, aniversări și evenimente corporative cu
+            atenție la fiecare detaliu, într-un ambient rafinat și sofisticat.
+          </p>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3>Bucătărie Gourmet</h3>
+          <p>
+            Preparate din ingrediente de cea mai înaltă calitate, gătite cu
+            pasiune și creativitate de către chef-ul nostru cu experiență
+            internațională.
+          </p>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon">
+            <i class="fas fa-wine-glass-alt"></i>
+          </div>
+          <h3>Crama Exclusivă</h3>
+          <p>
+            O selecție impresionantă de vinuri românești și internaționale,
+            alese cu grijă pentru a completa perfect experiența culinară.
+          </p>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3>Atmosferă Premium</h3>
+          <p>
+            Design interior rafinat, iluminat atmosferic și muzică live pentru a
+            crea ambianța perfectă pentru evenimentul dumneavoastră.
+          </p>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon">
+            <i class="fas fa-concierge-bell"></i>
+          </div>
+          <h3>Servire Impecabilă</h3>
+          <p>
+            O echipă de ospătari profesioniști, atenți la fiecare detaliu,
+            pentru a vă oferi o experiență de servire de neuitat.
+          </p>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon">
+            <i class="fas fa-parking"></i>
+          </div>
+          <h3>Parcare Privată</h3>
+          <p>
+            Parcare privată și securizată pentru oaspeții noștri, cu serviciu de
+            valet parking disponibil pentru evenimente speciale.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+      <div class="section-title">
+        <h2>Galerie Foto</h2>
+        <p>
+          Explorează atmosfera rafinată a restaurantului nostru și a
+          evenimentelor găzduite
+        </p>
+      </div>
+      <div class="gallery-container">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Restaurant Interior"
+              />
+              <div class="swiper-slide-content">
+                <h3>Sala Principală</h3>
+                <p>
+                  Spațiu elegant cu capacitate de până la 200 de persoane,
+                  perfect pentru evenimente mari
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Restaurant Food"
+              />
+              <div class="swiper-slide-content">
+                <h3>Preparate Culinare</h3>
+                <p>
+                  Bucătărie creativă cu preparate din ingrediente de cea mai
+                  înaltă calitate
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Wedding Event"
+              />
+              <div class="swiper-slide-content">
+                <h3>Evenimente de Nuntă</h3>
+                <p>
+                  Spațiu special amenajat pentru a transforma ziua cea mai
+                  frumoasă într-o amintire de neuitat
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Bar Area"
+              />
+              <div class="swiper-slide-content">
+                <h3>Barul Nostru</h3>
+                <p>
+                  O selecție impresionantă de băuturi fine și cocktailuri
+                  artistice
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w1351&q=80"
+                alt="Outdoor Terrace"
+              />
+              <div class="swiper-slide-content">
+                <h3>Terasa Exterioară</h3>
+                <p>
+                  Un spațiu relaxant perfect pentru seara de vară sau evenimente
+                  în aer liber
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Menu Section -->
+    <section class="section" id="menu">
+      <div class="section-title">
+        <h2>Meniul Nostru</h2>
+        <p>
+          Descoperă o experiență culinară deosebită cu preparate din ingrediente
+          de cea mai înaltă calitate
+        </p>
+      </div>
+      <div class="menu-container">
+        <div class="menu-tabs">
+          <div class="menu-tab active" data-tab="starters">Aperitive</div>
+          <div class="menu-tab" data-tab="salads">Salate</div>
+          <div class="menu-tab" data-tab="mains">Feluri Principale</div>
+          <div class="menu-tab" data-tab="desserts">Deserturi</div>
+          <div class="menu-tab" data-tab="drinks">Băuturi</div>
+        </div>
+
+        <div class="menu-items active" id="starters">
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Bruschetta"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Bruschetta Ora</h3>
+                <div class="menu-item-price">35 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Pâine proaspătă prăjită cu usturoi, roșii cherry, busuioc
+                proaspăt și ulei de măsline extravirgin
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img src="Foie_gras_en_cocotte.jpg" alt="Foie Gras" />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Foie Gras cu Gem de Trufe</h3>
+                <div class="menu-item-price">85 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Foie gras de gâscă, preparat tradițional francez, servit cu gem
+                de trufe negre și pâine brioche proaspătă
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Tartar"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Tartar de Vită Wagyu</h3>
+                <div class="menu-item-price">120 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Carne de vită Wagyu tăiată manual, cu gălbenuș de ou de
+                prepeliță, capere și sos propriu
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-items" id="salads">
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Caesar Salad"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Salată Caesar Ora</h3>
+                <div class="menu-item-price">45 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Salată verde, crutoane, parmezan, sos Caesar original și piept
+                de pui la grătar (opțional)
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Greek Salad"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Salată Grecească Premium</h3>
+                <div class="menu-item-price">55 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Roșii, castraveți, ceapă roșie, ardei, măsline Kalamata, brânză
+                feta originală și ulei de măsline extravirgin
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-items" id="mains">
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Steak"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Friptură de Vită Angus</h3>
+                <div class="menu-item-price">150 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Cotlet de vită Angus maturat 28 de zile, servit cu sos
+                demiglace, cartofi confia și legume de sezon
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Salmon"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Somon Norwegian la Grătar</h3>
+                <div class="menu-item-price">110 RON</div>
+              </div>
+              <p class="menu-item-description">
+                File de somon proaspăt cu crustă de migdale, servit cu piure de
+                lămâie verde și sparanghel
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Duck"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Piept de Rață Confiat</h3>
+                <div class="menu-item-price">95 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Piept de rață preparat în tehnica confit, servit cu sos de
+                portocale caramelizate și cartofi sălbatici
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-items" id="desserts">
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Tiramisu"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Tiramisu Classico</h3>
+                <div class="menu-item-price">40 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Clasic desert italian preparat după rețeta tradițională cu
+                mascarpone, cafea espresso și cacao
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Chocolate Souffle"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Sufleu de Ciocolată Belge</h3>
+                <div class="menu-item-price">45 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Sufleu cu ciocolată neagră 70% cocoa, servit cu înghețată de
+                vanilie Madagascar
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-items" id="drinks">
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Wine"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Vinuri Românești Premium</h3>
+                <div class="menu-item-price">30-120 RON/pahar</div>
+              </div>
+              <p class="menu-item-description">
+                Selecție de vinuri românești de la producători de elită:
+                Fetească Neagră, Negru de Drăgășani, Tămâioasă Românească
+              </p>
+            </div>
+          </div>
+          <div class="menu-item" data-aos="fade-up">
+            <div class="menu-item-image">
+              <img
+                src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="Cocktail"
+              />
+            </div>
+            <div class="menu-item-content">
+              <div class="menu-item-header">
+                <h3 class="menu-item-title">Cocktail-uri Artizanale</h3>
+                <div class="menu-item-price">45-65 RON</div>
+              </div>
+              <p class="menu-item-description">
+                Cocktail-uri premium preparate cu ingrediente proaspete și
+                băuturi de calitate: Ora Signature, Negroni, Aperol Spritz
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+      <div class="section-title">
+        <h2>Echipa Noastră</h2>
+        <p>
+          Profesioniști dedicați care transformă fiecare vizită într-o
+          experiență memorabilă
+        </p>
+      </div>
+      <div class="team-container">
+        <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+          <div class="team-member-image">
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+              alt="Chef"
+            />
+          </div>
+          <div class="team-member-info">
+            <h3 class="team-member-name">Alexandru Popescu</h3>
+            <span class="team-member-position">Bucătar Șef</span>
+            <p class="team-member-bio">
+              Cu peste 15 ani de experiență în bucătării de elită din Europa,
+              chef-ul Alexandru aduce în Ora Hotel o combinație unică de tehnici
+              culinare internaționale și influențe tradiționale românești.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+          <div class="team-member-image">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+              alt="Manager"
+            />
+          </div>
+          <div class="team-member-info">
+            <h3 class="team-member-name">Elena Ionescu</h3>
+            <span class="team-member-position">Manager Restaurant</span>
+            <p class="team-member-bio">
+              Cu o carieră de peste 10 ani în hospitality, Elena asigură că
+              fiecare detaliu al experienței în Ora Hotel este perfect
+              organizat, de la rezervări la coordonarea evenimentelor speciale.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+          <div class="team-member-image">
+            <img
+              src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+              alt="Sommelier"
+            />
+          </div>
+          <div class="team-member-info">
+            <h3 class="team-member-name">Mihai Dumitrescu</h3>
+            <span class="team-member-position">Sommelier</span>
+            <p class="team-member-bio">
+              Certificat ASI, Mihai a lucrat în crame de prestigiu din Franța și
+              Italia. El a creat carta de vinuri a restaurantului nostru și este
+              întotdeauna disponibil pentru recomandări perfecte.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+          <div class="team-member-image">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+              alt="Head Waiter"
+            />
+          </div>
+          <div class="team-member-info">
+            <h3 class="team-member-name">Andrei Stoica</h3>
+            <span class="team-member-position">Ospătar Șef</span>
+            <p class="team-member-bio">
+              Cu o experiență de 8 ani în restaurante Michelin, Andrei conduce
+              echipa noastră de ospătari, asigurând un serviciu impecabil și
+              atenție la fiecare detaliu pentru oaspeții noștri.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <div class="section-title">
+        <h2>Părerile Oaspeților</h2>
+        <p>
+          Descoperă ce spun clienții noștri despre experiența lor în Ora Hotel
+        </p>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonial-slider swiper-container">
+          <div class="swiper-wrapper">
+            <div class="testimonial-item swiper-slide">
+              <div class="testimonial-text">
+                Am organizat nunta noastră în Ora Hotel și a fost perfect! Totul
+                a fost impecabil - de la mâncare delicioasă la servirea
+                excelentă. Spațiul este elegant și rafinat, iar echipa a fost
+                extrem de atentă la toate detaliile. Recomand cu încredere!
+              </div>
+              <div class="testimonial-author">
+                <div class="testimonial-author-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                    alt="Client"
+                  />
+                </div>
+                <div class="testimonial-author-info">
+                  <h4>Maria și Andrei</h4>
+                  <p>Eveniment: Nuntă</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-item swiper-slide">
+              <div class="testimonial-text">
+                Ca un pasionat de gastronomie, pot spune că Ora Hotel este cel
+                mai bun restaurant din regiune. Am fost impresionat de
+                creativitatea preparatelor și de calitatea ingredientelor.
+                Sommelierul ne-a recomandat un vin perfect care a completat
+                experiența. Cu siguranță voi reveni!
+              </div>
+              <div class="testimonial-author">
+                <div class="testimonial-author-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                    alt="Client"
+                  />
+                </div>
+                <div class="testimonial-author-info">
+                  <h4>Robert Popovici</h4>
+                  <p>Client frecvent</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-item swiper-slide">
+              <div class="testimonial-text">
+                Am organizat botezul fiicei noastre în Ora Hotel și a fost o
+                experiență minunată. Echipa a fost foarte flexibilă și ne-a
+                ajutat să personalizăm meniul pentru oaspeții noștri. Spațiul
+                este perfect pentru evenimente de familie, iar calitatea
+                serviciilor este remarcabilă.
+              </div>
+              <div class="testimonial-author">
+                <div class="testimonial-author-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                    alt="Client"
+                  />
+                </div>
+                <div class="testimonial-author-info">
+                  <h4>Familia Moldovan</h4>
+                  <p>Eveniment: Botez</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>
+          Sună-ne sau vizitează-ne pentru a rezerva masa sau pentru a discuta
+          despre evenimentul tău
+        </p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-info-item" data-aos="fade-right">
+            <div class="contact-info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-info-content">
+              <h3>Locație</h3>
+              <p>Strada Republicii nr. 42, Reșița, Caraș-Severin</p>
+            </div>
+          </div>
+          <div
+            class="contact-info-item"
+            data-aos="fade-right"
+            data-aos-delay="100"
+          >
+            <div class="contact-info-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-info-content">
+              <h3>Telefon</h3>
+              <a href="tel:+40755123456">+40 755 123 456</a>
+            </div>
+          </div>
+          <div
+            class="contact-info-item"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            <div class="contact-info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-info-content">
+              <h3>Email</h3>
+              <a href="mailto:contact@orahotel.ro">contact@orahotel.ro</a>
+            </div>
+          </div>
+          <div
+            class="contact-info-item"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
+            <div class="contact-info-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-info-content">
+              <h3>Program</h3>
+              <p>Luni - Vineri: 12:00 - 23:00</p>
+              <p>Sâmbătă - Duminică: 10:00 - 24:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form" data-aos="fade-left">
+          <h3>Trimite-ne un mesaj</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Numele tău"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" placeholder="Telefon" />
+            </div>
+            <div class="form-group">
+              <textarea
+                class="form-control"
+                placeholder="Mesajul tău"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Trimite Mesaj</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Despre Ora Hotel</h3>
+          <p>
+            Ora Hotel este un restaurant premium din inima Reșiței, oferind o
+            experiență culinară de neuitat într-un ambient rafinat și
+            sofisticat.
+          </p>
+          <div class="footer-social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tripadvisor"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Link-uri Rapide</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Acasă</a></li>
+            <li><a href="#about">Despre Noi</a></li>
+            <li><a href="#services">Servicii</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+            <li><a href="#menu">Meniu</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Servicii</h3>
+          <ul class="footer-links">
+            <li><a href="#">Nunti</a></li>
+            <li><a href="#">Botezuri</a></li>
+            <li><a href="#">Aniversări</a></li>
+            <li><a href="#">Evenimente Corporative</a></li>
+            <li><a href="#">Catering</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p>
+            Abonează-te la newsletter-ul nostru pentru a afla despre promoții și
+            evenimente speciale.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Email-ul tău" required />
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 Ora Hotel. Toate drepturile rezervate. | Realizat de
+          <a href="https://www.cosminauzum.com" target="_blank"
+            >www.cosminauzum.com</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenu = document.getElementById("mobile-menu");
+      const navLinks = document.getElementById("nav-links");
+
+      mobileMenu.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Initialize AOS Animation
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+
+      // Initialize Swiper for Gallery
+      const gallerySwiper = new Swiper(".gallery-container .swiper-container", {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 20,
+          stretch: 0,
+          depth: 200,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          el: ".gallery-container .swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".gallery-container .swiper-button-next",
+          prevEl: ".gallery-container .swiper-button-prev",
+        },
+      });
+
+      // Initialize Swiper for Testimonials
+      const testimonialSwiper = new Swiper(".testimonial-slider", {
+        loop: true,
+        autoplay: {
+          delay: 8000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".testimonial-slider .swiper-pagination",
+          clickable: true,
+        },
+      });
+
+      // Menu Tabs
+      const menuTabs = document.querySelectorAll(".menu-tab");
+      const menuItems = document.querySelectorAll(".menu-items");
+
+      menuTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Remove active class from all tabs and items
+          menuTabs.forEach((t) => t.classList.remove("active"));
+          menuItems.forEach((i) => i.classList.remove("active"));
+
+          // Add active class to clicked tab and corresponding items
+          tab.classList.add("active");
+          const tabId = tab.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
+        });
+      });
+
+      // Back to Top Button
+      const backToTop = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add("active");
+        } else {
+          backToTop.classList.remove("active");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission
+      const contactForm = document.getElementById("contactForm");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Here you would typically send the form data to a server
+          // For demo purposes, we'll just show an alert
+          alert(
+            "Mulțumim pentru mesaj! Vă vom contacta în cel mai scurt timp posibil."
+          );
+          this.reset();
+        });
+      }
+    </script>
+  </body>
+</html>

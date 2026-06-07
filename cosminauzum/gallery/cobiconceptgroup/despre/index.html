@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ro" class="is-desktop">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cobi Concept - Despre Noi & Proiecte</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="font-sans">
+    <header
+      id="main-header"
+      class="bg-white shadow-lg fixed top-0 left-0 w-full z-50 transition-transform duration-500 ease-in-out"
+    >
+      <nav
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center relative"
+      >
+        <a
+          href="#"
+          class="text-3xl font-extrabold text-blue-900 hover:text-blue-800 transition duration-300"
+        >
+          COBI
+        </a>
+
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-800 text-gray-800 hover:text-blue-900"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="./../index.html"
+            class="text-gray-800 hover:text-blue-900 font-medium"
+            >Acasa</a
+          >
+          <a
+            href="./index.html"
+            class="text-blue-900 font-bold border-b-2 border-blue-900"
+            >Despre Noi</a
+          >
+          <a
+            href="./../contact.html"
+            class="text-gray-800 hover:text-blue-900 font-medium"
+            >Contact</a
+          >
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden bg-white shadow-xl w-full absolute top-[72px] left-0 z-40 transition-all duration-300 ease-in-out"
+      >
+        <a
+          href="../index.html"
+          class="block px-4 py-3 text-gray-800 hover:bg-gray-100 font-medium"
+          >Acasa</a
+        >
+        <a
+          href="./index.html"
+          class="block px-4 py-3 text-blue-900 font-bold border-l-4 border-blue-900 bg-blue-50"
+          >Despre Noi</a
+        >
+
+        <a
+          href="../contact.html"
+          class="block px-4 py-3 text-gray-800 hover:bg-gray-100 font-medium"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <div id="smooth-wrapper">
+      <main id="smooth-content" class="font-[Open_Sans]">
+        <div class="h-20 md:h-24"></div>
+
+        <section class="p-8 md:p-16 lg:p-24 bg-gray-50">
+          <div
+            class="flex flex-col xl:flex-row justify-between items-center gap-8 md:gap-16 lg:gap-20"
+          >
+            <div class="max-w-lg lg:max-w-xl mb-8 xl:mb-0 xl:mr-12">
+              <h1 class="heading font-bold leading-[0.9] text-blue-900">
+                Viziunea<br />noastră
+              </h1>
+              <p
+                class="pt-4 md:pt-6 px-1 text-lg lg:text-xl text-gray-700 text-justify"
+              >
+                Credem în lucrurile frumoase care fac viața mai ușoară, mai
+                luminoasă și mai plină de amintiri.
+              </p>
+              <p
+                class="pt-4 md:pt-6 px-1 text-lg lg:text-xl text-gray-700 text-justify"
+              >
+                Suntem un brand construit din trei direcții principale, toate
+                unite de aceeași viziune: să aducem calitate, confort și emoție
+                în viața oamenilor.
+              </p>
+              <p
+                class="pt-4 px-1 text-lg lg:text-xl text-gray-700 text-justify"
+              >
+                Indiferent dacă vorbim despre o vacanță, o curățenie sau un
+                eveniment, scopul nostru este același: să creăm experiențe
+                pozitive, să oferim servicii impecabile și să fim mereu de
+                încredere.
+              </p>
+            </div>
+
+            <div
+              class="grow flex xl:justify-end items-center w-full max-w-2xl lg:max-w-3xl"
+            >
+              <img
+                class="w-full shadow-2xl rounded-lg"
+                src="../img/00.jpeg"
+                alt="Imagine Viziune Cobi Concept"
+              />
+            </div>
+          </div>
+        </section>
+        <section
+          class="section-stick min-h-[150vh] bg-gray-900 flex justify-center items-center text-white p-8 md:p-16"
+        >
+          <p
+            id="text-animat"
+            class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl text-center font-medium max-w-3xl sm:max-w-4xl lg:max-w-5xl xl:max-w-6xl leading-tight sm:leading-snug"
+          >
+            Să fim un brand accesibil, profesionist și creativ, care
+            îmbunătățește viața oamenilor prin servicii de calitate și
+            experiențe impecabile.
+          </p>
+        </section>
+
+        <!-- SECȚIUNEA GALERIEI MODIFICATĂ -->
+        <section
+          class="p-8 md:p-16 lg:p-24 bg-white text-gray-800 min-h-screen flex flex-col justify-center"
+        >
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 text-center text-blue-900"
+          >
+            Proiecte Recente
+          </h2>
+
+          <div class="image-stack-gallery">
+            <nav style="--max-p: 8; --max-z: 9">
+              <a href="#" style="--i: 0; --img: url('../img/event1.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a href="#" style="--i: 1; --img: url('../img/event2.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a href="#" style="--i: 2; --img: url('../img/event3.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a href="#" style="--i: 3; --img: url('../img/event4.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a href="#" style="--i: 4; --img: url('../img/event5.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a href="#" style="--i: 5; --img: url('../img/event6.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a href="#" style="--i: 6; --img: url('../img/cursa_rate.jpeg')">
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+              <a
+                href="#"
+                style="--i: 7; --img: url('../img/travel/Colmar_Franța.jpeg')"
+              >
+                <div class="img"></div>
+                <aside class="hover-zone">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </aside>
+              </a>
+            </nav>
+          </div>
+        </section>
+        <section class="py-16 px-6 md:px-12 lg:px-24 bg-slate-50">
+          <div
+            class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12"
+          >
+            <div class="w-full lg:w-1/2">
+              <div
+                class="relative rounded-2xl overflow-hidden shadow-2xl group h-[500px] md:h-[600px]"
+              >
+                <div
+                  id="slider-yoyo"
+                  class="flex transition-transform duration-[1200ms] ease-in-out h-full"
+                  style="transform: translateX(0%)"
+                >
+                  <img
+                    src="../img/art1.jpeg"
+                    class="w-full h-full object-cover flex-shrink-0"
+                    alt="Wedding Expo 1"
+                  />
+                  <img
+                    src="../img/art2.jpeg"
+                    class="w-full h-full object-cover flex-shrink-0"
+                    alt="Wedding Expo 2"
+                  />
+                  <img
+                    src="../img/art3.jpeg"
+                    class="w-full h-full object-cover flex-shrink-0"
+                    alt="Wedding Expo 3"
+                  />
+                </div>
+
+                <div
+                  class="absolute top-4 left-4 bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-semibold z-10 shadow-md"
+                >
+                  Eveniment Reșița
+                </div>
+
+                <button
+                  onclick="manualPrev()"
+                  class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-20 hover:bg-white"
+                >
+                  <svg
+                    class="w-6 h-6 text-blue-900"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M15 19l-7-7 7-7"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onclick="manualNext()"
+                  class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-20 hover:bg-white"
+                >
+                  <svg
+                    class="w-6 h-6 text-blue-900"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M9 5l7 7-7 7"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="w-full lg:w-1/2">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight"
+              >
+                Banat Wedding Expo 2026: Cel mai mare târg de nunți din
+                Caraș-Severin
+              </h2>
+
+              <div class="grid grid-cols-2 gap-6 mb-8">
+                <div
+                  class="border-l-4 border-blue-900 pl-4 bg-white py-2 rounded-r-lg shadow-sm"
+                >
+                  <span class="block text-2xl font-bold text-blue-900"
+                    >60+</span
+                  >
+                  <span
+                    class="text-gray-600 text-[10px] md:text-xs uppercase tracking-widest font-medium"
+                    >Furnizori de top</span
+                  >
+                </div>
+                <div
+                  class="border-l-4 border-blue-900 pl-4 bg-white py-2 rounded-r-lg shadow-sm"
+                >
+                  <span class="block text-2xl font-bold text-blue-900"
+                    >4000€</span
+                  >
+                  <span
+                    class="text-gray-600 text-[10px] md:text-xs uppercase tracking-widest font-medium"
+                    >Premii totale</span
+                  >
+                </div>
+              </div>
+
+              <p class="text-gray-700 mb-8 leading-relaxed">
+                Reșița devine epicentrul eleganței, reunind experți de top
+                pentru a-ți transforma nunta într-o realitate de basm.
+                Pregătește-te pentru showcase-uri de rochii, degustări și premii
+                spectaculoase.
+              </p>
+
+              <a
+                href="https://expressdebanat.ro/banat-wedding-expo-2026-cel-mai-mare-targ-de-nunti-din-caras-severin-peste-60-de-furnizori-si-premii-in-valoare-de-4000-de-euro/"
+                target="_blank"
+                class="inline-block bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all text-center w-full md:w-auto shadow-lg active:scale-95"
+              >
+                Citește Articolul Complet
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="relative min-h-screen bg-black mt-[-1px]">
+          <img
+            class="w-screen h-screen object-cover opacity-60 absolute top-0 left-0"
+            src="../img/travel/Gosausee_Austria.jpeg"
+            alt="O imagine reprezentativă pentru Inovație. Calitate. Parteneriat."
+          />
+
+          <h1
+            style="filter: url('#liquify')"
+            class="liquify-scroll absolute text-center top-1/2 -translate-y-1/2 w-full text-5xl sm:text-7xl lg:text-9xl font-semibold px-6 md:px-20 lg:px-60 text-white"
+          >
+            Inovație. Calitate. Parteneriat.
+          </h1>
+
+          <svg class="hidden">
+            <filter id="liquify">
+              <feTurbulence
+                baseFrequency="0.015"
+                numOctaves="3"
+                result="warp"
+                type="fractalNoise"
+              ></feTurbulence>
+              <feDisplacementMap
+                id="liquid"
+                in="SourceGraphic"
+                in2="warp"
+                scale="100"
+                xChannelSelector="R"
+                yChannelSelector="B"
+              ></feDisplacementMap>
+            </filter>
+          </svg>
+        </section>
+
+        <section
+          class="p-8 md:p-16 lg:p-24 bg-blue-900 text-white flex justify-center items-center min-h-[50vh]"
+        >
+          <div class="text-center max-w-4xl">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Ești gata să îți transformi viziunea în realitate?
+            </h2>
+            <p class="text-xl lg:text-2xl mb-8">
+              Contactează-ne astăzi pentru a discuta cum putem crea experiența
+              completă: de la concept la excelență operațională.
+            </p>
+            <a
+              href="../contact.html"
+              class="inline-block bg-white text-blue-900 font-bold py-3 px-10 rounded-full text-lg lg:text-xl hover:bg-gray-200 transition duration-300"
+            >
+              Începe Proiectul Tău
+            </a>
+          </div>
+        </section>
+        <footer class="bg-gray-900 text-white p-8 md:p-12 mt-0">
+          <div
+            class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
+          >
+            <div class="col-span-2 sm:col-span-1">
+              <h3 class="text-2xl font-extrabold mb-4 text-blue-400">
+                COBI Concept
+              </h3>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a
+                    href="../index.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Acasă</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="./index.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Despre Noi</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../contact.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4
+                class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2 text-white"
+              >
+                Companii Group
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a
+                    href="../cobi-travel.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Cobi Travel</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../cobi-events.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Cobi Events</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../cobi-cleanup.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Cobi Cleanup</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4
+                class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2 text-white"
+              >
+                Legal & Info
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <!-- <a
+                    href="termeni.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Termeni și Condiții</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="politica-confidentialitate.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Confidențialitate</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="cookies.html"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >Politica Cookies</a
+                  >
+                </li> -->
+                </li>
+
+                <li>
+                  <a
+                    href="https://anpc.ro/"
+                    class="text-gray-400 hover:text-white transition duration-200"
+                    >ANPC</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4
+                class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2 text-white"
+              >
+                Contact
+              </h4>
+              <p class="text-sm text-gray-400 mb-2">Reşita</p>
+              <p class="text-sm text-gray-400 mb-2">
+                Email:
+                <a
+                  href="mailto:office@cobiconcept.com"
+                  class="hover:text-white transition duration-200"
+                >
+                  cobiconcept@yahoo.com</a
+                >
+              </p>
+              <p class="text-sm text-gray-400">
+                Telefon:
+                <a
+                  href="tel:+40700123456"
+                  class="hover:text-white transition duration-200"
+                  >+40 745 845 392</a
+                >
+                <a
+                  href="tel:+40775356069"
+                  class="hover:text-white transition duration-200"
+                  >+40 775 356 069</a
+                >
+              </p>
+              <div class="flex space-x-4 mt-4 text-2xl">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61569935777801"
+                  class="text-gray-400 hover:text-blue-400 transition duration-200"
+                  ><i class="fa-brands fa-facebook-f"></i
+                ></a>
+                <!-- <a
+                  href="#"
+                  class="text-gray-400 hover:text-blue-400 transition duration-200"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-blue-400 transition duration-200"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a> -->
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm"
+          >
+            &copy; 2026 Cobi Concept Group. Toate drepturile rezervate.
+            <br />
+            Creat cu <i class="fa-solid fa-heart text-red-500"></i> de
+            <a
+              href="https://www.cosminauzum.com/"
+              target="_blank"
+              class="text-gray-400 hover:text-blue-400 transition duration-200"
+              >www.cosminauzum.com</a
+            >
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollSmoother.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/SplitText.min.js"></script>
+    <script>
+      // Funcția de detectare mobil (pentru ScrollSmoother - lăsată ca fallback)
+      (function () {
+        var a = {};
+        var f = /iPhone/i,
+          h = /iPod/i,
+          i = /iPad/i,
+          r = /\biOS-universal(?:.+)Mac\b/i,
+          g = /\bAndroid(?:.+)Mobile\b/i,
+          j = /Android/i,
+          c = /(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i,
+          d = /Silk/i,
+          b = /Windows Phone/i,
+          k = /\bWindows(?:.+)ARM\b/i,
+          m = /BlackBerry/i,
+          n = /BB10/i,
+          o = /Opera Mini/i,
+          p = /\b(CriOS|Chrome)(?:.+)Mobile\b/i,
+          q = /Mobile(?:.+)Firefox\b/i;
+        function s(l) {
+          return function ($) {
+            return $.test(l);
+          };
+        }
+        function e(l) {
+          var $ = (l =
+            l ||
+            ("undefined" != typeof navigator ? navigator.userAgent : "")).split(
+            "[FBAN"
+          );
+          void 0 !== $[1] && (l = $[0]),
+            void 0 !== ($ = l.split("Twitter"))[1] && (l = $[0]);
+          var a = s(l),
+            e = {
+              apple: {
+                phone: a(f) && !a(b),
+                ipod: a(h),
+                tablet: !a(f) && a(i) && !a(b),
+                universal: a(r),
+                device: (a(f) || a(h) || a(i)) && !a(b),
+              },
+              amazon: {
+                phone: a(c),
+                tablet: !a(c) && a(d),
+                device: a(c) || a(d),
+              },
+              android: {
+                phone: (!a(b) && a(c)) || (!a(b) && a(g)),
+                tablet: !a(b) && !a(c) && !a(g) && (a(d) || a(j)),
+                device:
+                  (!a(b) && (a(c) || a(d) || a(g) || a(j))) || a(/\bokhttp\b/i),
+              },
+              windows: { phone: a(b), tablet: a(k), device: a(b) || a(k) },
+              other: {
+                blackberry: a(m),
+                blackberry10: a(n),
+                opera: a(o),
+                firefox: a(q),
+                chrome: a(p),
+                device: a(m) || a(n) || a(o) || a(q) || a(p),
+              },
+              any: !1,
+              phone: !1,
+              tablet: !1,
+            };
+          return (
+            (e.any =
+              e.apple.universal ||
+              e.apple.device ||
+              e.android.device ||
+              e.windows.device ||
+              e.other.device),
+            (e.phone = e.apple.phone || e.android.phone || e.windows.phone),
+            (e.tablet = e.apple.tablet || e.android.tablet || e.windows.tablet),
+            e
+          );
+        }
+        a = e();
+        if (typeof exports === "object" && typeof module !== "undefined") {
+          module.exports = a;
+        } else if (typeof define === "function" && define.amd) {
+          define(function () {
+            return a;
+          });
+        } else {
+          this["isMobile"] = a;
+        }
+      })();
+
+      isMobile.any ||
+        document.querySelector("html").classList.add("is-desktop");
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      let currentPos = 0;
+      let direction = 1; // 1 pentru înainte, -1 pentru înapoi
+      const sliderYoyo = document.getElementById("slider-yoyo");
+      const totalImgs = sliderYoyo.children.length;
+
+      function moveSlider() {
+        // Calculăm poziția
+        sliderYoyo.style.transform = `translateX(-${currentPos * 100}%)`;
+      }
+
+      function autoPlay() {
+        // Dacă am ajuns la ultima imagine, schimbăm direcția spre înapoi
+        if (currentPos === totalImgs - 1) {
+          direction = -1;
+        }
+        // Dacă am ajuns la prima imagine, schimbăm direcția spre înainte
+        else if (currentPos === 0) {
+          direction = 1;
+        }
+
+        currentPos += direction;
+        moveSlider();
+      }
+
+      // Funcții pentru butoane manuale (opresc direcția automată dacă se apasă)
+      function manualNext() {
+        if (currentPos < totalImgs - 1) {
+          currentPos++;
+          moveSlider();
+        }
+      }
+
+      function manualPrev() {
+        if (currentPos > 0) {
+          currentPos--;
+          moveSlider();
+        }
+      }
+
+      // Pornim animația la fiecare 5 secunde
+      setInterval(autoPlay, 7000);
+    </script>
+  </body>
+</html>

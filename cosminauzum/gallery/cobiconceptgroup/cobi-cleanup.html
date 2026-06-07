@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cobi Clean Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .card {
+        position: relative;
+      }
+
+      .card::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        transition: 0.6s;
+        z-index: 0;
+        background-color: #085583;
+      }
+
+      .card:hover {
+        box-shadow: 0.063rem 0.063rem 1.25rem 0.375rem rgb(0 0 0 / 53%);
+      }
+
+      .card:nth-child(1)::before {
+        bottom: 0;
+        right: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
+      }
+
+      .card:nth-child(2)::before {
+        bottom: 0;
+        left: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
+      }
+
+      .card:nth-child(3)::before {
+        top: 0;
+        right: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
+      }
+
+      .card:nth-child(4)::before {
+        top: 0;
+        left: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
+      }
+
+      .card p {
+        transition: 0.8s;
+      }
+
+      .card:hover::before {
+        clip-path: circle(110vw at 100% 100%);
+      }
+
+      .card:hover p {
+        color: #fff;
+      }
+
+      @media screen and (min-width: 62.5rem) {
+        .circle {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+        }
+      }
+
+      .card:nth-child(1) .circle {
+        background: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          no-repeat 50% 50% / cover;
+        bottom: 0;
+        right: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
+      }
+
+      .card:nth-child(2) .circle {
+        background: url("https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          no-repeat 50% 50% / cover;
+        bottom: 0;
+        left: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
+      }
+      .card:nth-child(3) .circle {
+        background: url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          no-repeat 50% 50% / cover;
+        top: 0;
+        right: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
+      }
+
+      .card:nth-child(4) .circle {
+        background: url("https://cdn.pixabay.com/photo/2014/02/17/13/18/cleaning-268107_960_720.jpg")
+          no-repeat 50% 50% / cover;
+        top: 0;
+        left: 0;
+        clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
+      }
+
+      .step-card {
+        transition: transform 0.3s ease;
+      }
+
+      .step-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .price-card {
+        transition: all 0.3s ease;
+      }
+
+      .price-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .recommended {
+        border: 2px solid #085583;
+        position: relative;
+      }
+
+      .recommended::after {
+        content: "RECOMANDAT";
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        background: #085583;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+
+      /* Stiluri pentru meniul mobil */
+      .mobile-menu {
+        transition: all 0.3s ease-in-out;
+      }
+
+      .mobile-menu.hidden {
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+      }
+
+      .mobile-menu:not(.hidden) {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stil pentru logo */
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body class="text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4 px-8 xl:px-0 sticky top-0 z-50 shadow-lg">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <!-- Logo cu imagine -->
+            <div class="mr-3 flex items-center">
+              <img
+                src="./img/cobi_cleanup.jpeg"
+                alt="Cobi Clean Up Logo"
+                class="w-12 h-12 rounded-full object-cover"
+              />
+            </div>
+            <span class="logo text-xl font-bold">Cobi Clean Up</span>
+          </div>
+
+          <!-- Meniu desktop -->
+          <div class="hidden md:flex space-x-8">
+            <a href="./index.html" class="hover:text-blue-400 transition-colors"
+              >Acasă</a
+            >
+            <a
+              href="./despre/index.html"
+              class="hover:text-blue-400 transition-colors"
+              >Despre Noi</a
+            >
+            <a
+              href="./contact.html"
+              class="hover:text-blue-400 transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Buton meniu mobil -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden text-white focus:outline-none"
+          >
+            <svg
+              id="menu-open-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="menu-close-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 hidden"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Meniu mobil -->
+        <div
+          id="mobile-menu"
+          class="mobile-menu hidden md:hidden mt-4 pb-4 border-t border-gray-700"
+        >
+          <div class="flex flex-col space-y-4 pt-4">
+            <a
+              href="./index.html"
+              class="hover:text-blue-400 transition-colors py-2"
+              >Acasă</a
+            >
+            <a
+              href="./despre/index.html"
+              class="hover:text-blue-400 transition-colors py-2"
+              >Despre Noi</a
+            >
+            <a
+              href="./contact.html"
+              class="hover:text-blue-400 transition-colors py-2"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen text-center py-20 px-8 xl:px-0 flex flex-col justify-center bg-gray-900"
+    >
+      <span
+        class="text-gray-300 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center justify-center"
+        >Ce oferim
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="text-blue-500 ml-3 w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+          />
+        </svg>
+      </span>
+      <h1
+        class="text-white text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-8 leading-snug"
+      >
+        Curățenie făcută ca pentru noi acasă
+      </h1>
+      <p class="text-gray-300 text-xl max-w-3xl mx-auto mb-12">
+        Ordine, prospețime, liniște.
+      </p>
+      <div
+        class="grid-offer text-left grid sm:grid-cols-2 md:grid-cols-2 gap-5 max-w-5xl mx-auto"
+      >
+        <div class="card bg-gray-800 p-10 relative">
+          <div class="circle"></div>
+          <div class="relative lg:pr-52">
+            <h2 class="capitalize text-white mb-4 text-2xl xl:text-3xl">
+              Curățenie<br />generală la domiciliu
+            </h2>
+            <p class="text-gray-300">
+              Curățenie completă pentru întreaga locuință, cu accent pe detalii
+              și calitate superioară.
+            </p>
+          </div>
+        </div>
+        <div class="card bg-gray-800 p-10 relative">
+          <div class="circle"></div>
+          <div class="relative lg:pl-48">
+            <h2 class="capitalize text-white mb-4 text-2xl xl:text-3xl">
+              Curățenie<br />de întreținere
+            </h2>
+            <p class="text-gray-300">
+              Servicii regulate pentru menținerea curățeniei și igienei în
+              spațiul dumneavoastră.
+            </p>
+          </div>
+        </div>
+        <div class="card bg-gray-800 p-10 relative">
+          <div class="circle"></div>
+          <div class="relative lg:pr-44">
+            <h2 class="capitalize text-white mb-4 text-2xl xl:text-3xl">
+              Curățenie<br />după renovare
+            </h2>
+            <p class="text-gray-300">
+              Eliminarea completă a prafului și a resturilor după lucrările de
+              renovare.
+            </p>
+          </div>
+        </div>
+        <div class="card bg-gray-800 p-10 relative">
+          <div class="circle"></div>
+          <div class="relative lg:pl-48">
+            <h2 class="capitalize text-white mb-4 text-2xl xl:text-3xl">
+              Curățenie<br />Airbnb și proprietăți închiriate
+            </h2>
+            <p class="text-gray-300">
+              Servicii specializate pentru apartamentele de închiriat, asigurând
+              o experiență perfectă pentru fiecare oaspete.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Despre Companie -->
+    <section class="py-20 px-8 xl:px-0 bg-gray-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-blue-400 text-lg mb-2 block">DESPRE NOI</span>
+          <h2 class="text-white text-4xl md:text-5xl font-semibold">
+            Descriere generală – Cobi Clean Up
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-white text-3xl mb-6">
+              Servicii profesionale în Reșița și împrejurimi
+            </h3>
+            <p class="text-gray-300 mb-6">
+              Cobi Clean Up este firma de curățenie din Reșița care aduce
+              ordine, prospețime și confort în orice spațiu. Oferim servicii
+              profesionale pentru locuințe, birouri, spații comerciale și
+              proprietăți închiriate, cu accent pe calitate, seriozitate și
+              atenție la detalii.
+            </p>
+            <p class="text-gray-300 mb-6">
+              Misiunea noastră este clară: să îți facem viața mai ușoară, prin
+              curățenie făcută corect, rapid și eficient.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 mt-8">
+              <div class="text-center">
+                <div class="text-blue-400 text-3xl font-bold mb-2">100%</div>
+                <div class="text-gray-300">Satisfacție</div>
+              </div>
+              <div class="text-center">
+                <div class="text-blue-400 text-3xl font-bold mb-2">
+                  Profesionali
+                </div>
+                <div class="text-gray-300">Echipă antrenată</div>
+              </div>
+              <div class="text-center">
+                <div class="text-blue-400 text-3xl font-bold mb-2">
+                  Ecologice
+                </div>
+                <div class="text-gray-300">Produse sigure</div>
+              </div>
+              <div class="text-center">
+                <div class="text-blue-400 text-3xl font-bold mb-2">
+                  Flexibil
+                </div>
+                <div class="text-gray-300">Program adaptat</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-700 rounded-lg p-8">
+            <img
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Echipa Cobi Clean Up"
+              class="rounded-lg w-full h-64 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Procesul de curățenie -->
+    <section class="py-20 px-8 xl:px-0 bg-gray-700">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-blue-400 text-lg mb-2 block"
+            >SERVICIILE NOASTRE</span
+          >
+          <h2 class="text-white text-4xl md:text-5xl font-semibold">
+            Ce oferă Cobi Clean Up
+          </h2>
+          <p class="text-gray-300 max-w-2xl mx-auto mt-4">
+            Servicii de curățenie profesională adaptate nevoilor dumneavoastră
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div
+            class="step-card bg-gray-800 p-8 rounded-lg text-center shadow-lg"
+          >
+            <div
+              class="bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mx-auto mb-6"
+            >
+              <i class="fas fa-home"></i>
+            </div>
+            <h3 class="text-white text-xl mb-4">
+              Curățenie generală la domiciliu
+            </h3>
+            <p class="text-gray-300">
+              Curățenie completă pentru toate încăperile, inclusiv băi,
+              bucătării și zonele comune.
+            </p>
+          </div>
+
+          <div
+            class="step-card bg-gray-800 p-8 rounded-lg text-center shadow-lg"
+          >
+            <div
+              class="bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mx-auto mb-6"
+            >
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="text-white text-xl mb-4">Curățenie de întreținere</h3>
+            <p class="text-gray-300">
+              Servicii regulate săptămânale sau lunare pentru menținerea
+              permanentă a curățeniei.
+            </p>
+          </div>
+
+          <div
+            class="step-card bg-gray-800 p-8 rounded-lg text-center shadow-lg"
+          >
+            <div
+              class="bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mx-auto mb-6"
+            >
+              <i class="fas fa-paint-roller"></i>
+            </div>
+            <h3 class="text-white text-xl mb-4">Curățenie după renovare</h3>
+            <p class="text-gray-300">
+              Curățenie profundă pentru eliminarea prafului și resturilor după
+              lucrări de construcție sau renovare.
+            </p>
+          </div>
+
+          <div
+            class="step-card bg-gray-800 p-8 rounded-lg text-center shadow-lg"
+          >
+            <div
+              class="bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mx-auto mb-6"
+            >
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="text-white text-xl mb-4">
+              Curățenie birouri și spații comerciale
+            </h3>
+            <p class="text-gray-300">
+              Servicii profesionale pentru spații de birou, magazine și alte
+              unități comerciale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prețuri -->
+    <section class="py-20 px-8 xl:px-0 bg-gray-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-blue-400 text-lg mb-2 block">PREȚURI</span>
+          <h2 class="text-white text-4xl md:text-5xl font-semibold">
+            Prețuri pentru Reșița și împrejurimi
+          </h2>
+          <p class="text-gray-300 max-w-2xl mx-auto mt-4">
+            Prețuri corecte și transparente pentru serviciile noastre de
+            curățenie profesională
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="price-card bg-gray-700 p-8 rounded-lg shadow-lg">
+            <h3 class="text-white text-2xl mb-4">Curățenie Standard</h3>
+            <div class="text-blue-400 text-3xl font-bold mb-6">
+              180 - 250 RON
+            </div>
+            <div class="text-gray-400 text-sm mb-4">
+              pentru apartament 2 camere
+            </div>
+            <ul class="text-gray-300 space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Curățenie generală a spațiului
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Aspirare și șters praf
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Curățarea băilor și bucătăriei
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                3-4 ore de lucru
+              </li>
+            </ul>
+            <button
+              class="w-full bg-gray-600 hover:bg-blue-700 text-white py-3 rounded-lg transition duration-300"
+            >
+              Cere ofertă
+            </button>
+          </div>
+
+          <div
+            class="price-card bg-gray-700 p-8 rounded-lg shadow-lg recommended"
+          >
+            <h3 class="text-white text-2xl mb-4">Curățenie Premium</h3>
+            <div class="text-blue-400 text-3xl font-bold mb-6">
+              300 - 400 RON
+            </div>
+            <div class="text-gray-400 text-sm mb-4">
+              pentru apartament 3 camere
+            </div>
+            <ul class="text-gray-300 space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Toate serviciile din pachetul Standard
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Spălarea geamurilor interioare
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Curățenie profundă a covoarelor
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                4-5 ore de lucru
+              </li>
+            </ul>
+            <button
+              class="w-full bg-blue-700 hover:bg-blue-600 text-white py-3 rounded-lg transition duration-300"
+            >
+              Cere ofertă
+            </button>
+          </div>
+
+          <div class="price-card bg-gray-700 p-8 rounded-lg shadow-lg">
+            <h3 class="text-white text-2xl mb-4">Curățenie Airbnb</h3>
+            <div class="text-blue-400 text-3xl font-bold mb-6">
+              150 - 200 RON
+            </div>
+            <div class="text-gray-400 text-sm mb-4">
+              per curățenie între oaspeți
+            </div>
+            <ul class="text-gray-300 space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Curățenie completă între oaspeți
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Schimbat lenjerie și prosoape
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Reîncărcat consumabile
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-blue-400 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Verificare inventar și setare
+              </li>
+            </ul>
+            <button
+              class="w-full bg-gray-600 hover:bg-blue-700 text-white py-3 rounded-lg transition duration-300"
+            >
+              Cere ofertă
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-gray-700 rounded-lg p-8">
+          <h3 class="text-white text-2xl mb-6 text-center">
+            Prețuri pe suprafață pentru curățenie după renovare
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center p-4 bg-gray-800 rounded-lg">
+              <div class="text-blue-400 text-2xl font-bold mb-2">
+                15-20 RON/m²
+              </div>
+              <div class="text-gray-300">Curățenie ușoară</div>
+              <div class="text-gray-400 text-sm mt-2">
+                pentru praf și mici resturi
+              </div>
+            </div>
+            <div class="text-center p-4 bg-gray-800 rounded-lg">
+              <div class="text-blue-400 text-2xl font-bold mb-2">
+                20-25 RON/m²
+              </div>
+              <div class="text-gray-300">Curățenie medie</div>
+              <div class="text-gray-400 text-sm mt-2">
+                pentru resturi moderate
+              </div>
+            </div>
+            <div class="text-center p-4 bg-gray-800 rounded-lg">
+              <div class="text-blue-400 text-2xl font-bold mb-2">
+                25-35 RON/m²
+              </div>
+              <div class="text-gray-300">Curățenie intensivă</div>
+              <div class="text-gray-400 text-sm mt-2">
+                pentru multe resturi și murdărie
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <p class="text-gray-300">
+            * Prețurile sunt orientative și includ transportul în Reșița. Pentru
+            locații în afara orașului se percepe un supliment de transport.
+            Prețul final depinde de starea spațiului, gradul de murdărie și
+            specificul serviciilor solicitate.
+          </p>
+          <p class="text-gray-300 mt-4">
+            ** Oferim deviz gratuit la fața locului pentru o evaluare precisă.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-20 px-8 xl:px-0 bg-gray-700">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-blue-400 text-lg mb-2 block">CONTACT</span>
+          <h2 class="text-white text-4xl md:text-5xl font-semibold">
+            Contactează-ne pentru o ofertă personalizată
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-white text-2xl mb-6">
+              Informații de contact Reșița
+            </h3>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="bg-blue-700 p-3 rounded-lg mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white text-lg">Telefon</h4>
+                  <p class="text-gray-300">+40 745 845 392</p>
+                  <p class="text-gray-300">+40 775 356 069</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-blue-700 p-3 rounded-lg mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white text-lg">Email</h4>
+                  <p class="text-gray-300">cobiconcept@yahoo.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-blue-700 p-3 rounded-lg mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white text-lg">Zona de acoperire</h4>
+                  <p class="text-gray-300">Reșița și împrejurimile</p>
+                  <p class="text-gray-300">Caransebeș, Bocșa, Anina</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-blue-700 p-3 rounded-lg mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white text-lg">Program</h4>
+                  <p class="text-gray-300">Luni - Vineri: 7:00 - 20:00</p>
+                  <p class="text-gray-300">Sâmbătă: 8:00 - 18:00</p>
+                  <p class="text-gray-300">Duminică: program limitat</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h3 class="text-white text-2xl mb-6">
+              Solicitați ofertă curățenie
+            </h3>
+            <form id="whatsappForm" class="space-y-4">
+              <div>
+                <label class="text-gray-300 block mb-2"
+                  >Nume și prenume *</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label class="text-gray-300 block mb-2">Telefon *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  required
+                  class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label class="text-gray-300 block mb-2">Tip Serviciu *</label>
+                <select
+                  id="service"
+                  required
+                  class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                >
+                  <option value="">Alegeți serviciul</option>
+                  <option>Curățenie generală la domiciliu</option>
+                  <option>Curățenie de întreținere</option>
+                  <option>Curățenie după renovare</option>
+                  <option>Curățenie pentru birouri</option>
+                  <option>Curățenie Airbnb / proprietăți închiriate</option>
+                  <option>Alt serviciu</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="text-gray-300 block mb-2"
+                  >Suprafață aproximativă (mp) *</label
+                >
+                <input
+                  type="number"
+                  id="area"
+                  required
+                  class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                  placeholder="ex: 60"
+                />
+              </div>
+
+              <div>
+                <label class="text-gray-300 block mb-2"
+                  >Detalii suplimentare</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                  placeholder="Menționați dacă aveți nevoi specifice (ex: geamuri înalte, canapele, etc.)"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-lg transition duration-300 font-semibold flex items-center justify-center gap-2"
+              >
+                <i class="fab fa-whatsapp"></i> Trimite solicitarea pe WhatsApp
+              </button>
+            </form>
+          </div>
+                 
+        </div>
+             
+      </div>
+         
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-12 px-8 xl:px-0">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center mb-4">
+              <!-- Logo în footer -->
+              <div class="mr-3 flex items-center">
+                <img
+                  src="./img/cobi_cleanup.jpeg"
+                  alt="Cobi Clean Up Logo"
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+              </div>
+              <div>
+                <span class="logo text-xl font-bold text-white"
+                  >Cobi Clean Up</span
+                >
+                <div class="text-blue-300 text-sm">Reșița și împrejurimile</div>
+              </div>
+            </div>
+            <p class="text-gray-300 mb-4">
+              Servicii profesionale de curățenie pentru locuințe, birouri și
+              proprietăți închiriate în Reșița.
+            </p>
+            <div class="flex space-x-4 mt-4">
+              <a
+                href="https://facebook.com/cobicleanup"
+                target="_blank"
+                class="text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                <i class="fab fa-facebook-f w-5 h-5"></i>
+              </a>
+              <a
+                href="https://instagram.com/cobicleanup"
+                target="_blank"
+                class="text-gray-300 hover:text-pink-400 transition-colors"
+              >
+                <i class="fab fa-instagram w-5 h-5"></i>
+              </a>
+              <a
+                href="tel:+40755123456"
+                class="text-gray-300 hover:text-green-400 transition-colors"
+              >
+                <i class="fas fa-phone w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">Servicii principale</h3>
+            <ul class="text-gray-300 space-y-2">
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Curățenie generală la domiciliu</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Curățenie de întreținere</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Curățenie după renovare</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Curățenie pentru Airbnb</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-400 transition-colors"
+                  >Curățenie birouri</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">Zonele noastre</h3>
+            <ul class="text-gray-300 space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-400 mr-2 text-sm"></i>
+                Reșița
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-400 mr-2 text-sm"></i>
+                Caransebeș
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-400 mr-2 text-sm"></i>
+                Bocșa
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-400 mr-2 text-sm"></i>
+                Anina
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-400 mr-2 text-sm"></i>
+                Oravița
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">Contact rapid</h3>
+            <ul class="text-gray-300 space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-phone text-blue-400 mr-3 mt-1"></i>
+                <div>
+                  <div>+40745845392</div>
+                  <div class="text-sm text-gray-400">apel sau WhatsApp</div>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-blue-400 mr-3 mt-1"></i>
+                <div>
+                  <div>cobiconcept@yahoo.com</div>
+                  <div class="text-sm text-gray-400">răspuns în 24h</div>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-blue-400 mr-3 mt-1"></i>
+                <div>
+                  <div>Luni - Vineri</div>
+                  <div class="text-sm text-gray-400">7:00 - 20:00</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-700 text-center text-gray-400"
+        >
+          <p>
+            &copy; 2026 Cobi Clean Up Reșița. Toate drepturile rezervate. | Part
+            of COBI Concept Group<br />
+            Creat cu <i class="fa-solid fa-heart text-red-500"></i> de
+            <a
+              href="https://www.cosminauzum.com/"
+              target="_blank"
+              class="text-blue-500 hover:text-blue-200 transition duration-200"
+              >www.cosminauzum.com</a
+            >
+          </p>
+          <p class="text-sm mt-2">
+            CUI: RO12345678 | Sediu social: Reșița, Județul Caraș-Severin
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Funcționalitate pentru meniul mobil
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuOpenIcon = document.getElementById("menu-open-icon");
+        const menuCloseIcon = document.getElementById("menu-close-icon");
+
+        mobileMenuButton.addEventListener("click", function () {
+          const isHidden = mobileMenu.classList.contains("hidden");
+
+          if (isHidden) {
+            // Deschide meniul
+            mobileMenu.classList.remove("hidden");
+            menuOpenIcon.classList.add("hidden");
+            menuCloseIcon.classList.remove("hidden");
+          } else {
+            // Închide meniul
+            mobileMenu.classList.add("hidden");
+            menuOpenIcon.classList.remove("hidden");
+            menuCloseIcon.classList.add("hidden");
+          }
+        });
+
+        // Închide meniul când se face click pe un link
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+            menuOpenIcon.classList.remove("hidden");
+            menuCloseIcon.classList.add("hidden");
+          });
+        });
+
+        // Închide meniul când se redimensionează fereastra la desktop
+        window.addEventListener("resize", function () {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.add("hidden");
+            menuOpenIcon.classList.remove("hidden");
+            menuCloseIcon.classList.add("hidden");
+          }
+        });
+
+        // Form submission
+        document
+          .getElementById("whatsappForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Colectarea datelor
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const service = document.getElementById("service").value;
+            const area = document.getElementById("area").value;
+            const message =
+              document.getElementById("message").value ||
+              "Fără detalii suplimentare";
+
+            // Numărul de telefon COBI (format internațional fără +)
+            const myPhoneNumber = "40745845392";
+
+            // Formatarea mesajului pentru WhatsApp
+            const text =
+              `*SOLICITARE OFERTĂ CURĂȚENIE*%0A` +
+              `-------------------------------%0A` +
+              `*Client:* ${name}%0A` +
+              `*Telefon:* ${phone}%0A` +
+              `*Serviciu:* ${service}%0A` +
+              `*Suprafață:* ${area} mp%0A` +
+              `*Mesaj:* ${message}`;
+
+            // Crearea link-ului și deschiderea WhatsApp
+            const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${text}`;
+            window.open(whatsappUrl, "_blank");
+          });
+      });
+    </script>
+  </body>
+</html>

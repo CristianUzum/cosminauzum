@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚀 Terminalul Petrecerii 2.0</title>
+    <style>
+      :root {
+        --terminal-bg: #1a1a1a;
+        --terminal-text: #00ff00;
+        --glow: rgba(0, 255, 0, 0.3);
+        --error: #ff4444;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        font-family: "Courier New", monospace;
+        color: var(--terminal-text);
+        overflow-x: hidden;
+      }
+
+      .terminal {
+        width: 90%; /* Lățime relativă pentru ecrane mici */
+        max-width: 800px; /* Lățime maximă pentru desktop */
+        height: auto; /* Înălțime automată pentru conținut */
+        min-height: 400px; /* Înălțime minimă */
+        background: var(--terminal-bg);
+        border: 3px solid var(--terminal-text);
+        box-shadow: 0 0 30px var(--glow);
+        padding: 20px;
+        position: relative;
+        overflow-y: auto;
+        margin: 20px; /* Spațiu în jurul terminalului */
+      }
+
+      .prompt {
+        white-space: pre-wrap;
+        line-height: 1.5;
+        font-size: 1em; /* Dimensiune de bază pentru text */
+      }
+
+      .cursor {
+        animation: blink 1s infinite;
+        font-weight: bold;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .matrix-rain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.1;
+      }
+
+      .command {
+        color: #00ffff;
+      }
+
+      .ascii-art {
+        color: #ff00ff;
+        white-space: pre;
+        font-weight: bold;
+        font-size: 1em; /* Dimensiune mai mică pentru ASCII art pe ecrane mici */
+      }
+
+      .code-animation {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        width: 200px;
+        height: 150px;
+        overflow: hidden;
+        border: 1px solid var(--terminal-text);
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .code-line {
+        white-space: nowrap;
+        animation: scrollCode 10s linear infinite;
+        color: #00ff00;
+      }
+
+      @keyframes scrollCode {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-100%);
+        }
+      }
+
+      /* Stiluri pentru footer */
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        background-color: var(--terminal-bg);
+        color: var(--terminal-text);
+        border-top: 1px solid var(--terminal-text);
+        font-family: "Courier New", monospace;
+        font-size: 0.9em;
+        z-index: 1000;
+      }
+
+      footer a {
+        color: var(--terminal-text);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-text {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scrollText 15s linear infinite;
+      }
+
+      @keyframes scrollText {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .footer-text::before {
+        content: ">>> ";
+        color: #00ff00;
+      }
+
+      .footer-text::after {
+        content: " <<<";
+        color: #00ff00;
+      }
+
+      /* Media queries pentru responsivitate */
+      @media (max-width: 768px) {
+        .terminal {
+          width: 95%; /* Lățime mai mare pe ecrane mici */
+          padding: 10px; /* Padding mai mic */
+        }
+
+        .ascii-art {
+          font-size: 0.8em; /* Dimensiune mai mică pentru ASCII art */
+        }
+
+        .prompt {
+          font-size: 0.9em; /* Dimensiune mai mică pentru text */
+        }
+
+        .code-animation {
+          display: none; /* Ascunde animația de cod pe ecrane mici */
+        }
+
+        footer {
+          font-size: 0.8em; /* Dimensiune mai mică pentru footer */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .terminal {
+          width: 100%; /* Utilizează întreaga lățime pe telefoane */
+          margin: 10px; /* Spațiu mai mic */
+        }
+
+        .ascii-art {
+          font-size: 0.6em; /* Dimensiune și mai mică pentru ASCII art */
+        }
+
+        .prompt {
+          font-size: 0.8em; /* Dimensiune și mai mică pentru text */
+        }
+
+        footer {
+          font-size: 0.7em; /* Dimensiune și mai mică pentru footer */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas class="matrix-rain" id="matrix"></canvas>
+
+    <div class="terminal" id="terminal">
+      <div class="prompt">
+        <div class="ascii-art">
+          █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ █░░▒▓███▀▀▀▀▀▀▀▀▀▀▀█ █░▒▓▓▓███▄▄▄░░▒▒▒▒▒█ █
+          HACK THE PARTY █ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+        </div>
+        <span class="command">root@party-terminal:~$</span> ./start_party.sh
+        --date 2024-12-15 --time 20:00<br /><br />
+
+        <span class="command">>> Initializing party protocol...</span><br />
+        <span style="color: #ff9900">▊▊▊▊▊▊▊▊▊▊▊▊ 100%</span><br /><br />
+
+        <span class="command">>> Party details decrypted:</span><br />
+        📍 Location: <span id="encryptedLocation">_ENCRYPTED_</span><br />
+        🎉 Theme: Cyber Neon<br />
+        🎁 Password: BR1NG-G00D-V1B3S<br /><br />
+
+        <span class="command">>> Available commands:</span><br />
+        rsvp --confirm-attendance -email [YOUR_EMAIL]<br />
+        share --send-invite -method [whatsapp|sms|email]<br />
+        decrypt --reveal-location -password [PASSWORD]<br /><br />
+
+        <div id="commandInput">
+          <span class="command">root@party-terminal:~$</span>
+          <input
+            type="text"
+            id="commandField"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="cursor">▋</span>
+        </div>
+
+        <div id="output"></div>
+      </div>
+
+      <div class="code-animation">
+        <div class="code-line">function decryptLocation() {</div>
+        <div class="code-line">const key = "BR1NG-G00D-V1B3S";</div>
+        <div class="code-line">return atob("UGFwYSBCdW4="); // Papa Bun</div>
+        <div class="code-line">}</div>
+        <div class="code-line">function playMusic() {</div>
+        <div class="code-line">const audio = new Audio('terminal.mp3');</div>
+        <div class="code-line">audio.play();</div>
+        <div class="code-line">}</div>
+      </div>
+    </div>
+
+    <!-- Audio pentru fundal -->
+    <audio id="backgroundMusic" src="terminal.mp3" loop></audio>
+
+    <footer>
+      <div class="footer-text">
+        [SYSTEM] Terminal hacked by
+        <a href="https://www.cosminauzum.com" target="_blank"
+          >www.cosminauzum.com</a
+        >
+        | All rights reserved | Access granted ✅
+      </div>
+    </footer>
+
+    <script>
+      // Redă muzica în fundal
+      const backgroundMusic = document.getElementById("backgroundMusic");
+      backgroundMusic.play();
+
+      // Matrix rain effect
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
+      const drops = Array(Math.floor(canvas.width / 20)).fill(0);
+
+      function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#0F0";
+
+        drops.forEach((drop, i) => {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(char, i * 20, drop * 20);
+          if (drop * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        });
+      }
+      setInterval(drawMatrix, 50);
+
+      // Command processing
+      const commandField = document.getElementById("commandField");
+      const outputDiv = document.getElementById("output");
+      const locationSpan = document.getElementById("encryptedLocation");
+      const encryptedLocation = "UGFwYSBCdW4="; // Base64 pentru "Papa Bun"
+
+      function playTypingSound() {
+        const audio = new Audio(
+          "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAESsAAABAAgAZGF0YQAAAAA="
+        );
+        audio.volume = 0.3;
+        audio.play();
+      }
+
+      function sendNotification(email) {
+        console.log(`📧 New RSVP from: ${email}`);
+        // Aici poti adauga si alte actiuni, cum ar fi afisarea unui mesaj in pagina.
+      }
+
+      function processCommand(command) {
+        outputDiv.innerHTML = "";
+        const args = command.split(" ");
+        const cmd = args[0];
+
+        switch (cmd) {
+          case "./decrypt":
+            if (args[2] === "BR1NG-G00D-V1B3S") {
+              locationSpan.textContent = atob(encryptedLocation);
+              outputDiv.innerHTML =
+                '<span style="color:#00ff00">>> Location decrypted successfully!</span>';
+            } else {
+              outputDiv.innerHTML =
+                '<span style="color:var(--error)">>> Error: Invalid password</span>';
+            }
+            break;
+
+          case "./rsvp":
+            const email = args[2];
+            if (validateEmail(email)) {
+              outputDiv.innerHTML = `<span style="color:#00ff00">>> RSVP confirmed for ${email}</span>`;
+              sendNotification(email); // Aici apelam functia sendNotification cu email-ul
+            } else {
+              outputDiv.innerHTML =
+                '<span style="color:var(--error)">>> Error: Invalid email format</span>';
+            }
+            break;
+
+          case "./share":
+            shareInvite(args[2]);
+            //sendNotification(`📤 Invitation shared via ${args[2]}`);
+            console.log(`📤 Invitation shared via ${args[2]}`);
+            break;
+
+          default:
+            outputDiv.innerHTML = `<span style="color:var(--error)">>> Error: Unknown command '${cmd}'</span>`;
+        }
+      }
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function shareInvite(method) {
+        const message = encodeURIComponent(
+          "💻 Am primit o invitație criptată! Join me: " + window.location.href
+        );
+        const services = {
+          whatsapp: `https://wa.me/?text=${message}`,
+          email: `mailto:?subject=Invitație%20Petrecere&body=${message}`,
+          sms: `sms:?body=${message}`,
+        };
+        if (services[method]) {
+          window.open(services[method]);
+        } else {
+          outputDiv.innerHTML = `<span style="color:var(--error)">>> Error: Invalid share method '${method}'</span>`;
+        }
+      }
+
+      commandField.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          playTypingSound();
+          processCommand(commandField.value);
+          commandField.value = "";
+        }
+      });
+
+      // Initialize typing sound
+      commandField.addEventListener("keydown", playTypingSound);
+    </script>
+  </body>
+</html>

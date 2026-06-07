@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Niconne&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  transition: all 0.3s ease;
+}
+:root {
+  --mainWhite: #fff;
+  --mainBlack: #000;
+  --mainBlue: #2a12ff;
+  --mainLightBlue: #12e7ff;
+  --mainRed: #ff2a12;
+  --mainYellow: #e7ff12;
+}
+body{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-image:url(bunny.gif), linear-gradient(135deg, var(--mainRed)  10%, var(--mainYellow) 100%);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;/*
+  background-attachment: fixed;*/
+  animation: easter 24s ease 0s infinite;
+}
+
+
+@keyframes easter {
+
+  25%{
+    background-image: url(tenor.gif), linear-gradient( 135deg, var(--mainWhite) 10%, var(--mainBlue) 100%);
+
+  }
+  50%{
+    background-image: url(bunny2.gif), linear-gradient( 135deg, var(--mainWhite) 10%, var(--mainWhite) 100%);
+  }
+  75%{
+    background-image: url(https://media.giphy.com/media/S5QhXpVpEooXbld5jD/giphy.gif), linear-gradient( 135deg, var(--mainLightBlue) 10%, var(--mainYellow) 100%);
+  } 
+
+}
+::selection{
+  color:  var(--mainRed);
+  background:  var(--mainYellow);
+}
+body::before,
+body::after{
+  content: '';
+  position: absolute;
+}
+body::before{
+  left: 2%;
+  top: 2%;
+  opacity: 0.4;
+  height: 270px;
+  width: 220px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background-image: linear-gradient( 135deg, var(--mainBlue) 10%, var(--mainLightBlue) 100%);
+  transform: rotate(25deg);
+  animation: easter1 24s ease 0s infinite;
+}
+
+
+@keyframes easter1 {
+
+  25%{
+     background: radial-gradient(circle, rgba(39,10,237,1) 0%, rgba(11,207,241,1) 91%, rgba(9,224,241,1) 99%, rgba(0,0,0,1) 100%);
+
+  }
+  50%{
+    background-image: linear-gradient( 135deg, var(--mainRed) 10%, var(--mainBlue) 100%);
+  }
+  75%{
+    background-image: linear-gradient( 135deg, var(--mainBlue) 10%, var(--mainBlue) 100%);
+  } 
+
+}
+body::after{
+  left: 81%;
+  top: 58%;
+  right-bottom:;
+  opacity: 0.4;
+  height: 270px;
+  width: 220px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background-image: linear-gradient( 135deg, var(--mainBlue) 10%, var(--mainLightBlue) 100%);
+  transform: rotate(340deg);
+  animation: after1 24s ease 0s infinite;
+}
+
+@keyframes after1 {
+
+  25%{
+     background-image: linear-gradient( 135deg, var(--mainRed) 10%, var(--mainYellow) 100%);
+
+  }
+  50%{
+    background-image: linear-gradient( 135deg, var(--mainLightBlue) 10%, var(--mainYellow) 100%);
+  }
+  75%{
+    background-image: linear-gradient( 135deg, var(--mainRed) 10%, var(--mainRed) 100%);
+  } 
+
+}
+header{
+  height: 85vh;
+  width: 90%;
+  background:linear-gradient(40deg) rgba(0,128,0, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 160, 53, 0.05);
+  backdrop-filter: blur(0.5px);
+  z-index: 12;
+  border-radius: 25px;
+  margin: auto;
+  position: relative; 
+  animation: easter2 24s ease 0s infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+@keyframes easter2 {
+
+  25%{
+    border: 1px solid rgba(0, 0, 53,0.05);
+  }
+  50%{
+    border: 1px solid rgba(0, 0, 53,0.05);
+  }
+  75%{
+    border: 1px solid rgba(250, 0, 0,0.05);
+  }
+}
+header .navbar{
+  margin: 0;
+  width: 100%;
+  padding: 35px 50px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .menu{
+  display: flex;
+  flex-wrap: wrap;
+}
+.navbar .logo a{
+  text-decoration: none;
+  font-size: 35px;
+  color: var(--mainYellow);
+  text-shadow: 1px 1px 2px var(--mainBlue);
+  font-weight: 500;
+  font-family: "Niconne";
+}
+.navbar .logo a span {
+  font-family: "Niconne";
+  font-size: 35px;
+  color: var(--mainYellow);
+  text-shadow: 1px 1px 2px var(--mainBlue);
+  font-weight: 500;
+}
+.navbar .logo a img {
+  width: 50px;
+  height: 50px;
+}
+
+/*.text-content{
+   width: 100%;
+   margin: 200px 0 0 50px ;
+ 
+ }*/
+.text-content h2{
+  font-size: 40px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px var(--mainBlue);
+  font-family: "Kaushan";
+}
+
+.text-content h2 span:before {
+  content: 'It`s Easter already?';
+  animation: animate infinite 24s;
+}
+
+
+@keyframes animate {
+   25% {
+    content: 'I still have to wait?';
+    color: var(--mainRed);
+  }
+   50% {
+    content: 'Yuppy it`s here!';
+    color: var(--mainYellow);
+  }
+   75% {
+    content: 'Happy Easter everyone!';
+    color: var(--mainRed);
+  }
+}
+.basket {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  top:87%;
+}
+.basket img{
+  width: 150px;
+  height: 200px;
+  position: relative;
+  z-index: 1;
+}
+.menu {
+  top:83%;
+  left: 9%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 2;
+}
+.menu li{
+  list-style: none;
+  height: 60px;
+  width: 40px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background-image: linear-gradient( 135deg, var(--mainBlue) 10%, var(--mainLightBlue) 100%);
+}
+
+ .menu li:hover{
+  background-image: linear-gradient( 135deg, var(--mainRed) 10%, var(--mainYellow) 100%);
+}
+ .menu li:hover{
+  background-image: linear-gradient( 135deg, var(--mainBlack) 1%, var(--mainRed) 100%);
+}
+ .menu li:nth-child(1):hover, .menu li:nth-child(3):hover{
+  background-image: linear-gradient( 135deg, var(--mainLightBlue) 10%, var(--mainLightBlue) 100%);
+}
+ .menu li:nth-child(1) {
+  transform: rotate(60deg);
+  background-image: linear-gradient( 135deg, var(--mainRed) 10%, var(--mainYellow) 100%);
+}
+
+ .menu li:nth-child(3) {
+  transform: rotate(300deg);
+  background-image: linear-gradient( 135deg, var(--mainRed) 10%, var(--mainYellow) 100%);
+}
+.menu a{
+  color: var(--mainYellow);
+  text-shadow: 1px 1px 2px var(--mainBlue);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+ .menu a i {
+   text-align: center;
+  justify-content: center;
+  height: 60px;
+  width: 40px;
+  vertical-align: middle;
+  line-height: 60px;
+  
+}
+
+.language {
+  top:77%; 
+  left: 9%;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 2;
+}
+.language li{
+  list-style: none;
+  margin: 0 6px;
+  padding-right:1px;
+}
+.language li:nth-child(1) {
+  transform: rotate(60deg);
+  height: 80px;
+  width: 60px;
+}
+.language li:nth-child(2) {
+  transform: rotate(300deg);
+}
+ .language li:nth-child(1):hover{
+  transform: rotate(36deg);
+ }
+ .language li:nth-child(2):hover{
+  transform: rotate(360deg);
+}
+.language li a img {
+   height: 60px;
+  width: 40px;
+}
+@media (max-width:850px) {
+  body::before,
+body::after{
+  width: 120px;
+  height: 170px;
+}
+ header{
+  margin:auto;
+ }
+ header .navbar{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .text-content {
+    margin: 10px 0 20px 0;
+  }
+
+  header .text-content h2{
+    font-size: 30px;
+  }
+  .basket {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  top:87%;
+}
+.basket img{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top:70%;
+  left:0;
+  z-index: 1;
+}
+ 
+
+}
+@media (max-width:410px) {
+    body::before,
+body::after{
+  width: 80px;
+  height: 130px;
+}
+body::after {
+  top:80%;
+}
+
+  
+   header .navbar{
+    flex-direction: row;
+    justify-content: center;
+  }
+
+header .navbar .logo a img {
+  width: 30px;
+  height: 30px;
+  left: 0%;
+}
+header .navbar .logo a span {
+  display: none;
+}
+
+.navbar .logo a img {
+  width: 40px;
+  height: 40px;
+}
+
+header .text-content h2 {
+  font-size: 20px;
+  left: 10%;
+}
+.text-content h2 span:before {
+  content: 'It`s Easter already?';
+  animation: animate infinite 24s;
+}
+
+
+@keyframes animate {
+   25% {
+    content: 'I still have to wait?';
+    color: var(--mainRed);
+  }
+   50% {
+    content: 'Yuppy it`s here!';
+    color: var(--mainYellow);
+  }
+   75% {
+    content: 'Happy Easter!';
+    color: var(--mainRed);
+  }
+}
+
+ .language li:nth-child(1):hover{
+  transform: rotate(0deg);
+ }
+ .language li:nth-child(2):hover{
+  transform: rotate(0deg);
+}
+
+}

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trio Gaz- Servicii profesionale de gaz</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --blue: #0066cc;
+        --light-blue: #4d94ff;
+        --yellow: #ffcc00;
+        --light-yellow: #ffe066;
+        --orange: #ff6600;
+        --light-orange: #ff944d;
+        --red: #cc3300;
+        --light-red: #ff5c33;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --medium-gray: #e0e0e0;
+        --dark-gray: #555555;
+        --dark: #333333;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--dark);
+        background-color: var(--light-gray);
+        line-height: 1.6;
+        /* Am setat mărimea fontului pe body pentru a o putea modifica cu JS */
+        font-size: 18px;
+        transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--blue);
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--orange);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        color: var(--dark);
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        margin: 10px 5px;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(135deg, var(--yellow), var(--orange));
+      }
+
+      .btn-large {
+        padding: 18px 35px;
+        font-size: 20px;
+      }
+
+      .btn-whatsapp {
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        color: white;
+      }
+
+      .btn-facebook {
+        background: linear-gradient(135deg, #3b5998, #4267b2);
+        color: white;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--blue),
+          var(--orange),
+          var(--red)
+        );
+        color: var(--white);
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-icon {
+        font-size: 2.5rem;
+        margin-right: 15px;
+        color: var(--light-yellow);
+      }
+
+      .logo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .logo-tagline {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-top: 5px;
+      }
+
+      /* Navigation */
+      .menu-toggle {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--white);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 20px;
+      }
+
+      nav a {
+        color: var(--white);
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 4px;
+        font-size: 18px;
+      }
+
+      nav a:hover,
+      nav a.active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("./bg.png") no-repeat center center/cover;
+        color: var(--white);
+        text-align: center;
+        padding: 100px 20px;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Sections General */
+      section {
+        padding: 80px 0;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Services Section */
+      .services {
+        background-color: var(--white);
+      }
+
+      /* Despre Noi Section */
+      .despre-noi {
+        background: var(--light-gray);
+      }
+
+      .despre-noi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .despre-noi-text h3 {
+        color: var(--orange);
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+      }
+
+      .despre-noi-text ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 25px;
+      }
+
+      .despre-noi-text ul li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      .despre-noi-text ul li i {
+        color: var(--blue);
+        margin-right: 10px;
+        margin-top: 5px;
+        font-size: 1.2rem;
+      }
+
+      .despre-noi-image {
+        min-height: 400px;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("./logo6.png") no-repeat center center/cover;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center ;
+      }
+
+      .despre-noi-image h2 {
+        color: var(--white);
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        
+      }
+
+      /* General Section Title */
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--blue);
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          var(--blue),
+          var(--orange),
+          var(--red)
+        );
+        margin: 15px auto 0;
+        border-radius: 2px;
+      }
+
+      /* Service Grid */
+      .service-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .service-category {
+        background-color: var(--light-gray);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .service-category h3 {
+        color: var(--blue);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        border-bottom: 3px solid var(--orange);
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .service-item {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid var(--blue);
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+      }
+
+      .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        border-left-color: var(--orange);
+      }
+
+      .service-item i {
+        font-size: 2rem;
+        color: var(--orange);
+        margin-right: 15px;
+      }
+
+      .service-item p {
+        margin: 0;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      /* Contact Section */
+      .contact {
+        /* Eliminăm gradientul de culoare default care crea probleme de contrast */
+        background: linear-gradient(
+          135deg,
+          var(--light-blue),
+          var(--light-orange),
+          var(--light-red)
+        );
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .contact-info {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .contact-info h2 {
+        color: var(--blue);
+        margin-bottom: 25px;
+        font-size: 2.2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+      }
+
+      .contact-icon {
+        margin-right: 15px;
+        color: var(--orange);
+        font-size: 1.8rem;
+        min-width: 40px;
+        text-align: center;
+      }
+
+      .contact-details {
+        font-size: 1.1rem;
+      }
+
+      .contact-details strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--dark);
+      }
+
+      .map-container {
+        background-color: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        height: 100%;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        border: none;
+      }
+
+      .social-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      /* Reviews Section */
+      .reviews {
+        background-color: var(--light-gray);
+      }
+
+      .review-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .review-card {
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: var(--shadow);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .review-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: var(--medium-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--blue);
+        margin-right: 20px;
+      }
+
+      .review-stars {
+        color: var(--yellow);
+        font-size: 1.5rem;
+        margin: 10px 0;
+      }
+
+      .review-content {
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .review-author {
+        font-weight: 600;
+        margin-top: 15px;
+        font-style: italic;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, var(--blue), var(--red));
+        color: var(--white);
+        padding: 60px 0 30px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--yellow);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: var(--light-gray);
+        font-size: 1.1rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--yellow);
+        padding-left: 5px;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1.1rem;
+      }
+
+      .creator {
+        font-weight: 600;
+        margin-top: 10px;
+        display: block;
+      }
+
+      .creator a {
+        color: var(--yellow);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 2.4rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .despre-noi-grid {
+          grid-template-columns: 1fr;
+        }
+        .despre-noi-image {
+          min-height: 300px;
+        }
+        .service-category h3 {
+          font-size: 1.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: linear-gradient(135deg, var(--blue), var(--red));
+          padding: 0;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease;
+        }
+
+        nav.active {
+          max-height: 500px;
+        }
+
+        nav ul {
+          flex-direction: column;
+          padding: 20px 0;
+        }
+
+        nav li {
+          margin: 0;
+          text-align: center;
+        }
+
+        nav a {
+          display: block;
+          padding: 15px;
+          border-radius: 0;
+        }
+
+        .header-container {
+          padding: 0 20px;
+        }
+
+        .hero {
+          padding: 80px 20px;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .btn {
+          padding: 12px 25px;
+          font-size: 16px;
+          display: block;
+          margin: 10px auto;
+          max-width: 300px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo-text {
+          font-size: 1.5rem;
+        }
+
+        .logo-tagline {
+          font-size: 0.85rem;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .contact-info {
+          padding: 20px;
+        }
+      }
+
+      /* Accessibility Improvements */
+      a:focus,
+      button:focus {
+        outline: 3px solid var(--yellow);
+        outline-offset: 2px;
+      }
+
+      /* Noul Buton și Meniu de Accesibilitate */
+      #accessibility-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: var(--white);
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        z-index: 1050;
+        transition: var(--transition);
+      }
+
+      #accessibility-button:hover {
+        background: var(--orange);
+      }
+
+      #accessibility-menu {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: var(--shadow);
+        z-index: 1049;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        width: 250px;
+      }
+
+      #accessibility-menu.active {
+        display: flex;
+      }
+
+      .accessibility-option {
+        display: flex;
+        align-items: center;
+        background-color: var(--light-gray);
+        color: var(--dark);
+        border: 1px solid var(--medium-gray);
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+      }
+
+      .accessibility-option:hover {
+        background-color: var(--medium-gray);
+        color: var(--blue);
+      }
+
+      .accessibility-option i {
+        margin-right: 10px;
+        min-width: 25px;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+
+      /* Clase pentru Modul Contrast (ACTUALIZATE pentru uniformitate) */
+      .high-contrast {
+        background-color: #000 !important;
+        color: #fff !important;
+      }
+
+      .high-contrast section {
+        /* Forțează fundalul negru pe toate secțiunile */
+        background-color: #000 !important;
+      }
+
+      .high-contrast header,
+      .high-contrast footer,
+      .high-contrast .contact {
+        /* Forțează fundalul negru pe Header, Footer și Contact */
+        background: #000 !important;
+        color: #fff !important;
+        border-color: #fff !important;
+      }
+
+      .high-contrast a,
+      .high-contrast .contact-info strong {
+        color: #ffff00 !important; /* Text links/strong changed to bright yellow */
+      }
+
+      /* Secțiunea Servicii */
+      .high-contrast .service-category {
+        background-color: #000 !important;
+        color: #fff !important;
+        border: 1px solid #fff;
+      }
+
+      .high-contrast .service-item {
+        background-color: #000 !important;
+        color: #fff !important;
+        border: 1px solid #fff; /* Border color changed to white */
+        border-left: 5px solid #ffff00 !important; /* Left border bright yellow */
+      }
+
+      .high-contrast .service-item i {
+        color: #ffff00 !important; /* Icon color bright yellow */
+      }
+
+      .high-contrast .service-item p {
+        color: #fff !important; /* Paragraph color white */
+      }
+
+      .high-contrast .service-category h3 {
+        color: #fff !important; /* Category title white */
+        border-bottom-color: #ffff00 !important; /* Bottom border bright yellow */
+      }
+      /* Sfârșit Secțiunea Servicii */
+
+      /* Carduri și Info Boxuri */
+      .high-contrast .review-card,
+      .high-contrast .contact-info,
+      .high-contrast .despre-noi-image {
+        background-color: #000 !important;
+        color: #fff !important;
+        border: 1px solid #fff;
+      }
+
+      .high-contrast .despre-noi-text ul li i {
+        color: #ffff00 !important;
+      }
+
+      .high-contrast .contact-info h2,
+      .high-contrast .despre-noi-text h3 {
+        color: #fff !important;
+      }
+
+      /* Titluri Secțiuni */
+      .high-contrast .section-title {
+        color: #fff !important;
+      }
+      .high-contrast .section-title:after {
+        background: #fff !important;
+      }
+      .high-contrast .review-stars {
+        color: #fff !important;
+      }
+
+      /* Hero */
+      .high-contrast .hero {
+        background: #000 !important;
+        color: #fff !important;
+      }
+
+      /* Butoane */
+      .high-contrast .btn {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #fff;
+      }
+      .high-contrast .btn-whatsapp,
+      .high-contrast .btn-facebook {
+        background: #000 !important;
+        color: #ffff00 !important;
+        border: 1px solid #ffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="accessibility-menu">
+      <div class="accessibility-option" id="font-increase">
+        <i class="fas fa-plus-circle"></i> Mărire Text (A+)
+      </div>
+      <div class="accessibility-option" id="font-decrease">
+        <i class="fas fa-minus-circle"></i> Micșorare Text (A-)
+      </div>
+      <div class="accessibility-option" id="high-contrast-toggle">
+        <i class="fas fa-eye"></i> Contrast Ridicat
+      </div>
+      <div class="accessibility-option" id="font-reset">
+        <i class="fas fa-undo"></i> Resetare Setări
+      </div>
+    </div>
+
+    <button id="accessibility-button" title="Opțiuni de Accesibilitate">
+      <i class="fas fa-universal-access"></i>
+    </button>
+
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-fire"></i>
+          </div>
+          <div>
+            <div class="logo-text">Trio Gaz</div>
+            <div class="logo-tagline">Soluții profesionale pentru gaz</div>
+          </div>
+        </div>
+
+        <div class="menu-toggle" id="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <nav id="main-nav">
+          <ul>
+            <li><a href="#acasa" class="active">Acasă</a></li>
+            <li><a href="#servicii">Servicii</a></li>
+            <li><a href="#despre">Despre Noi</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#recenzii">Recenzii</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="acasa">
+      <div class="container hero-content">
+        <h1>Trio Gaz: Servicii Complete de Gaz pentru Casa Ta</h1>
+        <p>
+          Suntem partenerul tău de încredere din Reșița, oferind soluții
+          profesionale pentru instalații, verificări și reparații la centrale
+          termice și rețele de gaz.
+        </p>
+        <div>
+          <a href="tel:+40785562544" class="btn btn-large"
+            ><i class="fas fa-phone-alt"></i> Sună acum</a
+          >
+          <a href="#servicii" class="btn btn-large"
+            ><i class="fas fa-tools"></i> Serviciile noastre</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="despre-noi" id="despre">
+      <div class="container">
+        <h2 class="section-title">
+          Despre SC Servicii Profesionale Trio Gaz SRL
+        </h2>
+        <div class="despre-noi-grid">
+          <div class="despre-noi-text">
+            <p>
+              SC Servicii Profesionale Trio Gaz SRL vine în sprijinul
+              dumneavoastră cu o gamă completă de servicii în domeniul
+              instalațiilor de gaz și al centralelor termice. Punem preț pe
+              calitate, siguranță și promptitudine.
+            </p>
+
+            <h3>Serviciile noastre principale includ:</h3>
+            <ul>
+              <li>
+                <i class="fas fa-check-circle"></i> Verificări și Revizii
+                periodice gaz
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Execuție și Montaj
+                Instalații de Gaz
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Proiecte complete Instalații
+                de Gaz
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Execuții branșamente și
+                extinderi de conducte gaze naturale
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Montaj Senzori de Gaz și
+                Centrale Termice
+              </li>
+            </ul>
+
+            <p>
+              Trio GazGaranția calitățiiTrio Gaz lucrărilor este oferită de cei
+              peste Trio Gaz14 ani de experiențăTrio Gaz în domeniu! Suntem
+              dedicați asigurării unui mediu sigur și eficient energetic pentru
+              clienții noștri din Reșița și împrejurimi.
+            </p>
+          </div>
+          <div class="despre-noi-image">
+            <h2>14+ Ani de Experiență</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicii">
+      <div class="container">
+        <h2 class="section-title">SERVICII PROFESIONALE TRIO GAZ</h2>
+        <div class="service-grid">
+          <div class="service-category">
+            <h3><i class="fas fa-drafting-compass"></i> PROIECTARE</h3>
+            <div class="category-grid">
+              <div class="service-item">
+                <i class="fas fa-file-alt"></i>
+                <p>Proiecte Instalații de Gaz (interioare și exterioare)</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-sitemap"></i>
+                <p>Extinderi și Branșamente de Rețele de Gaze Naturale</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-lightbulb"></i>
+                <p>Consultanță Tehnică și Soluții Optime</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-category">
+            <h3><i class="fas fa-hard-hat"></i> EXECUȚIE</h3>
+            <div class="category-grid">
+              <div class="service-item">
+                <i class="fas fa-wrench"></i>
+                <p>Instalații Noi de Gaz și Modernizări</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-gas-pump"></i>
+                <p>Branșamente și Extinderi de Conducte de Gaz</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-fire-extinguisher"></i>
+                <p>Montaj Senzori de Gaz și Electrovalve de Siguranță</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-thermometer-half"></i>
+                <p>Montaj Centrale Termice de Apartament și Industriale</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-category">
+            <h3>
+              <i class="fas fa-clipboard-check"></i> VERIFICĂRI ȘI REVIZII GAZ
+            </h3>
+            <div class="category-grid">
+              <div class="service-item">
+                <i class="fas fa-search-dollar"></i>
+                <p>Verificări Tehnice Periodice (VTP) ANRE</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-sync-alt"></i>
+                <p>Revizii Tehnice Periodice (RTP) Obligatorii</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-bug"></i>
+                <p>Detectare și Remediere Scurgeri de Gaz</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-category">
+            <h3>
+              <i class="fas fa-faucet"></i> INSTALAȚII SANITARE ȘI TERMICE
+            </h3>
+            <div class="category-grid">
+              <div class="service-item">
+                <i class="fas fa-bath"></i>
+                <p>Instalații Sanitare (apă rece, caldă, canalizare)</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-fan"></i>
+                <p>Montaj și Reparații Pompe de Căldură și Boilere</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-tint"></i>
+                <p>Instalații Termice (încălzire în pardoseală, calorifere)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-category">
+            <h3><i class="fas fa-snowflake"></i> CLIMATIZARE</h3>
+            <div class="category-grid">
+              <div class="service-item">
+                <i class="fas fa-wind"></i>
+                <p>Instalare Sisteme de Aer Condiționat (AC)</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-cogs"></i>
+                <p>Mentenanță și Service Unități de Climatizare</p>
+              </div>
+              <div class="service-item">
+                <i class="fas fa-temperature-low"></i>
+                <p>Soluții de Ventilație și Tratare a Aerului</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Contactează-ne - Trio Gaz</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h2>Date de contact</h2>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <strong>Adresă:</strong>
+                <p>Aleea Cibinului 1, Reșița, Caraș-Severin</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-details">
+                <strong>Telefon:</strong>
+                <p><a href="tel:+40785562544">+40 785 562 544</a></p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <strong>Email:</strong>
+                <p>
+                  <a href="mailto:contact@triogaz-resita.ro"
+                    >contact@triogaz-resita.ro</a
+                  >
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <strong>Program:</strong>
+                <p>Luni-Vineri: 08:00-17:00</p>
+                <p>Sâmbătă: 08:00-17:00</p>
+                <p>Duminică: Închis</p>
+              </div>
+            </div>
+
+            <div class="social-buttons">
+              <a href="https://wa.me/40785562544" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a
+                href="https://facebook.com/triogazresita"
+                class="btn btn-facebook"
+              >
+                <i class="fab fa-facebook-f"></i> Facebook
+              </a>
+            </div>
+          </div>
+
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4671.32749154634!2d21.8721549!3d45.328865300000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474fd70417173c83%3A0x73b033e36d0d018b!2sTrio%20Gaz!5e1!3m2!1sro!2sro!4v1762941301263!5m2!1sro!2sro"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="recenzii">
+      <div class="container">
+        <h2 class="section-title">Recenzii clienți Triogaz</h2>
+        <div class="review-container">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h3>Serviciu excelent</h3>
+                <div class="review-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p>
+                Am avut o problemă cu centrala termică și echipa de la Triogaz a
+                intervenit rapid și eficient. Personalul a fost foarte
+                profesionist, preturile sunt corecte și lucrarea a fost
+                executată perfect. Recomand cu încredere!
+              </p>
+              <div class="review-author">- Maria Popescu, Reșița</div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h3>Profesionali și prompti</h3>
+                <div class="review-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p>
+                Am apelat la ei pentru o verificare periodică a instalației de
+                gaz. Au venit la timp, au făcut verificarea completă și mi-au
+                explicat totul în detaliu. Am primit și certificatul de
+                conformitate a doua zi. Serviciu de calitate!
+              </p>
+              <div class="review-author">- Ion Ionescu, Caransebeș</div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h3>Intervenție de urgență</h3>
+                <div class="review-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <div class="review-content">
+              <p>
+                Noaptea am observat un miros de gaz în bucătărie. Am sunat la
+                numărul de urgență Triogaz și în mai puțin de 40 de minute a
+                ajuns un tehnician. A identificat problema și a rezolvat-o
+                imediat. Mulțumesc pentru promptitudine și profesionalism!
+              </p>
+              <div class="review-author">- Andrei Vasilescu, Reșița</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px">
+          <a
+            href="https://www.facebook.com/TRIO.GAZ/?locale=ro_RO"
+            target="_blank"
+            class="btn"
+            ><i class="fab fa-facebook"></i> Lasă o recenzie pe Facebook</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Trio Gaz</h3>
+            <p>
+              Oferim servicii complete de gaz pentru locuințe și companii în
+              zona Caraș-Severin, cu profesionalism și atenție la detalii.
+            </p>
+            <p>Licență ANRE: Triogaz-RS-1234</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Link-uri rapide</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#acasa"><i class="fas fa-home"></i> Acasă</a>
+              </li>
+              <li>
+                <a href="#servicii"><i class="fas fa-tools"></i> Servicii</a>
+              </li>
+              <li>
+                <a href="#despre"
+                  ><i class="fas fa-info-circle"></i> Despre noi</a
+                >
+              </li>
+              <li>
+                <a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a>
+              </li>
+              <li>
+                <a href="#recenzii"><i class="fas fa-star"></i> Recenzii</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Aleea Cibinului 1, Reșița
+              </li>
+              <li>
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+40785562544">+40 785 562 544</a>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:contact@triogaz-resita.ro"
+                  >contact@triogaz-resita.ro</a
+                >
+              </li>
+              <li>
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/40785562544">WhatsApp</a>
+              </li>
+              <li>
+                <i class="fab fa-facebook"></i>
+                <a href="https://facebook.com/triogazresita">Facebook</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © 2025 Trio Gaz. Toate drepturile rezervate. Monstra demonstrativă.
+          <div class="creator">
+            Creat de
+            <a href="https://www.cosminauzum.com" target="_blank"
+              >www.cosminauzum.com</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const mainNav = document.getElementById("main-nav");
+
+      menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking on a link
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (mainNav.classList.contains("active")) {
+            mainNav.classList.remove("active");
+          }
+        });
+      });
+
+      // --- Noul Cod pentru Accesibilitate (ACTUALIZAT) ---
+      const accessibilityButton = document.getElementById(
+        "accessibility-button"
+      );
+      const accessibilityMenu = document.getElementById("accessibility-menu");
+      const body = document.body;
+
+      // 1. Toggle Menu
+      accessibilityButton.addEventListener("click", () => {
+        accessibilityMenu.classList.toggle("active");
+      });
+
+      // 2. Font Size Controls
+      const defaultFontSize = 18;
+      const step = 2; // Pasul de mărire/micșorare în pixeli
+      const minFontSize = 16;
+      const maxFontSize = 22;
+      let currentFontSize = defaultFontSize;
+
+      const setFontSize = (newSize) => {
+        // Asigură că fontul nu depășește limitele
+        newSize = Math.max(minFontSize, Math.min(maxFontSize, newSize));
+
+        body.style.fontSize = `${newSize}px`;
+        currentFontSize = newSize;
+      };
+
+      document.getElementById("font-increase").addEventListener("click", () => {
+        setFontSize(currentFontSize + step);
+      });
+
+      document.getElementById("font-decrease").addEventListener("click", () => {
+        setFontSize(currentFontSize - step);
+      });
+
+      // 3. High Contrast Toggle
+      const highContrastToggle = document.getElementById(
+        "high-contrast-toggle"
+      );
+      let isHighContrast = false;
+
+      highContrastToggle.addEventListener("click", () => {
+        body.classList.toggle("high-contrast");
+        isHighContrast = body.classList.contains("high-contrast");
+        accessibilityMenu.classList.remove("active");
+      });
+
+      // 4. Reset All Settings
+      document
+        .getElementById("font-reset")
+        .addEventListener("click", function () {
+          setFontSize(defaultFontSize);
+          if (isHighContrast) {
+            body.classList.remove("high-contrast");
+            isHighContrast = false;
+          }
+          accessibilityMenu.classList.remove("active");
+        });
+
+      // --- Cod existent menținut (Smooth Scroll & Active Nav) ---
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Set active navigation link based on scroll position
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav a");
+
+        let current = "";
+
+        // Adaugă secțiunea 'despre' în lista de secțiuni de urmărit
+        const allSections = document.querySelectorAll("section[id]");
+
+        allSections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+
+          if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").substring(1) === current) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content=" Vă dorim Sărbatori Fericite!" />
+    <title>Crăciun Fericit!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="catalog" id="flipbook-container">
+      <!-- Flipbook -->
+      <div id="flipbook">
+        <!-- First page: Cover with title over the image -->
+        <div class="page cover">
+          <div class="cover-content">
+            <!-- <img src="./tree.png" alt="Cover Image" /> -->
+            <div class="overlay">
+              <h1>Crăciun Fericit!</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second page: Product grid -->
+        <div class="page product-grid">
+          <div class="stamp">
+            <h3>
+              SĂRBATORI FERICITE<br />
+              ALĂTURI DE CEI DRAGI!
+            </h3>
+          </div>
+        </div>
+
+        <!-- Additional pages can be created following this structure -->
+        <div class="page product-grid">
+          <div class="overlay1">
+            <div class="greeting">
+              <h2>
+                În această perioadă magică a anului, vă dorim să aveți parte de
+                momente pline de iubire, căldură și speranță alături de cei
+                dragi. Fie ca fiecare zi să fie mai frumoasă decât precedenta,
+                iar sufletele voastre să fie luminate de bucuria sărbătorilor.
+              </h2>
+              <p>Cu drag,</p>
+              <p><strong>Familia Uzum</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Last page: Stamp -->
+        <div class="page product-grid">
+          <div class="stamp">
+            <a href="https://www.cosminauzum.com" target="_blank"
+              >Creat de cosminauzum.com</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="nav-buttons-container">
+        <button id="prev-page" class="nav-button" onclick="previousPage()">
+          &#9664; Previous
+        </button>
+        <button id="next-page" class="nav-button" onclick="nextPage()">
+          Next &#9654;
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+    <script src="./js/turn.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

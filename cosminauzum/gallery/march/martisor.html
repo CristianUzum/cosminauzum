@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mărțișor - Primăvară Fericită!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Dancing Script", cursive;
+        background: linear-gradient(to bottom, #ffe6e6, #fff);
+        min-height: 100vh;
+      }
+
+      .header {
+        background: linear-gradient(45deg, #ff3333, #ffffff);
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 1rem;
+      }
+
+      .navbar a {
+        color: #ff1a1a;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: color 0.3s;
+        padding: 10px 20px;
+      }
+
+      .navbar a:hover {
+        color: #ffffff;
+      }
+
+      .title {
+        font-size: 3.5rem;
+        color: #ff1a1a;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        animation: bounce 2s infinite;
+      }
+
+      .martisoare-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .martisor {
+        width: 100%;
+        height: 200px;
+        background: white;
+        border-radius: 15px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(255, 50, 50, 0.2);
+        transition: transform 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .martisor:hover {
+        transform: translateY(-10px);
+      }
+
+      .martisor::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #ff0000, #ffffff);
+        top: 0;
+        left: 0;
+      }
+
+      .flowers {
+        position: fixed;
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      @keyframes fall {
+        from {
+          transform: translateY(-100vh) rotate(0deg);
+        }
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      .flower {
+        position: absolute;
+        animation: fall 10s linear infinite;
+        font-size: 1.5rem;
+      }
+
+      .content {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(255, 50, 50, 0.1);
+      }
+
+      #language-select {
+        padding: 8px;
+        font-size: 16px;
+        border: 2px solid #e74c3c;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: #c0392b;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        max-width: 50px; /* Limitează lățimea */
+        width: 100%; /* Asigură-te că ocupă 100% din lățimea disponibilă */
+      }
+
+      #language-select:hover {
+        border-color: #c0392b;
+        background-color: #fce4ec;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #language-select:focus {
+        outline: none;
+        border-color: #e91e63;
+        box-shadow: 0 0 8px rgba(233, 30, 99, 0.5);
+      }
+
+      #language-select:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #e74c3c, #f39c12, #9b59b6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      #language-select:focus:before {
+        opacity: 0.2;
+      }
+
+      #language-select option {
+        background-color: #ffffff;
+        color: #c0392b;
+        padding: 8px 16px;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Adaugă tranziție pentru culoare */
+      }
+
+      /* Ajustări pentru ecrane mici */
+      @media (max-width: 600px) {
+        #language-select {
+          font-size: 14px;
+          padding: 5px;
+        }
+        .navbar {
+          gap: 10px;
+        }
+      }
+
+      .traditional-text {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #4d4d4d;
+        text-align: justify;
+      }
+
+      .heart {
+        color: #ff1a1a;
+        animation: pulse 1s infinite;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 1rem;
+        background: linear-gradient(45deg, #ff3333, #ffffff);
+        color: #ff1a1a;
+        font-size: 1.3rem;
+        margin-top: 2rem;
+      }
+
+      .footer a {
+        color: #ff1a1a;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer a:hover {
+        color: #ffffff;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .title {
+          font-size: 2.5rem;
+        }
+        .martisoare-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title" id="title">Mărțișor Fericit! 🌸</h1>
+      <div class="navbar">
+        <a href="martisor.html" id="link-martisor">Mărțișor</a>
+        <a href="index.html" id="link-women-day">8 Martie</a>
+        <select id="language-select">
+          <option value="ro">Ro</option>
+          <option value="en">En</option>
+          <option value="fr">Fr</option>
+          <option value="de">De</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flowers" id="flowers"></div>
+
+    <div class="content">
+      <p class="traditional-text" id="traditional-text">
+        La mulți ani cu prilejul Mărțișorului! <br />
+        ❤️🤍 Mărțișorul este un simbol al primăverii, al renasterii si al
+        iubirii. Traditia noastra frumoasa ne aduce speranta, bucurie si noroc.
+        Purtați cu mandrie acest simbol al dragostei si al legaturii cu natura!
+      </p>
+    </div>
+
+    <div class="martisoare-container">
+      <div class="martisor">
+        <i class="fas fa-heart heart"></i>
+        <h3 id="love">Dragoste</h3>
+      </div>
+      <div class="martisor">
+        <i class="fas fa-seedling heart"></i>
+        <h3 id="rebirth">Renastere</h3>
+      </div>
+      <div class="martisor">
+        <i class="fas fa-sun heart"></i>
+        <h3 id="spring">Primăvară</h3>
+      </div>
+    </div>
+
+    <div class="footer" id="footer">
+      Made by
+      <a href="https://www.cosminauzum.com" target="_blank"
+        >www.cosminauzum.com</a
+      >
+    </div>
+
+    <script>
+      const translations = {
+        ro: {
+          title: "Mărțișor Fericit! 🌸",
+          text: "La mulți ani cu prilejul Mărțișorului! ❤️🤍 Mărțișorul este un simbol al primăverii, al renasterii si al iubirii. Traditia noastra frumoasa ne aduce speranta, bucurie si noroc. Purtați cu mandrie acest simbol al dragostei si al legaturii cu natura!",
+          love: "Dragoste",
+          rebirth: "Renastere",
+          spring: "Primăvară",
+          martisor: "Mărțișor",
+          womenDay: "8 Martie",
+          footer:
+            "Realizat de <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+        },
+        en: {
+          title: "Happy Mărțișor! 🌸",
+          text: "Happy Mărțișor! ❤️🤍 Mărțișor is a symbol of spring, rebirth, and love. Our beautiful tradition brings hope, joy, and luck. Wear this symbol of love and connection to nature with pride!",
+          love: "Love",
+          rebirth: "Rebirth",
+          spring: "Spring",
+          martisor: "Mărțișor",
+          womenDay: "Women's Day",
+          footer:
+            "Made by <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+        },
+        fr: {
+          title: "Joyeux Mărțișor! 🌸",
+          text: "Joyeux Mărțișor! ❤️🤍 Le Mărțișor est un symbole du printemps, de la renaissance et de l'amour. Notre belle tradition apporte espoir, joie et chance. Portez avec fierté ce symbole d'amour et de lien avec la nature!",
+          love: "Amour",
+          rebirth: "Renaissance",
+          spring: "Printemps",
+          martisor: "Mărțișor",
+          womenDay: "Journée des Femmes",
+          footer:
+            "Réalisé par <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+        },
+        de: {
+          title: "Frohes Mărțișor! 🌸",
+          text: "Frohes Mărțișor! ❤️🤍 Mărțișor ist ein Symbol des Frühlings, der Wiedergeburt und der Liebe. Unsere schöne Tradition bringt Hoffnung, Freude und Glück. Tragen Sie dieses Symbol der Liebe und Verbundenheit mit der Natur mit Stolz!",
+          love: "Liebe",
+          rebirth: "Wiedergeburt",
+          spring: "Frühling",
+          martisor: "Mărțișor",
+          womenDay: "Frauentag",
+          footer:
+            "Erstellt von <a href='https://www.cosminauzum.com' target='_blank'>www.cosminauzum.com</a>",
+        },
+      };
+
+      const languageSelect = document.getElementById("language-select");
+      const title = document.getElementById("title");
+      const traditionalText = document.getElementById("traditional-text");
+      const love = document.getElementById("love");
+      const rebirth = document.getElementById("rebirth");
+      const spring = document.getElementById("spring");
+      const linkMartisor = document.getElementById("link-martisor");
+      const linkWomenDay = document.getElementById("link-women-day");
+      const footer = document.getElementById("footer");
+
+      languageSelect.addEventListener("change", (e) => {
+        const lang = e.target.value;
+        updateLanguage(lang);
+      });
+
+      function updateLanguage(lang) {
+        const translation = translations[lang];
+        title.textContent = translation.title;
+        traditionalText.textContent = translation.text;
+        love.textContent = translation.love;
+        rebirth.textContent = translation.rebirth;
+        spring.textContent = translation.spring;
+        linkMartisor.textContent = translation.martisor;
+        linkWomenDay.textContent = translation.womenDay;
+        footer.innerHTML = translation.footer; // Actualizează footer-ul
+      }
+
+      // Inițializează cu română
+      updateLanguage("ro");
+
+      function createFlower() {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.innerHTML = "🌸";
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = Math.random() * 3 + 7 + "s";
+        document.getElementById("flowers").appendChild(flower);
+
+        setTimeout(() => flower.remove(), 10000);
+      }
+
+      setInterval(createFlower, 300);
+    </script>
+  </body>
+</html>

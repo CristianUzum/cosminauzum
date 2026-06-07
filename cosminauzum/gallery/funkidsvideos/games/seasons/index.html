@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seasons</title>
+	<link rel="icon" type="image/gif/png" href="../../images/game.gif">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section class="nav">
+        <input type="checkbox" id="nav-check">
+        <a class="nav-header" href="../../index.html">
+          <img class="nav-title" src="../../fun.png">
+        </a>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links">
+          <a href="../../cartoons/index.html" target="_blank"><img src="../../images/cartoon.gif"><span>cartoons</span></a>
+          <a href="../../movie/index.html" target="_blank"><img src="../../images/movie.gif"><span>movies</span></a>
+          <a href="../../music/index.html" target="_blank"><img src="../../images/music.gif"><span>music</span></a>
+          <a href="../index.html" target="_blank"><img src="../../images/game.gif"><span>games</span></a>
+          <a href="../../learn/index.html" target="_blank"><img src="../../images/book.gif"><span>learn</span></a>
+        </div>
+      </section>
+	<section class="game">
+                 <ul id="item">
+                    <li><a onclick="change1()"><button>Spring</button></a></li>
+			    	<li><a onclick="change2()"><button>Summer</button></a></li>
+			    	<li><a onclick="change3()"><button>Autumn</button></a></li>
+			    	<li><a onclick="change4()"><button>Winter</button></a></li>
+                </ul>
+				<div id="changing_image"></div>
+	</section>	
+	<section>
+			<footer>
+			  <p> Fun Kids Videos &copy; <script>document.write(new Date().getFullYear());</script></p>
+			</footer>
+	</section>
+<script>
+	function change1 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/1.png" width="300px" height="300px;">'
+	}
+	function change2 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/2.png" width="300px" height="300px;">'
+	}
+	function change3 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/3.png" width="300px" height="300px;">'
+
+	}
+	function change4 ()
+	{
+		document.getElementById("changing_image").innerHTML='<img src="./img/4.png" width="300px" height="300px;">'
+	}
+</script>
+</body>
+
+</html>

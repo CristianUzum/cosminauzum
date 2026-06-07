@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COBI Events & More - Organizare Evenimente</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ro.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+      :root {
+        --primary: #b23b3b;
+        --primary-dark: #8c2d2d;
+        --accent: #f14b4b;
+        --dark: #2d2d2d;
+        --light: #f8f8f8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
+
+      /* Navbar - Updated */
+      .navbar {
+        background: rgba(45, 45, 45, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar-brand {
+        color: var(--primary);
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .navbar-nav {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .navbar-nav a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .navbar-nav a:hover {
+        color: var(--primary);
+      }
+
+      /* Mobile Menu Button */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section - Updated */
+      .hero {
+        height: 100vh;
+        width: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--dark) 0%,
+          var(--primary) 100%
+        );
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-content {
+        text-align: center;
+        background-color: #eeeeee3d;
+        color: white;
+        z-index: 10;
+        width: 90%;
+        max-width: 1200px;
+        padding: 2rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: bold;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        text-shadow: 1px 1px 2px rgba(231, 67, 67, 0.233);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: clamp(1.5rem, 2.5vw, 1.5rem);
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(2, 0, 0, 0.8);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .btn {
+        background: var(--primary);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: var(--primary-dark);
+      }
+
+      /* Interactive Image Grid - Updated for Mobile */
+      .image-grid {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(90vw, 80em);
+        height: min(90vw, 80em);
+        z-index: 1;
+      }
+
+      .image-grid label {
+        position: absolute;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 33%;
+        height: 33%;
+        border: 1px solid transparent;
+        background: center center/cover no-repeat;
+        transition: all 0.5s ease-in-out;
+        z-index: 0;
+        cursor: pointer;
+      }
+
+      .image-grid label:hover {
+        border: 1px solid white;
+        z-index: 1;
+      }
+
+      .image-grid input {
+        display: none;
+      }
+
+      .image-grid input:checked + label {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+      }
+
+      /* Position each image in the grid */
+      .image-grid .item1 {
+        top: 0;
+        left: 0;
+      }
+      .image-grid .item2 {
+        top: 0;
+        left: 33%;
+      }
+      .image-grid .item3 {
+        top: 0;
+        left: 66%;
+      }
+      .image-grid .item4 {
+        top: 33%;
+        left: 0;
+      }
+      .image-grid .item5 {
+        top: 33%;
+        left: 33%;
+      }
+      .image-grid .item6 {
+        top: 33%;
+        left: 66%;
+      }
+      .image-grid .item7 {
+        top: 66%;
+        left: 0;
+      }
+      .image-grid .item8 {
+        top: 66%;
+        left: 33%;
+      }
+      .image-grid .item9 {
+        top: 66%;
+        left: 66%;
+      }
+
+      /* Close button for expanded images */
+      .close-expanded {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 21;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-expanded.show {
+        display: flex;
+      }
+
+      /* Section 2 - About with Gallery - Updated */
+      .about-section {
+        padding: 100px 2rem;
+        background: var(--light);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        min-height: 100vh;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .content {
+        color: var(--dark);
+      }
+
+      .content h1 {
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+      }
+
+      .content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      /* Swiper Gallery */
+      .swiper-gallery {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(178, 59, 59, 0.3);
+      }
+
+      .swiper-slide {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .swiper-slide:hover img {
+        transform: scale(1.1);
+      }
+
+      .slide-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(178, 59, 59, 0.8));
+        color: white;
+        padding: 2rem;
+        transform: translateY(100%);
+        transition: transform 0.3s;
+      }
+
+      .swiper-slide:hover .slide-content {
+        transform: translateY(0);
+      }
+
+      /* New Gallery Section - Updated */
+      .gallery-section {
+        padding: 100px 2rem;
+        background: var(--dark);
+        color: white;
+        width: 100%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2.5rem, 4vw, 3rem);
+        margin-bottom: 3rem;
+        color: var(--primary);
+      }
+
+      .masonry-gallery {
+        max-width: 1200px;
+        margin: 0 auto;
+        columns: 4;
+        column-gap: 1rem;
+      }
+
+      .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s;
+      }
+
+      .masonry-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .masonry-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(178, 59, 59, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .masonry-item:hover .masonry-overlay {
+        opacity: 1;
+      }
+
+      .overlay-text {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      /* Events Calendar Section - UPDATED */
+      .events-section {
+        padding: 100px 2rem;
+        background: var(--light);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .container-events {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+
+      #calendar-container {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 2px solid var(--primary);
+      }
+
+      #calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      #calendar-header button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+        min-width: 40px;
+      }
+
+      #calendar-header button:hover {
+        background: var(--primary-dark);
+      }
+
+      #calendar-title {
+        color: var(--primary);
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        font-weight: bold;
+        text-align: center;
+        flex: 1;
+        margin: 0 1rem;
+      }
+
+      #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+      }
+
+      .day-name {
+        text-align: center;
+        font-weight: bold;
+        padding: 8px 4px;
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
+      }
+
+      .day {
+        text-align: center;
+        padding: 10px 4px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid #eee;
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .day:hover {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .day.event {
+        background: var(--primary);
+        color: white;
+        font-weight: bold;
+      }
+
+      .day.today {
+        border: 2px solid var(--accent);
+        background: var(--accent);
+        color: white;
+      }
+
+      .day.disabled {
+        color: #ccc;
+        cursor: not-allowed;
+        background: #f5f5f5;
+      }
+
+      #event-details {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 2px solid var(--primary);
+      }
+
+      #event-details h2 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+      }
+
+      #event-list {
+        list-style: none;
+        margin-top: 1rem;
+      }
+
+      #event-list li {
+        padding: 12px;
+        margin: 8px 0;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        border-radius: 8px;
+        border-left: 4px solid var(--dark);
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+      }
+
+      /* Contact Section - UPDATED */
+      .contact-section {
+        padding: 100px 0;
+        background: var(--dark);
+        color: white;
+        width: 100%;
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+
+      .contact-info {
+        background: var(--primary);
+        border-radius: 15px;
+        padding: 3rem;
+      }
+
+      .contact-info h2 {
+        font-size: clamp(2rem, 3vw, 2.5rem);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .contact-item i {
+        font-size: 1.5rem;
+        width: 30px;
+      }
+
+      .services-list {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        color: var(--dark);
+      }
+
+      .services-list h2 {
+        color: var(--primary);
+        font-size: clamp(2rem, 3vw, 2.5rem);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .service-item {
+        padding: 1rem;
+        background: var(--light);
+        border-radius: 8px;
+        border-left: 4px solid var(--primary);
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark);
+        color: white;
+        padding: 60px 2rem 30px;
+        border-top: 2px solid var(--primary);
+        width: 100%;
+      }
+
+      .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+      }
+
+      .footer-section h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Responsive - UPDATED */
+      @media (max-width: 1024px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+
+        .masonry-gallery {
+          columns: 3;
+        }
+
+        .about-section,
+        .container-events,
+        .contact-container {
+          gap: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 1rem;
+        }
+
+        .navbar-nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: rgba(45, 45, 45, 0.98);
+          flex-direction: column;
+          padding: 1rem;
+          gap: 1rem;
+        }
+
+        .navbar-nav.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .about-section {
+          grid-template-columns: 1fr;
+          padding: 80px 1rem;
+          gap: 2rem;
+        }
+
+        .container-events {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 0 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .masonry-gallery {
+          columns: 2;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .image-grid {
+          width: 95vw;
+          height: 95vw;
+        }
+
+        /* Calendar improvements for mobile */
+        #calendar-container {
+          padding: 1rem;
+        }
+
+        .day {
+          padding: 8px 2px;
+          min-height: 35px;
+          font-size: 0.8rem;
+        }
+
+        .day-name {
+          padding: 6px 2px;
+          font-size: 0.8rem;
+        }
+
+        #calendar-header button {
+          padding: 6px 10px;
+          min-width: 35px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .masonry-gallery {
+          columns: 1;
+        }
+
+        .swiper-gallery {
+          height: 300px;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .content h1,
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .about-section,
+        .events-section,
+        .gallery-section {
+          padding: 80px 1rem;
+        }
+
+        .contact-info,
+        .services-list {
+          padding: 2rem 1.5rem;
+        }
+
+        /* Further calendar improvements for very small screens */
+        .day {
+          padding: 6px 1px;
+          min-height: 30px;
+          font-size: 0.7rem;
+        }
+
+        .day-name {
+          padding: 4px 1px;
+          font-size: 0.7rem;
+        }
+
+        #calendar-header button {
+          padding: 4px 8px;
+          min-width: 30px;
+          font-size: 0.9rem;
+        }
+
+        #calendar-title {
+          font-size: 1.1rem;
+        }
+      }
+
+      /* New Wedding Section Styling */
+        .wedding-article { padding: 100px 2rem; background: white; }
+        .wedding-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .wedding-image img { border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); width: 100%; height: auto; }
+        .wedding-text h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; font-weight: bold; }
+        .wedding-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+        .wedding-link { color: var(--primary); font-weight: bold; text-decoration: underline; transition: color 0.3s; }
+        .wedding-link:hover { color: var(--accent); }
+        .news-mention {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff1f1;
+    border: 1px solid var(--primary);
+    padding: 8px 15px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .news-mention:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+  .news-mention i {
+    font-size: 1.1rem;
+  }
+        @media (max-width: 768px) {
+            .wedding-container { grid-template-columns: 1fr; gap: 2rem; }
+            
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Close button for expanded images -->
+    <button class="close-expanded" id="closeExpanded">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Navbar - Updated -->
+    <nav class="navbar">
+      <div class="navbar-brand">COBI Events & More</div>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="navbar-nav" id="navbarNav">
+        <li><a href="./index.html">Acasa</a></li>
+        <li><a href="./despre/index.html">Despre Noi</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section - Updated -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>COBI Events & More</h1>
+        <p>
+          Creăm momente. Construim amintiri.
+        </p>
+      <a href="#contact" class="btn">Descoperă Serviciile Noastre</a>
+      </div>
+
+      <div class="image-grid">
+        <input id="item1" type="checkbox" />
+        <label
+          class="item1"
+          for="item1"
+          style="background-image: url(./img/event1.jpeg)"
+        ></label>
+        <input id="item2" type="checkbox" />
+        <label
+          class="item2"
+          for="item2"
+          style="background-image: url(./img/event2.jpeg)"
+        ></label>
+        <input id="item3" type="checkbox" />
+        <label
+          class="item3"
+          for="item3"
+          style="background-image: url(./img/event3.jpeg)"
+        ></label>
+        <input id="item4" type="checkbox" />
+        <label
+          class="item4"
+          for="item4"
+          style="background-image: url(./img/event4.jpeg)"
+        ></label>
+        <input id="item5" type="checkbox" />
+        <label
+          class="item5"
+          for="item5"
+          style="background-image: url(./img/event5.jpeg)"
+        ></label>
+        <input id="item6" type="checkbox" />
+        <label
+          class="item6"
+          for="item6"
+          style="background-image: url(./img/event6.jpeg)"
+        ></label>
+        <input id="item7" type="checkbox" />
+        <label
+          class="item7"
+          for="item7"
+          style="background-image: url(./img/00.jpeg)"
+        ></label>
+        <input id="item8" type="checkbox" />
+        <label
+          class="item8"
+          for="item8"
+          style="background-image: url(./img/1a.jpeg)"
+        ></label>
+        <input id="item9" type="checkbox" />
+        <label
+          class="item9"
+          for="item9"
+          style="background-image: url(./img/9a.jpeg)"
+        ></label>
+      </div>
+    </section>
+
+    <!-- Section 2 - About with Swiper Gallery -->
+    <section id="about" class="about-section">
+      <div class="content">
+        <h1>COBI Events & More</h1>
+        <p>
+          Fie că este vorba de o petrecere privată, un botez, o aniversare sau
+          un eveniment corporate, noi aducem viziunea ta la viață.
+        </p>
+        <p>
+          De la cele mai mici detalii, până la imaginea de ansamblu, ne ocupăm
+          de tot, ca tu să te bucuri 100% de eveniment.
+        </p>
+        <div class="flex flex-wrap gap-4 items-center">
+  
+  <a href="https://wa.me/40745845392?text=Bună%20ziua!%20Doresc%20mai%20multe%20detalii%20despre%20organizarea%20unui%20eveniment." 
+     target="_blank" 
+     class="btn" 
+     style="background-color: var(--primary); display: inline-flex; align-items: center; gap: 8px;">
+    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
+    Contactează-ne
+  </a>
+</div>
+      </div>
+
+      <div class="swiper-gallery">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="./img/event1.jpeg" alt="Eveniment Corporate" />
+            <div class="slide-content">
+              <!-- <h3>Evenimente Corporate</h3>
+              <p>Conferințe și lansări de produse</p> -->
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="./img/event2.jpeg" alt="Wedding" />
+            <div class="slide-content">
+              <!-- <h3>Wedding-uri</h3>
+              <p>Cele mai frumoase nunți</p> -->
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="./img/event3.jpeg" alt="Festival" />
+            <div class="slide-content">
+              <!-- <h3>Festivaluri</h3>
+              <p>Evenimente culturale și artistice</p> -->
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="./img/event4.jpeg" alt="Team Building" />
+            <div class="slide-content">
+              <!-- <h3>Team Building</h3>
+              <p>Activități pentru companii</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+    <section id="nunti" class="wedding-article">
+  <div class="wedding-container">
+    <div class="wedding-image">
+      <img src="./img/event4.jpeg" alt="Banat Wedding Expo" />
+    </div>
+    <div class="wedding-text">
+      <a href="https://expressdebanat.ro/banat-wedding-expo-2026-cel-mai-mare-targ-de-nunti-din-caras-severin-peste-60-de-furnizori-si-premii-in-valoare-de-4000-de-euro/" 
+         target="_blank" 
+         class="news-mention">
+        <i class="fas fa-newspaper"></i>
+        <span>Prezenți la <strong>Banat Wedding Expo 2026</strong> - Citește articolul</span>
+      </a>
+
+      <h2>Nunta Visurilor Tale</h2>
+      <p>
+        Ziua nunții este o bornă unică, iar la <strong>COBI Events & More</strong>, transformăm viziunea voastră în realitate. Suntem mândri să facem parte din elita furnizorilor de evenimente, participând activ la cele mai mari evenimente de profil din regiune, precum <strong>Banat Wedding Expo</strong>.
+      </p>
+      <p>
+        Fiecare poveste de dragoste este unică. Ne asigurăm că personalitatea voastră strălucește în fiecare element al decorului, oferind consultanță dedicată și soluții premium pentru un eveniment fără cusur.
+      </p>
+      
+      
+      <div class="flex gap-4 mt-6">
+        <a href="#contact" class="btn">Solicită Ofertă</a>
+        <a href="https://expressdebanat.ro/banat-wedding-expo-2026-cel-mai-mare-targ-de-nunti-din-caras-severin-peste-60-de-furnizori-si-premii-in-valoare-de-4000-de-euro/" 
+           target="_blank" 
+           class="btn" 
+           style="background: transparent; color: var(--primary); border: 2px solid var(--primary);">
+           Vezi Noutăți Expo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- New Gallery Section -->
+    <section id="gallery" class="gallery-section">
+      <h2 class="section-title">Galerie Evenimente</h2>
+      <div class="masonry-gallery">
+        <div class="masonry-item">
+          <img src="./img/1c.jpeg" alt="Eveniment 1" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Botez</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/00.jpeg" alt="Eveniment 2" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Nuntă traditională</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/12.jpeg" alt="Eveniment 3" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Nuntă</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/s1.jpeg" alt="Eveniment 4" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Cigar Bar</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/3.jpeg" alt="Eveniment 5" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Nuntă</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/4.jpeg" alt="Eveniment 6" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Petrecere Privată</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/8.jpeg" alt="Eveniment 7" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Botez</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/bg_events.jpg" alt="Eveniment 8" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Nuntă</div>
+          </div>
+        </div>
+        <div class="masonry-item">
+          <img src="./img/10.jpeg" alt="Eveniment 9" />
+          <div class="masonry-overlay">
+            <div class="overlay-text">Eveniment Memorabil</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Calendar Section -->
+    <section id="events" class="events-section">
+      <h2 class="section-title" style="color: var(--primary)">
+        Calendar Evenimente
+      </h2>
+      <div class="container-events">
+        <div id="calendar-container">
+          <div id="calendar-header">
+            <button id="prev-month">&#9664;</button>
+            <h1 id="calendar-title"></h1>
+            <button id="next-month">&#9654;</button>
+          </div>
+          <div id="calendar"></div>
+        </div>
+
+        <div id="event-details">
+          <h2>Detalii Evenimente</h2>
+          <p id="event-message">Selectează o zi pentru a vedea evenimentele.</p>
+          <ul id="event-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <h2 class="section-title">Contact & Servicii</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h2>Contactează-ne</h2>
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+40 745 845 392</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+40 775 356 069</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>cobiconcept@yahoo.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Luni - Vineri: 9:00-18:00</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Reşiţa, România</span>
+            </div>
+            <!-- <div class="contact-item">
+              <i class="fas fa-globe"></i>
+              <span>www.cobigroup.ro</span>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="services-list">
+          <h2><i class="fas fa-concierge-bell"></i> Servicii Oferite</h2>
+          <div class="services-grid">
+            <div class="service-item">
+              <i class="fas fa-briefcase"></i> Organizare completă
+            </div>
+            <div class="service-item">
+              <i class="fas fa-ring"></i> Decor personalizat
+            </div>
+            <div class="service-item">
+              <i class="fas fa-music"></i> Coordonare în ziua evenimentului
+            </div>
+            <div class="service-item">
+              <i class="fas fa-users"></i> Colaborare cu furnizori profesioniști
+            </div>
+            <div class="service-item">
+              <i class="fas fa-chalkboard-teacher"></i>Pachete flexibile
+            </div>
+            <div class="service-item">
+              <i class="fas fa-heart"></i> Consultanță dedicată
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>COBI Events & More</h3>
+          <div class="footer-links">
+            <a href="./index.html">Acasa</a>
+            <a href="./despre/index.html">Despre Noi</a>
+            <a href="./contact.html">Contact</a>
+             <a
+                href="https://www.facebook.com/CobiConceptGroup"
+                target="_blank"
+              >
+           Facebook
+              </a> 
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Grupul COBI</h3>
+          <div class="footer-links">
+            <a href="./despre/index.html"
+              ><i class="fas fa-palette"></i> COBI Concept</a
+            >
+            <a href="./cobi-cleanup.html"
+              ><i class="fas fa-broom"></i> COBI Cleanup</a
+            >
+            <a href="./cobi-travel.html"
+              ><i class="fas fa-globe-europe"></i> COBI Travel</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <span><i class="fas fa-phone"></i> +40 745 845 392</span>
+            <span><i class="fas fa-phone"></i> +40 775 356 069</span>
+            <span><i class="fas fa-envelope"></i> cobiconcept@yahoo.com</span>
+            <span><i class="fas fa-clock"></i> L-V: 9:00-18:00</span>
+            <span><i class="fas fa-map-marker-alt"></i> Reşiţa, România</span>
+          
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Cobi Concept Events&More. Toate drepturile rezervate. |
+          Part of COBI Concept Group<br />
+          Creat cu <i class="fa-solid fa-heart text-red-500"></i> de
+          <a
+            href="https://www.cosminauzum.com/"
+            target="_blank"
+            class="text-teal-400 hover:text-teal-200 transition duration-200"
+            >www.cosminauzum.com</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const navbarNav = document.getElementById("navbarNav");
+
+        menuToggle.addEventListener("click", function () {
+          navbarNav.classList.toggle("active");
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll(".navbar-nav a");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            navbarNav.classList.remove("active");
+          });
+        });
+      });
+
+      // Initialize Swiper Gallery
+      const swiper = new Swiper(".swiper-gallery", {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+      });
+
+      // Image Grid Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageInputs = document.querySelectorAll(".image-grid input");
+        const closeButton = document.getElementById("closeExpanded");
+        let currentExpandedImage = null;
+
+        // Function to close expanded image
+        function closeExpandedImage() {
+          if (currentExpandedImage) {
+            currentExpandedImage.checked = false;
+            currentExpandedImage = null;
+          }
+          closeButton.classList.remove("show");
+          document.body.style.overflow = "auto";
+        }
+
+        // Add event listeners to image inputs
+        imageInputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            if (this.checked) {
+              currentExpandedImage = this;
+              closeButton.classList.add("show");
+              document.body.style.overflow = "auto";
+            } else {
+              closeExpandedImage();
+            }
+          });
+        });
+
+        // Close button event
+        closeButton.addEventListener("click", closeExpandedImage);
+
+        // Close when clicking outside the image
+        document.addEventListener("click", function (event) {
+          if (
+            currentExpandedImage &&
+            !event.target.closest(".image-grid label") &&
+            !event.target.closest("#closeExpanded")
+          ) {
+            closeExpandedImage();
+          }
+        });
+
+        // Close when pressing Escape key
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && currentExpandedImage) {
+            closeExpandedImage();
+          }
+        });
+
+        // Close expanded image when scrolling
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", function () {
+          if (currentExpandedImage) {
+            const scrollTop =
+              window.pageYOffset || document.documentElement.scrollTop;
+
+            if (Math.abs(scrollTop - lastScrollTop) > 50) {
+              closeExpandedImage();
+            }
+
+            lastScrollTop = scrollTop;
+          }
+        });
+      });
+
+      // Calendar Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarEl = document.getElementById("calendar");
+        const calendarTitleEl = document.getElementById("calendar-title");
+        const prevMonthBtn = document.getElementById("prev-month");
+        const nextMonthBtn = document.getElementById("next-month");
+        const eventListEl = document.getElementById("event-list");
+        const eventMessageEl = document.getElementById("event-message");
+
+        const monthNames = [
+          "Ianuarie",
+          "Februarie",
+          "Martie",
+          "Aprilie",
+          "Mai",
+          "Iunie",
+          "Iulie",
+          "August",
+          "Septembrie",
+          "Octombrie",
+          "Noiembrie",
+          "Decembrie",
+        ];
+        const dayNames = ["D", "L", "Ma", "Mi", "J", "V", "S"];
+
+        let currentDate = moment();
+
+        const events = [
+          {
+            startDate: "2026-01-24",
+            endDate: "2026-01-25",
+            details: ["Banat Wedding Expo 2026"],
+          },
+          // {
+          //   startDate: "2024-06-15",
+          //   endDate: "2024-06-16",
+          //   details: ["Conferința Business Excellence"],
+          // },
+          // {
+          //   startDate: "2024-07-20",
+          //   endDate: "2024-07-21",
+          //   details: ["Wedding Expo - Târg de Nuntă"],
+          // },
+          // {
+          //   startDate: "2024-08-15",
+          //   endDate: "2024-08-17",
+          //   details: ["Festivalul de Vară - Muzică și Artă"],
+          // },
+          // {
+          //   startDate: "2024-09-10",
+          //   endDate: "2024-09-11",
+          //   details: ["Team Building Corporat"],
+          // },
+          // {
+          //   startDate: "2024-10-26",
+          //   endDate: "2024-10-27",
+          //   details: ["Gala Premiilor de Excelență"],
+          // },
+          // {
+          //   startDate: "2024-12-15",
+          //   endDate: "2024-12-16",
+          //   details: ["Petrecere de Crăciun Corporate"],
+          // },
+        ];
+
+        function renderCalendar(date) {
+          calendarEl.innerHTML = "";
+
+          const startOfMonth = moment(date).startOf("month");
+          const endOfMonth = moment(date).endOf("month");
+          const startOfWeek = startOfMonth.clone().startOf("week");
+          const endOfWeek = endOfMonth.clone().endOf("week");
+
+          calendarTitleEl.textContent = `${
+            monthNames[date.month()]
+          } ${date.year()}`;
+
+          // Render zilele săptămânii
+          dayNames.forEach((day) => {
+            const dayEl = document.createElement("div");
+            dayEl.className = "day-name";
+            dayEl.textContent = day;
+            calendarEl.appendChild(dayEl);
+          });
+
+          let day = startOfWeek.clone();
+
+          while (day <= endOfWeek) {
+            const dayEl = document.createElement("div");
+            dayEl.className = "day";
+
+            if (day.month() !== date.month()) {
+              dayEl.classList.add("disabled");
+            }
+
+            if (day.isSame(moment(), "day")) {
+              dayEl.classList.add("today");
+            }
+
+            const dateStr = day.format("YYYY-MM-DD");
+            const event = events.find(
+              (e) => e.startDate <= dateStr && e.endDate >= dateStr
+            );
+
+            if (event) {
+              dayEl.classList.add("event");
+              dayEl.addEventListener("click", function () {
+                showEvents(dateStr);
+              });
+            } else if (day.month() === date.month()) {
+              dayEl.addEventListener("click", function () {
+                showEvents(dateStr);
+              });
+            }
+
+            dayEl.textContent = day.date();
+            calendarEl.appendChild(dayEl);
+            day.add(1, "day");
+          }
+        }
+
+        function showEvents(dateStr) {
+          const eventsForDate = events.filter(
+            (e) => e.startDate <= dateStr && e.endDate >= dateStr
+          );
+
+          eventListEl.innerHTML = "";
+          if (eventsForDate.length > 0) {
+            eventMessageEl.textContent = `Evenimente pentru ${moment(
+              dateStr
+            ).format("DD.MM.YYYY")}`;
+            eventsForDate.forEach((event) => {
+              event.details.forEach((detail) => {
+                const li = document.createElement("li");
+                li.textContent = detail;
+                eventListEl.appendChild(li);
+              });
+            });
+          } else {
+            eventMessageEl.textContent = `Nu sunt evenimente pentru ${moment(
+              dateStr
+            ).format("DD.MM.YYYY")}`;
+          }
+        }
+
+        prevMonthBtn.addEventListener("click", function () {
+          currentDate.subtract(1, "month");
+          renderCalendar(currentDate);
+        });
+
+        nextMonthBtn.addEventListener("click", function () {
+          currentDate.add(1, "month");
+          renderCalendar(currentDate);
+        });
+
+        // Inițializare calendar
+        renderCalendar(currentDate);
+      });
+    </script>
+  </body>
+</html>

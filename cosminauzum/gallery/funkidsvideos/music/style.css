@@ -1,0 +1,321 @@
+
+:root {
+    --primaryColor: rgb(236, 63, 30);
+    --white: #fff;
+    --black: rgba(0, 0, 0, 0.7);
+    --blue2: #4e9fee;
+    --yellow: #ffda5d;
+    --blue: #e7f3ff;
+  }
+*{  box-sizing: border-box;
+    position: relative;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+  }
+  body::-webkit-scrollbar
+{
+   width: 15px;
+   background-color: rgba(78, 158, 238, 0.238);
+}
+body::-webkit-scrollbar-thumb
+{
+   height: auto;
+   background: rgba(255, 217, 93, 0.851);
+   border: 5px solid transparent;
+   border-radius: 5px;
+}
+.nav {
+    height: 90px;
+    width: 100%;
+    background-color: var(--blue2);
+    position: relative;
+  }
+  
+  .nav .nav-header {
+    display: inline;
+  }
+  
+  .nav .nav-header .nav-title {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    color: var(--white);
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav .nav-btn {
+    display: none;
+  }
+  
+  .nav .nav-links {
+    display: inline;
+    float: right;
+    font-size: 28px;
+  }
+  
+  .nav .nav-links a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  .nav .nav-links a span{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px var(--blue2);
+    color: #efefef;
+  }
+  
+  .nav  .nav-links  a  img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .nav  .nav-links a span:hover {
+    color: var(--yellow);
+  }
+  
+  .nav #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav .nav-header{
+      height:auto;
+    }
+    .nav .nav-links a span{
+      display: inline-flexbox;
+      padding: 8px;
+    }
+    .nav .nav-btn {
+      display: inline-block;
+      position: absolute;
+      align-items: center;
+      right: 0px;
+      top: 0px;
+      z-index: 999;
+     
+     
+    }
+    .nav .nav-btn label {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      padding: 25px;
+      margin: 5px 5px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+    }
+    .nav .nav-btn label:hover,.nav  #nav-check:checked ~ .nav-btn label {
+      background-color:  var(--primaryColor);  }
+    .nav .nav-btn label span {
+      display: block;
+      width: 30px;
+      height: 12px;
+      border-top: 2px solid #eee;
+    }
+    .nav .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color:  var(--blue2);
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 90px;
+      left: 0px;
+      z-index: 999;
+    }
+    .nav .nav-links a {
+      display: flex;
+      width: 100%;
+    }
+    .nav #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  
+li
+{
+    list-style: none;
+}
+.main {
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding-left: 15px;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.title
+{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    text-align: left;
+    width: 100%;
+}
+.container
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 3px;
+}
+.container #main-Video
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    outline: none;
+}
+
+.playlistBx
+{
+    position: relative;
+    height: 90%;
+    margin: 0 10px 0 10px;
+}
+.playlist
+{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: scroll;
+}
+.playlist::-webkit-scrollbar
+{
+   width: 0px;
+}
+.playlistBx .row .videos
+{
+   display: block;
+   text-align: left;
+   color: var(--black);
+   font-size: 15px;
+   font-weight: 700;
+   margin-left: 40px;
+   line-height: 40px;
+}
+.playlist li
+{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   list-style: none;
+   color: var(--black);
+   cursor: pointer;
+   border: 1px solid transparent;
+   padding: 15px 10px;
+   border-radius: 5px;
+}
+.playlist li:hover
+{
+    border: 0.5px solid var(--primaryColor);
+    background: rgba(236, 63, 30, 0.2);
+
+}
+.playlist li .row span
+{
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    text-decoration: none;
+    display: inline-block;
+    text-align: left;
+}
+.playlist li .row span::before
+{
+    content: '\f01d';
+    font-family: FontAwesome;
+    color: var(--black);
+    margin-right: 15px;
+    font-size: 20px;
+}
+ul li.playing .row span::before
+{
+    content: '\f28c';
+    font-family: FontAwesome;
+    color: #fff;
+    margin-right: 15px;
+    font-size: 20px;
+}
+.playlist li.playing .row span
+{
+   color: #fff;
+}
+.playlist li span.duration
+{
+    font-size: 15px;
+    font-weight: 400;
+    display: inline-block;
+    color: var(--black);
+    text-align: right;
+}
+.playlist li.playing
+{
+   pointer-events: none;
+   background: var(--primaryColor);
+   border: 0.5px solid var(--primaryColor);
+}
+
+@media(max-width: 1092px){
+    .main
+    {
+        padding: 30px 10px;
+    }
+    .container
+    {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        overflow: hidden;
+    }
+    .container #main-Video
+    {
+        height: 100%;
+    }
+    .playlistBx
+    {
+        height: 380px;
+        margin-top: 10px;
+    }
+    .playlist
+    {
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 40px);
+        overflow-y: scroll;
+    }
+}
+
+footer {
+  background-color: var(--blue2);
+  padding: 0.25rem;
+  color: var(--white);
+  text-align: center;
+  text-shadow: 1px 1px 1px #808080;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  bottom: 0%;
+}

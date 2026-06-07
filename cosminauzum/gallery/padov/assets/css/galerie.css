@@ -1,0 +1,313 @@
+
+:root {
+  /**
+   * COLORS
+   */
+   --gold-crayola:  rgb(224, 203, 167);
+   --quick-silver:rgb(246, 246, 246);
+   --davys-grey: rgb(0, 158, 89);
+   --smoky-black-1: rgb(20, 99, 56);
+   --smoky-black-2: rgb(0, 158, 89);
+   --smoky-black-3:  rgb(0, 158, 89);
+   --eerie-black-1:  rgb(224, 203, 167);
+   --eerie-black-2: rgba(21, 157, 98, 0.671);
+   --eerie-black-3: rgba(0, 158, 90, 0.473);
+   --eerie-black-4:rgb(0, 158, 89);
+   --white: hsla(0, 0%, 100%, 1);
+   --white-alpha-20: hsla(138, 25%, 38%, 0.2);
+   --white-alpha-10: hsla(153, 48%, 33%, 0.1);
+   --green: rgb(0, 158, 89);
+   --green-alpha-80: hsla(144, 29%, 44%, 0.8);
+   --green-alpha-15: hsla(143, 50%, 30%, 0.15);
+}
+
+.topbar .link:is(:hover, :focus-visible) { color: var(--eerie-black-4);}
+/* .header { top: 51px; } */
+
+.category1 {
+  background-color: var(--green);
+  margin-top: 200px;
+  min-height: 800px; /* Sau orice valoare potrivită pentru tine */
+  box-shadow: 0 -8px 8px var(--eerie-black-3);
+}
+.category1 .container h1{
+  padding: 20px;
+}
+.section-text{
+font-size: 20px !important;
+
+}
+
+/* Filtre - stilizare */
+.filters1 {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 35px;
+}
+
+.btn-menu{
+border: 2px solid var(--green);
+margin: 10px;
+}
+
+
+
+.filter-btn1.active {
+  background-color: var(--green)!important;
+  color: var(--gold-crayola);
+  border: 2px solid var(--gold-crayola);
+}
+
+/* Stil pentru galerie */
+.gallery1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.item {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.item:hover img {
+  transform: scale(1.1);
+}
+
+.item .desc {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--gold-crayola);
+  text-shadow: 1px 1px 1px black !important;
+}
+
+/* "Mai multe sortimente" */
+.item .more-options {
+  position: absolute;
+  bottom: 40px;
+  right: 1px;
+  background-color: rgba(5, 36, 7, 0.545);
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-shadow: .5px .5px .5px black;
+}
+
+.item .more-options:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+/* Modal pentru imagine mărită */
+#imageModal .modal-content {
+max-width: 800px;
+width: 90%;
+padding: 20px;
+text-align: center;
+}
+
+#imageModal img {
+width: 100%;
+height: auto;
+max-height: 80vh;
+object-fit: contain;
+border-radius: 10px;
+}
+
+#imageModal #modalTitle {
+margin-top: 10px;
+font-size: 18px;
+color: #333;
+font-weight: bold;
+}
+
+/* Efect zoom-in pe imagine */
+.gallery1 .item img {
+transition: transform 0.3s ease-in-out;
+}
+
+.gallery1 .item img:hover {
+transform: scale(1.1);
+}
+
+/* Modalul să fie centrat și să acopere tot ecranul */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+justify-content: center;
+align-items: center;
+z-index: 9999; /* Asigurăm că modalul este peste toate elementele */
+}
+
+.modal-content {
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+max-width: 800px;
+width: 90%;
+text-align: center;
+position: relative;
+}
+
+.modal .close {
+position: absolute;
+top: 5px;
+right: 8px;
+font-size: 30px;
+font-weight: bold;
+cursor: pointer;
+color: #000;
+}
+
+/* Container pentru imaginea principală din modal */
+.main-image-container img {
+width: 100%;
+height: auto;
+max-height: 400px;
+object-fit: contain;
+border-radius: 10px;
+}
+
+#mainTitle {
+margin-top: 10px;
+font-size: 18px;
+color: var(--green);
+font-weight: bold;
+}
+
+/* Stiluri pentru thumbs (imagini mici) */
+.thumbs-gallery {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 20px;
+}
+
+.thumbs-gallery img {
+width: 100px;
+height: 100px;
+margin: 5px;
+cursor: pointer;
+border: 2px solid transparent;
+transition: border-color 0.3s;
+}
+
+.thumbs-gallery img:hover {
+border-color: var(--green); /* Schimbă culoarea când mouse-ul e deasupra */
+}
+
+/* Stil pentru titlu sub fiecare thumb */
+.thumb-title {
+font-size: 14px;
+color: #555;
+text-align: center;
+}
+/* Specific pentru imaginile din modal */
+#imageModal img {
+width: 100%;
+height: auto;
+max-height: 80vh;
+object-fit: contain;
+border-radius: 10px;
+}
+
+#modalTitle {
+margin-top: 10px;
+font-size: 18px;
+color: #333;
+font-weight: bold;
+}
+
+/* Stiluri pentru prăjituri (Mai multe sortimente) */
+#modalImagesContainer img {
+width: 100px;
+height: auto;
+margin: 5px;
+cursor: pointer;
+}
+
+/* Efect zoom-in pe imagine */
+.gallery1 .item img {
+transition: transform 0.3s ease-in-out;
+}
+
+.gallery1 .item img:hover {
+transform: scale(1.1);
+}
+
+
+/* Responsive pentru mobil */
+@media (max-width: 768px) {
+  .gallery1 {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .section-text{
+    font-size: 16px !important;
+    
+    }
+    .modal {
+    
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow-y: auto;
+      }
+
+  .modal-content {
+      width: 100%;
+      max-width: 500px;
+  }
+
+  .main-image-container img {
+      max-height: 300px; /* Imaginea principală mai mică pe mobile */
+  }
+
+  /* Scăderea dimensiunii thumbs pe mobile */
+ .thumbs-gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto; /* Scroll horizontal pentru ecrane mici */
+    margin-top: 20px;
+    padding-bottom: 10px;
+    gap: 10px;
+ }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+      width: 95%;
+      max-width: 400px;
+      padding: 15px;
+  }
+
+  .main-image-container img {
+      max-height: 250px; /* Imaginea principală mai mică pe ecrane mici */
+  }
+
+  /* Scăderea dimensiunii thumbs pe dispozitive mici */
+  .thumbs-gallery img {
+      width: 70px;
+      height: 70px;
+  }
+}

@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cobi Travel - Destinații de Vis</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Variabile de culoare pentru Cobi Travel */
+      :root {
+        --primary: #d4b896;
+        --primary-dark: #b89a7a;
+        --black: #242424;
+        --white: #f5f5f5;
+        --pill: #e0d4be;
+        --red: #cc03ff;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--white);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      /* NAV: Top Menu Section */
+      .page-header nav {
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        padding: 1em 5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+      }
+
+      .page-header nav h1 {
+        font-size: 1.3rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: var(--white);
+        background-color: var(--primary);
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+
+      .nav-menu {
+        display: flex;
+        color: var(--white);
+        align-items: center;
+        gap: 1.5em;
+      }
+
+      .nav-menu li {
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .nav-menu li:hover {
+        color: var(--primary);
+      }
+
+      #burger {
+        width: min-content;
+        height: 28px;
+        display: none;
+        flex-direction: column;
+        justify-content: space-evenly;
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      #burger span {
+        display: block;
+        height: 3px;
+        width: 22px;
+        background-color: var(--primary);
+        border-radius: 200px;
+        transition: all 0.3s ease;
+      }
+
+      #burger.active span:nth-of-type(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      #burger.active span:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      #burger.active span:nth-of-type(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* MAIN: Slider Section */
+      .page-header main {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-header article {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: var(--i);
+      }
+
+      .hero-info {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        z-index: 8;
+      }
+
+      .hero-info h2 {
+        font-size: clamp(2rem, 9vw, 5rem);
+        line-height: clamp(2rem, 9vw, 5rem);
+        text-transform: uppercase;
+      }
+
+      .hero-info h1 {
+        color: var(--white);
+        font-size: clamp(3.2rem, 10vw, 7rem);
+        line-height: clamp(3.2rem, 10vw, 7rem);
+        text-transform: uppercase;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-info h3 {
+        color: var(--white);
+        font-size: 1.6rem;
+        font-weight: normal;
+        margin-top: 2em;
+      }
+
+      @supports (-webkit-text-stroke: 3px var(--primary)) {
+        .hero-info h2 {
+          color: transparent;
+          -webkit-text-stroke: 3px var(--primary);
+          text-shadow: none;
+        }
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+
+      .hi-1 {
+        background-image: url("./img/travel/2.jpeg");
+      }
+
+      .hi-2 {
+        background-image: url("./img/travel/4.jpeg");
+      }
+
+      .hi-3 {
+        background-image: url("https://images.unsplash.com/flagged/photo-1552035791-b3cc1632e933?ixlib=rb-1.2.1&auto=format&fit=crop&w=2069&q=80");
+      }
+
+      .hi-4 {
+        background-image: url("./img/travel/12.jpeg");
+      }
+
+      .hi-5 {
+        background-image: url("https://images.unsplash.com/photo-1605045544284-d13c6d6a60a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
+      }
+
+      /* NOUA SECȚIUNE: Cum funcționează - REORGANIZATĂ */
+      .how-it-works-section {
+        background: var(--white);
+        padding: 100px 20px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .how-it-works-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .how-it-works-text h2 {
+        font-size: 3rem;
+        color: var(--black);
+        margin-bottom: 30px;
+        font-weight: bold;
+      }
+
+      .how-it-works-text h3 {
+        font-size: 1.5rem;
+        color: var(--primary-dark);
+        margin: 25px 0 15px 0;
+      }
+
+      .how-it-works-text p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--black);
+        margin-bottom: 15px;
+      }
+
+      .contact-info-box {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        padding: 30px;
+        border-radius: 15px;
+        color: var(--white);
+      }
+
+      .contact-info-box h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .contact-info-box .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 15px 0;
+        font-size: 1.1rem;
+      }
+
+      .contact-info-box .contact-item i {
+        font-size: 1.3rem;
+        width: 30px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--white);
+        color: var(--primary-dark);
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: transform 0.3s;
+        text-align: center;
+        width: 100%;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+      }
+
+      /* Coloana dreapta - Pașii */
+      .right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .step {
+        background: var(--pill);
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid var(--primary);
+      }
+
+      .step-number {
+        background: var(--primary);
+        color: var(--white);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .step h4 {
+        font-size: 1.3rem;
+        color: var(--black);
+        margin-bottom: 10px;
+      }
+
+      .step p {
+        color: var(--black);
+        line-height: 1.6;
+      }
+
+      /* Galerie Cuburi Styles */
+      .gallery-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        padding: 100px 20px;
+        min-height: 100vh;
+      }
+
+      .swiper-container {
+        width: 300px;
+        height: 350px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 768px) {
+        .swiper-container {
+          width: 280px;
+          height: 330px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .swiper-container {
+          width: 320px;
+          height: 380px;
+        }
+      }
+
+      .swiper-slide {
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        user-select: none;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+
+      .cost {
+        position: absolute;
+        top: 8px;
+        right: 6px;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        border-radius: 30px;
+        padding: 6px 10px;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 10;
+      }
+
+      .dark-text {
+        color: #202134;
+      }
+
+      .overlay-cube {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 120px;
+        padding: 10px 15px;
+        background: rgba(93, 95, 145, 0.2);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        border-radius: 0 0 20px 20px;
+      }
+
+      .overlay-cube h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .overlay-cube p {
+        font-size: 0.8rem;
+        font-weight: 300;
+        line-height: 1.3;
+        margin-bottom: 3px;
+      }
+
+      .price {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #ebe26b;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      }
+
+      .days {
+        font-size: 0.8rem;
+        opacity: 0.9;
+      }
+
+      .cubes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .cube-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cube-title {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 15px;
+        text-align: center;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Footer Styles */
+      .footer {
+        background: var(--black);
+        color: var(--white);
+        padding: 60px 20px 30px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-section h3 {
+        color: var(--primary);
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .footer-links span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--white);
+      }
+
+      .footer-links i {
+        width: 20px;
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Animation for page load */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cube-item {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .cube-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .cube-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .cube-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .cube-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .cube-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .cube-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      /* Responsive */
+      @media screen and (max-width: 768px) {
+        .page-header nav {
+          padding: 1em 2em;
+        }
+
+        .page-header nav h1 {
+          font-size: 0.9rem;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(10px);
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          padding: 80px 2em 2em 2em;
+          transition: right 0.3s ease;
+          gap: 0;
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-menu li {
+          margin: 1em 0;
+          padding: 0.8em 0;
+          width: 100%;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          font-size: 1.1rem;
+        }
+
+        .nav-menu li:last-child {
+          border-bottom: none;
+        }
+
+        #burger {
+          display: flex;
+        }
+
+        .cubes-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .swiper-container {
+          width: 280px;
+          height: 330px;
+        }
+
+        .how-it-works-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .how-it-works-text h2 {
+          font-size: 2.5rem;
+        }
+
+        /* Pe mobile: Text -> Pași -> Contact */
+        .left-column {
+          order: 1;
+        }
+
+        .right-column {
+          order: 2;
+        }
+
+        .contact-info-box {
+          order: 3;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .nav-menu {
+          display: flex !important;
+        }
+
+        #burger {
+          display: none;
+        }
+      }
+
+      @media (min-width: 641px) and (max-width: 1023px) {
+        .cubes-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
+
+        .how-it-works-content {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+
+      @media (min-width: 1024px) and (max-width: 1279px) {
+        .cubes-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .cubes-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Section 1: Hero cu Navbar -->
+    <div class="page-wrap">
+      <header class="page-header">
+        <nav>
+          <h1>COBI Travel</h1>
+          <ul class="nav-menu">
+            <li><a href="./index.html">Acasa</a></li>
+            <li><a href="./despre/index.html">Despre Noi</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+          <div id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+
+        <main>
+          <article id="hero-1" style="--i: 5">
+            <div class="hero-info">
+              <h2>Călătorește în</h2>
+              <h1>Lume</h1>
+              <!-- <h3>Pragser Wildsee, Italia</h3> -->
+            </div>
+            <div class="hero-image hi-1"></div>
+          </article>
+
+          <article id="hero-2" style="--i: 4">
+            <div class="hero-info">
+              <h2>Savurează</h2>
+              <h1>Călătoria</h1>
+              <!-- <h3>Marignier, Franța</h3> -->
+            </div>
+            <div class="hero-image hi-2"></div>
+          </article>
+
+          <article id="hero-3" style="--i: 3">
+            <div class="hero-info">
+              <h2>Extinde-ți</h2>
+              <h1>Orizonturile</h1>
+              <h3>Hooker Valley Track, Noua Zeelandă</h3>
+            </div>
+            <div class="hero-image hi-3"></div>
+          </article>
+
+          <article id="hero-4" style="--i: 2">
+            <div class="hero-info">
+              <h2>Explorează și</h2>
+              <h1>Reflectează</h1>
+              <!-- <h3>Dolomiți, Italia</h3> -->
+            </div>
+            <div class="hero-image hi-4"></div>
+          </article>
+
+          <article id="hero-5" style="--i: 1">
+            <div class="hero-info">
+              <h2>Schimbă-ți</h2>
+              <h1>Perspectiva</h1>
+              <h3>Phuket, Thailanda</h3>
+            </div>
+            <div class="hero-image hi-5"></div>
+          </article>
+        </main>
+      </header>
+    </div>
+
+    <!-- NOUA SECȚIUNE: Cum funcționează - REORGANIZATĂ -->
+    <section class="how-it-works-section">
+      <div class="how-it-works-content">
+        <!-- Coloana stânga: Text + Contact -->
+        <div class="left-column">
+          <div class="how-it-works-text">
+            <h2>Cum funcționează COBI Travel? ✈️</h2>
+
+            <h3>Despre firma noastră</h3>
+            <h4>
+              ✈️ COBI TRAVELS – Călătorii frumoase. Amintiri și mai frumoase.
+            </h4>
+            <p>
+              Prin Cobi Travels, transformăm visul de a călători în realitate.
+              Oferim servicii de turism personalizate, destinații atent
+              selectate și pachete pentru orice buget, pentru ca fiecare client
+              să se bucure de o vacanță fără griji, plină de momente de neuitat.
+            </p>
+
+            <h3>De ce să ne alegi pe noi?</h3>
+            <p>
+              ✔ Pachete turistice complete<br />
+              ✔ Itinerarii personalizate<br />
+              ✔ Transport, cazare, bilete avion<br />
+              ✔ Suport pe tot parcursul călătoriei<br />
+              ✔ Oferte exclusive și reduceri<br />
+            </p>
+
+            <p>Cu noi, fiecare destinație devine o poveste.</p>
+          </div>
+
+          <div class="contact-info-box">
+            <h3>Contactează-ne acum! 📞</h3>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+40745845392</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>cobiconcept@yahoo.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Luni - Vineri: 9:00 - 18:00</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Reşiţa, România</span>
+            </div>
+            <p style="margin-top: 20px; font-style: italic; text-align: center">
+              "Transformăm visele în vacanțe de neuitat!"
+            </p>
+            <a href="https://wa.me/40745845392" class="cta-button"
+              >Solicită Oferta Personalizată</a
+            >
+          </div>
+        </div>
+
+        <!-- Coloana dreapta: Pașii -->
+        <div class="right-column">
+          <h3
+            style="
+              font-size: 1.8rem;
+              color: var(--primary-dark);
+              margin-bottom: 20px;
+            "
+          >
+            Ce trebuie să faci pentru a începe o excursie?
+          </h3>
+          <div class="steps-container">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h4>Alege Destinația</h4>
+              <p>
+                Navighează prin galeria noastră de cuburi sau contactează-ne
+                pentru o consultanță personalizată. Te ajutăm să găsești locația
+                perfectă în funcție de buget, perioadă și preferințe.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <h4>Consultă Specialiștii Noștri</h4>
+              <p>
+                Echipa noastră de agenți de turism te va ghida în alegerea celei
+                mai bune opțiuni. Ofim consultanță completă pentru zboruri,
+                cazare, activități și asigurări de călătorie.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <h4>Personalizează-ți Vacanța</h4>
+              <p>
+                Ajustează pachetul turistic după nevoile tale - de la tipul de
+                cazare și meal plan până la excursii optionale și transferuri.
+                Totul este 100% flexibil.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <h4>Rezervă și Plătește</h4>
+              <p>
+                Oferim opțiuni de plată flexibile, rate fără dobândă și toate
+                garanțiile necesare. Primești toate documentele de călătorie și
+                asistență 24/7.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Galeria cu 6 Cuburi -->
+    <section class="gallery-section">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+        6 Destinații Extraordinare 🌎
+      </h1>
+      <p
+        class="text-xl text-center text-white mb-12 max-w-2xl mx-auto opacity-90"
+      >
+        Fiecare cub afișează 4 locații fantastice care se rotesc automat
+      </p>
+
+      <div class="cubes-grid">
+        <!-- Cubul 1 -->
+        <div class="cube-item">
+          <div class="swiper-container swiper1">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/travel/oferta_bulgaria.jpeg" alt="Bulgaria" />
+                <div class="cost">Romantic</div>
+                <div class="overlay-cube">
+                  <h2>Bulgaria</h2>
+                  <p>Vidin • Belograd • Sodia • Nis</p>
+                  <p class="price">De la €299</p>
+                  <p class="days">3 zile</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/oferta_dubai.jpeg" alt="Dubai" />
+                <div class="cost">Ianuarie 2026</div>
+                <div class="overlay-cube">
+                  <h2>Dubai</h2>
+                  <p>Spania • Arhitectură</p>
+                  <p class="price">De la €800</p>
+                  <p class="days">7 nopţi</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/oferta_mauritius.jpeg" alt="Mauritius" />
+                <div class="cost dark-text">Aventură</div>
+                <div class="overlay-cube">
+                  <h2>Mauritius</h2>
+                  <p>Cazare All Inclusive</p>
+                  <p class="price">€3650 / 2pers</p>
+                  <p class="days">21-28 ian</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="./img/travel/oferta_portugalia.jpeg"
+                  alt="Portugalia"
+                />
+                <div class="cost">Romantic</div>
+                <div class="overlay-cube">
+                  <h2>Portugalia</h2>
+                  <p>Madeira • Azores • Lisabona</p>
+                  <!-- <p class="price">€799</p> -->
+                  <p class="days">16 - 24 martie</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cube-title">Destinații Europene</div> -->
+        </div>
+
+        <!-- Cubul 2 -->
+        <div class="cube-item">
+          <div class="swiper-container swiper2">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/travel/Walensee_Elveția.jpeg" alt="Elvetia" />
+                <div class="cost">Lux</div>
+                <div class="overlay-cube">
+                  <h2>Walensee Elveția</h2>
+                  <!-- <p>Indonezia • Paradis</p>
+                  <p class="price">€1,299</p>
+                  <p class="days">10 zile</p> -->
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/oferta_dubai.jpeg" alt="Dubai" />
+                <div class="cost">Lux</div>
+                <div class="overlay-cube">
+                  <h2>Dubai</h2>
+                  <p>Spania • Arhitectură</p>
+                  <p class="price">De la €800</p>
+                  <p class="days">7 nopţi</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/Colmar_Franța.jpeg" alt="Franța" />
+                <div class="cost">Romantic</div>
+                <div class="overlay-cube">
+                  <h2>Colmar Franța</h2>
+                  <!-- <p>Japonia • Futurist</p>
+                  <p class="price">€1,599</p>
+                  <p class="days">8 zile</p> -->
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/Gosausee_Austria.jpeg" alt="Austria" />
+                <div class="cost">Romantic</div>
+                <div class="overlay-cube">
+                  <h2>Gosausee Austria</h2>
+                  <!-- <p>Thailanda • Plaje</p>
+                  <p class="price">€1,099</p>
+                  <p class="days">8 zile</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cube-title">Destinații Exotice</div> -->
+        </div>
+
+        <!-- Cubul 3 -->
+        <div class="cube-item">
+          <div class="swiper-container swiper3">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/travel/oferta_uganda.jpeg" alt="Uganda" />
+                <div class="cost">Exotic</div>
+                <div class="overlay-cube">
+                  <h2>Uganda</h2>
+                  <!-- <p>Vile pe apă</p> -->
+                  <p class="price">€3,500</p>
+                  <p class="days">5/6 nopti</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="./img/travel/Mostar_ Bosnia_Hertegovina.jpeg"
+                  alt="Bosnia Hertegovina"
+                />
+                <div class="cost">Premium</div>
+                <div class="overlay-cube">
+                  <h2>Mostar Bosnia Herţegovina</h2>
+                  <!-- <p>Insule Private</p>
+                  <p class="price">€1,899</p>
+                  <p class="days">9 zile</p> -->
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/1.jpeg" alt="Roma" />
+                <!-- <div class="cost dark-text">Clasic</div>
+                <div class="overlay-cube">
+                  <h2>Roma</h2>
+                  <p>Italia • Istorie</p>
+                  <p class="price">€699</p>
+                  <p class="days">4 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/2.jpeg" alt="Paris" />
+                <!-- <div class="cost">Romantic</div>
+                <div class="overlay-cube">
+                  <h2>Paris</h2>
+                  <p>Franța • Cultură</p>
+                  <p class="price">€749</p>
+                  <p class="days">5 zile</p>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cube-title">Destinații Premium</div> -->
+        </div>
+
+        <!-- Cubul 4 -->
+        <div class="cube-item">
+          <div class="swiper-container swiper4">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/travel/3.jpeg" alt="New York" />
+                <!-- <div class="cost dark-text">Urban</div>
+                <div class="overlay-cube">
+                  <h2>New York</h2>
+                  <p>USA • Metropolă</p>
+                  <p class="price">€1,199</p>
+                  <p class="days">6 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/4.jpeg" alt="Sydney" />
+                <!-- <div class="cost">Aventură</div>
+                <div class="overlay-cube">
+                  <h2>Sydney</h2>
+                  <p>Australia • Opera</p>
+                  <p class="price">€2,299</p>
+                  <p class="days">11 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/5.jpeg" alt="Lisabona" />
+                <!-- <div class="cost dark-text">Coastal</div>
+                <div class="overlay-cube">
+                  <h2>Lisabona</h2>
+                  <p>Portugalia • Dealuri</p>
+                  <p class="price">€649</p>
+                  <p class="days">5 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/6.jpeg" alt="Viena" />
+                <!-- <div class="cost">Regal</div>
+                <div class="overlay-cube">
+                  <h2>Viena</h2>
+                  <p>Austria • Palate</p>
+                  <p class="price">€699</p>
+                  <p class="days">5 zile</p>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cube-title">Orașe Globale</div> -->
+        </div>
+
+        <!-- Cubul 5 -->
+        <div class="cube-item">
+          <div class="swiper-container swiper5">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/travel/7.jpeg" alt="Machu Picchu" />
+                <!-- <div class="cost">Aventură</div>
+                <div class="overlay-cube">
+                  <h2>Machu Picchu</h2>
+                  <p>Peru • Inca Trail</p>
+                  <p class="price">€1,799</p>
+                  <p class="days">14 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/8.jpeg" alt="Kyoto" />
+                <!-- <div class="cost">Spiritual</div>
+                <div class="overlay-cube">
+                  <h2>Kyoto</h2>
+                  <p>Japonia • Temple</p>
+                  <p class="price">€1,499</p>
+                  <p class="days">7 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/9.jpeg" alt="Cappadocia" />
+                <!-- <div class="cost">Unic</div>
+                <div class="overlay-cube">
+                  <h2>Cappadocia</h2>
+                  <p>Turcia • Baloane</p>
+                  <p class="price">€899</p>
+                  <p class="days">6 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/10.jpeg" alt="Rio" />
+                <!-- <div class="cost">Festiv</div>
+                <div class="overlay-cube">
+                  <h2>Rio de Janeiro</h2>
+                  <p>Brazilia • Carnaval</p>
+                  <p class="price">€1,349</p>
+                  <p class="days">8 zile</p>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cube-title">Aventuri Unice</div> -->
+        </div>
+
+        <!-- Cubul 6 -->
+        <div class="cube-item">
+          <div class="swiper-container swiper6">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/travel/11.jpeg" alt="Santorini" />
+                <!-- <div class="cost">Luna de Miere</div>
+                <div class="overlay-cube">
+                  <h2>Santorini</h2>
+                  <p>Grecia • Priveliști</p>
+                  <p class="price">€999</p>
+                  <p class="days">7 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/12.jpeg" alt="Maldive" />
+                <!-- <div class="cost">All Inclusive</div>
+                <div class="overlay-cube">
+                  <h2>Maldive</h2>
+                  <p>Vile Private</p>
+                  <p class="price">€2,499</p>
+                  <p class="days">10 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/13.jpeg" alt="Paris" />
+                <!-- <div class="cost">Romantic</div>
+                <div class="overlay-cube">
+                  <h2>Paris</h2>
+                  <p>Franța • Lumini</p>
+                  <p class="price">€849</p>
+                  <p class="days">5 zile</p>
+                </div> -->
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/travel/14.jpeg" alt="Bali" />
+                <!-- <div class="cost">Exotic</div>
+                <div class="overlay-cube">
+                  <h2>Bali</h2>
+                  <p>Indonezia • Relaxare</p>
+                  <p class="price">€1,399</p>
+                  <p class="days">9 zile</p>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="cube-title">Pachete Speciale</div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>COBI Travel</h3>
+          <div class="footer-links">
+            <a href="./despre/index.html"
+              ><i class="fas fa-info-circle"></i> Despre Noi</a
+            >
+            <!-- <a href="#"><i class="fas fa-map-marked-alt"></i> Destinații</a>
+            <a href="#"><i class="fas fa-gift"></i> Oferte Speciale</a>
+            <a href="#"><i class="fas fa-blog"></i> Blog de Călătorie</a> -->
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Grupul COBI</h3>
+          <div class="footer-links">
+            <a href="./despre/index.html"
+              ><i class="fas fa-palette"></i> COBI Concept</a
+            >
+            <a href="./cobi-cleanup.html"
+              ><i class="fas fa-broom"></i> COBI Cleanup</a
+            >
+            <a href="./cobi-events.html"
+              ><i class="fas fa-calendar-alt"></i> COBI Events</a
+            >
+            <a href="./cobi-travel.html"
+              ><i class="fas fa-globe-europe"></i> COBI Travel</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Asistență</h3>
+          <div class="footer-links">
+            <a href="./contact.html"><i class="fas fa-headset"></i> Contact</a>
+            <!-- <a href="#"
+              ><i class="fas fa-file-contract"></i> Termeni și Condiții</a
+            >
+            <a href="#"
+              ><i class="fas fa-shield-alt"></i> Politica de
+              Confidențialitate</a
+            >
+            <a href="#"><i class="fas fa-question-circle"></i> FAQ</a> -->
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <span><i class="fas fa-phone"></i> +40745845392</span>
+            <span><i class="fas fa-phone"></i> +40775356069</span>
+            <span><i class="fas fa-envelope"></i> cobiconcept@yahoo.com</span>
+            <span><i class="fas fa-clock"></i> L-V: 9:00-18:00</span>
+            <span><i class="fas fa-map-marker-alt"></i> Reşiţa, România</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 COBI Travel. Toate drepturile rezervate. | Part of COBI
+          Concept Group<br />
+          Creat cu <i class="fa-solid fa-heart text-red-500"></i> de
+          <a
+            href="https://www.cosminauzum.com/"
+            target="_blank"
+            class="text-teal-400 hover:text-teal-200 transition duration-200"
+            >www.cosminauzum.com</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // JavaScript pentru navbar și animații
+      let burger = document.getElementById("burger");
+      let navMenu = document.querySelector(".nav-menu");
+      let showMenu = false;
+
+      burger.addEventListener("click", (e) => {
+        showMenu = !showMenu;
+        if (showMenu) {
+          burger.classList.add("active");
+          navMenu.classList.add("active");
+          document.body.style.overflow = "hidden"; // Previne scroll în fundal
+        } else {
+          burger.classList.remove("active");
+          navMenu.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restaurează scroll
+        }
+      });
+
+      // Închide meniul când se face click pe un link
+      navMenu.querySelectorAll("li").forEach((link) => {
+        link.addEventListener("click", () => {
+          burger.classList.remove("active");
+          navMenu.classList.remove("active");
+          document.body.style.overflow = "auto";
+          showMenu = false;
+        });
+      });
+
+      // Animații pentru hero section
+      gsap.set(["#hero-1 h2, #hero-1 h1, #hero-1 h3"], {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      });
+
+      gsap.set(
+        [
+          `#hero-2 h2, #hero-3 h2, #hero-4 h2, #hero-5 h2,
+                 #hero-2 h1, #hero-3 h1, #hero-4 h1, #hero-5 h1,
+                 #hero-2 h3, #hero-3 h3, #hero-4 h3, #hero-5 h3`,
+        ],
+        {
+          clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+        }
+      );
+
+      let del = 3;
+      let i = 1;
+
+      let tl = gsap.timeline({
+        repeat: -1,
+        yoyo: true,
+        ease: "expo.out",
+      });
+
+      while (i < 5) {
+        tl.to(`#hero-${i} h2`, 0.9, {
+          clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+          delay: del,
+        })
+          .to(
+            `#hero-${i} h1`,
+            0.9,
+            {
+              clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+            },
+            "-=0.3"
+          )
+          .to(
+            `#hero-${i} h3`,
+            0.9,
+            {
+              clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+            },
+            "-=0.3"
+          )
+          .to(
+            `#hero-${i} .hi-${i}`,
+            0.7,
+            {
+              clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+            },
+            "-=1"
+          )
+          .to(`#hero-${i + 1} h2`, 0.9, {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          })
+          .to(
+            `#hero-${i + 1} h1`,
+            0.9,
+            {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            },
+            "-=0.3"
+          )
+          .to(
+            `#hero-${i + 1} h3`,
+            0.9,
+            {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            },
+            "-=0.3"
+          );
+
+        i++;
+      }
+
+      // Configurație Swiper pentru cuburi
+      const swiperConfig = {
+        effect: "cube",
+        grabCursor: true,
+        loop: true,
+        speed: 1200,
+        cubeEffect: {
+          shadow: false,
+          slideShadows: true,
+          shadowOffset: 8,
+          shadowScale: 0.92,
+        },
+        autoplay: {
+          delay: 3000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        },
+      };
+
+      // Inițializare swiper-ele pentru cuburi
+      const swipers = [];
+      for (let i = 1; i <= 6; i++) {
+        if (document.querySelector(`.swiper${i}`)) {
+          swipers.push(
+            new Swiper(`.swiper${i}`, {
+              ...swiperConfig,
+              autoplay: { delay: 3000 + i * 200 },
+            })
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

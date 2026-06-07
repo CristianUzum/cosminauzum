@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./logo_green.jpg" type="image/png" />
+    <title>Ana's Gallery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <img src="logo_green.jpg" alt="Logo" />
+      <!-- <span class="menu-toggle">☰</span> -->
+    </header>
+
+    <main>
+      <div class="title-container">
+        <h1 class="animated-title">Ana's Gallery</h1>
+      </div>
+      <div id="gallery">
+        <figure onclick="openModal('img1')">
+          <img
+            id="img1"
+            src="1.jpg"
+            alt="Blue clouds at sunset. "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>4.5 years, Summer</figcaption>
+        </figure>
+        <figure onclick="openModal('img2')">
+          <img
+            id="img2"
+            src="2.jpg"
+            alt="Xmas tree "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Winter</figcaption>
+        </figure>
+        <figure onclick="openModal('img3')">
+          <img
+            id="img3"
+            src="3.png"
+            alt="Snow Man. "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Snow Man</figcaption>
+        </figure>
+        <figure onclick="openModal('img4')">
+          <img
+            id="img4"
+            src="4.jpg"
+            alt="Lady Bug in the summer. "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Lady Bug</figcaption>
+        </figure>
+        <figure onclick="openModal('img5')">
+          <img
+            id="img5"
+            src="5.jpg"
+            alt="Tree in the spring. "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>6 years, Spring</figcaption>
+        </figure>
+        <figure onclick="openModal('img6')">
+          <img
+            id="img6"
+            src="6.jpg"
+            alt="Butterfly with rainbow colors "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5.5 years, Butterfly</figcaption>
+        </figure>
+        <figure onclick="openModal('img7')">
+          <img
+            id="img7"
+            src="7.jpg"
+            alt="Tree in the spring with branches like a family"
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>7 years, Spring</figcaption>
+        </figure>
+        <figure onclick="openModal('img8')">
+          <img
+            id="img8"
+            src="1a.png"
+            alt="Ana and the 1st picture. "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>4.5 years, Summer</figcaption>
+        </figure>
+        <figure onclick="openModal('img9')">
+          <img
+            id="img9"
+            src="2.png"
+            alt="Ana and the second picture "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Winter</figcaption>
+        </figure>
+        <figure onclick="openModal('img10')">
+          <img
+            id="img10"
+            src="3a.png"
+            alt="Ana and the 3rd picture. "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Snow Man</figcaption>
+        </figure>
+        <figure onclick="openModal('img11')">
+          <img
+            id="img11"
+            src="4a.jpg"
+            alt="Ana and the 4th picture "
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Lady Bug</figcaption>
+        </figure>
+
+        <figure onclick="openModal('img12')">
+          <img
+            id="img12"
+            src="7a.jpg"
+            alt="Ana and the 7th picture"
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>7 years, Spring</figcaption>
+        </figure>
+        <figure onclick="openModal('img13')">
+          <img
+            id="img13"
+            src="8a.png"
+            alt="Ana and the 8th picture"
+            title="Picture by Ana Maria Uzum"
+          />
+          <figcaption>5 years, Rainbow</figcaption>
+        </figure>
+      </div>
+    </main>
+    <div id="modal" class="modal" onclick="closeModal()">
+      <div class="modal-content" onclick="event.stopPropagation();">
+        <button class="close" onclick="closeModal()">X</button>
+        <img id="modal-img" src="" alt="" />
+        <p id="modal-caption"></p>
+      </div>
+    </div>
+
+    <footer id="info">
+      Made by
+      <a target="_blank" href="https://www.cosminauzum.com"
+        >www.cosminauzum.com</a
+      >
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

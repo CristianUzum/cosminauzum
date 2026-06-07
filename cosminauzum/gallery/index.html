@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Cosmic Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #00003b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: absolute;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #fff, 0 0 20px cyan;
+        }
+        .link {
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: cyan;
+            text-shadow: 0 0 5px white;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px white, 0 0 10px cyan; }
+            to { text-shadow: 0 0 10px white, 0 0 20px cyan; }
+        }
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/1600x900/?space,galaxy') no-repeat center;
+            background-size: cover;
+            opacity: 0.5;
+            animation: moveStars 20s linear infinite;
+        }
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: -1000px 1000px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <div class="title">Gallery</div>
+        <a href="https://www.cosminauzum.com" class="link">by www.cosminauzum.com</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog Interactiv</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="catalog" id="flipbook-container">
+      <!-- Flipbook -->
+      <div id="flipbook">
+        <!-- First page: Cover with title over the image -->
+        <div class="page cover">
+          <div class="cover-content">
+            <img src="./2.jpeg" alt="Cover Image" />
+            <div class="overlay">
+              <h1>Our Exclusive Product Catalog</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second page: Product grid -->
+        <div class="page product-grid">
+          <div class="product-row">
+            <img src="./1.jpeg" alt="Product 1" class="product-image" />
+            <div class="product-info">
+              <h2>Product 1</h2>
+              <p>$29.99</p>
+            </div>
+          </div>
+          <div class="product-row">
+            <img src="./2.jpeg" alt="Product 2" class="product-image" />
+            <div class="product-info">
+              <h2>Product 2</h2>
+              <p>$49.99</p>
+            </div>
+          </div>
+          <div class="product-row">
+            <img src="./3.jpeg" alt="Product 3" class="product-image" />
+            <div class="product-info">
+              <h2>Product 3</h2>
+              <p>$19.99</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="page product-grid">
+          <div class="product-row">
+            <img src="./1.jpeg" alt="Product 1" class="product-image" />
+            <div class="product-info">
+              <h2>Product 1</h2>
+              <p>$29.99</p>
+            </div>
+          </div>
+          <div class="product-row">
+            <img src="./2.jpeg" alt="Product 2" class="product-image" />
+            <div class="product-info">
+              <h2>Product 2</h2>
+              <p>$49.99</p>
+            </div>
+          </div>
+          <div class="product-row">
+            <img src="./3.jpeg" alt="Product 3" class="product-image" />
+            <div class="product-info">
+              <h2>Product 3</h2>
+              <p>$19.99</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional pages can be created following this structure -->
+        <div class="page product-grid">
+          <div class="product-row">
+            <img src="./3.jpeg" alt="Product 4" />
+            <div class="product-info">
+              <h2>Product 4</h2>
+              <p>$39.99</p>
+            </div>
+          </div>
+          <div class="product-row">
+            <img src="./2.jpeg" alt="Product 5" />
+            <div class="product-info">
+              <h2>Product 5</h2>
+              <p>$24.99</p>
+            </div>
+          </div>
+          <div class="product-row">
+            <img src="./1.jpeg" alt="Product 6" />
+            <div class="product-info">
+              <h2>Product 6</h2>
+              <p>$59.99</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="nav-buttons-container">
+        <button id="prev-page" class="nav-button" onclick="previousPage()">
+          &#9664; Previous
+        </button>
+        <button id="next-page" class="nav-button" onclick="nextPage()">
+          Next &#9654;
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+    <script src="./js/turn.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
