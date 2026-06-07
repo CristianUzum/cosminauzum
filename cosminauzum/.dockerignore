@@ -1,3 +1,6 @@
-dockerfile
-.dockerignore
 .git
+.github
+gallery/
+images/
+videos/
+*.tar

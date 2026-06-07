@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd ~/release/dev
+            cd ~/web/dev
 
             if [ ! -d ".git" ]; then
               git clone -b dev https://github.com/CristianUzum/cosminauzum.git .
@@ -62,7 +62,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd ~/release/prod
+            cd ~/web/prod
 
             # If it's not a git repo yet, clone it. Otherwise, clean and pull.
             if [ ! -d ".git" ]; then
